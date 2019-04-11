@@ -1,4 +1,3 @@
-
 export default class ArrayList<T> {
 
     private data: Array<T>;
@@ -170,8 +169,8 @@ export default class ArrayList<T> {
         return this
     }
 
-    clone(deep?: boolean) {
-        let newVector = new ArrayList()
+    clone(deep?: boolean): ArrayList<T> {
+        let newVector = new ArrayList<T>()
 
 
         if (deep) {
@@ -217,5 +216,10 @@ export default class ArrayList<T> {
 
     setPersistentAttributes(memento: { data: Array<T> }) {
         this.data = memento.data
+    }
+
+    map(func: (val: T, index?: number, array?: T[]) => any) {
+        this.data = this.data.map(func)
+        return this
     }
 }

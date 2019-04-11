@@ -1,3 +1,9 @@
+import { Figure } from "../../Figure";
+
+export class Node extends Figure {
+
+}
+
 /**
  * @class draw2d.shape.node.Node
  *
@@ -8,8 +14,6 @@
  * @author Andreas Herz
  * @extends draw2d.Figure
  */
-import draw2d from '../../packages'
-import extend from '../../util/extend'
 
 draw2d.shape.node.Node = draw2d.Figure.extend({
 
@@ -39,7 +43,10 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
     this.cachedPorts = null
 
     this._super(
-      extend({width: 50, height: 50}, attr),
+      extend({
+        width: 50,
+        height: 50
+      }, attr),
       extend({
         /** @attr {Number} indicate whenever you want persists the ports too */
         persistPorts: this.setPersistPorts
@@ -60,7 +67,9 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    */
   setPersistPorts: function (flag) {
     this.persistPorts = flag
-    this.fireEvent("change:persistPorts", {value: this.persistPorts})
+    this.fireEvent("change:persistPorts", {
+      value: this.persistPorts
+    })
 
     return this
   },
@@ -116,13 +125,11 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
         port.__initialVisibilityState = port.isVisible()
         port.setVisible(false, duration)
       })
-    }
-    else {
+    } else {
       this.getPorts().each(function (i, port) {
         if (typeof port.__initialVisibilityState !== "undefined") {
           port.setVisible(port.__initialVisibilityState, duration)
-        }
-        else {
+        } else {
           port.setVisible(true, duration)
         }
         delete port.__initialVisibilityState
@@ -208,7 +215,9 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    * @experimental
    */
   clone: function (cloneMetaData) {
-    cloneMetaData = extend({excludePorts: false}, cloneMetaData)
+    cloneMetaData = extend({
+      excludePorts: false
+    }, cloneMetaData)
 
     let clone = this._super(cloneMetaData)
 
@@ -330,11 +339,9 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
 
     if (port instanceof draw2d.InputPort) {
       this.inputPorts.add(port)
-    }
-    else if (port instanceof draw2d.OutputPort) {
+    } else if (port instanceof draw2d.OutputPort) {
       this.outputPorts.add(port)
-    }
-    else if (port instanceof draw2d.HybridPort) {
+    } else if (port instanceof draw2d.HybridPort) {
       this.hybridPorts.add(port)
     }
 
@@ -476,8 +483,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
       })
       // relayout the ports
       this.setDimension(this.width, this.height)
-    }
-    else {
+    } else {
       ports.each((i, port) => port.setCanvas(null))
     }
     return this
@@ -535,7 +541,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    */
   layoutPorts: function () {
     if (this.portRelayoutRequired === false) {
-      return//silently
+      return //silently
     }
     this.portRelayoutRequired = false
 
@@ -628,6 +634,3 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
   }
 
 })
-
-
-

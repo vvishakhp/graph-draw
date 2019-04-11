@@ -1,10 +1,29 @@
 export class Figure {
-    getPosition() {
-        throw new Error("Method not implemented.");
-    }
+  attr(key: string | object): any {
+    throw new Error("Method not implemented.");
+  }
+  setBoundingBox(oldBoundingBox: any) {
+    throw new Error("Method not implemented.");
+  }
+  stickFigures: boolean;
+  unassignFigure(figure: Figure) {
+    throw new Error("Method not implemented.");
+  }
+  getConnections(): ArrayList<any> {
+    throw new Error("Method not implemented.");
+  }
+  assignFigure(figure: Figure) {
+    throw new Error("Method not implemented.");
+  }
+  getBoundingBox(): any {
+    throw new Error("Method not implemented.");
+  }
+  getPosition() {
+    throw new Error("Method not implemented.");
+  }
   shape: any;
-    initialWidth: number;
-    initialHeight: number;
+  initialWidth: number;
+  initialHeight: number;
   setPosition(arg0: any, arg1?: number) {
     throw new Error("Method not implemented.");
   }
@@ -29,6 +48,7 @@ import draw2d from 'packages'
 import jsonUtil from 'util/JSONUtil'
 import UUID from 'util/UUID'
 import extend from 'util/extend'
+import ArrayList from './util/ArrayList';
 
 draw2d.Figure = Class.extend({
 

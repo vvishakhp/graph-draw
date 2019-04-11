@@ -1,0 +1,36 @@
+import { Command } from './Command';
+import { Line } from '../shape/basic/Line';
+import { Point } from '../geo/Point';
+
+export class CommandAddVertex extends Command {
+
+  line: any;
+  index: number;
+  newPoint: Point;
+  constructor(line: Line, index: number, x: number, y: number) {
+    super('Add Vertex');
+    this.line = line;
+    this.index = index
+    this.newPoint = new Point(x, y)
+  }
+
+  canExecute() {
+    return true;
+  }
+
+  execute() {
+    this.redo();
+  }
+
+  cancel() {
+    return null;
+  }
+
+  undo() {
+    this.line.removeVertexAt(this.index);
+  }
+
+  redo() {
+    this.line.insertVertexAt(this.index, this.newPoint.getX, this.newPoint.getY())
+  }
+}
