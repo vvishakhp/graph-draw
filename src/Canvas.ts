@@ -1,12 +1,61 @@
 import $ from 'jquery';
+import ArrayList from './util/ArrayList';
 
 export class Canvas {
+    linesToRepaintAfterDragDrop: ArrayList<{}>;
+    calculateConnectionIntersection() {
+        throw new Error("Method not implemented.");
+    }
+    getLine(id: any): any {
+        throw new Error("Method not implemented.");
+    }
+    add(o: any) {
+        throw new Error("Method not implemented.");
+    }
+    getFigure(node: any): any {
+        throw new Error("Method not implemented.");
+    }
+    getLines(): ArrayList<any> {
+        throw new Error("Method not implemented.");
+    }
+    getFigures(): ArrayList<any> {
+        throw new Error("Method not implemented.");
+    }
+    getWidth() {
+        throw new Error("Method not implemented.");
+    }
+    getHeight() {
+        throw new Error("Method not implemented.");
+    }
+    hideDecoration() {
+        throw new Error("Method not implemented.");
+    }
+    showDecoration() {
+        throw new Error("Method not implemented.");
+    }
+
+    shape: any;
+    setPosition(arg0: any, arg1?: number) {
+        throw new Error("Method not implemented.");
+    }
+    getPosition() {
+        throw new Error("Method not implemented.");
+    }
+    getHtmlContainer(): JQuery {
+        throw new Error("Method not implemented.");
+    }
+    setCurrentSelection(arg0: any) {
+        throw new Error("Method not implemented.");
+    }
+    getPrimarySelection() {
+        throw new Error("Method not implemented.");
+    }
 
     private canvasId: string;
     private html: JQuery<HTMLElement>;
 
-    private initialWidth: number;
-    private initialHeight: number;
+    public initialWidth: number;
+    public initialHeight: number;
 
     constructor(canvasId: string, width: number, height: number) {
         let _this = this

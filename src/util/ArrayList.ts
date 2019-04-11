@@ -170,7 +170,7 @@ export default class ArrayList<T> {
         return this
     }
 
-    clone(deep: boolean) {
+    clone(deep?: boolean) {
         let newVector = new ArrayList()
 
 

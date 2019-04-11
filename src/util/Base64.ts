@@ -1,4 +1,4 @@
-const Base64 = {
+const Base64Util = {
     byteToCharMap_: null,
     charToByteMap_: null,
     byteToCharMapWebSafe_: null,
@@ -8,10 +8,10 @@ const Base64 = {
     ENCODED_VALS_WEBSAFE: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789' + '-_.',
 
 
-    encodeByteArray: function (input, opt_webSafe) {
-        Base64.init();
+    encodeByteArray: function (input, opt_webSafe?: string) {
+        Base64Util.init();
 
-        var byteToCharMap = opt_webSafe ? draw2d.util.Base64.byteToCharMapWebSafe_ : draw2d.util.Base64.byteToCharMap_;
+        var byteToCharMap = opt_webSafe ? Base64Util.byteToCharMapWebSafe_ : Base64Util.byteToCharMap_;
 
         var output = [];
 
@@ -44,33 +44,15 @@ const Base64 = {
         return output.join('');
     },
 
-
-    /**
-     * @method
-     * Base64-encode a string.
-     *
-     * @param {string} input A string to encode.
-     * @param {boolean=} opt_webSafe If true, we should use the alternative alphabet.
-     * @return {string} The base64 encoded string.
-     */
-    encode: function (input, opt_webSafe) {
-        return draw2d.util.Base64.encodeByteArray(draw2d.util.Base64.stringToByteArray(input), opt_webSafe);
+    encode: function (input, opt_webSafe?: string) {
+        return Base64Util.encodeByteArray(Base64Util.stringToByteArray(input), opt_webSafe);
     },
 
 
-    /**
-     * @method
-     * Base64-decode a string.
-     *
-     * @param {String} input to decode (length not required to be a multiple of 4).
-     * @param {boolean=} opt_webSafe True if we should use the
-     *     alternative alphabet.
-     * @return {Array} bytes representing the decoded value.
-     */
     decode: function (input, opt_webSafe) {
-        draw2d.util.Base64.init();
+        Base64Util.init();
 
-        var charToByteMap = opt_webSafe ? draw2d.util.Base64.charToByteMapWebSafe_ : draw2d.util.Base64.charToByteMap_;
+        var charToByteMap = opt_webSafe ? Base64Util.charToByteMapWebSafe_ : Base64Util.charToByteMap_;
 
         var output = [];
 
@@ -111,13 +93,6 @@ const Base64 = {
         return output;
     },
 
-    /**
-     * Turns a string into an array of bytes; a "byte" being a JS number in the
-     * range 0-255.
-     * @param {string} str String value to arrify.
-     * @return {!Array.<number>} Array of numbers corresponding to the
-     *     UCS character codes of each character in str.
-     */
     stringToByteArray: function (str) {
         var output = [], p = 0;
         for (var i = 0; i < str.length; i++) {
@@ -132,21 +107,21 @@ const Base64 = {
     },
 
     init: function () {
-        if (!Base64.byteToCharMap_) {
-            Base64.byteToCharMap_ = {};
-            Base64.charToByteMap_ = {};
-            draw2d.util.Base64.byteToCharMapWebSafe_ = {};
-            draw2d.util.Base64.charToByteMapWebSafe_ = {};
+        if (!Base64Util.byteToCharMap_) {
+            Base64Util.byteToCharMap_ = {};
+            Base64Util.charToByteMap_ = {};
+            Base64Util.byteToCharMapWebSafe_ = {};
+            Base64Util.charToByteMapWebSafe_ = {};
 
             // We want quick mappings back and forth, so we precompute two maps.
-            for (var i = 0; i < draw2d.util.Base64.ENCODED_VALS.length; i++) {
-                draw2d.util.Base64.byteToCharMap_[i] = draw2d.util.Base64.ENCODED_VALS.charAt(i);
-                draw2d.util.Base64.charToByteMap_[draw2d.util.Base64.byteToCharMap_[i]] = i;
-                draw2d.util.Base64.byteToCharMapWebSafe_[i] = draw2d.util.Base64.ENCODED_VALS_WEBSAFE.charAt(i);
-                draw2d.util.Base64.charToByteMapWebSafe_[draw2d.util.Base64.byteToCharMapWebSafe_[i]] = i;
+            for (var i = 0; i < Base64Util.ENCODED_VALS.length; i++) {
+                Base64Util.byteToCharMap_[i] = Base64Util.ENCODED_VALS.charAt(i);
+                Base64Util.charToByteMap_[Base64Util.byteToCharMap_[i]] = i;
+                Base64Util.byteToCharMapWebSafe_[i] = Base64Util.ENCODED_VALS_WEBSAFE.charAt(i);
+                Base64Util.charToByteMapWebSafe_[Base64Util.byteToCharMapWebSafe_[i]] = i;
             }
         }
     }
 };
 
-export default Base64;
+export default Base64Util;
