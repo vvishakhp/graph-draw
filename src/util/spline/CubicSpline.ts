@@ -1,5 +1,6 @@
 import { Spline } from './Spline';
 import ArrayList from '../ArrayList';
+import { Point } from '../../geo/Point';
 
 export class CubicSpline extends Spline {
   constructor() {
@@ -7,7 +8,7 @@ export class CubicSpline extends Spline {
   }
 
 
-  generate(controlPoints: ArrayList<any>, parts: number) {
+  generate(controlPoints: ArrayList<Point>, parts: number) {
     // Endpoints are added twice to get them include in the
     // generated array
     var cp = new ArrayList();

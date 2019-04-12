@@ -1,29 +1,13 @@
-/**
- * @class draw2d.util.spline.CatmullRomSpline
- *
- * A catmull-rom spline object.
- *
- * @inheritable
- * @author Andreas Herz
- *
- * @extends draw2d.util.spline.CubicSpline
- */
-import draw2d from '../../packages';
+import ArrayList from '../ArrayList';
+import { Spline } from './Spline';
 
-draw2d.util.spline.CatmullRomSpline = draw2d.util.spline.CubicSpline.extend(
-{
-    NAME : "draw2d.util.spline.CatmullRomSpline",
-
-    /**
-     * @constructor
-     */
-    init: function()
-    {
-        this._super();
-    },
+export class CubicSpline extends Spline {
+    generate(controlPoints: ArrayList<any>, parts: number) {
+        return null;
+    }
 
 
-    blend: function(i, t) {
+    blend(i, t) {
         if (i == -2)
             return ((-t + 2) * t - 1) * t / 2;
         else if (i == -1)
@@ -33,5 +17,5 @@ draw2d.util.spline.CatmullRomSpline = draw2d.util.spline.CubicSpline.extend(
         else
             return ((t - 1) * t * t) / 2;
     }
-
-});
+    
+}
