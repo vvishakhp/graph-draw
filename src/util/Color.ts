@@ -102,5 +102,9 @@ export class Color {
         }
         return this.hash() == o.hash();
     }
+
+    clone(): Color {
+        return new Color(this.red, this.green, this.blue);
+    }
 }
 
