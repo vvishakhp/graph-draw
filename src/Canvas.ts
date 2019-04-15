@@ -1,14 +1,21 @@
 import $ from 'jquery';
 import ArrayList from './util/ArrayList';
 
+export interface AttributeCollection {
+    [key: string]: any;
+}
+
 export class Canvas {
     linesToRepaintAfterDragDrop: ArrayList<{}>;
+
     calculateConnectionIntersection() {
         throw new Error("Method not implemented.");
     }
+
     getLine(id: any): any {
         throw new Error("Method not implemented.");
     }
+
     add(o: any) {
         throw new Error("Method not implemented.");
     }

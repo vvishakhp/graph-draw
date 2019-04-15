@@ -79,7 +79,7 @@ draw2d.shape.basic.Oval = draw2d.VectorFigure.extend({
     pos.translate(-w2, -h2)
     this.setPosition(pos)
 
-    this.fireEvent("change:center", {value: {x: x, y: y}})
+    this.fireEvent("change:center", { value: { x: x, y: y } })
 
     return this
   },

@@ -1,3 +1,11 @@
+/// TODO
+
+import draw2d from 'packages'
+
+export class InputPort {
+
+}
+
 /**
  * @class draw2d.InputPort
  * A InputPort is the start anchor for a {@link draw2d.Connection}.
@@ -6,9 +14,8 @@
  * @extend draw2d.Port
  */
 
-import draw2d from 'packages'
 
-draw2d.InputPort = draw2d.Port.extend({
+draw2d = draw2d.Port.extend({
 
   NAME: "draw2d.InputPort",
 

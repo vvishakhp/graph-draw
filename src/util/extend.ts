@@ -1,6 +1,4 @@
-// Pass in the objects to merge as arguments.
-// For a deep extend, set the first argument to `true`.
-var fn = function () {
+var extend = function (...args: any[]): any {
 
   // Variables
   var extended = {};
@@ -38,4 +36,4 @@ var fn = function () {
 
 };
 
-export default fn;
+export default extend;

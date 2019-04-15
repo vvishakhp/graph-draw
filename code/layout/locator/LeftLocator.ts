@@ -1,3 +1,19 @@
+
+@Type('LeftLocator')
+export class LeftLocator extends Locator {
+
+  private margin: number;
+
+  constructor(attr: AttributeCollection) {
+    super();
+    this.margin = (attr && ("margin" in attr)) ? attr.margin : 5
+  }
+
+  clone() {
+    return createInstenceFromType('LeftLocator');
+  }
+}
+
 /**
  * @class draw2d.layout.locator.LeftLocator
  *
@@ -22,6 +38,10 @@
  * @extend draw2d.layout.locator.Locator
  */
 import draw2d from '../../packages'
+import { Type, createInstenceFromType } from '../../../src/TypeRegistry';
+import extend from '../../../src/util/extend';
+import { Locator } from './Locator';
+import { AttributeCollection } from '../../../src/Canvas';
 
 draw2d.layout.locator.LeftLocator = draw2d.layout.locator.Locator.extend({
   NAME: "draw2d.layout.locator.LeftLocator",

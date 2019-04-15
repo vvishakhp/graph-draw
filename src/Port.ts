@@ -1,3 +1,14 @@
+/// TODO
+
+export class Port {
+  getCanvas(): import("./Canvas").Canvas {
+    throw new Error("Method not implemented.");
+  }
+
+}
+
+import draw2d from 'packages'
+
 /**
  * @class draw2d.Port
  * A port is an object that is used to establish a connection between a node and a {@link draw2d.Connection}. The port can
@@ -8,7 +19,6 @@
  * @extends draw2d.shape.basic.Circle
  */
 
-import draw2d from 'packages'
 
 draw2d.Port = draw2d.shape.basic.Circle.extend({
   NAME: "draw2d.Port",
@@ -27,12 +37,12 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
     this.name = null
 
     this._super(extend({
-        bgColor: "#4f6870",
-        stroke: 1,
-        diameter: 10,
-        color: "#1B1B1B",
-        selectable: false
-      }, attr),
+      bgColor: "#4f6870",
+      stroke: 1,
+      diameter: 10,
+      color: "#1B1B1B",
+      selectable: false
+    }, attr),
       setter,
       getter)
 
@@ -51,11 +61,11 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
     this.connections = new draw2d.util.ArrayList()
 
 
-    this.moveListener = (emitter, event) =>{
+    this.moveListener = (emitter, event) => {
       this.repaint()
       // Falls sich der parent bewegt hat, dann muss der Port dies seinen
       // Connections mitteilen
-      this.fireEvent("move", {figure: this, dx: 0, dy: 0})
+      this.fireEvent("move", { figure: this, dx: 0, dy: 0 })
     }
 
     this.connectionAnchor = new draw2d.layout.anchor.ConnectionAnchor(this)
@@ -68,7 +78,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
     this.setCanSnapToHelper(false)
 
     // uninstall all default selection policies. This is not required for Ports
-    this.editPolicy.each( (i, policy) => this.uninstallEditPolicy(policy))
+    this.editPolicy.each((i, policy) => this.uninstallEditPolicy(policy))
 
     this.installEditPolicy(new draw2d.policy.port.IntrusivePortsFeedbackPolicy())
     //    this.installEditPolicy(new draw2d.policy.port.ElasticStrapFeedbackPolicy());
@@ -92,7 +102,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
    */
   setMaxFanOut: function (count) {
     this.maxFanOut = Math.max(1, count)
-    this.fireEvent("change:maxFanOut", {value: this.maxFanOut})
+    this.fireEvent("change:maxFanOut", { value: this.maxFanOut })
 
     return this
   },
@@ -125,7 +135,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
 
     // the anchor has changed. In this case all connections needs an change event to recalculate
     // the anchor and the routing itself
-    this.fireEvent("move", {figure: this, dx: 0, dy: 0})
+    this.fireEvent("move", { figure: this, dx: 0, dy: 0 })
 
     return this
   },
@@ -190,7 +200,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
     this.preferredConnectionDirection = direction
 
     // needs an change event to recalculate the route
-    this.fireEvent("move", {figure: this, dx: 0, dy: 0})
+    this.fireEvent("move", { figure: this, dx: 0, dy: 0 })
 
     return this
   },
@@ -242,7 +252,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
    */
   setValue: function (value) {
 
-    if(value===this.value){
+    if (value === this.value) {
       return this
     }
     let old = this.value
@@ -250,7 +260,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
     if (this.getParent() !== null) {
       this.getParent().onPortValueChanged(this)
     }
-    this.fireEvent("change:value", {value: this.value, old: old})
+    this.fireEvent("change:value", { value: this.value, old: old })
 
     return this
   },
@@ -385,7 +395,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
 
     var _this = this
 
-//        this.getShapeElement().insertAfter(this.parent.getShapeElement());
+    //        this.getShapeElement().insertAfter(this.parent.getShapeElement());
     // don't call the super method. This creates a command and this is not necessary for a port
     this.ox = this.x
     this.oy = this.y

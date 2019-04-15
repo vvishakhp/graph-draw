@@ -1,7 +1,8 @@
 const typeReg: { [key: string]: any } = {};
 
 export function Type(typeName: string) {
-    return (ctor: any) => {
+    return (ctor: Function) => {
+        ctor.prototype.NAME = typeName;
         typeReg[typeName] = ctor;
     }
 }
