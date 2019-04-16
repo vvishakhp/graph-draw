@@ -4,74 +4,60 @@
  */
 export default {
 
-    geo: {
-    },
+  geo: {},
 
-    io:{
-      json:{},
-      png:{},
-      svg:{}
-    },
+  io: {
+    json: {},
+    png: {},
+    svg: {}
+  },
 
-    storage:{
-    },
+  storage: {},
 
-    util : {
-      spline: {}
-    },
+  util: {
+    spline: {}
+  },
 
-    shape : {
-      basic:{},
-      dimetric:{},
-      composite:{},
-      arrow:{},
-      node: {},
-      note: {},
-      diagram:{},
-      flowchart:{},
-      analog:{},
-      icon:{},
-      layout:{},
-      pert:{},
-      state:{},
-      widget:{}
-    },
+  shape: {
+    basic: {},
+    dimetric: {},
+    composite: {},
+    arrow: {},
+    node: {},
+    note: {},
+    diagram: {},
+    flowchart: {},
+    analog: {},
+    icon: {},
+    layout: {},
+    pert: {},
+    state: {},
+    widget: {}
+  },
 
-    policy : {
-      canvas:{},
-      connection:{},
-      line:{},
-      port:{},
-      figure:{}
-    },
+  policy: {
+    canvas: {},
+    connection: {},
+    line: {},
+    port: {},
+    figure: {}
+  },
 
-    command : {
-    },
+  command: {},
 
-    decoration:{
-      connection:{}
-    },
+  decoration: {
+    connection: {}
+  },
 
-    layout: {
-      connection :{},
-      anchor :{},
-      mesh :{},
-      locator: {}
-    },
+  layout: {
+    connection: {},
+    anchor: {},
+    mesh: {},
+    locator: {}
+  },
 
-    ui :{
-    },
+  ui: {},
 
-    isTouchDevice : (
-      //Detect iPhone
-      (navigator.platform.indexOf("iPhone") != -1) ||
-      //Detect iPod
-      (navigator.platform.indexOf("iPod") != -1)||
-      //Detect iPad
-      (navigator.platform.indexOf("iPad") != -1)
-    )
+  isTouchDevice: !!document.ontouchstart
 
-}
-
-
-
+};

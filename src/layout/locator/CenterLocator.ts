@@ -1,3 +1,27 @@
+import { Locator } from './Locator';
+import { Figure } from '../../Figure';
+import { Port } from '../../Port';
+import { Type } from '../../TypeRegistry';
+
+@Type('CenterLocator')
+export class CenterLocator extends Locator {
+  relocate(index: number, target: Figure) {
+    let parent = target.getParent()
+    let boundingBox = parent.getBoundingBox()
+
+    // TODO: instanceof is always a HACK. ugly. Redirect the call to the figure instead of 
+    // determine the position with a miracle.
+    //
+    if (target instanceof Port) {
+      target.setPosition(boundingBox.w / 2, boundingBox.h / 2)
+    }
+    else {
+      let targetBoundingBox = target.getBoundingBox()
+      target.setPosition(((boundingBox.w / 2 - targetBoundingBox.w / 2) | 0) + 0.5, ((boundingBox.h / 2 - (targetBoundingBox.h / 2)) | 0) + 0.5)
+    }
+  }
+}
+
 /**
  * @class draw2d.layout.locator.CenterLocator
  *
@@ -22,7 +46,7 @@
  * @author Andreas Herz
  * @extend draw2d.layout.locator.Locator
  */
-import draw2d from '../../packages'
+
 
 draw2d.layout.locator.CenterLocator = draw2d.layout.locator.Locator.extend({
   NAME: "draw2d.layout.locator.CenterLocator",

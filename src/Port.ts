@@ -1,8 +1,14 @@
+import { Locator } from './layout/locator/Locator';
 /// TODO
+import { Canvas } from './Canvas';
 
 export class Port {
-  getCanvas(): import("./Canvas").Canvas {
-    throw new Error("Method not implemented.");
+
+  private canvas: Canvas;
+  private locator: Locator;
+
+  getCanvas(): Canvas {
+    return this.canvas;
   }
 
 }

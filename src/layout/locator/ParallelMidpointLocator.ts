@@ -1,49 +1,23 @@
-/**
- * @class draw2d.layout.locator.ParallelMidpointLocator
- *
- * A ParallelMidpointLocator that is used to place label at the midpoint of a  routed
- * connection. The midpoint is always in the center of an edge.
- * The label is aligned to the connection angle at the calculated conection segment.
- *
- *
- * @author Andreas Herz
- * @extend draw2d.layout.locator.ConnectionLocator
- * @since 4.4.4
- */
-import draw2d from '../../packages'
+import { ConnectionLocator } from './ConnectionLocator';
+import { Figure } from '../../Figure';
+import { Type } from '../../TypeRegistry';
 
-draw2d.layout.locator.ParallelMidpointLocator = draw2d.layout.locator.ConnectionLocator.extend({
-  NAME: "draw2d.layout.locator.ParallelMidpointLocator",
 
-  /**
-   * @constructor
-   * Constructs a ParallelMidpointLocator with optional padding to the connection.
-   *
-   * if the parameter <b>distanceFromConnection</b> is less than zero the label is
-   * placed above of the connection. Else the label is below the connection.
-   *
-   * @param {Number} distanceFromConnection the distance of the label to the connection.
-   */
-  init: function (distanceFromConnection) {
-    this._super()
+@Type('ParallelMidpointLocator')
+export class ParallelMidpointLocator extends ConnectionLocator {
 
+  private distanceFromConnection: number;
+
+  constructor(distanceFromConnection?: number) {
+    super();
     if (typeof distanceFromConnection !== "undefined") {
-      this.distanceFromConnection = parseFloat(distanceFromConnection)
-    }
-    else {
+      this.distanceFromConnection = parseFloat(distanceFromConnection + '')
+    } else {
       this.distanceFromConnection = -5
     }
-  },
+  }
 
-
-  /**
-   * @method
-   * Relocates the given Figure always in the center of an edge.
-   *
-   * @param {Number} index child index of the target
-   * @param {draw2d.Figure} target The figure to relocate
-   **/
-  relocate: function (index, target) {
+  relocate(index: number, target: Figure) {
     var conn = target.getParent()
     var points = conn.getVertices()
 
@@ -69,13 +43,11 @@ draw2d.layout.locator.ParallelMidpointLocator = draw2d.layout.locator.Connection
         radian = Math.abs(radian) + Math.PI
         angle = 360 - angle
         distance = -distance - target.getHeight()
-      }
-      else {
+      } else {
         radian = Math.PI * 2 - Math.abs(radian)
         angle = 360 + angle
       }
-    }
-    else {
+    } else {
       if (p2.x < p1.x) {
         radian = Math.PI - radian
         angle = 360 - angle
@@ -91,9 +63,8 @@ draw2d.layout.locator.ParallelMidpointLocator = draw2d.layout.locator.Connection
 
     target.setRotationAngle(angle)
     target.setPosition(rotAnchor.x - rotCenterOfLabel.x + p1.x, rotAnchor.y - rotCenterOfLabel.y + p1.y)
-  },
-
-  rotate: function (x, y, xm, ym, radian) {
+  }
+  rotate(x: number, y: number, xm: number, ym: number, radian: number) {
     var cos = Math.cos,
       sin = Math.sin
 
@@ -105,4 +76,5 @@ draw2d.layout.locator.ParallelMidpointLocator = draw2d.layout.locator.Connection
     }
   }
 
-})
+
+}
