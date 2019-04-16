@@ -69,6 +69,7 @@ export class SmartDraggableLocator extends Locator {
   }
 
   relocate(index, figure) {
+    super.relocate(index, figure);
     if (this.boundedCorners.init === true) {
       let parentVertices = figure.getParent().getBoundingBox().getVertices()
       let childVertices = figure.getBoundingBox().getVertices()

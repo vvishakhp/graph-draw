@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +14,7 @@
   "dependencies": {
     "canvg-browser": "^1.0.0",
     "jquery": "^3.4.0",
+    "jquery-ui": "^1.12.1",
     "lodash": "^4.17.11",
     "pathfinding": "^0.4.18",
     "raphael": "^2.2.8",
@@ -27,6 +29,8 @@
     "@types/jquery": "^3.3.29",
     "@types/lodash": "^4.14.123",
     "@types/pathfinding": "0.0.2",
-    "@types/raphael": "^2.1.30"
+    "@types/raphael": "^2.1.30",
+    "@types/webpack": "^4.4.27",
+    "script-loader": "^0.7.2"
   }
 }

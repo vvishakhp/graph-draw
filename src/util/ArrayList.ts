@@ -59,7 +59,7 @@ export default class ArrayList<T> {
     }
 
 
-    grep(func: () => boolean) {
+    grep(func: (element: T) => boolean) {
         this.data = this.data.filter(func)
         return this
     }

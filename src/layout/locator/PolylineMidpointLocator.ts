@@ -4,6 +4,7 @@ import { Type } from "../../TypeRegistry";
 @Type('PolylineMidpointLocator')
 export class PolylineMidpointLocator extends ManhattanMidpointLocator {
   relocate(index, target) {
+    super.relocate(index, target);
     var conn = target.getParent()
     var points = conn.getVertices()
 

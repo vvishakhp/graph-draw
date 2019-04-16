@@ -1,10 +1,11 @@
 var path = require('path');
+var webpack = require('webpack');
 
 var env = {
     dev: true
 };
 
-module.exports = {
+var config = {
     mode: env.dev ? 'development' : 'production',
     entry: './src/index',
     devtool: 'inline-source-map',
@@ -20,11 +21,21 @@ module.exports = {
         }, ]
     },
     resolve: {
-        extensions: ['.ts', '.js', '.xml']
+        extensions: ['.ts', '.js', '.xml'],
     },
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
         port: 9000
-    }
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            "$": "jquery",
+            "jQuery": "jquery",
+            "window.jQuery": "jquery"
+        })
+    ],
 };
+
+
+module.exports = config;
