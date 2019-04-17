@@ -1,4 +1,2 @@
-import * as raphael from 'raphael';
-import * as pathFinding from 'pathfinding';
-
-export let $ = window['$'];
+import _jsonUtil from './util/JSONUtil';
+export const jsonUtil = _jsonUtil;

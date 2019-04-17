@@ -1,12 +1,58 @@
-/**
- * @class draw2d.policy.port.IntrusivePortsFeedbackPolicy
- *
- *
- * @author Andreas Herz
- * @extends draw2d.policy.figure.DragDropEditPolicy
- */
-import draw2d from '../../packages'
-import {Tweenable} from "shifty"
+import { PortFeedbackPolicy } from "./PortFeedbackPolicy";
+import { Canvas } from "../../Canvas";
+import { Figure } from "../../Figure";
+
+export class IntrusivePortsFeedbackPolicy extends PortFeedbackPolicy {
+  private tweenable = null;
+  private connectionLine = null;
+
+  onDragStart(canvas: Canvas, figure: Figure, x: number, y: number, shiftKey: boolean, ctrlKey: boolean) {
+    let start = 0;
+    let allPorts = canvas.getAllPorts().clone()
+    allPorts.each(function (i, element) {
+      if (typeof element.__beforeInflate === "undefined") {
+        element.__beforeInflate = element.getWidth()
+      }
+      start = element.__beforeInflate
+    })
+
+
+    // animate the resize of the ports
+    //
+    allPorts.grep(function (p) {
+      return (p.NAME != figure.NAME && p.parent !== figure.parent) || (p instanceof draw2d.HybridPort) || (figure instanceof draw2d.HybridPort)
+    })
+    this.tweenable = new Tweenable()
+    this.tweenable.tween({
+      from: { 'size': start / 2 },
+      to: { 'size': start },
+      duration: 200,
+      easing: "easeOutSine",
+      step: function (params) {
+        allPorts.each(function (i, element) {
+          // IMPORTANT shortcut to avoid rendering errors!!
+          // performance shortcut to avoid a lot of events and recalculate/routing of all related connections
+          // for each setDimension call. Additional the connection is following a port during Drag&Drop operation
+          element.shape.attr({ rx: params.size, ry: params.size })
+          element.width = element.height = params.size * 2
+        })
+      }
+    })
+
+    this.connectionLine = new draw2d.shape.basic.Line()
+    this.connectionLine.setCanvas(canvas)
+    this.connectionLine.getShapeElement()
+    this.connectionLine.setDashArray("- ")
+    this.connectionLine.setColor("#30c48a")
+
+    this.onDrag(canvas, figure)
+
+    return true
+  }
+
+}
+
+
 
 draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbackPolicy.extend({
 
@@ -33,49 +79,7 @@ draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbac
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    */
-  onDragStart: function (canvas, figure, x, y, shiftKey, ctrlKey) {
-    let start = 0
-    let allPorts = canvas.getAllPorts().clone()
-    allPorts.each(function (i, element) {
-      if (typeof element.__beforeInflate === "undefined") {
-        element.__beforeInflate = element.getWidth()
-      }
-      start = element.__beforeInflate
-    })
-
-
-    // animate the resize of the ports
-    //
-    allPorts.grep(function (p) {
-      return (p.NAME != figure.NAME && p.parent !== figure.parent) || (p instanceof draw2d.HybridPort) || (figure instanceof draw2d.HybridPort)
-    })
-    this.tweenable = new Tweenable()
-    this.tweenable.tween({
-      from: {'size': start / 2},
-      to: {'size': start},
-      duration: 200,
-      easing: "easeOutSine",
-      step: function (params) {
-        allPorts.each(function (i, element) {
-          // IMPORTANT shortcut to avoid rendering errors!!
-          // performance shortcut to avoid a lot of events and recalculate/routing of all related connections
-          // for each setDimension call. Additional the connection is following a port during Drag&Drop operation
-          element.shape.attr({rx: params.size, ry: params.size})
-          element.width = element.height = params.size * 2
-        })
-      }
-    })
-
-    this.connectionLine = new draw2d.shape.basic.Line()
-    this.connectionLine.setCanvas(canvas)
-    this.connectionLine.getShapeElement()
-    this.connectionLine.setDashArray("- ")
-    this.connectionLine.setColor("#30c48a")
-
-    this.onDrag(canvas, figure)
-
-    return true
-  },
+  ,
 
 
   /**
@@ -112,7 +116,7 @@ draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbac
       // IMPORTANT shortcut to avoid rendering errors!!
       // performance shortcut to avoid a lot of events and recalculate/routing of all related connections
       // for each setDimension call. Additional the connection is following a port during Drag&Drop operation
-      element.shape.attr({rx: element.__beforeInflate / 2, ry: element.__beforeInflate / 2})
+      element.shape.attr({ rx: element.__beforeInflate / 2, ry: element.__beforeInflate / 2 })
       element.width = element.height = element.__beforeInflate
       delete element.__beforeInflate
     })

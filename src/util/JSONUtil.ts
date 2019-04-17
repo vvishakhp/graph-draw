@@ -1,6 +1,3 @@
-import draw2d from '../packages';
-
-
 const jsonUtil = {
 
   /**

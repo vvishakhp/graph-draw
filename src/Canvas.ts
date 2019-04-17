@@ -1,4 +1,5 @@
 import { $ } from './index';
+import Raphael from './util/SVGUtil';
 export interface AttributeCollection {
     [key: string]: any;
 }
