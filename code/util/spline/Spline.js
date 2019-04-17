@@ -1,14 +1,14 @@
 
 /**
- * @class draw2d.util.spline.Spline
+ * @class  .util.spline.Spline
  *
  *  An abstract class defining a general spline object.
  */
-import draw2d from '../../packages';
+import   from '../../packages';
 
-draw2d.util.spline.Spline = Class.extend({
+ .util.spline.Spline = Class.extend({
 
-    NAME : "draw2d.util.spline.Spline",
+    NAME : " .util.spline.Spline",
 
     /**
      * @constructor
@@ -26,7 +26,7 @@ draw2d.util.spline.Spline = Class.extend({
     * @param {Number} parts Number of parts to divide each leg into.
     **/
     generate: function(controlPoints, parts){
-        throw "inherit classes must implement the method 'draw2d.util.spline.Spline.generate()'";
+        throw "inherit classes must implement the method ' .util.spline.Spline.generate()'";
     }
 
 });

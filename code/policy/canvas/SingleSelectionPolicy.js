@@ -1,15 +1,15 @@
 /**
- * @class draw2d.policy.canvas.SingleSelectionPolicy
+ * @class  .policy.canvas.SingleSelectionPolicy
  *
  *
  * @author Andreas Herz
- * @extends draw2d.policy.canvas.SelectionPolicy
+ * @extends  .policy.canvas.SelectionPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolicy.extend({
+ .policy.canvas.SingleSelectionPolicy =  .policy.canvas.SelectionPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.SingleSelectionPolicy",
+  NAME: " .policy.canvas.SingleSelectionPolicy",
 
   /**
    * @constructor
@@ -52,7 +52,7 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
   /**
    * @method
    *
-   * @param {draw2d.Canvas} canvas
+   * @param { .Canvas} canvas
    * @param {Number} x the x-coordinate of the mouse down event
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -78,7 +78,7 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
 
     // ignore ports since version 6.1.0. This is handled by the ConnectionCreatePolicy
     //
-    if (figure instanceof draw2d.Port) {
+    if (figure instanceof  .Port) {
       return// silently
     }
 
@@ -97,12 +97,12 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
       this.select(canvas, figure)
 
       // it's a line
-      if (figure instanceof draw2d.shape.basic.Line) {
+      if (figure instanceof  .shape.basic.Line) {
         // you can move a line with Drag&Drop...but not a connection.
         // A Connection is fixed linked with the corresponding ports.
         //
-        if (!(figure instanceof draw2d.Connection)) {
-          canvas.draggingLineCommand = figure.createCommand(new draw2d.command.CommandType(draw2d.command.CommandType.MOVE))
+        if (!(figure instanceof  .Connection)) {
+          canvas.draggingLineCommand = figure.createCommand(new  .command.CommandType( .command.CommandType.MOVE))
           if (canvas.draggingLineCommand !== null) {
             canvas.draggingLine = figure
           }
@@ -117,7 +117,7 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
   /**
    * @method
    *
-   * @param {draw2d.Canvas} canvas
+   * @param { .Canvas} canvas
    * @param {Number} dx The x diff between start of dragging and this event
    * @param {Number} dy The y diff between start of dragging and this event
    * @param {Number} dx2 The x diff since the last call of this dragging operation
@@ -164,7 +164,7 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
     // Connection didn't support panning at the moment. There is no special reason for that. Just an interaction
     // decision.
     //
-    else if (this.mouseDownElement !== null && !(this.mouseDownElement instanceof draw2d.Connection)) {
+    else if (this.mouseDownElement !== null && !(this.mouseDownElement instanceof  .Connection)) {
       if (this.mouseDownElement.panningDelegate !== null) {
         this.mouseDownElement.panningDelegate.fireEvent("panning", {
           dx: dx,
@@ -193,7 +193,7 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
   /**
    * @method
    *
-   * @param {draw2d.Figure} figure the shape below the mouse or null
+   * @param { .Figure} figure the shape below the mouse or null
    * @param {Number} x the x-coordinate of the mouse down event
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -201,8 +201,8 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
    */
   onMouseUp: function (canvas, x, y, shiftKey, ctrlKey) {
     if (this.mouseDraggingElement !== null) {
-      let redrawConnection = new draw2d.util.ArrayList()
-      if (this.mouseDraggingElement instanceof draw2d.shape.node.Node) {
+      let redrawConnection = new  .util.ArrayList()
+      if (this.mouseDraggingElement instanceof  .shape.node.Node) {
         // TODO: don't add the connections with to check if a repaint is required
         //       may a moved connection didn't have an intersection with the named lines.
         //       in this case a redraw is useless
@@ -236,7 +236,7 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
       // end command stack trans
       canvas.getCommandStack().commitTransaction()
 
-      if (this.mouseDraggingElement instanceof draw2d.shape.node.Node) {
+      if (this.mouseDraggingElement instanceof  .shape.node.Node) {
         canvas.lineIntersections.each(function (i, inter) {
           if (!redrawConnection.contains(inter.line)) redrawConnection.add(inter.line)
           if (!redrawConnection.contains(inter.other)) redrawConnection.add(inter.other)
@@ -252,7 +252,7 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
     // Connection didn't support panning at the moment. There is no special reason for that. Just an interaction
     // decision.
     //
-    else if (this.mouseDownElement !== null && !(this.mouseDownElement instanceof draw2d.Connection)) {
+    else if (this.mouseDownElement !== null && !(this.mouseDownElement instanceof  .Connection)) {
       if (this.mouseDownElement.panningDelegate !== null) {
         this.mouseDownElement.panningDelegate.fireEvent("panningEnd")
         this.mouseDownElement.panningDelegate.onPanningEnd()
@@ -282,7 +282,7 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
    * @method
    * Called by the canvas if the user click on a figure.
    *
-   * @param {draw2d.Figure} the figure under the click event. Can be null
+   * @param { .Figure} the figure under the click event. Can be null
    * @param {Number} mouseX the x coordinate of the mouse during the click event
    * @param {Number} mouseY the y coordinate of the mouse during the click event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -310,7 +310,7 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
    * @method
    * Called by the canvas if the user double click on a figure.
    *
-   * @param {draw2d.Figure} the figure under the double click event. Can be null
+   * @param { .Figure} the figure under the double click event. Can be null
    * @param {Number} mouseX the x coordinate of the mouse during the click event
    * @param {Number} mouseY the y coordinate of the mouse during the click event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event

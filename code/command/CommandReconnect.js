@@ -1,27 +1,27 @@
 /**
- * @class draw2d.command.CommandReconnect
+ * @class  .command.CommandReconnect
  *
- * Reconnects two ports. This command is used during the DragDrop operation of a draw2d.Connection.
+ * Reconnects two ports. This command is used during the DragDrop operation of a  .Connection.
  *
  * @inheritable
  * @author Andreas Herz
  *
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandReconnect = draw2d.command.Command.extend({
-  NAME: "draw2d.command.CommandReconnect",
+ .command.CommandReconnect =  .command.Command.extend({
+  NAME: " .command.CommandReconnect",
 
 
   /**
    * @constructor
    * Create a new Command objects which can be execute via the CommandStack.
    *
-   * @param {draw2d.Connection} conn the related Connection which is currently in the drag&drop operation
+   * @param { .Connection} conn the related Connection which is currently in the drag&drop operation
    */
   init: function (conn) {
-    this._super(draw2d.Configuration.i18n.command.connectPorts)
+    this._super( .Configuration.i18n.command.connectPorts)
     this.con = conn
     this.oldSourcePort = conn.getSource()
     this.oldTargetPort = conn.getTarget()
@@ -45,8 +45,8 @@ draw2d.command.CommandReconnect = draw2d.command.Command.extend({
    * @method
    * The new ports to use during the execute of this command.
    *
-   * @param {draw2d.Port} source
-   * @param {draw2d.Port} target
+   * @param { .Port} source
+   * @param { .Port} target
    */
   setNewPorts: function (source, target) {
     this.newSourcePort = source

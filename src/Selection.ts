@@ -1,107 +1,47 @@
-/**
- * @class draw2d.Selection
- *
- * Represents the current selection in the canvas. The selection element is a pure passive element which
- * manage/store the selection.
- *
- *
- * @author Andreas Herz
- */
+import { Type } from "./TypeRegistry";
+import ArrayList from "./util/ArrayList";
+import { Figure } from "./Figure";
 
-import draw2d from 'packages';
+@Type('Selection')
+export class Selection {
+  private primary: Figure = null;
+  private all = new ArrayList<Figure>();
 
-draw2d.Selection = Class.extend({
-
-  NAME: "draw2d.Selection",
-
-  /**
-   * @constructor
-   * Creates a new figure element which are not assigned to any canvas.
-   *
-   */
-  init: function () {
+  clear() {
     this.primary = null;
-    this.all = new draw2d.util.ArrayList();
-  },
-
-  /**
-   * @method
-   * Reset the current selection
-   *
-   */
-  clear: function () {
-    this.primary = null;
-    this.all = new draw2d.util.ArrayList();
+    this.all = new ArrayList();
 
     return this;
-  },
+  }
 
-  /**
-   * @method
-   * Return the primary selection. This can only one figure at once.
-   *
-   * @return {draw2d.Figure} the primary selected figure
-   */
-  getPrimary: function () {
+  getPrimary() {
     return this.primary;
-  },
+  }
 
-  /**
-   * @method
-   * Set the primary selection.
-   *
-   * @param {draw2d.Figure} figure The new primary selection
-   */
-  setPrimary: function (figure) {
+  setPrimary(figure: Figure) {
     this.primary = figure;
     this.add(figure);
 
     return this;
-  },
+  }
 
-  /**
-   * @method
-   * Remove the given figure from the selection (primary,all)
-   *
-   * @param {draw2d.Figure} figure
-   */
-  remove: function (figure) {
+  remove(figure: Figure) {
     this.all.remove(figure);
     if (this.primary === figure) {
       this.primary = null;
     }
-
     return this;
-  },
+  }
 
-  /**
-   * @method
-   * Add a figure to the selection. No events are fired or update the selection handle. This method just
-   * add the figure to the internal management data structure.
-   *
-   * @param figure
-   * @private
-   */
-  add: function (figure) {
+  add(figure: Figure) {
     if (figure !== null && !this.all.contains(figure)) {
       this.all.add(figure);
     }
 
     return this;
-  },
+  }
 
-
-  /**
-   * @method
-   * return true if the given figure part of the selection.
-   *
-   * @param {draw2d.Figure} figure The figure to check
-   * @param {Boolean} [checkDescendant] Check if the figure provided by the argument is a descendant of the selection whether it is a direct child or nested more deeply.
-   *
-   * @since 2.2.0
-   * @return {Boolean}
-   */
-  contains: function (figure, checkDescendant) {
+  contains(figure, checkDescendant) {
     if (checkDescendant) {
       for (let i = 0; i < this.all.getSize(); i++) {
         let figureToCheck = this.all.get(i);
@@ -112,33 +52,19 @@ draw2d.Selection = Class.extend({
       return false;
     }
     return this.all.contains(figure);
-  },
+  }
 
-  /**
-   * @method
-   * Return the size of the selection
-   *
-   * @since 4.8.0
-   */
-  getSize: function () {
+  getSize() {
     return this.all.getSize();
-  },
+  }
 
-  /**
-   * @method
-   * Return the complete selection - including the primary selection.
-   *
-   * @param {Boolean} [expand] expand all StrongComposite and WeakComposite to get all figures. Didn't expand any SetFigures or LayoutFigures
-   * @return {draw2d.util.ArrayList}
-   *
-   */
-  getAll: function (expand) {
+  getAll(expand: boolean = false) {
     if (expand === true) {
-      let result = new draw2d.util.ArrayList();
+      let result = new ArrayList<Figure>();
       let addRecursive = (figures) => {
         result.addAll(figures, true);
         figures.each((index, figure) => {
-          if (figure instanceof draw2d.shape.composite.StrongComposite) {
+          if (figure instanceof StrongComposite) {
             addRecursive(figure.getAssignedFigures());
           }
         });
@@ -149,20 +75,12 @@ draw2d.Selection = Class.extend({
     }
 
     return this.all.clone();
-  },
+  }
 
-  /**
-   * @method
-   * Iterates over the current selection with <b>func</b> as callback handler.
-   *
-   * @param {Function} func the callback function to call for each element
-   * @param {Number} func.i index of the element in iteration
-   * @param {Object} func.value value of the element in iteration.
-   * @param {Boolean} [reverse] optional parameter. Iterate the collection reverse if it set to <b>true</b>
-   */
-  each: function (func, reverse) {
+  each(func, reverse) {
     this.all.each(func, reverse);
 
     return this;
   }
-});
+}
+

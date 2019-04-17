@@ -1,13 +1,13 @@
 
 
 /**
- * @class draw2d.io.json.Writer
+ * @class  .io.json.Writer
  * Serialize the canvas document into a JSON object which can be read from the corresponding
- * {@link draw2d.io.json.Reader}.
+ * {@link  .io.json.Reader}.
  * 
  *      // Create a JSON writer and convert it into a JSON-String representation.
  *      //
- *      var writer = new draw2d.io.json.Writer();
+ *      var writer = new  .io.json.Writer();
  *      writer.marshal(canvas, function(json){
  *         // convert the json object into string representation
  *         var jsonTxt = JSON.stringify(json,null,2);
@@ -21,12 +21,12 @@
  *
  * 
  * @author Andreas Herz
- * @extends draw2d.io.Writer
+ * @extends  .io.Writer
  */
-import draw2d from '../../packages';
+import   from '../../packages';
 
 
-draw2d.io.json.Writer = draw2d.io.Writer.extend({
+ .io.json.Writer =  .io.Writer.extend({
     
     init: function()
     {
@@ -44,7 +44,7 @@ draw2d.io.json.Writer = draw2d.io.Writer.extend({
      * The parameter <b>resultCallback</b> is required and new. The method calls
      * the callback instead of return the result.
      * 
-     * @param {draw2d.Canvas} canvas
+     * @param { .Canvas} canvas
      * @param {Function} resultCallback the method to call on success. The first argument is the result object, the second the base64 representation of the file content
      * @param {Object} resultCallback.json  the canvas document as JSON object
      * @param {String} resultCallback.base64  the canvas document as base encoded JSON
@@ -67,7 +67,7 @@ draw2d.io.json.Writer = draw2d.io.Writer.extend({
             result.push(element.getPersistentAttributes());
         });
         
-    	var base64Content = draw2d.util.Base64.encode(JSON.stringify(result, null, 2));
+    	var base64Content =  .util.Base64.encode(JSON.stringify(result, null, 2));
 
     	resultCallback(result, base64Content);
     }

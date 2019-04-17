@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Crop
+ * @class  .shape.icon.Crop
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Crop();
+ *     let icon =  new  .shape.icon.Crop();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Crop = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Crop",
+ .shape.icon.Crop =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Crop",
 
   /**
    *

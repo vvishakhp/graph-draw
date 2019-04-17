@@ -41,7 +41,7 @@ export class CommandConnect extends Command {
     if (this.connection === null) {
       // deprecated call!!!!
       //
-      let result = draw2d.Configuration.factory.createConnection(this.source, this.target, optionalCallback, this.dropTarget)
+      let result =  .Configuration.factory.createConnection(this.source, this.target, optionalCallback, this.dropTarget)
       debugger
       // will be handled by the optional callback
       if (typeof result === "undefined") {

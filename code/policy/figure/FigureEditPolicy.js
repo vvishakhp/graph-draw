@@ -1,19 +1,19 @@
 /**
- * @class draw2d.policy.figure.FigureEditPolicy
+ * @class  .policy.figure.FigureEditPolicy
  *
  * Called by the framework if the user edit the position of a figure with a drag drop operation.
  * Sub class like SelectionEditPolicy or RegionEditPolicy can adjust the position of the figure
  * or the selections handles.
  *
  * @author  Andreas Herz
- * @extends draw2d.policy.EditPolicy
+ * @extends  .policy.EditPolicy
  * @since 4.4.0
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.figure.FigureEditPolicy = draw2d.policy.EditPolicy.extend({
+ .policy.figure.FigureEditPolicy =  .policy.EditPolicy.extend({
 
-  NAME: "draw2d.policy.figure.FigureEditPolicy",
+  NAME: " .policy.figure.FigureEditPolicy",
 
   /**
    * @constructor
@@ -29,7 +29,7 @@ draw2d.policy.figure.FigureEditPolicy = draw2d.policy.EditPolicy.extend({
    * You can either override the "onContextMenu" method of the figure or install an editor policy and override this method.
    * Booth is valid and possible.
    *
-   * @param {draw2d.Figure|draw2d.shape.basic.Line} figure the figure below the mouse
+   * @param { .Figure| .shape.basic.Line} figure the figure below the mouse
    * @param {Number} x the x-coordinate of the mouse down event
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event

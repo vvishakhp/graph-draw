@@ -1,33 +1,33 @@
 /**
- * @class draw2d.command.CommandAddVertex
+ * @class  .command.CommandAddVertex
  *
  * Add a vertex to a polyline or polygon
  *
  * @inheritable
  * @author Andreas Herz
  *
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandAddVertex = draw2d.command.Command.extend({
-  NAME: "draw2d.command.CommandAddVertex",
+ .command.CommandAddVertex =  .command.Command.extend({
+  NAME: " .command.CommandAddVertex",
 
   /**
    * @constructor
    * Create a new Command objects which add a vertex to a PolyLine / Polygon.
    *
-   * @param {draw2d.shape.basic.PolyLine} line the related line
+   * @param { .shape.basic.PolyLine} line the related line
    * @param {Number} index the index where to add
    * @param {Number} x the x coordinate for the new vertex
    * @param {Number} y the y coordinate for the new vertex
    */
   init: function (line, index, x, y) {
-    this._super(draw2d.Configuration.i18n.command.addVertex)
+    this._super( .Configuration.i18n.command.addVertex)
 
     this.line = line
     this.index = index
-    this.newPoint = new draw2d.geo.Point(x, y)
+    this.newPoint = new  .geo.Point(x, y)
   },
 
 

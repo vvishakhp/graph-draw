@@ -1,30 +1,30 @@
 /**
- * @class draw2d.command.CommandAdd
+ * @class  .command.CommandAdd
  *
  * Command to add a figure with CommandStack support.
  *
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandAdd = draw2d.command.Command.extend({
+ .command.CommandAdd =  .command.Command.extend({
 
-  NAME: "draw2d.command.CommandAdd",
+  NAME: " .command.CommandAdd",
 
   /**
    * @constructor
    * Create a add command for the given figure.
    *
-   * @param {draw2d.Canvas} canvas the canvas to use
-   * @param {draw2d.Figure} figure the figure to add
-   * @param {Number|draw2d.geo.Point} x the x-coordinate or a complete point where to place the figure
+   * @param { .Canvas} canvas the canvas to use
+   * @param { .Figure} figure the figure to add
+   * @param {Number| .geo.Point} x the x-coordinate or a complete point where to place the figure
    * @param {Number} [y] the y-coordinate if x is a number and not a complete point
    */
   init: function (canvas, figure, x, y) {
-    this._super(draw2d.Configuration.i18n.command.addShape)
+    this._super( .Configuration.i18n.command.addShape)
     this.figure = figure
     this.canvas = canvas
-    this.pos = new draw2d.geo.Point(x, y)
+    this.pos = new  .geo.Point(x, y)
   },
 
 

@@ -1,13 +1,13 @@
 /**
- * @class draw2d.shape.basic.Diamond
+ * @class  .shape.basic.Diamond
  * A Diamond Figure.
  *
  * See the example:
  *
  *     @example preview small frame
  *
- *     let d1 =  new draw2d.shape.basic.Diamond({x:10,y:10});
- *     let d2 =  new draw2d.shape.basic.Diamond({x:100,y:10, bgColor:"#f0f000", alpha:0.7, width:100, height:60});
+ *     let d1 =  new  .shape.basic.Diamond({x:10,y:10});
+ *     let d2 =  new  .shape.basic.Diamond({x:100,y:10, bgColor:"#f0f000", alpha:0.7, width:100, height:60});
  *
  *     canvas.add(d1);
  *     canvas.add(d2);
@@ -15,12 +15,12 @@
  *     canvas.setCurrentSelection(d2);
  *
  * @author Andreas Herz
- * @extends draw2d.VectorFigure
+ * @extends  .VectorFigure
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.basic.Diamond = draw2d.shape.basic.Polygon.extend({
-  NAME: "draw2d.shape.basic.Diamond",
+ .shape.basic.Diamond =  .shape.basic.Polygon.extend({
+  NAME: " .shape.basic.Diamond",
 
   /**
    * @constructor
@@ -44,7 +44,7 @@ draw2d.shape.basic.Diamond = draw2d.shape.basic.Polygon.extend({
     // override the selection handler from the polygon. Because the vertices of
     // the diamond are not selectable and modifiable
     //
-    this.installEditPolicy(new draw2d.policy.figure.RectangleSelectionFeedbackPolicy())
+    this.installEditPolicy(new  .policy.figure.RectangleSelectionFeedbackPolicy())
 
     this.setPosition(pos)
   }

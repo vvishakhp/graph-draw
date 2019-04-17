@@ -1,20 +1,20 @@
 
 
 /**
- * @class draw2d.geo.Ray
+ * @class  .geo.Ray
  * A ray is a line starting in [0,0,] with some additional
  * helper functions required for some router.
  * 
  * @inheritable
- * @extends draw2d.geo.Point
+ * @extends  .geo.Point
  * @author Andreas Herz
  */
-import draw2d from '../packages';
+import   from '../packages';
 
 
-draw2d.geo.Ray = draw2d.geo.Point.extend({
+ .geo.Ray =  .geo.Point.extend({
 
-    NAME : "draw2d.geo.Ray",
+    NAME : " .geo.Ray",
     
     /**
      * @constructor 
@@ -41,7 +41,7 @@ draw2d.geo.Ray = draw2d.geo.Point.extend({
     
     getAveraged: function( otherRay)
     {
-        return new draw2d.geo.Ray((this.x + otherRay.x) / 2, (this.y + otherRay.y) / 2);
+        return new  .geo.Ray((this.x + otherRay.x) / 2, (this.y + otherRay.y) / 2);
     }
 
 });

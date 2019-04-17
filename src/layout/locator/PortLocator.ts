@@ -1,6 +1,6 @@
 /// TODO
 
-import draw2d from '../../packages'
+import   from '../../packages'
 import { Locator } from './Locator';
 import { Type } from '../../TypeRegistry';
 import { Port } from '../../Port';
@@ -31,17 +31,17 @@ export class PortLocator extends Locator {
 
 
 /**
- * @class draw2d.layout.locator.PortLocator
+ * @class  .layout.locator.PortLocator
  *
  * The port locator calculates the position of an port. All ports MUST have a locator
  * if you add them as child to a node.
  *
  * @author Andreas Herz
- * @extend draw2d.layout.locator.Locator
+ * @extend  .layout.locator.Locator
  */
 
-draw2d.layout.locator.PortLocator = draw2d.layout.locator.Locator.extend({
-  NAME: "draw2d.layout.locator.PortLocator",
+ .layout.locator.PortLocator =  .layout.locator.Locator.extend({
+  NAME: " .layout.locator.PortLocator",
 
   /**
    * @constructor

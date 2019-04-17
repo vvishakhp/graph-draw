@@ -1,19 +1,19 @@
 /**
- * @class draw2d.shape.composite.StrongComposite
+ * @class  .shape.composite.StrongComposite
  * A StrongComposite is a composite figure with strong assignment of the children and the composite.
  * The child knows everything about the assigned composite and receives events about assignment to a
  * composite.
  *
  *
  * @author Andreas Herz
- * @extends draw2d.shape.composite.Composite
+ * @extends  .shape.composite.Composite
  * @since 4.8.0
  */
 
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend({
-  NAME: "draw2d.shape.composite.StrongComposite",
+ .shape.composite.StrongComposite =  .shape.composite.Composite.extend({
+  NAME: " .shape.composite.StrongComposite",
 
   /**
    * @constructor
@@ -22,7 +22,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
-    this.assignedFigures = new draw2d.util.ArrayList()
+    this.assignedFigures = new  .util.ArrayList()
 
     this._super(attr, setter, getter)
   },
@@ -34,7 +34,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
    * The contains() method returns true if the figure provided by the argument is a descendant of this figure,
    * whether it is a direct child or nested more deeply. Otherwise, it returns false.
    *
-   * @param {draw2d.Figure} containedFigure The figure that may be contained by (a descendant of) this figure.
+   * @param { .Figure} containedFigure The figure that may be contained by (a descendant of) this figure.
    * @since 5.5.4
    */
   contains: function (containedFigure) {
@@ -51,7 +51,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
    * @method
    * Assign a figure to the composite.
    *
-   * @param {draw2d.Figure} figure
+   * @param { .Figure} figure
    * @template
    */
   assignFigure: function (figure) {
@@ -62,7 +62,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
    * @method
    * Remove the given figure from the group assignment
    *
-   * @param {draw2d.Figure} figure the figure to remove
+   * @param { .Figure} figure the figure to remove
    * @template
    */
   unassignFigure: function (figure) {
@@ -73,7 +73,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
    * @method
    * Return all assigned figures of the composite
    *
-   * @returns {draw2d.util.ArrayList}
+   * @returns { .util.ArrayList}
    */
   getAssignedFigures: function () {
     return this.assignedFigures
@@ -86,7 +86,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
    * shape return "this" in the onDragEnter method.
    *
    *
-   * @param {draw2d.Figure} dropTarget The drop target.
+   * @param { .Figure} dropTarget The drop target.
    * @param {Number} x the x-coordinate of the mouse up event
    * @param {Number} y the y-coordinate of the mouse up event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -103,7 +103,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
    * shape return "this" in the onDragEnter method.
    *
    *
-   * @param {draw2d.Figure} droppedFigure The dropped figure.
+   * @param { .Figure} droppedFigure The dropped figure.
    * @param {Number} x the x-coordinate of the mouse up event
    * @param {Number} y the y-coordinate of the mouse up event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -121,7 +121,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
    *
    * Optional: Inserts current object in front of the given one.
    *
-   * @param {draw2d.Figure} [figure] move current object in front of the given one.
+   * @param { .Figure} [figure] move current object in front of the given one.
    */
   toFront: function (figure) {
     this._super(figure)

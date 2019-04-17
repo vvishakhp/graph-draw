@@ -1,15 +1,15 @@
 /**
- * @class draw2d.policy.figure.BusSelectionFeedbackPolicy
+ * @class  .policy.figure.BusSelectionFeedbackPolicy
  *
  *
  * @author Andreas Herz
- * @extends draw2d.policy.figure.SelectionFeedbackPolicy
+ * @extends  .policy.figure.SelectionFeedbackPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.figure.BusSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend({
+ .policy.figure.BusSelectionFeedbackPolicy =  .policy.figure.SelectionFeedbackPolicy.extend({
 
-  NAME: "draw2d.policy.figure.BusSelectionFeedbackPolicy",
+  NAME: " .policy.figure.BusSelectionFeedbackPolicy",
 
   /**
    * @constructor
@@ -28,10 +28,10 @@ draw2d.policy.figure.BusSelectionFeedbackPolicy = draw2d.policy.figure.Selection
    */
   onSelect: function (canvas, figure, isPrimarySelection) {
     if (figure.selectionHandles.isEmpty()) {
-      let r2 = draw2d.Configuration.factory.createResizeHandle(figure, 2) // 2 = CENTER_TOP
-      let r4 = draw2d.Configuration.factory.createResizeHandle(figure, 4) // 4 = RIGHT_MIDDLE
-      let r6 = draw2d.Configuration.factory.createResizeHandle(figure, 6) // 6 = CENTER_BOTTOM
-      let r8 = draw2d.Configuration.factory.createResizeHandle(figure, 8) // 8 = LEFT_MIDDLE
+      let r2 =  .Configuration.factory.createResizeHandle(figure, 2) // 2 = CENTER_TOP
+      let r4 =  .Configuration.factory.createResizeHandle(figure, 4) // 4 = RIGHT_MIDDLE
+      let r6 =  .Configuration.factory.createResizeHandle(figure, 6) // 6 = CENTER_BOTTOM
+      let r8 =  .Configuration.factory.createResizeHandle(figure, 8) // 8 = LEFT_MIDDLE
 
       figure.selectionHandles.add(r2, r4, r6, r8)
 

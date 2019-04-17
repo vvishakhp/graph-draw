@@ -1,5 +1,5 @@
 /**
- * @class draw2d.policy.canvas.SnapToDimetricGridEditPolicy
+ * @class  .policy.canvas.SnapToDimetricGridEditPolicy
  *
  * A helper used to perform snapping to a grid, which is specified on the canvas via the various
  * properties defined in this class.
@@ -7,13 +7,13 @@
  *
  * @author Andreas Herz
  *
- * @extends draw2d.policy.canvas.ShowDimetricGridEditPolicy
+ * @extends  .policy.canvas.ShowDimetricGridEditPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.canvas.SnapToDimetricGridEditPolicy = draw2d.policy.canvas.ShowDimetricGridEditPolicy.extend({
+ .policy.canvas.SnapToDimetricGridEditPolicy =  .policy.canvas.ShowDimetricGridEditPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.SnapToDimetricGridEditPolicy",
+  NAME: " .policy.canvas.SnapToDimetricGridEditPolicy",
 
 
   /**
@@ -31,15 +31,15 @@ draw2d.policy.canvas.SnapToDimetricGridEditPolicy = draw2d.policy.canvas.ShowDim
    * @method
    * Applies a snapping correction to the given result.
    *
-   * @param {draw2d.Canvas} canvas the related canvas
-   * @param {draw2d.Figure} figure the figure to snap
-   * @param {draw2d.geo.Point} modifiedPos the already modified position of the figure (e.g. from an another Policy)
-   * @param {draw2d.geo.Point} originalPos the original requested position of the figure
+   * @param { .Canvas} canvas the related canvas
+   * @param { .Figure} figure the figure to snap
+   * @param { .geo.Point} modifiedPos the already modified position of the figure (e.g. from an another Policy)
+   * @param { .geo.Point} originalPos the original requested position of the figure
    * @since 2.3.0
    */
   snap: function (canvas, figure, modifiedPos, originalPos) {
     // do nothing for lines
-    if (figure instanceof draw2d.shape.basic.Line) {
+    if (figure instanceof  .shape.basic.Line) {
       return modifiedPos
     }
 

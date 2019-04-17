@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Wrench2
+ * @class  .shape.icon.Wrench2
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Wrench2();
+ *     let icon =  new  .shape.icon.Wrench2();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Wrench2 = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Wrench2",
+ .shape.icon.Wrench2 =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Wrench2",
 
   /**
    *

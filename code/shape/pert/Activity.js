@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.pert.Activity
+ * @class  .shape.pert.Activity
  *
  * NOT FOR PRODUCTIVE
  *
@@ -11,19 +11,19 @@
  *
  *     @example preview small frame
  *
- *     canvas.add( new draw2d.shape.pert.Start(),10,10);
- *     canvas.add( new draw2d.shape.pert.Activity(),80,130);
- *     canvas.add( new draw2d.shape.pert.Activity(),180,50);
+ *     canvas.add( new  .shape.pert.Start(),10,10);
+ *     canvas.add( new  .shape.pert.Activity(),80,130);
+ *     canvas.add( new  .shape.pert.Activity(),180,50);
  *
  * [1] http://en.wikipedia.org/wiki/Program_Evaluation_and_Review_Technique
  *
- * @extends draw2d.shape.layout.VerticalLayout
+ * @extends  .shape.layout.VerticalLayout
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.pert.Activity = draw2d.shape.layout.VerticalLayout.extend({
+ .shape.pert.Activity =  .shape.layout.VerticalLayout.extend({
 
-  NAME: "draw2d.shape.pert.Activity",
+  NAME: " .shape.pert.Activity",
 
   /**
    * @constructor
@@ -42,7 +42,7 @@ draw2d.shape.pert.Activity = draw2d.shape.layout.VerticalLayout.extend({
     }
 
     // just some color attributes for the rendering/gradient
-    this.bgColor = new draw2d.util.Color("#f3f3f3")
+    this.bgColor = new  .util.Color("#f3f3f3")
     this.lighterBgColor = this.bgColor.lighter(0.2).hash()
     this.darkerBgColor = this.bgColor.darker(0.2).hash()
 
@@ -51,12 +51,12 @@ draw2d.shape.pert.Activity = draw2d.shape.layout.VerticalLayout.extend({
 
     // Compose the top row of the shape
     //
-    let top = new draw2d.shape.layout.HorizontalLayout({stroke: 0})
+    let top = new  .shape.layout.HorizontalLayout({stroke: 0})
 
 
     this.earlyStartLabel = this.createLabel("Early Start").setStroke(0)
 
-    this.durationLabel = new draw2d.shape.basic.Label({
+    this.durationLabel = new  .shape.basic.Label({
       text: "Duration",
       stroke: 1,
       color: this.darkerBgColor,
@@ -65,7 +65,7 @@ draw2d.shape.pert.Activity = draw2d.shape.layout.VerticalLayout.extend({
       padding: 5
     })
     // duration label has a inplaceEditor for the value
-    this.durationLabel.installEditor(new draw2d.ui.LabelEditor({
+    this.durationLabel.installEditor(new  .ui.LabelEditor({
       onCommit: function (value) {
         _this.setDuration(parseFloat(value))
       }
@@ -81,7 +81,7 @@ draw2d.shape.pert.Activity = draw2d.shape.layout.VerticalLayout.extend({
     // the middle part of the shape
     // This part contains the ports for the connection
     //
-    this.activityLabel = new draw2d.shape.basic.Label({
+    this.activityLabel = new  .shape.basic.Label({
       text: "Activity Name",
       radius: 0,
       padding: 10,
@@ -89,7 +89,7 @@ draw2d.shape.pert.Activity = draw2d.shape.layout.VerticalLayout.extend({
       bgColor: null
     })
     // direct editor for the label
-    this.activityLabel.installEditor(new draw2d.ui.LabelInplaceEditor())
+    this.activityLabel.installEditor(new  .ui.LabelInplaceEditor())
 
     this.inputPort = this.activityLabel.createPort("input")
     this.inputPort.getActivity = function () {
@@ -119,7 +119,7 @@ draw2d.shape.pert.Activity = draw2d.shape.layout.VerticalLayout.extend({
 
     // the bottom of the activity shape
     //
-    let bottom = new draw2d.shape.layout.HorizontalLayout({stroke: 0})
+    let bottom = new  .shape.layout.HorizontalLayout({stroke: 0})
 
 
     this.lateStartLabel = this.createLabel("Late Start").setStroke(0)
@@ -218,10 +218,10 @@ draw2d.shape.pert.Activity = draw2d.shape.layout.VerticalLayout.extend({
    * help method to create some labels
    *
    * @param {String} txt the label to display
-   * @returns {draw2d.shape.basic.Label}
+   * @returns { .shape.basic.Label}
    */
   createLabel: function (txt) {
-    let label = new draw2d.shape.basic.Label({text: txt})
+    let label = new  .shape.basic.Label({text: txt})
     label.setStroke(1)
     label.setColor(this.darkerBgColor)
     label.setRadius(0)

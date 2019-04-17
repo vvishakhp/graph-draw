@@ -1,5 +1,5 @@
 /**
- * @class draw2d.policy.figure.RegionConstraintPolicy
+ * @class  .policy.figure.RegionConstraintPolicy
  *
  * An EditPolicy for use with Figures. The constraint for RegionEditPolicy is a Rectangle. It is
  * not possible to move the related figure outside this constrained area.
@@ -7,30 +7,30 @@
  *
  * @author Andreas Herz
  *
- * @extends draw2d.policy.figure.DragDropEditPolicy
+ * @extends  .policy.figure.DragDropEditPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.figure.RegionEditPolicy = draw2d.policy.figure.DragDropEditPolicy.extend({
+ .policy.figure.RegionEditPolicy =  .policy.figure.DragDropEditPolicy.extend({
 
-  NAME: "draw2d.policy.figure.RegionEditPolicy",
+  NAME: " .policy.figure.RegionEditPolicy",
 
   /**
    * @constructor
    * Creates a new constraint object
    *
-   * @param {Number|draw2d.geo.Rectangle} x x coordinate or a rectangle as constraint for the assigned figure.
+   * @param {Number| .geo.Rectangle} x x coordinate or a rectangle as constraint for the assigned figure.
    * @param {Number} y
    * @param {Number} w
    * @param {Number} h
    */
   init: function (x, y, w, h) {
     this._super()
-    if (x instanceof draw2d.geo.Rectangle) {
+    if (x instanceof  .geo.Rectangle) {
       this.constRect = x
     }
     else if (typeof h === "number") {
-      this.constRect = new draw2d.geo.Rectangle(x, y, w, h)
+      this.constRect = new  .geo.Rectangle(x, y, w, h)
     }
     else {
       throw "Invalid parameter. RegionEditPolicy need a rectangle as parameter in the constructor"
@@ -41,7 +41,7 @@ draw2d.policy.figure.RegionEditPolicy = draw2d.policy.figure.DragDropEditPolicy.
    * @method
    * Update the constraint bounding box for the policy.
    *
-   * @param {draw2d.geo.Rectangle} boundingBox the constraint rectangle
+   * @param { .geo.Rectangle} boundingBox the constraint rectangle
    * @since 4.8.2
    */
   setBoundingBox: function (boundingBox) {
@@ -54,19 +54,19 @@ draw2d.policy.figure.RegionEditPolicy = draw2d.policy.figure.DragDropEditPolicy.
    * @method
    * Adjust the coordinates to the rectangle/region of this constraint.
    *
-   * @param {draw2d.Figure} figure
-   * @param {Number|draw2d.geo.Point} x
+   * @param { .Figure} figure
+   * @param {Number| .geo.Point} x
    * @param {Number} [y]
    *
-   * @returns {draw2d.geo.Point} the constraint position of the figure
+   * @returns { .geo.Point} the constraint position of the figure
    */
   adjustPosition: function (figure, x, y) {
     var r = null
-    if (x instanceof draw2d.geo.Point) {
-      r = new draw2d.geo.Rectangle(x.x, x.y, figure.getWidth(), figure.getHeight())
+    if (x instanceof  .geo.Point) {
+      r = new  .geo.Rectangle(x.x, x.y, figure.getWidth(), figure.getHeight())
     }
     else {
-      r = new draw2d.geo.Rectangle(x, y, figure.getWidth(), figure.getHeight())
+      r = new  .geo.Rectangle(x, y, figure.getWidth(), figure.getHeight())
     }
     r = this.constRect.moveInside(r)
     return r.getTopLeft()
@@ -76,7 +76,7 @@ draw2d.policy.figure.RegionEditPolicy = draw2d.policy.figure.DragDropEditPolicy.
    * @method
    * Adjust the dimension of the rectangle to fit into the region of the policy
    *
-   * @param {draw2d.Figure} figure
+   * @param { .Figure} figure
    * @param {Number} w
    * @param {Number} h
    *

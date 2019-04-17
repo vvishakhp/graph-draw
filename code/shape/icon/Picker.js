@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Picker
+ * @class  .shape.icon.Picker
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Picker();
+ *     let icon =  new  .shape.icon.Picker();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Picker = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Picker",
+ .shape.icon.Picker =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Picker",
 
   /**
    *

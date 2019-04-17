@@ -1,11 +1,11 @@
 /**
- * @class draw2d.command.CommandStack
+ * @class  .command.CommandStack
  * Stack for undo/redo operations
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandStack = Class.extend({
-  NAME: "draw2d.command.CommandStack",
+ .command.CommandStack = Class.extend({
+  NAME: " .command.CommandStack",
 
 
   /**
@@ -18,7 +18,7 @@ draw2d.command.CommandStack = Class.extend({
     this.redostack = []
     this.maxundo = 50
     this.transactionCommand = null
-    this.eventListeners = new draw2d.util.ArrayList()
+    this.eventListeners = new  .util.ArrayList()
   },
 
 
@@ -47,7 +47,7 @@ draw2d.command.CommandStack = Class.extend({
     this.redostack = []
 
     // fire an empty command to inform all listener that the stack has been changed
-    this.notifyListeners(new draw2d.command.Command(), draw2d.command.CommandStack.POST_EXECUTE)
+    this.notifyListeners(new  .command.Command(),  .command.CommandStack.POST_EXECUTE)
 
     return this
   },
@@ -56,11 +56,11 @@ draw2d.command.CommandStack = Class.extend({
    * @method
    *
    * Executes the specified Command if possible. Prior to executing the command, a
-   * draw2d.command.CommandStackEvent for {@link #PRE_EXECUTE} will be fired to event listeners.
+   *  .command.CommandStackEvent for {@link #PRE_EXECUTE} will be fired to event listeners.
    * Similarly, after attempting to execute the command, an event for {@link #POST_EXECUTE}
    * will be fired.
    *
-   * @param {draw2d.command.Command} command The command to execute.
+   * @param { .command.Command} command The command to execute.
    *
    **/
   execute: function (command) {
@@ -84,7 +84,7 @@ draw2d.command.CommandStack = Class.extend({
       return
     }
 
-    this.notifyListeners(command, draw2d.command.CommandStack.PRE_EXECUTE, "PRE_EXECUTE")
+    this.notifyListeners(command,  .command.CommandStack.PRE_EXECUTE, "PRE_EXECUTE")
 
     this.undostack.push(command)
     command.execute()
@@ -99,7 +99,7 @@ draw2d.command.CommandStack = Class.extend({
     if (this.undostack.length > this.maxundo) {
       this.undostack = this.undostack.slice(this.undostack.length - this.maxundo)
     }
-    this.notifyListeners(command, draw2d.command.CommandStack.POST_EXECUTE, "POST_EXECUTE")
+    this.notifyListeners(command,  .command.CommandStack.POST_EXECUTE, "POST_EXECUTE")
 
     return this
   },
@@ -119,7 +119,7 @@ draw2d.command.CommandStack = Class.extend({
       throw "CommandStack is already within transactional mode. Don't call 'startTransaction"
     }
 
-    this.transactionCommand = new draw2d.command.CommandCollection(commandLabel)
+    this.transactionCommand = new  .command.CommandCollection(commandLabel)
 
     return this
   },
@@ -167,10 +167,10 @@ draw2d.command.CommandStack = Class.extend({
   undo: function () {
     let command = this.undostack.pop()
     if (command) {
-      this.notifyListeners(command, draw2d.command.CommandStack.PRE_UNDO)
+      this.notifyListeners(command,  .command.CommandStack.PRE_UNDO)
       this.redostack.push(command)
       command.undo()
-      this.notifyListeners(command, draw2d.command.CommandStack.POST_UNDO)
+      this.notifyListeners(command,  .command.CommandStack.POST_UNDO)
     }
 
     return this
@@ -185,10 +185,10 @@ draw2d.command.CommandStack = Class.extend({
     let command = this.redostack.pop()
 
     if (command) {
-      this.notifyListeners(command, draw2d.command.CommandStack.PRE_REDO)
+      this.notifyListeners(command,  .command.CommandStack.PRE_REDO)
       this.undostack.push(command)
       command.redo()
-      this.notifyListeners(command, draw2d.command.CommandStack.POST_REDO)
+      this.notifyListeners(command,  .command.CommandStack.POST_REDO)
     }
 
     return this
@@ -256,7 +256,7 @@ draw2d.command.CommandStack = Class.extend({
    * @method
    * Adds a listener to the command stack, which will be notified whenever a command has been processed on the stack.
    * @deprecated use on/off to register events
-   * @param {draw2d.command.CommandStackEventListener|Function} listener the listener to add.
+   * @param { .command.CommandStackEventListener|Function} listener the listener to add.
    */
   addEventListener: function (listener) {
     return this.on("change", listener)
@@ -270,7 +270,7 @@ draw2d.command.CommandStack = Class.extend({
     if (event !== "change")
       throw "only event of kind 'change' is supported"
 
-    if (listener instanceof draw2d.command.CommandStackEventListener) {
+    if (listener instanceof  .command.CommandStackEventListener) {
       this.eventListeners.add(listener)
     }
     else if (typeof listener.stackChanged === "function") {
@@ -280,7 +280,7 @@ draw2d.command.CommandStack = Class.extend({
       this.eventListeners.add({stackChanged: listener})
     }
     else {
-      throw "Object doesn't implement required callback interface [draw2d.command.CommandStackListener]"
+      throw "Object doesn't implement required callback interface [ .command.CommandStackListener]"
     }
 
     return this
@@ -290,7 +290,7 @@ draw2d.command.CommandStack = Class.extend({
    * @method
    * Removes a listener from the command stack.
    *
-   * @param {draw2d.command.CommandStackEventListener} listener the listener to remove.
+   * @param { .command.CommandStackEventListener} listener the listener to remove.
    */
   removeEventListener: function (listener) {
     this.off(listener)
@@ -317,12 +317,12 @@ draw2d.command.CommandStack = Class.extend({
    * Notifies command stack event listeners that the command stack has changed to the
    * specified state.
    *
-   * @param {draw2d.command.Command} command the command
+   * @param { .command.Command} command the command
    * @param {Number} state the current stack state
    *
    **/
   notifyListeners: function (command, state, action) {
-    let event = new draw2d.command.CommandStackEvent(this, command, state, action)
+    let event = new  .command.CommandStackEvent(this, command, state, action)
     let size = this.eventListeners.getSize()
 
     for (let i = 0; i < size; i++) {
@@ -333,21 +333,21 @@ draw2d.command.CommandStack = Class.extend({
 
 
 /** Constant indicating notification prior to executing a command (value is 1).*/
-draw2d.command.CommandStack.PRE_EXECUTE = 1
+ .command.CommandStack.PRE_EXECUTE = 1
 /** Constant indicating notification prior to redoing a command (value is 2).*/
-draw2d.command.CommandStack.PRE_REDO = 2
+ .command.CommandStack.PRE_REDO = 2
 /** Constant indicating notification prior to undoing a command (value is 4).*/
-draw2d.command.CommandStack.PRE_UNDO = 4
+ .command.CommandStack.PRE_UNDO = 4
 /**  Constant indicating notification after a command has been executed (value is 8).*/
-draw2d.command.CommandStack.POST_EXECUTE = 8
+ .command.CommandStack.POST_EXECUTE = 8
 /** Constant indicating notification after a command has been redone (value is 16).*/
-draw2d.command.CommandStack.POST_REDO = 16
+ .command.CommandStack.POST_REDO = 16
 /** Constant indicating notification after a command has been undone (value is 32).*/
-draw2d.command.CommandStack.POST_UNDO = 32
+ .command.CommandStack.POST_UNDO = 32
 /** Constant indicating notification after the stack has been (re)init (value is 64).*/
-draw2d.command.CommandStack.POST_INIT = 64
+ .command.CommandStack.POST_INIT = 64
 
-draw2d.command.CommandStack.POST_MASK = draw2d.command.CommandStack.POST_EXECUTE | draw2d.command.CommandStack.POST_UNDO | draw2d.command.CommandStack.POST_REDO
-draw2d.command.CommandStack.PRE_MASK = draw2d.command.CommandStack.PRE_EXECUTE | draw2d.command.CommandStack.PRE_UNDO | draw2d.command.CommandStack.PRE_REDO
+ .command.CommandStack.POST_MASK =  .command.CommandStack.POST_EXECUTE |  .command.CommandStack.POST_UNDO |  .command.CommandStack.POST_REDO
+ .command.CommandStack.PRE_MASK =  .command.CommandStack.PRE_EXECUTE |  .command.CommandStack.PRE_UNDO |  .command.CommandStack.PRE_REDO
 
 

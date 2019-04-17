@@ -1,4 +1,4 @@
-import draw2d from '../../packages'
+import   from '../../packages'
 import { Figure } from '../../../src/Figure';
 import { Type, createInstenceFromType } from '../../../src/TypeRegistry';
 

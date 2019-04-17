@@ -1,18 +1,18 @@
 /**
- * @class draw2d.shape.layout.StackLayout
+ * @class  .shape.layout.StackLayout
  * Using the StackLayout as their layout shape have their children placed on top of one another.
  * Order of placement is determined by the order in which the children were added, first child
  * added placed on the bottom. Only one child is visible at once.
  *
  * @author Andreas Herz
- * @extends draw2d.shape.layout.Layout
+ * @extends  .shape.layout.Layout
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.shape.layout.StackLayout = draw2d.shape.layout.Layout.extend({
+ .shape.layout.StackLayout =  .shape.layout.Layout.extend({
 
-  NAME: "draw2d.shape.layout.StackLayout",
+  NAME: " .shape.layout.StackLayout",
 
   /**
    * @constructor
@@ -22,7 +22,7 @@ draw2d.shape.layout.StackLayout = draw2d.shape.layout.Layout.extend({
    */
   init: function (attr, setter, getter) {
     this.visibleLayer = 0
-    this.locator = new draw2d.layout.locator.XYAbsPortLocator(0, 0)
+    this.locator = new  .layout.locator.XYAbsPortLocator(0, 0)
 
     this._super(
       extend({resizeable: true, width: 10, height: 10}, attr),
@@ -32,7 +32,7 @@ draw2d.shape.layout.StackLayout = draw2d.shape.layout.Layout.extend({
     this.resizeListener = function (figure) {
     }
     // install default selection handler. Can be overridden or replaced
-    this.installEditPolicy(new draw2d.policy.figure.RectangleSelectionFeedbackPolicy())
+    this.installEditPolicy(new  .policy.figure.RectangleSelectionFeedbackPolicy())
   },
 
   /**
@@ -84,7 +84,7 @@ draw2d.shape.layout.StackLayout = draw2d.shape.layout.Layout.extend({
    * @inheritdoc
    */
   setVisible: function (flag) {
-    draw2d.shape.basic.Rectangle.prototype.setVisible.call(this, flag)
+     .shape.basic.Rectangle.prototype.setVisible.call(this, flag)
 
 
     return this

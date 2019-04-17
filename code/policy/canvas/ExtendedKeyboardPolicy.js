@@ -1,5 +1,5 @@
 /**
- * @class draw2d.policy.canvas.ExtendedKeyboardPolicy
+ * @class  .policy.canvas.ExtendedKeyboardPolicy
  * Extended keyboard policy to <b>delete</b> and <b>group</b> figures in the canvas.
  * <br>
  * Keyboard commands
@@ -11,13 +11,13 @@
  * </ul>
  *
  * @author Andreas Herz
- * @extends draw2d.policy.canvas.KeyboardPolicy
+ * @extends  .policy.canvas.KeyboardPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.canvas.ExtendedKeyboardPolicy = draw2d.policy.canvas.KeyboardPolicy.extend({
+ .policy.canvas.ExtendedKeyboardPolicy =  .policy.canvas.KeyboardPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.ExtendedKeyboardPolicy",
+  NAME: " .policy.canvas.ExtendedKeyboardPolicy",
 
   /**
    * @constructor
@@ -30,7 +30,7 @@ draw2d.policy.canvas.ExtendedKeyboardPolicy = draw2d.policy.canvas.KeyboardPolic
    * @method
    * Callback if the user press a key
    *
-   * @param {draw2d.Canvas} canvas the related canvas
+   * @param { .Canvas} canvas the related canvas
    * @param {Number} keyCode the pressed key
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
@@ -41,11 +41,11 @@ draw2d.policy.canvas.ExtendedKeyboardPolicy = draw2d.policy.canvas.KeyboardPolic
       switch (keyCode) {
 
         case 71: // G
-          if (canvas.getPrimarySelection() instanceof draw2d.shape.composite.Group && canvas.getSelection().getSize() === 1) {
-            canvas.getCommandStack().execute(new draw2d.command.CommandUngroup(canvas, canvas.getPrimarySelection()))
+          if (canvas.getPrimarySelection() instanceof  .shape.composite.Group && canvas.getSelection().getSize() === 1) {
+            canvas.getCommandStack().execute(new  .command.CommandUngroup(canvas, canvas.getPrimarySelection()))
           }
           else {
-            canvas.getCommandStack().execute(new draw2d.command.CommandGroup(canvas, canvas.getSelection()))
+            canvas.getCommandStack().execute(new  .command.CommandGroup(canvas, canvas.getSelection()))
           }
           break
         case 66: // B

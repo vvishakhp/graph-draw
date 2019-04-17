@@ -1,13 +1,13 @@
 
 
 /**
- * @class draw2d.io.svg.Writer
+ * @class  .io.svg.Writer
  * 
  * Serialize the canvas document into a SVG document.
  * 
  *      // Create a SVG writer and convert the canvas into a SVG document.
  *      //
- *      var writer = new draw2d.io.svg.Writer();
+ *      var writer = new  .io.svg.Writer();
  *      writer.marshal(canvas, function(svg){
  *          // insert the svg string into a DIV for preview or post
  *          // it via ajax to the server....
@@ -17,12 +17,12 @@
  *
  * 
  * @author Andreas Herz
- * @extends draw2d.io.Writer
+ * @extends  .io.Writer
  */
-import draw2d from '../../packages';
+import   from '../../packages';
 
 
-draw2d.io.svg.Writer = draw2d.io.Writer.extend({
+ .io.svg.Writer =  .io.Writer.extend({
     
     init: function(){
         this._super();
@@ -39,7 +39,7 @@ draw2d.io.svg.Writer = draw2d.io.Writer.extend({
      * the callback instead of return the result.
      * 
      * 
-     * @param {draw2d.Canvas} canvas the canvas to marshal
+     * @param { .Canvas} canvas the canvas to marshal
      * @param {Function} callback the method to call on success. The first argument is the SVG document
      * @param {String} callback.svg  the SVG document
      * @param {String} callback.base64  the SVG document encoded in base64
@@ -57,11 +57,11 @@ draw2d.io.svg.Writer = draw2d.io.Writer.extend({
                      .replace(/>\s+/g, ">")
                      .replace(/\s+</g, "<");
         svg = this.formatXml(svg);
-        svg = svg.replace(/<desc>.*<\/desc>/g,"<desc>Create with draw2d JS graph library and RaphaelJS</desc>");
+        svg = svg.replace(/<desc>.*<\/desc>/g,"<desc>Create with   JS graph library and RaphaelJS</desc>");
         
         canvas.setCurrentSelection(s);
  
-    	var base64Content = draw2d.util.Base64.encode(svg);
+    	var base64Content =  .util.Base64.encode(svg);
     	callback( svg, base64Content);
     }
 });

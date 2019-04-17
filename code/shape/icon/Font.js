@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Font
+ * @class  .shape.icon.Font
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Font();
+ *     let icon =  new  .shape.icon.Font();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Font = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Font",
+ .shape.icon.Font =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Font",
 
   /**
    *

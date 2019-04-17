@@ -1,26 +1,26 @@
 /**
- * @class draw2d.command.CommandMoveLine
+ * @class  .command.CommandMoveLine
  *
  * Command for the movement of figures.
  *
  * @inheritable
  * @author Andreas Herz
  *
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandMoveLine = draw2d.command.Command.extend({
-  NAME: "draw2d.command.CommandMoveLine",
+ .command.CommandMoveLine =  .command.Command.extend({
+  NAME: " .command.CommandMoveLine",
 
   /**
    * @constructor
    * Create a new Command objects which can be execute via the CommandStack.
    *
-   * @param {draw2d.shape.basic.Line} figure the line to move
+   * @param { .shape.basic.Line} figure the line to move
    */
   init: function (figure) {
-    this._super(draw2d.Configuration.i18n.command.moveLine)
+    this._super( .Configuration.i18n.command.moveLine)
     this.line = figure
     this.dx = 0
     this.dy = 0

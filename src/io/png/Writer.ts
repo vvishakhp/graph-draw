@@ -32,13 +32,13 @@ export class PngWriter extends Writer {
             }
         }
 
-        let canvasDomNode = $('<canvas id="canvas_png_export_for_draw2d" style="display:none"></canvas>');
+        let canvasDomNode = $('<canvas id="canvas_png_export_for_ " style="display:none"></canvas>');
         $('body').append(canvasDomNode);
-        let fullSizeCanvas = $("#canvas_png_export_for_draw2d")[0] as HTMLCanvasElement;
+        let fullSizeCanvas = $("#canvas_png_export_for_ ")[0] as HTMLCanvasElement;
         fullSizeCanvas.width = canvas.initialWidth;
         fullSizeCanvas.height = canvas.initialHeight;
 
-        canvg("canvas_png_export_for_draw2d", svg, {
+        canvg("canvas_png_export_for_ ", svg, {
             ignoreMouse: true,
             ignoreAnimation: true,
             renderCallback: function () {

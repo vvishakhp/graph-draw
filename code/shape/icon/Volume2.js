@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Volume2
+ * @class  .shape.icon.Volume2
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Volume2();
+ *     let icon =  new  .shape.icon.Volume2();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Volume2 = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Volume2",
+ .shape.icon.Volume2 =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Volume2",
 
   /**
    *

@@ -101,7 +101,7 @@ n instanceof Ninja && n instanceof Person && n instanceof Class
     // And make this class extendable 
     Class.extend = arguments.callee; 
     
-    // EXTENSION BY Draw2D.org to inject methods into an existing class to provide plugins or 
+    // EXTENSION BY  .org to inject methods into an existing class to provide plugins or 
     // bugfixes for further releases 
     // 
     Class.inject = function (prop) { 

@@ -1,26 +1,26 @@
 /**
- * @class draw2d.command.CommandMoveVertex
+ * @class  .command.CommandMoveVertex
  *
  * Command for the vertex movement of a polyline/polygon.
  *
  * @inheritable
  * @author Andreas Herz
  *
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandMoveVertex = draw2d.command.Command.extend({
-  NAME: "draw2d.command.CommandMoveVertex",
+ .command.CommandMoveVertex =  .command.Command.extend({
+  NAME: " .command.CommandMoveVertex",
 
   /**
    * @constructor
    * Create a new Command objects which can be execute via the CommandStack.
    *
-   * @param {draw2d.shape.basic.PolyLine} line the related line
+   * @param { .shape.basic.PolyLine} line the related line
    */
   init: function (line) {
-    this._super(draw2d.Configuration.i18n.command.moveVertex)
+    this._super( .Configuration.i18n.command.moveVertex)
 
     this.line = line
     this.index = -1
@@ -40,7 +40,7 @@ draw2d.command.CommandMoveVertex = draw2d.command.Command.extend({
   },
 
   updatePosition: function (x, y) {
-    this.newPoint = new draw2d.geo.Point(x, y)
+    this.newPoint = new  .geo.Point(x, y)
   },
 
   /**

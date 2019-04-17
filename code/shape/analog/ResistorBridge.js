@@ -1,25 +1,25 @@
 /**
- * @class draw2d.shape.analog.ResistorBridge
+ * @class  .shape.analog.ResistorBridge
  *
  * See the example:
  *
  *     @example preview small frame
  *
- *     let figure =  new draw2d.shape.analog.ResistorBridge({x:10, y:10});
+ *     let figure =  new  .shape.analog.ResistorBridge({x:10, y:10});
  *
  *     canvas.add(figure);
  *
  *
- * @extends draw2d.SVGFigure
+ * @extends  .SVGFigure
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.analog.ResistorBridge = draw2d.SVGFigure.extend({
+ .shape.analog.ResistorBridge =  .SVGFigure.extend({
 
-  NAME: "draw2d.shape.analog.ResistorBridge",
+  NAME: " .shape.analog.ResistorBridge",
 
   // custom locator for the special design of the ResistorBridge Input area
-  MyInputPortLocator: draw2d.layout.locator.PortLocator.extend({
+  MyInputPortLocator:  .layout.locator.PortLocator.extend({
     init: function () {
       this._super()
     },
@@ -31,7 +31,7 @@ draw2d.shape.analog.ResistorBridge = draw2d.SVGFigure.extend({
   }),
 
   // custom locator for the special design of the ResistorBridge Input area
-  MyOutputPortLocator: draw2d.layout.locator.PortLocator.extend({
+  MyOutputPortLocator:  .layout.locator.PortLocator.extend({
     init: function () {
       this._super()
     },

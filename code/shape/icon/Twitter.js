@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Twitter
+ * @class  .shape.icon.Twitter
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Twitter();
+ *     let icon =  new  .shape.icon.Twitter();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Twitter = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Twitter",
+ .shape.icon.Twitter =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Twitter",
 
   /**
    *

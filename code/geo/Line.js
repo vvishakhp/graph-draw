@@ -12,10 +12,10 @@
  * @param {Number} px x coordinate of the point to test
  * @param {Number} py y coordinate of the point to test
  **/
-import draw2d from '../packages'
+import   from '../packages'
 
 
-draw2d.geo.Line = {
+ .geo.Line = {
 
   /**
    * Returns the relative position of the point on the line between [0..1]
@@ -48,10 +48,10 @@ draw2d.geo.Line = {
    *
    * @param {Number} px the x coordinate of the test point
    * @param {Number} py the y coordinate of the test point
-   * @return {draw2d.geo.Point}
+   * @return { .geo.Point}
    **/
   pointProjection: function (X1, Y1, X2, Y2, px, py) {
-    let r = new draw2d.geo.Point(0, 0)
+    let r = new  .geo.Point(0, 0)
     if (X1 === X2 && Y1 === Y2) X1 -= 0.00001
 
     let U = ((px - X1) * (X2 - X1)) + ((py - Y1) * (Y2 - Y1))

@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.basic.Arc
+ * @class  .shape.basic.Arc
  * Oval figure.
  *
  *
@@ -7,19 +7,19 @@
  *
  *     @example preview small frame
  *
- *     let arc =  new draw2d.shape.basic.Arc({diameter:150, x:50, y:10, startAngle:0, endAngle:45});
+ *     let arc =  new  .shape.basic.Arc({diameter:150, x:50, y:10, startAngle:0, endAngle:45});
  *
  *     canvas.add(arc);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.VectorFigure
+ * @extends  .VectorFigure
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.shape.basic.Arc = draw2d.SetFigure.extend({
-  NAME: "draw2d.shape.basic.Arc",
+ .shape.basic.Arc =  .SetFigure.extend({
+  NAME: " .shape.basic.Arc",
 
   /**
    *

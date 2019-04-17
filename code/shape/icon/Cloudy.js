@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Cloudy
+ * @class  .shape.icon.Cloudy
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Cloudy();
+ *     let icon =  new  .shape.icon.Cloudy();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Cloudy = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Cloudy",
+ .shape.icon.Cloudy =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Cloudy",
 
   /**
    *

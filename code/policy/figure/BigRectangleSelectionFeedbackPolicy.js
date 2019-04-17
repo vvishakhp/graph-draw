@@ -1,23 +1,23 @@
 /**
- * @class draw2d.policy.figure.BigRectangleSelectionFeedbackPolicy
+ * @class  .policy.figure.BigRectangleSelectionFeedbackPolicy
  *
  * See the example:
  *
  *     @example preview small frame
- *       circle =new draw2d.shape.basic.Circle();
- *       circle.installEditPolicy(new draw2d.policy.figure.BigRectangleSelectionFeedbackPolicy());
+ *       circle =new  .shape.basic.Circle();
+ *       circle.installEditPolicy(new  .policy.figure.BigRectangleSelectionFeedbackPolicy());
  *       canvas.add(circle,90,50);
  *
- *       canvas.add(new draw2d.shape.basic.Label({text:"Click on the circle to see the selection feedback"}),20,10);
+ *       canvas.add(new  .shape.basic.Label({text:"Click on the circle to see the selection feedback"}),20,10);
  *
  * @author Andreas Herz
- * @extends draw2d.policy.figure.SelectionFeedbackPolicy
+ * @extends  .policy.figure.SelectionFeedbackPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.figure.BigRectangleSelectionFeedbackPolicy = draw2d.policy.figure.RectangleSelectionFeedbackPolicy.extend({
+ .policy.figure.BigRectangleSelectionFeedbackPolicy =  .policy.figure.RectangleSelectionFeedbackPolicy.extend({
 
-  NAME: "draw2d.policy.figure.BigRectangleSelectionFeedbackPolicy",
+  NAME: " .policy.figure.BigRectangleSelectionFeedbackPolicy",
 
   /**
    * @constructor
@@ -30,7 +30,7 @@ draw2d.policy.figure.BigRectangleSelectionFeedbackPolicy = draw2d.policy.figure.
 
 
   createResizeHandle: function (owner, type){
-    return new draw2d.ResizeHandle({ owner:owner, type:type, width:15, height:15 });
+    return new  .ResizeHandle({ owner:owner, type:type, width:15, height:15 });
   }
 
 })

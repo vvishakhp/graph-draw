@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Feed
+ * @class  .shape.icon.Feed
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Feed();
+ *     let icon =  new  .shape.icon.Feed();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Feed = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Feed",
+ .shape.icon.Feed =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Feed",
 
   /**
    *

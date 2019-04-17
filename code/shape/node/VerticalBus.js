@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.node.VerticalBus
+ * @class  .shape.node.VerticalBus
  *
  * A horizontal bus shape with a special kind of port handling. The hole figure is a hybrid port.
  *
@@ -7,17 +7,17 @@
  *
  *     @example preview small frame
  *
- *     let figure =  new draw2d.shape.node.VerticalBus({width:40, height:300, text:"Vertical Bus"});
+ *     let figure =  new  .shape.node.VerticalBus({width:40, height:300, text:"Vertical Bus"});
  *
  *     canvas.add(figure,50,10);
  *
- * @extends draw2d.shape.node.Hub
+ * @extends  .shape.node.Hub
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.node.VerticalBus = draw2d.shape.node.Hub.extend({
+ .shape.node.VerticalBus =  .shape.node.Hub.extend({
 
-  NAME: "draw2d.shape.node.VerticalBus",
+  NAME: " .shape.node.VerticalBus",
 
   /**
    * @constructor
@@ -28,7 +28,7 @@ draw2d.shape.node.VerticalBus = draw2d.shape.node.Hub.extend({
     this._super(attr, setter, getter)
 
     this.setConnectionDirStrategy(2)
-    this.installEditPolicy(new draw2d.policy.figure.VBusSelectionFeedbackPolicy())
+    this.installEditPolicy(new  .policy.figure.VBusSelectionFeedbackPolicy())
   },
 
 

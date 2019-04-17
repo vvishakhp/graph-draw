@@ -30,28 +30,28 @@ export class Label {
 
 
 /**
- * @class draw2d.shape.basic.Label
+ * @class  .shape.basic.Label
  * Implements a simple text label.
  *
  * See the example:
  *
  *     @example preview small frame
  *
- *     let shape =  new draw2d.shape.basic.Label({text:"This is a simple label", x:40, y:10});
+ *     let shape =  new  .shape.basic.Label({text:"This is a simple label", x:40, y:10});
  *
  *     canvas.add(shape);
  *
  * @author Andreas Herz
  *
- * @extends draw2d.SetFigure
+ * @extends  .SetFigure
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import jsonUtil from '../../util/JSONUtil'
 import extend from '../../util/extend'
 
-draw2d.shape.basic.Label = draw2d.SetFigure.extend({
+ .shape.basic.Label =  .SetFigure.extend({
 
-  NAME: "draw2d.shape.basic.Label",
+  NAME: " .shape.basic.Label",
 
   FONT_FALLBACK: {
     'Georgia': 'Georgia, serif',
@@ -89,7 +89,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend({
     // appearance of the shape
     //
     this.fontSize = 12
-    this.fontColor = new draw2d.util.Color("#080808")
+    this.fontColor = new  .util.Color("#080808")
     this.fontFamily = null
     this.padding = {
       top: 4,
@@ -99,7 +99,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend({
     }
 
     this.outlineStroke = 0
-    this.outlineColor = new draw2d.util.Color(null)
+    this.outlineColor = new  .util.Color(null)
 
     this.bold = false
 
@@ -117,17 +117,17 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend({
       extend({
         /** @attr {String} text the text to show */
         text: this.setText,
-        /** @attr {String} set the editor to use see {@link draw2d.ui.LabelEditor} */
+        /** @attr {String} set the editor to use see {@link  .ui.LabelEditor} */
         editor: this.installEditor,
         /** @attr {Number} outlineStroke the line width of the text to draw. Fill color and outline of the text can be different. */
         outlineStroke: this.setOutlineStroke,
-        /** @attr {String|draw2d.util.Color} outlineColor the outline color of the text */
+        /** @attr {String| .util.Color} outlineColor the outline color of the text */
         outlineColor: this.setOutlineColor,
         /** @attr {String} fontFamily the font to use*/
         fontFamily: this.setFontFamily,
         /** @attr {Number} fontSize the font size to use */
         fontSize: this.setFontSize,
-        /** @attr {String|draw2d.util.Color} fontColor the font color */
+        /** @attr {String| .util.Color} fontColor the font color */
         fontColor: this.setFontColor,
         /** @attr {Number} padding the padding in pixel around the text */
         padding: this.setPadding,
@@ -146,7 +146,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend({
       }, getter))
 
 
-    this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy())
+    this.installEditPolicy(new  .policy.figure.AntSelectionFeedbackPolicy())
 
 
     // some performance improvements
@@ -168,7 +168,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend({
    * @method
    * Set the canvas element of this figures.
    *
-   * @param {draw2d.Canvas} canvas the new parent of the figure or null
+   * @param { .Canvas} canvas the new parent of the figure or null
    */
   setCanvas: function (canvas) {
     this.clearCache()
@@ -268,7 +268,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend({
     //
     let _this = this
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
     })
@@ -310,7 +310,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend({
     //
     let _this = this
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
     })
@@ -333,11 +333,11 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend({
    * @method
    * Set the outline color of the font.
    *
-   * @param {draw2d.util.Color/String} color The new color of the line.
+   * @param { .util.Color/String} color The new color of the line.
    * @since 4.2.1
    **/
   setOutlineColor: function (color) {
-    this.outlineColor = new draw2d.util.Color(color)
+    this.outlineColor = new  .util.Color(color)
     this.repaint()
     this.fireEvent("change:outlineColor", {
       value: this.outlineColor
@@ -350,7 +350,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend({
    * @method
    * The outlien color of the text
    *
-   * @returns {draw2d.util.Color}
+   * @returns { .util.Color}
    * @since 4.2.1
    */
   getOutlineColor: function () {
@@ -389,10 +389,10 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend({
    * @method
    * Set the color of the font.
    *
-   * @param {draw2d.util.Color|String} color The new color of the line.
+   * @param { .util.Color|String} color The new color of the line.
    **/
   setFontColor: function (color) {
-    this.fontColor = new draw2d.util.Color(color)
+    this.fontColor = new  .util.Color(color)
     this.repaint()
     this.fireEvent("change:fontColor", {
       value: this.fontColor
@@ -405,7 +405,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend({
    * @method
    * The current used font color
    *
-   * @returns {draw2d.util.Color}
+   * @returns { .util.Color}
    */
   getFontColor: function () {
     return this.fontColor
@@ -640,7 +640,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend({
    * Text.<br>
    * The editor will be activated if you doubleClick on the label.
    *
-   * @param {draw2d.ui.LabelEditor|String} editor
+   * @param { .ui.LabelEditor|String} editor
    */
   installEditor: function (editor) {
     if (typeof editor === "string") {
@@ -689,7 +689,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend({
     //
     let _this = this
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
     })

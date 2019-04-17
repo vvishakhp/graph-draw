@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Firefox
+ * @class  .shape.icon.Firefox
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Firefox();
+ *     let icon =  new  .shape.icon.Firefox();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Firefox = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Firefox",
+ .shape.icon.Firefox =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Firefox",
 
   /**
    *

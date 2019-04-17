@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.composite.Group
+ * @class  .shape.composite.Group
  *
  * A group is a figure that acts as a transparent container for other figures. A group
  * is a StrongComposite node that controls a set of child figures. The bounding rectangle of
@@ -8,13 +8,13 @@
  *
  *
  * @author Andreas Herz
- * @extends draw2d.shape.composite.StrongComposite
+ * @extends  .shape.composite.StrongComposite
  * @since 4.8.0
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.composite.Group = draw2d.shape.composite.StrongComposite.extend({
-  NAME: "draw2d.shape.composite.Group",
+ .shape.composite.Group =  .shape.composite.StrongComposite.extend({
+  NAME: " .shape.composite.Group",
 
   /**
    * @constructor
@@ -37,7 +37,7 @@ draw2d.shape.composite.Group = draw2d.shape.composite.StrongComposite.extend({
    * Delegate method to calculate if a figure is selectable. A composite has the right to override the
    * initial selectable flag of the figure.
    *
-   * @param {draw2d.Figure} figure the figure to test
+   * @param { .Figure} figure the figure to test
    * @param {Boolean} selectable the initial selectable flag of the figure
    * @returns
    *
@@ -53,7 +53,7 @@ draw2d.shape.composite.Group = draw2d.shape.composite.StrongComposite.extend({
    * <br>
    * Returns false because only the complete group is draggable
    *
-   * @param {draw2d.Figure} figure the figure to test
+   * @param { .Figure} figure the figure to test
    * @param {Boolean} draggable the initial draggable flag of the figure
    * @returns
    *
@@ -66,7 +66,7 @@ draw2d.shape.composite.Group = draw2d.shape.composite.StrongComposite.extend({
    * @method
    * Set the position of the object.
    *
-   * @param {Number/draw2d.geo.Point} x The new x coordinate of the figure
+   * @param {Number/ .geo.Point} x The new x coordinate of the figure
    * @param {Number} [y] The new y coordinate of the figure
    **/
   setPosition: function (x, y) {
@@ -98,7 +98,7 @@ draw2d.shape.composite.Group = draw2d.shape.composite.StrongComposite.extend({
    * The bounding box of the group is recalculated and the union of the current bounding box with the
    * figure bounding box.
    *
-   * @param {draw2d.Figure} figure
+   * @param { .Figure} figure
    */
   assignFigure: function (figure) {
     if (!this.assignedFigures.contains(figure)) {
@@ -126,7 +126,7 @@ draw2d.shape.composite.Group = draw2d.shape.composite.StrongComposite.extend({
    * @method
    * Remove the given figure from the group assignment
    *
-   * @param {draw2d.Figure} figure the figure to remove
+   * @param { .Figure} figure the figure to remove
    *
    */
   unassignFigure: function (figure) {
@@ -156,11 +156,11 @@ draw2d.shape.composite.Group = draw2d.shape.composite.StrongComposite.extend({
       return null
     }
 
-    if (request.getPolicy() === draw2d.command.CommandType.DELETE) {
+    if (request.getPolicy() ===  .command.CommandType.DELETE) {
       if (!this.isDeleteable()) {
         return null
       }
-      return new draw2d.command.CommandDeleteGroup(this)
+      return new  .command.CommandDeleteGroup(this)
     }
 
     return this._super(request)

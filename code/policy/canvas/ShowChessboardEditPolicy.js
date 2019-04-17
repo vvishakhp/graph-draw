@@ -1,5 +1,5 @@
 /**
- * @class draw2d.policy.canvas.ShowChessboardEditPolicy
+ * @class  .policy.canvas.ShowChessboardEditPolicy
  *
  * Just to paint a grid in the background.
  *
@@ -7,20 +7,20 @@
  *
  *     @example preview small frame
  *
- *     canvas.installEditPolicy(new draw2d.policy.canvas.ShowChessboardEditPolicy());
- *     var shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with chessboard background."});
+ *     canvas.installEditPolicy(new  .policy.canvas.ShowChessboardEditPolicy());
+ *     var shape =  new  .shape.basic.Text({text:"This is a simple text in a canvas with chessboard background."});
  *
  *     canvas.add(shape,40,10);
  *
  * @author Andreas Herz
  *
- * @extends draw2d.policy.canvas.DecorationPolicy
+ * @extends  .policy.canvas.DecorationPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.canvas.ShowChessboardEditPolicy = draw2d.policy.canvas.DecorationPolicy.extend({
+ .policy.canvas.ShowChessboardEditPolicy =  .policy.canvas.DecorationPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.ShowChessboardEditPolicy",
+  NAME: " .policy.canvas.ShowChessboardEditPolicy",
 
   GRID_COLOR: "#e0e0e0",
   GRID_WIDTH: 20,

@@ -1,28 +1,28 @@
 /**
- * @class draw2d.shape.widget.Slider
+ * @class  .shape.widget.Slider
  * See the example:
  *
  *     @example preview small frame
  *
- *     let slider = new draw2d.shape.widget.Slider({width:120, height:20});
+ *     let slider = new  .shape.widget.Slider({width:120, height:20});
  *     canvas.add( slider,100,60);
  *
- * @extends draw2d.shape.widget.Widget
+ * @extends  .shape.widget.Widget
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import {Tweenable} from 'shifty'
 
-draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend({
+ .shape.widget.Slider =  .shape.widget.Widget.extend({
 
-  NAME: "draw2d.shape.widget.Slider",
+  NAME: " .shape.widget.Slider",
 
-  DEFAULT_COLOR_THUMB: new draw2d.util.Color("#bddf69"),
-  DEFAULT_COLOR_BG: new draw2d.util.Color("#d3d3d3"),
+  DEFAULT_COLOR_THUMB: new  .util.Color("#bddf69"),
+  DEFAULT_COLOR_BG: new  .util.Color("#d3d3d3"),
 
 
   init: function (attr, setter, getter) {
     this.currentValue = 0 // [0..100]
-    this.slideBoundingBox = new draw2d.geo.Rectangle(0, 0, 10, 20)
+    this.slideBoundingBox = new  .geo.Rectangle(0, 0, 10, 20)
     this.padding = {top: 4, right: 4, bottom: 4, left: 4}
     this.panning = false
     this.thumbGrow = 0

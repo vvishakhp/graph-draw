@@ -1,5 +1,5 @@
 /**
- * @class draw2d.layout.locator.ManhattanMidpointLocator
+ * @class  .layout.locator.ManhattanMidpointLocator
  *
  * A ManhattanMidpointLocator that is used to place figures at the midpoint of a Manhatten routed
  * connection. The midpoint is always in the center of an edge.
@@ -9,37 +9,37 @@
  *
  *     @example preview small frame
  *     //create and add two Node which contains Ports (In and OUT)
- *     let start = new draw2d.shape.node.Start({x:50,y:50});
- *     let end   = new draw2d.shape.node.End({x:230,y:100});
+ *     let start = new  .shape.node.Start({x:50,y:50});
+ *     let end   = new  .shape.node.End({x:230,y:100});
  *
  *     canvas.add( start);
  *     canvas.add( end);
  *
  *     // Create a Connection and connect he Start and End node
  *     //
- *     let c = new draw2d.Connection();
+ *     let c = new  .Connection();
  *     c.setSource(start.getOutputPort(0));
  *     c.setTarget(end.getInputPort(0));
  *     canvas.add(c);
  *
  *     // create a label which should attach to the connection
  *     //
- *     let label = new draw2d.shape.basic.Label({text:"I'm a Label"});
+ *     let label = new  .shape.basic.Label({text:"I'm a Label"});
  *     label.setColor("#0d0d0d");
  *     label.setFontColor("#0d0d0d");
  *     label.setBackgroundColor("#f0f0f0");
  *
  *     // add the decoration to the connection with a ManhattanMidpointLocator.
  *     //
- *     c.add(label, new draw2d.layout.locator.ManhattanMidpointLocator());
+ *     c.add(label, new  .layout.locator.ManhattanMidpointLocator());
  *
  * @author Andreas Herz
- * @extend draw2d.layout.locator.ConnectionLocator
+ * @extend  .layout.locator.ConnectionLocator
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.layout.locator.ManhattanMidpointLocator = draw2d.layout.locator.ConnectionLocator.extend({
-  NAME: "draw2d.layout.locator.ManhattanMidpointLocator",
+ .layout.locator.ManhattanMidpointLocator =  .layout.locator.ConnectionLocator.extend({
+  NAME: " .layout.locator.ManhattanMidpointLocator",
 
   /**
    * @constructor
@@ -56,7 +56,7 @@ draw2d.layout.locator.ManhattanMidpointLocator = draw2d.layout.locator.Connectio
    * Relocates the given Figure always in the center of an edge.
    *
    * @param {Number} index child index of the target
-   * @param {draw2d.Figure} target The figure to relocate
+   * @param { .Figure} target The figure to relocate
    **/
   relocate: function (index, target) {
     let conn = target.getParent()

@@ -1,18 +1,18 @@
 
 /**
- * @class draw2d.policy.connection.ConnectionCreatePolicy
+ * @class  .policy.connection.ConnectionCreatePolicy
  * Base class for connection creation by user interaction.
  *
  *
  * @author Andreas Herz
  *
- * @extends draw2d.policy.canvas.KeyboardPolicy
+ * @extends  .policy.canvas.KeyboardPolicy
  */
-import draw2d from '../../packages';
+import   from '../../packages';
 
-draw2d.policy.connection.ConnectionCreatePolicy = draw2d.policy.canvas.KeyboardPolicy.extend({
+ .policy.connection.ConnectionCreatePolicy =  .policy.canvas.KeyboardPolicy.extend({
 
-    NAME : "draw2d.policy.connection.ConnectionCreatePolicy",
+    NAME : " .policy.connection.ConnectionCreatePolicy",
 
     /**
      * @constructor
@@ -29,13 +29,13 @@ draw2d.policy.connection.ConnectionCreatePolicy = draw2d.policy.canvas.KeyboardP
      * @method
      * Factory method to create the connection to insert.
      *
-     * @return {draw2d.Connection}
+     * @return { .Connection}
      * @template
      */
     createConnection:function()
     {
-        return new draw2d.Connection({
-            router: new draw2d.layout.connection.DirectRouter()
+        return new  .Connection({
+            router: new  .layout.connection.DirectRouter()
         });
     },
 

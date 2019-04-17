@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.diagram.Pie
+ * @class  .shape.diagram.Pie
  *
  * Small data pie chart.
  *
@@ -7,7 +7,7 @@
  *
  *     @example preview small frame
  *
- *     let pie = new draw2d.shape.diagram.Pie({
+ *     let pie = new  .shape.diagram.Pie({
  *        diameter:80,
  *        data:[30,60,122,4],
  *        x:100,
@@ -16,12 +16,12 @@
  *
  *     canvas.add( pie);
  *
- * @extends draw2d.shape.diagram.Diagram
+ * @extends  .shape.diagram.Diagram
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.shape.diagram.Pie = draw2d.shape.diagram.Diagram.extend({
+ .shape.diagram.Pie =  .shape.diagram.Diagram.extend({
 
   COLORS: ['#00A8F0', '#b9dd69', '#f3546a', '#4DA74D', '#9440ED'],
   TWO_PI: Math.PI * 2,
@@ -103,11 +103,11 @@ draw2d.shape.diagram.Pie = draw2d.shape.diagram.Diagram.extend({
    * @method
    * Set the center of the circle.
    *
-   * @param {Number|draw2d.geo.Point} x the new x coordinate of the center or a draw2d.geo.Point object with the center
-   * @param {Number} y the y coordinate of the new center of the first argument isn't a draw2d.geo.Point object
+   * @param {Number| .geo.Point} x the new x coordinate of the center or a  .geo.Point object with the center
+   * @param {Number} y the y coordinate of the new center of the first argument isn't a  .geo.Point object
    */
   setCenter: function (x, y) {
-    let pos = new draw2d.geo.Point(x, y)
+    let pos = new  .geo.Point(x, y)
     let d2 = this.getDiameter() / 2
     pos.translate(-d2, -d2)
     this.setPosition(pos)

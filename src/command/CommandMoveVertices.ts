@@ -1,26 +1,26 @@
 /**
- * @class draw2d.command.CommandMoveVertices
+ * @class  .command.CommandMoveVertices
  *
  * Command for the vertices movement of a polyline/polygon.
  *
  * @inheritable
  * @author Andreas Herz
  *
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandMoveVertices = draw2d.command.Command.extend({
-  NAME: "draw2d.command.CommandMoveVertices",
+ .command.CommandMoveVertices =  .command.Command.extend({
+  NAME: " .command.CommandMoveVertices",
 
   /**
    * @constructor
    * Create a new Command objects which can be execute via the CommandStack.
    *
-   * @param {draw2d.shape.basic.PolyLine} line the related line
+   * @param { .shape.basic.PolyLine} line the related line
    */
   init: function (line) {
-    this._super(draw2d.Configuration.i18n.command.moveVertices)
+    this._super( .Configuration.i18n.command.moveVertices)
 
     this.line = line
     this.oldVertices = line.getVertices().clone(true)

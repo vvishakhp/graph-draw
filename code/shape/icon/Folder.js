@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Folder
+ * @class  .shape.icon.Folder
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Folder();
+ *     let icon =  new  .shape.icon.Folder();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Folder = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Folder",
+ .shape.icon.Folder =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Folder",
 
   /**
    *

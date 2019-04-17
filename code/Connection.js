@@ -1,13 +1,13 @@
 /**
- * @class draw2d.Connection
+ * @class  .Connection
  * See the example:
  *
  *     @example preview small frame
  *
  *     // create and add two nodes which contains Ports (In and OUT)
  *     //
- *     var start = new draw2d.shape.node.Start();
- *     var end   = new draw2d.shape.node.End();
+ *     var start = new  .shape.node.Start();
+ *     var end   = new  .shape.node.End();
 
  *     // ...add it to the canvas
  *     canvas.add( start, 50,50);
@@ -15,12 +15,12 @@
  *
  *     // Create a Connection and connect the Start and End node
  *     //
- *     var c = new draw2d.Connection();
+ *     var c = new  .Connection();
  *
  *     // Set the endpoint decorations for the connection
  *     //
- *     c.setSourceDecorator(new draw2d.decoration.connection.BarDecorator());
- *     c.setTargetDecorator(new draw2d.decoration.connection.DiamondDecorator());
+ *     c.setSourceDecorator(new  .decoration.connection.BarDecorator());
+ *     c.setTargetDecorator(new  .decoration.connection.DiamondDecorator());
  *     // Connect the endpoints with the start and end port
  *     //
  *     c.setSource(start.getOutputPort(0));
@@ -30,9 +30,9 @@
  *     canvas.add(c);
  *
  * Connections figures are used to display a line between two points. The Connection interface extends
- * {@link draw2d.shape.basic.PolyLine PolyLine}.<br>
- * The source and target endpoints of a connection are each defined using a {@link draw2d.layout.anchor.ConnectionAnchor ConnectionAnchor}.
- * These endpoints, along with any other points on the connection, are set by the connection's  {@link draw2d.layout.connection.ConnectionRouter ConnectionRouter}.
+ * {@link  .shape.basic.PolyLine PolyLine}.<br>
+ * The source and target endpoints of a connection are each defined using a {@link  .layout.anchor.ConnectionAnchor ConnectionAnchor}.
+ * These endpoints, along with any other points on the connection, are set by the connection's  {@link  .layout.connection.ConnectionRouter ConnectionRouter}.
  * <br>
  * Usually every connection in a drawing has the same router instance. Connections with
  * common endpoints can share anchor instances as well.
@@ -59,25 +59,25 @@
  * <h2>Routing and Anchors</h2>
  * A connection always has a router and it must set at least two ports on the connection: the source and target
  * endpoints. By default, or when set to null, the connection's routing will be performed by an internal default router.
- * The ends are placed with the help of {@link draw2d.layout.anchor.ConnectionAnchor anchors}. An
- * {@link draw2d.layout.anchor.ConnectionAnchor anchors} is a fixed or calculated location, usually associated with some
- * figure. For example, the {@link draw2d.layout.anchor.ChopboxConnectionAnchor ChopboxAnchor} finds the point at which a
+ * The ends are placed with the help of {@link  .layout.anchor.ConnectionAnchor anchors}. An
+ * {@link  .layout.anchor.ConnectionAnchor anchors} is a fixed or calculated location, usually associated with some
+ * figure. For example, the {@link  .layout.anchor.ChopboxConnectionAnchor ChopboxAnchor} finds the point at which a
  * line going to the reference point intersects a box, such as the bounds of a figure. The reference point is either
  * the anchor at the opposite end, or a bendpoint or some other point nearest to the anchor.
  * <br>
  * {@img jsdoc_chopbox.gif ChopboxAnchor}
  * <br>
  * The router calculates the endpoints and any other points in the middle of the connection. It then sets the points on the
- * connection by calling {@link draw2d.shape.basic.PolyLine#addPoint Polyline.addPoint}. The connection's existing point list
+ * connection by calling {@link  .shape.basic.PolyLine#addPoint Polyline.addPoint}. The connection's existing point list
  * can be reused to reduce garbage, but the points must be set on the connection anyway so that it knows about any changes made.
  * <br>
  * <h2>Adding Decorations and Children to Connections</h2>
  * Like most figures, Connection supports the addition of children. The children might be a label that
- * decorate the connection. The placement of each type of decoration can vary, so a {@link draw2d.layout.locator.ConnectionLocator ConnectionLocator}
+ * decorate the connection. The placement of each type of decoration can vary, so a {@link  .layout.locator.ConnectionLocator ConnectionLocator}
  * is used to delegate to each child's constraint object, a Locator. <br>
  * <br>
- * {@link draw2d.decoration.connection.Decorator Decorator} can be used to create and render a rotatable shape at
- * the end or start of a connection like arrows or boxes. Examples are {@link draw2d.decoration.connection.ArrowDecorator ArrowDecorator}, {@link draw2d.decoration.connection.BarDecorator BarDecorator} or {@link draw2d.decoration.connection.CircleDecorator CircleDecorator}
+ * {@link  .decoration.connection.Decorator Decorator} can be used to create and render a rotatable shape at
+ * the end or start of a connection like arrows or boxes. Examples are {@link  .decoration.connection.ArrowDecorator ArrowDecorator}, {@link  .decoration.connection.BarDecorator BarDecorator} or {@link  .decoration.connection.CircleDecorator CircleDecorator}
  * <br>
  * <h2>Connection Layout</h2>
  * Connections extend the process of validation and layout to include routing. Since layout is the process of positioning children, routing must
@@ -86,15 +86,15 @@
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.basic.PolyLine
+ * @extends  .shape.basic.PolyLine
  */
 
-import draw2d from 'packages'
+import   from 'packages'
 import extend from 'util/extend'
 
 
-draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
-  NAME: "draw2d.Connection",
+ .Connection =  .shape.basic.PolyLine.extend({
+  NAME: " .Connection",
 
   /**
    * @constructor
@@ -109,9 +109,9 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
     this.oldPoint = null
 
     this.sourceDecorator = null
-    /*:draw2d.ConnectionDecorator*/
+    /*: .ConnectionDecorator*/
     this.targetDecorator = null
-    /*:draw2d.ConnectionDecorator*/
+    /*: .ConnectionDecorator*/
 
     // decoration of the polyline
     //
@@ -243,15 +243,15 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
    * operations. It's only a decorator for the connection.<br>
    * Mainly for labels or other fancy decorations :-)
    *
-   * @param {draw2d.Figure} child the figure to add as decoration to the connection.
-   * @param {draw2d.layout.locator.ConnectionLocator} locator the locator for the child.
+   * @param { .Figure} child the figure to add as decoration to the connection.
+   * @param { .layout.locator.ConnectionLocator} locator the locator for the child.
    * @param {Number} [index] optional index where to insert the figure
    **/
   add: function (child, locator, index) {
     // just to ensure the right interface for the locator.
-    // The base class needs only 'draw2d.layout.locator.Locator'.
-    if (!(locator instanceof draw2d.layout.locator.ConnectionLocator)) {
-      throw "Locator must implement the class draw2d.layout.locator.ConnectionLocator"
+    // The base class needs only ' .layout.locator.Locator'.
+    if (!(locator instanceof  .layout.locator.ConnectionLocator)) {
+      throw "Locator must implement the class  .layout.locator.ConnectionLocator"
     }
 
     this._super(child, locator, index)
@@ -262,7 +262,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
    * @method
    * Set the ConnectionDecorator for this object.
    *
-   * @param {draw2d.decoration.connection.Decorator} decorator the new source decorator for the connection
+   * @param { .decoration.connection.Decorator} decorator the new source decorator for the connection
    **/
   setSourceDecorator: function (decorator) {
     this.sourceDecorator = decorator
@@ -278,7 +278,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
    * @method
    * Get the current source ConnectionDecorator for this object.
    *
-   * @returns draw2d.decoration.connection.Decorator
+   * @returns  .decoration.connection.Decorator
    **/
   getSourceDecorator: function () {
     return this.sourceDecorator
@@ -288,7 +288,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
    * @method
    * Set the ConnectionDecorator for this object.
    *
-   * @param {draw2d.decoration.connection.Decorator} decorator the new target decorator for the connection
+   * @param { .decoration.connection.Decorator} decorator the new target decorator for the connection
    **/
   setTargetDecorator: function (decorator) {
     this.targetDecorator = decorator
@@ -304,7 +304,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
    * @method
    * Get the current target ConnectionDecorator for this object.
    *
-   * @returns draw2d.decoration.connection.Decorator
+   * @returns  .decoration.connection.Decorator
    **/
   getTargetDecorator: function () {
     return this.targetDecorator
@@ -448,7 +448,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
     // notify all installed policies
     //
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.onDrag(_this.canvas, _this)
       }
     })
@@ -460,7 +460,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
     // element via an API call.
     //
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
     })
@@ -476,7 +476,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
    *
    * Optional: Inserts current object in front of the given one.
    *
-   * @param {draw2d.Figure} [figure] move current object in front of the given one.
+   * @param { .Figure} [figure] move current object in front of the given one.
    * @since 3.0.0
    */
   toFront: function (figure) {
@@ -501,7 +501,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
    * Moves the element to the background. Additional
    * the internal model changed as well.
    *
-   * @param {draw2d.Figure} [figure] move this object behind of the 'figure'.
+   * @param { .Figure} [figure] move this object behind of the 'figure'.
    * @since 4.7.2
    */
   toBack: function (figure) {
@@ -526,7 +526,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
    * Return the recalculated position of the start point with the usage of
    * the installed connection anchor locator.
    *
-   * @return {draw2d.geo.Point}
+   * @return { .geo.Point}
    * @deprecated
    **/
   getStartPoint: function (refPoint) {
@@ -549,7 +549,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
    * Return the recalculated position of the start point with the usage of
    * the installed connection anchor locator.
    *
-   * @return {draw2d.geo.Point}
+   * @return { .geo.Point}
    * @deprecated
    **/
   getEndPoint: function (refPoint) {
@@ -571,7 +571,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
    * @method
    * Set the new source port of this connection. This enforce a repaint of the connection.
    *
-   * @param {draw2d.Port} port The new source port of this connection.
+   * @param { .Port} port The new source port of this connection.
    *
    **/
   setSource: function (port) {
@@ -610,7 +610,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
    * @method
    * Returns the source port of this connection.
    *
-   * @return {draw2d.Port}
+   * @return { .Port}
    **/
   getSource: function () {
     return this.sourcePort
@@ -620,7 +620,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
    * @method
    * Set the target port of this connection. This enforce a repaint of the connection.
    *
-   * @param {draw2d.Port} port The new target port of this connection
+   * @param { .Port} port The new target port of this connection
    **/
   setTarget: function (port) {
     if (this.targetPort !== null) {
@@ -658,7 +658,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
    * @method
    * Returns the target port of this connection.
    *
-   * @returns {draw2d.Port}
+   * @returns { .Port}
    **/
   getTarget: function () {
     return this.targetPort
@@ -666,9 +666,9 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
 
   /**
    * @method
-   * Method returns true if the connection has at least one common draw2d.Port with the given connection.
+   * Method returns true if the connection has at least one common  .Port with the given connection.
    *
-   * @param {draw2d.Connection} other
+   * @param { .Connection} other
    *
    * @returns {Boolean}
    */
@@ -684,7 +684,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
    * @method
    * Set the canvas element of this figures.
    *
-   * @param {draw2d.Canvas} canvas the new parent of the figure or null
+   * @param { .Canvas} canvas the new parent of the figure or null
    */
   setCanvas: function (canvas) {
     if (this.canvas === canvas) {
@@ -695,11 +695,11 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
 
     this._super(canvas)
 
-    if (canvas !== null && draw2d.Connection.DROP_FILTER === null) {
-      draw2d.Connection.DROP_FILTER = canvas.paper.createFilter()
-      draw2d.Connection.DROP_FILTER.element.setAttribute("width", "250%")
-      draw2d.Connection.DROP_FILTER.element.setAttribute("height", "250%")
-      draw2d.Connection.DROP_FILTER.createShadow(1, 1, 2, 0.3)
+    if (canvas !== null &&  .Connection.DROP_FILTER === null) {
+       .Connection.DROP_FILTER = canvas.paper.createFilter()
+       .Connection.DROP_FILTER.element.setAttribute("width", "250%")
+       .Connection.DROP_FILTER.element.setAttribute("height", "250%")
+       .Connection.DROP_FILTER.createShadow(1, 1, 2, 0.3)
     }
 
     if (this.sourceDecoratorNode !== null) {
@@ -725,7 +725,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
       }
     }
     else {
-      this.shape.items[0].filter(draw2d.Connection.DROP_FILTER)
+      this.shape.items[0].filter( .Connection.DROP_FILTER)
 
       if (this.sourcePort !== null) {
         this.sourcePort.on("move", this.moveListener)
@@ -755,7 +755,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
 
     var p1 = this.lineSegments.get(0).start
     var p2 = this.lineSegments.get(0).end
-    if (this.router instanceof draw2d.layout.connection.SplineConnectionRouter) {
+    if (this.router instanceof  .layout.connection.SplineConnectionRouter) {
       p2 = this.lineSegments.get(5).end
     }
     var length = Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y))
@@ -786,7 +786,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
 
     var p1 = this.lineSegments.get(this.lineSegments.getSize() - 1).end
     var p2 = this.lineSegments.get(this.lineSegments.getSize() - 1).start
-    if (this.router instanceof draw2d.layout.connection.SplineConnectionRouter) {
+    if (this.router instanceof  .layout.connection.SplineConnectionRouter) {
       p2 = this.lineSegments.get(this.lineSegments.getSize() - 5).end
     }
     var length = Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y))
@@ -837,21 +837,21 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
    * @method
    * Returns the Command to perform the specified Request or null.
    *
-   * @param {draw2d.command.CommandType} request describes the Command being requested
+   * @param { .command.CommandType} request describes the Command being requested
    *
-   * @return {draw2d.command.Command} null or a Command
+   * @return { .command.Command} null or a Command
    **/
   createCommand: function (request) {
-    if (request.getPolicy() === draw2d.command.CommandType.MOVE) {
+    if (request.getPolicy() ===  .command.CommandType.MOVE) {
       if (this.isDraggable()) {
-        return new draw2d.command.CommandMoveVertices(this)
+        return new  .command.CommandMoveVertices(this)
       }
     }
 
-    if (request.getPolicy() === draw2d.command.CommandType.MOVE_BASEPOINT) {
+    if (request.getPolicy() ===  .command.CommandType.MOVE_BASEPOINT) {
       // DragDrop of a connection doesn't create a undo command at this point. This will be done in
       // the onDrop method
-      return new draw2d.command.CommandReconnect(this)
+      return new  .command.CommandReconnect(this)
     }
 
     return this._super(request)
@@ -906,7 +906,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
   setPersistentAttributes: function (memento) {
     this._super(memento)
 
-    // nothing to to for the connection creation. This will be done in the draw2d.io.Reader
+    // nothing to to for the connection creation. This will be done in the  .io.Reader
     // implementation
     //
     // restore your custom attributes here
@@ -922,4 +922,4 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
 })
 
 
-draw2d.Connection.DROP_FILTER = null
+ .Connection.DROP_FILTER = null

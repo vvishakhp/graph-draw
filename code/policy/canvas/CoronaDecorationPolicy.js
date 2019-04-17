@@ -1,6 +1,6 @@
 /**
- * @class draw2d.policy.canvas.CoronaDecorationPolicy
- * This decorations hides draw2d.Ports which are to far from the current cursor position.
+ * @class  .policy.canvas.CoronaDecorationPolicy
+ * This decorations hides  .Ports which are to far from the current cursor position.
  * This makes the canvas more clean if you have a lot of nodes on it.<br>
  * You didn't see a bunch of ports.
  *
@@ -11,23 +11,23 @@
  *       // install the policy to the canvas
  *
  *       // add some demo figure to the canvas
- *       canvas.add(new draw2d.shape.node.Start({x: 10,  y: 30}));
- *       canvas.add(new draw2d.shape.node.End({x: 90,  y: 90}));
- *       canvas.add(new draw2d.shape.node.Between({ x: 310, y: 30}));
+ *       canvas.add(new  .shape.node.Start({x: 10,  y: 30}));
+ *       canvas.add(new  .shape.node.End({x: 90,  y: 90}));
+ *       canvas.add(new  .shape.node.Between({ x: 310, y: 30}));
  *
- *       canvas.add(new draw2d.shape.basic.Label({text:"move the mouse and you see that ports are hidden if the mouse far from it"}),5,5);
+ *       canvas.add(new  .shape.basic.Label({text:"move the mouse and you see that ports are hidden if the mouse far from it"}),5,5);
  *
- *       canvas.installEditPolicy(new draw2d.policy.canvas.CoronaDecorationPolicy());
+ *       canvas.installEditPolicy(new  .policy.canvas.CoronaDecorationPolicy());
  *
  * @author Andreas Herz
- * @extends draw2d.policy.canvas.DecorationPolicy
+ * @extends  .policy.canvas.DecorationPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.policy.canvas.CoronaDecorationPolicy = draw2d.policy.canvas.DecorationPolicy.extend({
+ .policy.canvas.CoronaDecorationPolicy =  .policy.canvas.DecorationPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.CoronaDecorationPolicy",
+  NAME: " .policy.canvas.CoronaDecorationPolicy",
 
   /**
    * @constructor
@@ -137,13 +137,13 @@ draw2d.policy.canvas.CoronaDecorationPolicy = draw2d.policy.canvas.DecorationPol
    */
   updatePorts: function (canvas, x, y) {
     canvas.getFigures().each((i, figure) => {
-      if (figure instanceof draw2d.shape.node.Node) {
+      if (figure instanceof  .shape.node.Node) {
         if (figure.isVisible() === true && figure.hitTest(x, y, this.sumDiameter) === true) {
           figure.getPorts().each((i, p) => {
             if (p.isVisible() === false) {
               p.__origAlpha = figure.getAlpha()
             }
-            let dist = figure.getBoundingBox().getDistance(new draw2d.geo.Point(x, y))
+            let dist = figure.getBoundingBox().getDistance(new  .geo.Point(x, y))
             let alpha = 1 - ((100 / (this.diameterToBeVisible - this.diameterToBeFullVisible)) * dist) / 100.0
             p.setAlpha(alpha)
             p.setVisible(true)

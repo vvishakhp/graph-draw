@@ -1,5 +1,5 @@
 /**
- * @class draw2d.decoration.connection.CircleDecorator
+ * @class  .decoration.connection.CircleDecorator
  *
  * See the example:
  *
@@ -7,8 +7,8 @@
  *
  *     // create and add two nodes which contains Ports (In and OUT)
  *     //
- *     var start = new draw2d.shape.node.Start();
- *     var end   = new draw2d.shape.node.End();
+ *     var start = new  .shape.node.Start();
+ *     var end   = new  .shape.node.End();
 
  *     // ...add it to the canvas
  *     canvas.add( start, 50,50);
@@ -16,15 +16,15 @@
  *
  *     // Create a Connection and connect the Start and End node
  *     //
- *     var c = new draw2d.Connection();
+ *     var c = new  .Connection();
  *
  *     // toggle from ManhattenRouter to DirectRouter to show the rotation of decorations
- *     c.setRouter(new draw2d.layout.connection.DirectRouter());
+ *     c.setRouter(new  .layout.connection.DirectRouter());
  *
  *     // Set the endpoint decorations for the connection
  *     //
- *     c.setSourceDecorator(new draw2d.decoration.connection.CircleDecorator());
- *     c.setTargetDecorator(new draw2d.decoration.connection.CircleDecorator());
+ *     c.setSourceDecorator(new  .decoration.connection.CircleDecorator());
+ *     c.setTargetDecorator(new  .decoration.connection.CircleDecorator());
  *     // Connect the endpoints with the start and end port
  *     //
  *     c.setSource(start.getOutputPort(0));
@@ -35,14 +35,14 @@
  *
  * @inheritable
  * @author Andreas Herz
- * @extend draw2d.decoration.connection.Decorator
+ * @extend  .decoration.connection.Decorator
  */
-import draw2d from '../../packages';
+import   from '../../packages';
 
 
-draw2d.decoration.connection.CircleDecorator = draw2d.decoration.connection.Decorator.extend({
+ .decoration.connection.CircleDecorator =  .decoration.connection.Decorator.extend({
 
-	NAME : "draw2d.decoration.connection.CircleDecorator",
+	NAME : " .decoration.connection.CircleDecorator",
 
 	/**
 	 * @constructor

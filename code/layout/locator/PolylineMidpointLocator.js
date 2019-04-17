@@ -1,5 +1,5 @@
 /**
- * @class draw2d.layout.locator.PolylineMidpointLocator
+ * @class  .layout.locator.PolylineMidpointLocator
  *
  * A PolylineMidpointLocator is used to place figures at the midpoint of a routed
  * connection. <br>
@@ -7,12 +7,12 @@
  * On an even count of junction point, the figure will be center on the middle segment of the ploy line.
  *
  * @author Andreas Herz
- * @extend draw2d.layout.locator.ManhattanMidpointLocator
+ * @extend  .layout.locator.ManhattanMidpointLocator
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.layout.locator.PolylineMidpointLocator = draw2d.layout.locator.ManhattanMidpointLocator.extend({
-  NAME: "draw2d.layout.locator.PolylineMidpointLocator",
+ .layout.locator.PolylineMidpointLocator =  .layout.locator.ManhattanMidpointLocator.extend({
+  NAME: " .layout.locator.PolylineMidpointLocator",
 
   /**
    * @constructor
@@ -29,7 +29,7 @@ draw2d.layout.locator.PolylineMidpointLocator = draw2d.layout.locator.ManhattanM
    * Relocates the given Figure.
    *
    * @param {Number} index child index of the target
-   * @param {draw2d.Figure} target The figure to relocate
+   * @param { .Figure} target The figure to relocate
    **/
   relocate: function (index, target) {
     var conn = target.getParent()

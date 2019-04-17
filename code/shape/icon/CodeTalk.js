@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.CodeTalk
+ * @class  .shape.icon.CodeTalk
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.CodeTalk();
+ *     let icon =  new  .shape.icon.CodeTalk();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.CodeTalk = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.CodeTalk",
+ .shape.icon.CodeTalk =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.CodeTalk",
 
   /**
    *

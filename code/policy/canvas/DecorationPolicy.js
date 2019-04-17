@@ -1,16 +1,16 @@
 /**
- * @class draw2d.policy.canvas.DecorationPolicy
+ * @class  .policy.canvas.DecorationPolicy
  * The base class for any canvas decoration like grid, chessboard, graph paper or
  * other.
  *
  * @author Andreas Herz
- * @extends draw2d.policy.canvas.CanvasPolicy
+ * @extends  .policy.canvas.CanvasPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.canvas.DecorationPolicy = draw2d.policy.canvas.CanvasPolicy.extend({
+ .policy.canvas.DecorationPolicy =  .policy.canvas.CanvasPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.DecorationPolicy",
+  NAME: " .policy.canvas.DecorationPolicy",
 
   /**
    * @constructor

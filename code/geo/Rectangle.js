@@ -1,19 +1,19 @@
 /**
- * @class draw2d.geo.Rectangle
+ * @class  .geo.Rectangle
  * 
  * Util class for geometrie handling.
  * 
  * @inheritable
  * @author Andreas Herz
  * 
- * @extends draw2d.geo.Point
+ * @extends  .geo.Point
  */
-import draw2d from '../packages';
+import   from '../packages';
 
 
-draw2d.geo.Rectangle = draw2d.geo.Point.extend({
+ .geo.Rectangle =  .geo.Point.extend({
 
-    NAME : "draw2d.geo.Rectangle",
+    NAME : " .geo.Rectangle",
     
     /**
      * @constructor 
@@ -21,15 +21,15 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	 * <br>
 	 * The constructor consumes almost any kind of rectangel definitions
 	 * like:
-	 *       var rect0 = new draw2d.geo.Rectangle({x:0,y:0,width:20,height:20});
-	 *       var rect1 = new draw2d.geo.Rectangle({x:0,y:0,w:20,h:20});
-	 *       var rect2 = new draw2d.geo.Rectangle($("#divid")[0].getBoundingClientRect());
-	 *       var rect3 = new draw2d.geo.Rectangle(rect1);
+	 *       var rect0 = new  .geo.Rectangle({x:0,y:0,width:20,height:20});
+	 *       var rect1 = new  .geo.Rectangle({x:0,y:0,w:20,h:20});
+	 *       var rect2 = new  .geo.Rectangle($("#divid")[0].getBoundingClientRect());
+	 *       var rect3 = new  .geo.Rectangle(rect1);
 	 *
 	 * The rectangle class is usefull for any kind of intersection, hitTest, contains,...calculation
 	 * or to set the bounding box of any shape.
 	 *
-     * @param {Number|draw2d.geo.Rectangle} x
+     * @param {Number| .geo.Rectangle} x
      * @param {Number} y
      * @param {Number} w
      * @param {Number} h
@@ -40,7 +40,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 		//
 
 
-    	if(x instanceof draw2d.geo.Rectangle){
+    	if(x instanceof  .geo.Rectangle){
     		y= x.y;
     		w = x.w;
     		h = x.h;
@@ -92,7 +92,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	 * @param {Number} dw  Amount by which width is to be resized
 	 * @param {Number} dh  Amount by which height is to be resized
 	 * 
-	 * @return  {draw2d.geo.Rectangle} The method return the object itself
+	 * @return  { .geo.Rectangle} The method return the object itself
 	 **/
 	resize: function(dw,  dh)
 	{
@@ -132,15 +132,15 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	 * @method
 	 * Translate the rectangle with the given x/y coordiante.
 	 *
-	 * @param {draw2d.geo.Point|Number} x the x translation or the complete point to translate
-	 * @param {Number} [y] the y translation. Required if x is a simple number instead of a draw2d.geo.Point
+	 * @param { .geo.Point|Number} x the x translation or the complete point to translate
+	 * @param {Number} [y] the y translation. Required if x is a simple number instead of a  .geo.Point
      *
 	 *
 	 * @since 5.6.0
 	 */
 	translate: function(x,y)
 	{
-		var other = new draw2d.geo.Point(x,y);
+		var other = new  .geo.Point(x,y);
 		this.x += other.x;
 		this.y += other.y;
 		this.adjustBoundary();
@@ -153,17 +153,17 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	 * @method
 	 * Returns a copy of the translated rectangle
 	 *
-	 * @param {draw2d.geo.Point|Number} x the x translation or the complete point to translate
-	 * @param {Number} [y] the y translation. Required if x is a simple number instead of a draw2d.geo.Point
+	 * @param { .geo.Point|Number} x the x translation or the complete point to translate
+	 * @param {Number} [y] the y translation. Required if x is a simple number instead of a  .geo.Point
      *
-	 * @return {draw2d.geo.Rectangle} The new translated rectangle.
+	 * @return { .geo.Rectangle} The new translated rectangle.
 	 *
 	 * @since 5.6.0
 	 */
 	translated: function(x,y)
 	{
-		var other = new draw2d.geo.Point(x,y);
-		return new draw2d.geo.Rectangle(this.x + other.x, this.y + other.y, this.w, this.h);
+		var other = new  .geo.Point(x,y);
+		return new  .geo.Rectangle(this.x + other.x, this.y + other.y, this.w, this.h);
 	},
 
 
@@ -174,9 +174,9 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	 * The method return the object itself. This allows you to do command chaining, where 
 	 * you can perform multiple methods on the same elements.
 	 *
-	 * @param {draw2d.geo.Rectangle} Rectangle providing the bounding values
+	 * @param { .geo.Rectangle} Rectangle providing the bounding values
 	 * 
-	 * @return  {draw2d.geo.Rectangle} The method return the object itself
+	 * @return  { .geo.Rectangle} The method return the object itself
 	 */
 	setBounds: function( rect)
 	{
@@ -298,77 +298,77 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	 * @method
 	 * The top left corner of the dimension object.
 	 * 
-	 * @return {draw2d.geo.Point} a new point objects which holds the coordinates
+	 * @return { .geo.Point} a new point objects which holds the coordinates
 	 **/
 	getTopLeft: function()
 	{
-	  return new draw2d.geo.Point(this.x,this.y);
+	  return new  .geo.Point(this.x,this.y);
 	},
 	
     /**
      * @method
      * The top center coordinate of the dimension object.
      * 
-     * @return {draw2d.geo.Point} a new point objects which holds the coordinates
+     * @return { .geo.Point} a new point objects which holds the coordinates
      **/
     getTopCenter: function()
     {
-      return new draw2d.geo.Point(this.x+(this.w/2),this.y);
+      return new  .geo.Point(this.x+(this.w/2),this.y);
     },
 
     /**
 	 * @method
 	 * The top right corner of the dimension object.
 	 * 
-	 * @return {draw2d.geo.Point} a new point objects which holds the coordinates
+	 * @return { .geo.Point} a new point objects which holds the coordinates
 	 **/
 	getTopRight: function()
 	{
-	  return new draw2d.geo.Point(this.x+this.w,this.y);
+	  return new  .geo.Point(this.x+this.w,this.y);
 	},
 
 	/**
 	 * @method
 	 * The center left  of the dimension object.
 	 *
-	 * @return {draw2d.geo.Point} a new point objects which holds the coordinates
+	 * @return { .geo.Point} a new point objects which holds the coordinates
 	 **/
 	getCenterLeft: function()
 	{
-		return new draw2d.geo.Point(this.x,this.y+(this.h/2));
+		return new  .geo.Point(this.x,this.y+(this.h/2));
 	},
 
 	/**
 	 * @method
 	 * The bottom left corner of the dimension object.
 	 * 
-	 * @return {draw2d.geo.Point} a new point objects which holds the coordinates
+	 * @return { .geo.Point} a new point objects which holds the coordinates
 	 **/
 	getBottomLeft: function()
 	{
-	  return new draw2d.geo.Point(this.x,this.y+this.h);
+	  return new  .geo.Point(this.x,this.y+this.h);
 	},
 	
 	/**
      * @method
      * The bottom center coordinate of the dimension object.
      * 
-     * @return {draw2d.geo.Point} a new point objects which holds the coordinates
+     * @return { .geo.Point} a new point objects which holds the coordinates
      **/
     getBottomCenter: function()
     {
-      return new draw2d.geo.Point(this.x+(this.w/2),this.y+this.h);
+      return new  .geo.Point(this.x+(this.w/2),this.y+this.h);
     },
     
 	/**
 	 * @method
 	 * The center of the dimension object
 	 * 
-	 * @return {draw2d.geo.Point} a new point which holds the center of the object
+	 * @return { .geo.Point} a new point which holds the center of the object
 	 **/
 	getCenter: function()
 	{
-	  return new draw2d.geo.Point(this.x+this.w/2,this.y+this.h/2);
+	  return new  .geo.Point(this.x+this.w/2,this.y+this.h/2);
 	},
 	
 	
@@ -376,11 +376,11 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	 * @method
 	 * Bottom right corner of the object
 	 * 
-	 * @return {draw2d.geo.Point} a new point which holds the bottom right corner
+	 * @return { .geo.Point} a new point which holds the bottom right corner
 	 **/
 	getBottomRight: function()
 	{
-	  return new draw2d.geo.Point(this.x+this.w,this.y+this.h);
+	  return new  .geo.Point(this.x+this.w,this.y+this.h);
 	},
 	
 	/**
@@ -388,11 +388,11 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	 * Return all points of the rectangle as array. Starting at topLeft and the
 	 * clockwise.
 	 * 
-	 * @return {draw2d.util.ArrayList} the points starting at top/left and the clockwise
+	 * @return { .util.ArrayList} the points starting at top/left and the clockwise
 	 */
 	getVertices: function()
 	{
-	    var result = new draw2d.util.ArrayList();
+	    var result = new  .util.ArrayList();
 		// don't change the order. We expect always that the top left corner has index[0]
         // and goes clock wise
         //
@@ -409,12 +409,12 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	 * Return a new rectangle which fits into this rectangle. <b>ONLY</b> the x/y coordinates
 	 * will be changed. Not the dimension of the given rectangle.
 	 * 
-	 * @param {draw2d.geo.Rectangle} rect the rectangle to adjust
+	 * @param { .geo.Rectangle} rect the rectangle to adjust
 	 * @return the new shifted rectangle
 	 */
 	moveInside: function(rect)
     {
-	    var newRect = new draw2d.geo.Rectangle(rect.x,rect.y,rect.w,rect.h);
+	    var newRect = new  .geo.Rectangle(rect.x,rect.y,rect.w,rect.h);
 	    // shift the coordinate right/down if coordinate not inside the rect
 	    //
 	    newRect.x= Math.max(newRect.x,this.x);
@@ -443,10 +443,10 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	
 	/**
 	 * @method
-	 * Return the minimum distance of this rectangle to the given {@link draw2d.geo.Point} or 
-	 * {link draw2d.geo.Rectangle}.
+	 * Return the minimum distance of this rectangle to the given {@link  .geo.Point} or 
+	 * {link  .geo.Rectangle}.
 	 * 
-	 * @param {draw2d.geo.Point|draw2d.geo.Rectangle} pointOrRectangle the reference point/rectangle for the distance calculation
+	 * @param { .geo.Point| .geo.Rectangle} pointOrRectangle the reference point/rectangle for the distance calculation
 	 */
 	getDistance: function (pointOrRectangle)
     {
@@ -460,7 +460,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 		var ow = 1;
 		var oh = 1;
 		
-		if(pointOrRectangle instanceof draw2d.geo.Rectangle){
+		if(pointOrRectangle instanceof  .geo.Rectangle){
 			ow = pointOrRectangle.getWidth();
 			oh = pointOrRectangle.getHeight();
 		}
@@ -536,7 +536,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 				return -((cx + cw) - ox);
 		}
 
-		throw "Unknown data type of parameter for distance calculation in draw2d.geo.Rectangle.getDistance(..)";
+		throw "Unknown data type of parameter for distance calculation in  .geo.Rectangle.getDistance(..)";
 	},
 	
     
@@ -552,7 +552,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
      *    6 | 5 | 4
      * </pre>
      *
-     * @param {draw2d.geo.Rectangle} r2
+     * @param { .geo.Rectangle} r2
      * 
      */
     determineOctant: function( r2)
@@ -568,7 +568,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
         var cy = r2.y;
         var cw = 2;
         var ch = 2;
-        if(r2 instanceof draw2d.geo.Rectangle){
+        if(r2 instanceof  .geo.Rectangle){
             cw = r2.w;
             ch = r2.h;
         }
@@ -626,7 +626,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
      * </ul>
      * <p>
      * 
-     * @param {draw2d.geo.Point} other the point in relation to the given rectangle
+     * @param { .geo.Point} other the point in relation to the given rectangle
      * 
      * @return {Number} the direction from <i>r</i> to <i>p</i>
      */
@@ -636,39 +636,39 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
         switch(this.determineOctant(other)){
             case 0:
                 if((current.x-other.x)<(current.y-other.y))
-                    return draw2d.geo.Rectangle.DIRECTION_UP;
-                return draw2d.geo.Rectangle.DIRECTION_LEFT;
+                    return  .geo.Rectangle.DIRECTION_UP;
+                return  .geo.Rectangle.DIRECTION_LEFT;
             case 1:
-                return draw2d.geo.Rectangle.DIRECTION_UP;
+                return  .geo.Rectangle.DIRECTION_UP;
             case 2:
                 current = this.getTopRight();
                 if((other.x-current.x)<(current.y-other.y))
-                    return draw2d.geo.Rectangle.DIRECTION_UP;
-                return draw2d.geo.Rectangle.DIRECTION_RIGHT;
+                    return  .geo.Rectangle.DIRECTION_UP;
+                return  .geo.Rectangle.DIRECTION_RIGHT;
             case 3:
-                return draw2d.geo.Rectangle.DIRECTION_RIGHT;
+                return  .geo.Rectangle.DIRECTION_RIGHT;
             case 4:
                 current = this.getBottomRight();
                 if((other.x-current.x)<(other.y-current.y))
-                    return draw2d.geo.Rectangle.DIRECTION_DOWN;
-                return draw2d.geo.Rectangle.DIRECTION_RIGHT;
+                    return  .geo.Rectangle.DIRECTION_DOWN;
+                return  .geo.Rectangle.DIRECTION_RIGHT;
             case 5:
-                return draw2d.geo.Rectangle.DIRECTION_DOWN;
+                return  .geo.Rectangle.DIRECTION_DOWN;
             case 6:
                 current = this.getBottomLeft();
                 if((current.x-other.x)<(other.y-current.y))
-                    return draw2d.geo.Rectangle.DIRECTION_DOWN;
-                return draw2d.geo.Rectangle.DIRECTION_LEFT;
+                    return  .geo.Rectangle.DIRECTION_DOWN;
+                return  .geo.Rectangle.DIRECTION_LEFT;
             case 7:
-                return draw2d.geo.Rectangle.DIRECTION_LEFT;
+                return  .geo.Rectangle.DIRECTION_LEFT;
             case 8: 
                 if(other.y>this.y){
-                    return draw2d.geo.Rectangle.DIRECTION_DOWN;
+                    return  .geo.Rectangle.DIRECTION_DOWN;
                 }
-                return draw2d.geo.Rectangle.DIRECTION_UP;
+                return  .geo.Rectangle.DIRECTION_UP;
             
         }
-        return draw2d.geo.Rectangle.DIRECTION_UP;
+        return  .geo.Rectangle.DIRECTION_UP;
     },
     
     
@@ -676,7 +676,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	 * @method
 	 * Compares two rectangle objects
 	 * 
-	 * @param {draw2d.geo.Rectangle} o
+	 * @param { .geo.Rectangle} o
      *
 	 * @return {Boolean}
 	 **/
@@ -689,13 +689,13 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
      * @method
      * Detect whenever the hands over coordinate is inside the rectangle.
      *
-     * @param {Number/draw2d.geo.Point} iX
+     * @param {Number/ .geo.Point} iX
      * @param {Number} iY
      * @returns {Boolean}
      */
     hitTest : function ( iX , iY)
     {
-    	if(iX instanceof draw2d.geo.Point){
+    	if(iX instanceof  .geo.Point){
     		iY = iX.y;
     		iX = iX.x;
     	}
@@ -709,7 +709,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
      * return true if this rectangle inside the hand over rectangle
      * 
      *
-     * @param {draw2d.geo.Rectangle} rect
+     * @param { .geo.Rectangle} rect
      * @returns {Boolean}
      */
     isInside : function ( rect)
@@ -725,7 +725,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
      * return true if this rectangle contains the hand over rectangle.
      * 
      *
-     * @param {draw2d.geo.Rectangle} rect
+     * @param { .geo.Rectangle} rect
      * @returns {Boolean}
      * @since 4.7.2
      */
@@ -741,7 +741,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
      * @method
      * checks whenever the rectangles has an intersection.
      * 
-     * @param {draw2d.geo.Rectangle} rect
+     * @param { .geo.Rectangle} rect
      * @returns {Boolean}
      */
     intersects: function (rect)
@@ -765,7 +765,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
      * @method
      * Merge this rectangle with the given one.
      * 
-     * @param {draw2d.geo.Rectangle} rect
+     * @param { .geo.Rectangle} rect
      * @since 4.8.0
      */
     merge: function(rect)
@@ -785,19 +785,19 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
      * @method
      * returns the intersection points with the given line if any exists
      * 
-     * @param {draw2d.geo.Point} start
-     * @param {draw2d.geo.Point} end
+     * @param { .geo.Point} start
+     * @param { .geo.Point} end
      */
     intersectionWithLine: function(start, end)
     {
-        var result = new draw2d.util.ArrayList();
+        var result = new  .util.ArrayList();
         var v = this.getVertices();
         v.add(v.first());
         var p1 = v.first();
         var p2 = null;
         for(var i=1; i<5;i++){
             p2 = v.get(i);
-            p1 = draw2d.shape.basic.Line.intersection(start,end,p1,p2);
+            p1 =  .shape.basic.Line.intersection(start,end,p1,p2);
             if(p1!==null){
                 result.add(p1);
             }
@@ -811,17 +811,17 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	 * Returns a copy of this rectangle
 	 *
 	 *
-	 * @returns {draw2d.geo.Rectangle}
+	 * @returns { .geo.Rectangle}
 	 * @since 5.6.0
 	 */
 	clone: function()
 	{
-		return new draw2d.geo.Rectangle(this.x, this.y, this.w, this.h);
+		return new  .geo.Rectangle(this.x, this.y, this.w, this.h);
 	},
 
 	/**
      * @method
-     * converts the rectangle to JSON representation. required for the draw2d.io.Writer
+     * converts the rectangle to JSON representation. required for the  .io.Writer
      * 
      * @returns {Object}
      */
@@ -841,8 +841,8 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 /**
  * ENUM for Direction
  */
-draw2d.geo.Rectangle.DIRECTION_UP    =0;
-draw2d.geo.Rectangle.DIRECTION_RIGHT =1;
-draw2d.geo.Rectangle.DIRECTION_DOWN  =2;
-draw2d.geo.Rectangle.DIRECTION_LEFT  =3;
+ .geo.Rectangle.DIRECTION_UP    =0;
+ .geo.Rectangle.DIRECTION_RIGHT =1;
+ .geo.Rectangle.DIRECTION_DOWN  =2;
+ .geo.Rectangle.DIRECTION_LEFT  =3;
 

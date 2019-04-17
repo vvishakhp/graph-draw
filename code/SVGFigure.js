@@ -1,19 +1,19 @@
 
 /**
- * @class draw2d.SVGFigure
+ * @class  .SVGFigure
  * Abstract class which can handle plain SVG content. Inherit class must override the method
  * <code>getSVG()</code>.
  *
  * @author Andreas Herz
- * @extends draw2d.SetFigure
+ * @extends  .SetFigure
  */
 
-import draw2d from 'packages';
+import   from 'packages';
 import extend from 'util/extend';
 
-draw2d.SVGFigure = draw2d.SetFigure.extend({
+ .SVGFigure =  .SetFigure.extend({
 
-    NAME : "draw2d.SVGFigure",
+    NAME : " .SVGFigure",
 
     /**
      * @constructor
@@ -42,7 +42,7 @@ draw2d.SVGFigure = draw2d.SetFigure.extend({
      */
     createSet: function()
     {
-        // legacy behaviour. Legacy code of Draw2D didn't have the "svg" attribute.
+        // legacy behaviour. Legacy code of   didn't have the "svg" attribute.
         // in this case we must call the overridden method "getSVG" to retrieve the SVG from inherit
         // the inherit class.
         //
@@ -72,7 +72,7 @@ draw2d.SVGFigure = draw2d.SetFigure.extend({
      * @param {String} svg The new SVG to render as String
      * @param {Number} [duration] the optional duration for the change of the SVG of the figure
      *
-     * @returns {draw2d.SVGFigure}
+     * @returns { .SVGFigure}
      */
     setSVG: function(svg, duration)
     {

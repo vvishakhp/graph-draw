@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.composite.WeakComposite
+ * @class  .shape.composite.WeakComposite
  * A WeakComposite is a composite figure with loose coupling of the children and the composite.
  * The child didn't know anything about the assigned composite nor did they receive any events
  * about assignment to a composite.
@@ -8,13 +8,13 @@
  *
  *
  * @author Andreas Herz
- * @extends draw2d.shape.composite.Composite
+ * @extends  .shape.composite.Composite
  * @since 4.8.0
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.composite.WeakComposite = draw2d.shape.composite.Composite.extend({
-  NAME: "draw2d.shape.composite.WeakComposite",
+ .shape.composite.WeakComposite =  .shape.composite.Composite.extend({
+  NAME: " .shape.composite.WeakComposite",
 
   /**
    * @constructor

@@ -1,27 +1,27 @@
 /**
- * @class draw2d.command.CommandMove
+ * @class  .command.CommandMove
  *
  * Command for the movement of figures.
  *
  * @author Andreas Herz
  *
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandMove = draw2d.command.Command.extend({
-  NAME: "draw2d.command.CommandMove",
+ .command.CommandMove =  .command.Command.extend({
+  NAME: " .command.CommandMove",
 
   /**
    * @constructor
    * Create a new Command objects which can be execute via the CommandStack.
    *
-   * @param {draw2d.Figure} figure the figure to move
+   * @param { .Figure} figure the figure to move
    * @param {Number} [x] the current x position
    * @param {Number} [y] the current y position
    */
   init: function (figure, x, y) {
-    this._super(draw2d.Configuration.i18n.command.moveShape)
+    this._super( .Configuration.i18n.command.moveShape)
     this.figure = figure
     if (typeof x === "undefined") {
       this.oldX = figure.getX()

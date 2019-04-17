@@ -1,19 +1,19 @@
 /**
- * @class draw2d.policy.port.ElasticStrapFeedbackPolicy
+ * @class  .policy.port.ElasticStrapFeedbackPolicy
  *
- * A draw2d.policy.SelectionFeedbackPolicy that is sensitive to the canvas selection. Subclasses will typically
- * decorate the {@link draw2d.Figure figure} with things like selection handles and/or focus feedback.
+ * A  .policy.SelectionFeedbackPolicy that is sensitive to the canvas selection. Subclasses will typically
+ * decorate the {@link  .Figure figure} with things like selection handles and/or focus feedback.
  * <br>
  * If you want to change the handle visibility for a figure, then you should use SelectionFeedbackPolicy to do that.
  *
  * @author Andreas Herz
- * @extends draw2d.policy.figure.DragDropEditPolicy
+ * @extends  .policy.figure.DragDropEditPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.port.ElasticStrapFeedbackPolicy = draw2d.policy.port.PortFeedbackPolicy.extend({
+ .policy.port.ElasticStrapFeedbackPolicy =  .policy.port.PortFeedbackPolicy.extend({
 
-  NAME: "draw2d.policy.port.ElasticStrapFeedbackPolicy",
+  NAME: " .policy.port.ElasticStrapFeedbackPolicy",
 
   /**
    * @constructor
@@ -29,8 +29,8 @@ draw2d.policy.port.ElasticStrapFeedbackPolicy = draw2d.policy.port.PortFeedbackP
    * Called by the framework if the related shape has init a drag&drop
    * operation
    *
-   * @param {draw2d.Canvas} canvas The host canvas
-   * @param {draw2d.Figure} figure The related figure
+   * @param { .Canvas} canvas The host canvas
+   * @param { .Figure} figure The related figure
    * @param {Number} x the x-coordinate of the mouse up event
    * @param {Number} y the y-coordinate of the mouse up event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -38,7 +38,7 @@ draw2d.policy.port.ElasticStrapFeedbackPolicy = draw2d.policy.port.PortFeedbackP
    * @template
    */
   onDragStart: function (canvas, figure, x, y, shiftKey, ctrlKey) {
-    this.connectionLine = new draw2d.shape.basic.Line()
+    this.connectionLine = new  .shape.basic.Line()
     this.connectionLine.setCanvas(canvas)
     this.connectionLine.getShapeElement()
 
@@ -50,8 +50,8 @@ draw2d.policy.port.ElasticStrapFeedbackPolicy = draw2d.policy.port.PortFeedbackP
    * @method
    * Called by the framework during drag a figure.
    *
-   * @param {draw2d.Canvas} canvas The host canvas
-   * @param {draw2d.Figure} figure The related figure
+   * @param { .Canvas} canvas The host canvas
+   * @param { .Figure} figure The related figure
    */
   onDrag: function (canvas, figure) {
     var x1 = figure.ox + figure.getParent().getAbsoluteX()
@@ -65,8 +65,8 @@ draw2d.policy.port.ElasticStrapFeedbackPolicy = draw2d.policy.port.PortFeedbackP
    * @method
    * Called by the framework if the drag drop operation ends.
    *
-   * @param {draw2d.Canvas} canvas The host canvas
-   * @param {draw2d.Figure} figure The related figure
+   * @param { .Canvas} canvas The host canvas
+   * @param { .Figure} figure The related figure
    * @param {Number} x the x-coordinate of the mouse event
    * @param {Number} y the y-coordinate of the mouse event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event

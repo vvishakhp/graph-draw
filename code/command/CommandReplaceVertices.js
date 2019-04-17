@@ -1,28 +1,28 @@
 /**
- * @class draw2d.command.CommandReplaceVertices
+ * @class  .command.CommandReplaceVertices
  *
  * Replace the vertices of a polyline.
  *
  * @inheritable
  * @author Andreas Herz
  *
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandReplaceVertices = draw2d.command.Command.extend({
-  NAME: "draw2d.command.CommandReplaceVertices",
+ .command.CommandReplaceVertices =  .command.Command.extend({
+  NAME: " .command.CommandReplaceVertices",
 
   /**
    * @constructor
    * Create a new Command objects which add a segment to a PolyLine / Polygon.
    *
-   * @param {draw2d.shape.basic.PolyLine} line the related line
-   * @param {draw2d.util.ArrayList} originalVertices the original vertices of the polyline
-   * @param {draw2d.util.ArrayList} newVertices the new vertices of the polyline
+   * @param { .shape.basic.PolyLine} line the related line
+   * @param { .util.ArrayList} originalVertices the original vertices of the polyline
+   * @param { .util.ArrayList} newVertices the new vertices of the polyline
    */
   init: function (line, originalVertices, newVertices) {
-    this._super(draw2d.Configuration.i18n.command.addSegment)
+    this._super( .Configuration.i18n.command.addSegment)
 
     this.line = line
     this.originalVertices = originalVertices

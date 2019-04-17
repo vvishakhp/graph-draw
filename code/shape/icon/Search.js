@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Search
+ * @class  .shape.icon.Search
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Search();
+ *     let icon =  new  .shape.icon.Search();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Search = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Search",
+ .shape.icon.Search =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Search",
 
   /**
    *

@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.layout.VerticalLayout
+ * @class  .shape.layout.VerticalLayout
  * The VerticalLayout class arranges the layout elements in a vertical sequence,
  * left to right, with optional gaps between the elements.
  *
@@ -13,11 +13,11 @@
  *
  *     // first container without any gap and a border of the parent
  *     // container
- *     let label1 =  new draw2d.shape.basic.Label({text:"Label 1"});
- *     let label2 =  new draw2d.shape.basic.Label({text:"Label 2"});
- *     let label3 =  new draw2d.shape.basic.Label({text:"Label 3"});
+ *     let label1 =  new  .shape.basic.Label({text:"Label 1"});
+ *     let label2 =  new  .shape.basic.Label({text:"Label 2"});
+ *     let label3 =  new  .shape.basic.Label({text:"Label 3"});
  *
- *     let container1 = new draw2d.shape.layout.VerticalLayout();
+ *     let container1 = new  .shape.layout.VerticalLayout();
  *
  *     container1.add(label1);
  *     container1.add(label2);
@@ -28,11 +28,11 @@
  *
  *     // second container without any gab or border
  *     //
- *     let label11 =  new draw2d.shape.basic.Label({text:"Label 1"});
- *     let label12 =  new draw2d.shape.basic.Label({text:"Label 2"});
- *     let label13 =  new draw2d.shape.basic.Label({text:"Label 3"});
+ *     let label11 =  new  .shape.basic.Label({text:"Label 1"});
+ *     let label12 =  new  .shape.basic.Label({text:"Label 2"});
+ *     let label13 =  new  .shape.basic.Label({text:"Label 3"});
  *
- *     let container2 = new draw2d.shape.layout.VerticalLayout();
+ *     let container2 = new  .shape.layout.VerticalLayout();
  *
  *     container2.add(label11);
  *     container2.add(label12);
@@ -41,13 +41,13 @@
  *     canvas.add(container2,150,10);
  *
  * @author Andreas Herz
- * @extends draw2d.shape.layout.Layout
+ * @extends  .shape.layout.Layout
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.layout.VerticalLayout = draw2d.shape.layout.Layout.extend({
+ .shape.layout.VerticalLayout =  .shape.layout.Layout.extend({
 
-  NAME: "draw2d.shape.layout.VerticalLayout",
+  NAME: " .shape.layout.VerticalLayout",
 
   /**
    * @constructor

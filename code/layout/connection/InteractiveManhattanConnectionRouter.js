@@ -1,5 +1,5 @@
 /**
- * @class draw2d.layout.connection.InteractiveManhattanConnectionRouter
+ * @class  .layout.connection.InteractiveManhattanConnectionRouter
  * Route the connection in an Manhattan style and add resize handles to all vertex for interactive alignment of the
  * routing.
  *
@@ -9,23 +9,23 @@
  *
  *     let createConnection=function(){
  *        // return my special kind of connection
- *        let con = new draw2d.Connection({
+ *        let con = new  .Connection({
  *          radius: 4,
- *          router: new draw2d.layout.connection.InteractiveManhattanConnectionRouter()
+ *          router: new  .layout.connection.InteractiveManhattanConnectionRouter()
  *        });
  *        return con;
  *     };
  *
  *     // install a custom connection create policy
  *     //
- *     canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
+ *     canvas.installEditPolicy(  new  .policy.connection.DragConnectionCreatePolicy({
  *            createConnection: createConnection
  *     }));
  *
  *     // create and add two nodes which contains Ports (In and OUT)
  *     //
- *     let start = new draw2d.shape.node.Start();
- *     let end   = new draw2d.shape.node.End();
+ *     let start = new  .shape.node.Start();
+ *     let end   = new  .shape.node.End();
 
  *     // ...add it to the canvas
  *     canvas.add( start, 50,50);
@@ -45,14 +45,14 @@
  *
  * @author Andreas Herz
  * @since 4.0.2
- * @extends  draw2d.layout.connection.ManhattanConnectionRouter
+ * @extends   .layout.connection.ManhattanConnectionRouter
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import extend from '../../util/extend'
 
 
-draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend({
-  NAME: "draw2d.layout.connection.InteractiveManhattanConnectionRouter",
+ .layout.connection.InteractiveManhattanConnectionRouter =  .layout.connection.ManhattanConnectionRouter.extend({
+  NAME: " .layout.connection.InteractiveManhattanConnectionRouter",
 
 
   /**
@@ -65,7 +65,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
   },
 
   onInstall: function (conn) {
-    conn.installEditPolicy(new draw2d.policy.line.OrthogonalSelectionFeedbackPolicy())
+    conn.installEditPolicy(new  .policy.line.OrthogonalSelectionFeedbackPolicy())
     if (!conn._routingMetaData) {
       conn._routingMetaData = {
         routedByUserInteraction: false,
@@ -103,9 +103,9 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
    * This kind of routing just align the start and end vertices to the new source/target port
    * location.
    * The vertices between keep untouched. Modification of this vertices are done by the
-   * draw2d.policy.line.OrthogonalSelectionFeedbackPolicy
+   *  .policy.line.OrthogonalSelectionFeedbackPolicy
    *
-   * @param {draw2d.Connection} conn the connection to route
+   * @param { .Connection} conn the connection to route
    * @param {Object} routingHints some helper attributes for the router
    * @param {Boolean} routingHints.startMoved is true if just the start location has moved
    * @param {Boolean} routingHints.endMoved is true if the destination location has changed
@@ -140,7 +140,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
     //
     //  go back to the default if no routing is possible anymore
     //
-    if ((fromDir === draw2d.geo.Rectangle.DIRECTION_RIGHT) && (toDir === draw2d.geo.Rectangle.DIRECTION_LEFT)
+    if ((fromDir ===  .geo.Rectangle.DIRECTION_RIGHT) && (toDir ===  .geo.Rectangle.DIRECTION_LEFT)
       && (fromPt.x > toPt.x) && (vertexCount <= 4)) {
 
       conn._routingMetaData.routedByUserInteraction = false
@@ -173,7 +173,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
         //          .
         //          .
         //
-        case draw2d.geo.Rectangle.DIRECTION_RIGHT:
+        case  .geo.Rectangle.DIRECTION_RIGHT:
           conn.setVertex(1, max(fromPt.x + MINDIST, p1.x), fromPt.y)// p1
           conn.setVertex(2, max(fromPt.x + MINDIST, p1.x), p2.y)    // p2
           break
@@ -183,7 +183,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
         //   .
         //   .
         //
-        case draw2d.geo.Rectangle.DIRECTION_LEFT:
+        case  .geo.Rectangle.DIRECTION_LEFT:
           conn.setVertex(1, min(fromPt.x - MINDIST, p1.x), fromPt.y)// p1
           conn.setVertex(2, min(fromPt.x - MINDIST, p1.x), p2.y)    // p2
           break
@@ -193,7 +193,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
         //        |
         //     p0 x
         //
-        case draw2d.geo.Rectangle.DIRECTION_UP:
+        case  .geo.Rectangle.DIRECTION_UP:
           conn.setVertex(1, fromPt.x, min(fromPt.y - MINDIST, p1.y)) // p1
           conn.setVertex(2, p2.x, min(fromPt.y - MINDIST, p1.y)) // p2
           break
@@ -203,7 +203,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
         //     p1 |
         //    ....+....
         //
-        case draw2d.geo.Rectangle.DIRECTION_DOWN:
+        case  .geo.Rectangle.DIRECTION_DOWN:
           conn.setVertex(1, fromPt.x, max(fromPt.y + MINDIST, p1.y)) // p1
           conn.setVertex(2, p2.x, max(fromPt.y + MINDIST, p1.y))     // p2
           break
@@ -223,7 +223,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
         //    x----------+
         //               .
         //               .
-        case draw2d.geo.Rectangle.DIRECTION_RIGHT:
+        case  .geo.Rectangle.DIRECTION_RIGHT:
           conn.setVertex(vertexCount - 2, max(toPt.x + MINDIST, p1.x), toPt.y)  // p1
           conn.setVertex(vertexCount - 3, max(toPt.x + MINDIST, p1.x), p2.y)    // p2
           break
@@ -235,7 +235,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
         //    .
         //    .
         //
-        case draw2d.geo.Rectangle.DIRECTION_LEFT:
+        case  .geo.Rectangle.DIRECTION_LEFT:
           conn.setVertex(vertexCount - 2, min(toPt.x - MINDIST, p1.x), toPt.y)  // p1
           conn.setVertex(vertexCount - 3, min(toPt.x - MINDIST, p1.x), p2.y)    // p2
           break
@@ -246,7 +246,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
         //        |
         //     p0 x
         //
-        case draw2d.geo.Rectangle.DIRECTION_UP:
+        case  .geo.Rectangle.DIRECTION_UP:
           conn.setVertex(vertexCount - 2, toPt.x, min(toPt.y - MINDIST, p1.y))  // p1
           conn.setVertex(vertexCount - 3, p2.x, min(toPt.y - MINDIST, p1.y))  // p2
           break
@@ -257,7 +257,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
         //     p1 |
         //     ...+...
         //
-        case draw2d.geo.Rectangle.DIRECTION_DOWN:
+        case  .geo.Rectangle.DIRECTION_DOWN:
           conn.setVertex(vertexCount - 2, toPt.x, max(toPt.y + MINDIST, p1.y))  // p1
           conn.setVertex(vertexCount - 3, p2.x, max(toPt.y + MINDIST, p1.y))  // p2
           break
@@ -267,7 +267,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
 
   /**
    * Callback method for the PolyLine or Connection to verify that a segment is deletable.
-   * @param {draw2d.Connection} conn
+   * @param { .Connection} conn
    * @param {Number} index
    *
    * @returns {Boolean}
@@ -309,7 +309,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
       //       |___|
       // the connection needs at least 5 segments if the routing is like this
       //
-      if ((fromDir === draw2d.geo.Rectangle.DIRECTION_RIGHT) && (toDir === draw2d.geo.Rectangle.DIRECTION_LEFT) && (fromPt.x >= toPt.x)) {
+      if ((fromDir ===  .geo.Rectangle.DIRECTION_RIGHT) && (toDir ===  .geo.Rectangle.DIRECTION_LEFT) && (fromPt.x >= toPt.x)) {
         return false
       }
 
@@ -327,7 +327,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
       //       |___|
       // the connection needs at least 5 segments if the routing is like this
       //
-      if ((fromDir == draw2d.geo.Rectangle.DIRECTION_LEFT) & (toDir == draw2d.geo.Rectangle.DIRECTION_RIGHT) && (fromPt.x <= toPt.x)) {
+      if ((fromDir ==  .geo.Rectangle.DIRECTION_LEFT) & (toDir ==  .geo.Rectangle.DIRECTION_RIGHT) && (fromPt.x <= toPt.x)) {
         return false
       }
 
@@ -340,7 +340,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
       //    |___|
       // the connection needs at least 5 segments if the routing is like this
       //
-      if ((fromDir == draw2d.geo.Rectangle.DIRECTION_UP) & (toDir == draw2d.geo.Rectangle.DIRECTION_DOWN) && (fromPt.y <= toPt.y)) {
+      if ((fromDir ==  .geo.Rectangle.DIRECTION_UP) & (toDir ==  .geo.Rectangle.DIRECTION_DOWN) && (fromPt.y <= toPt.y)) {
         return false
       }
 
@@ -353,7 +353,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
       //    |___|
       // the connection needs at least 5 segments if the routing is like this
       //
-      if ((fromDir == draw2d.geo.Rectangle.DIRECTION_DOWN) & (toDir == draw2d.geo.Rectangle.DIRECTION_UP) && (fromPt.y >= toPt.y)) {
+      if ((fromDir ==  .geo.Rectangle.DIRECTION_DOWN) & (toDir ==  .geo.Rectangle.DIRECTION_UP) && (fromPt.y >= toPt.y)) {
         return false
       }
 
@@ -361,13 +361,13 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
       // temporary connection and check if the segment count of the new routed connection
       // allows a removal
       //
-      let tmpConn = new draw2d.Connection()
-      tmpConn.lineSegments = new draw2d.util.ArrayList()
-      tmpConn.vertices = new draw2d.util.ArrayList()
+      let tmpConn = new  .Connection()
+      tmpConn.lineSegments = new  .util.ArrayList()
+      tmpConn.vertices = new  .util.ArrayList()
       tmpConn.sourcePort = conn.sourcePort
       tmpConn.targetPort = conn.targetPort
       tmpConn._routingMetaData = {routedByUserInteraction: false, fromDir: -1, toDir: -1}
-      this.route(tmpConn, {oldVertices: new draw2d.util.ArrayList()})
+      this.route(tmpConn, {oldVertices: new  .util.ArrayList()})
       let curSegmentCount = conn.getVertices().getSize() - 1
       let minSegmentCount = tmpConn.getVertices().getSize() - 1
       if (curSegmentCount <= minSegmentCount) {
@@ -381,11 +381,11 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
   /**
    * @method
    *
-   * The draw2d.Connection delegates the drag operation to the router. The router can
+   * The  .Connection delegates the drag operation to the router. The router can
    * handle the different constraints of the connection and just drag&drop a single segment
    * instead of the complete connection.
    *
-   * @param {draw2d.shape.basic.Line} line the related line to handle
+   * @param { .shape.basic.Line} line the related line to handle
    * @param {Number} dx the x difference between the start of the drag drop operation and now
    * @param {Number} dy the y difference between the start of the drag drop operation and now
    * @param {Number} dx2 The x diff since the last call of this dragging operation
@@ -502,7 +502,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
    * Tweak or enrich the polyline persistence data with routing information
    *
    * @since 2.10.0
-   * @param {draw2d.shape.basic.PolyLine} line
+   * @param { .shape.basic.PolyLine} line
    * @param {Object} memento The memento data of the polyline
    *
    * @returns {Object}
@@ -531,12 +531,12 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
     if (Array.isArray(memento.vertex)) {
 
       line.oldPoint = null
-      line.lineSegments = new draw2d.util.ArrayList()
+      line.lineSegments = new  .util.ArrayList()
 
       line.setVertices(memento.vertex)
 
       /*
-       line.vertices     = new draw2d.util.ArrayList();
+       line.vertices     = new  .util.ArrayList();
        $.each(memento.vertex, function(i,e){
        line.addPoint(e.x, e.y);
        });

@@ -3,19 +3,19 @@ export class HybridPort extends Port {
 }
 
 /**
- * @class draw2d.HybridPort
- * A HybridPort can work as Input and as Output port in the same way for a {@link draw2d.Connection}.
+ * @class  .HybridPort
+ * A HybridPort can work as Input and as Output port in the same way for a {@link  .Connection}.
  *
  * @author Andreas Herz
- * @extends draw2d.Port
+ * @extends  .Port
  */
 
-import draw2d from 'packages';
+import   from 'packages';
 import { Port } from './Port';
 
-draw2d.HybridPort = draw2d.Port.extend({
+ .HybridPort =  .Port.extend({
 
-   NAME: "draw2d.HybridPort",
+   NAME: " .HybridPort",
 
    /**
     * @constructor
@@ -28,7 +28,7 @@ draw2d.HybridPort = draw2d.Port.extend({
 
       // responsive for the arrangement of the port
       // calculates the x/y coordinates in relation to the parent node
-      this.locator = new draw2d.layout.locator.InputPortLocator();
+      this.locator = new  .layout.locator.InputPortLocator();
    },
 
    /**
@@ -37,23 +37,23 @@ draw2d.HybridPort = draw2d.Port.extend({
    createCommand: function (request) {
       // Connect request between two ports
       //
-      if (request.getPolicy() === draw2d.command.CommandType.CONNECT) {
+      if (request.getPolicy() ===  .command.CommandType.CONNECT) {
 
          if (request.source.getParent().getId() === request.target.getParent().getId()) {
             return null;
          }
 
-         if (request.source instanceof draw2d.InputPort) {
+         if (request.source instanceof  .InputPort) {
             // This is the difference to the InputPort implementation of createCommand.
-            return new draw2d.command.CommandConnect(request.target, request.source, request.source);
+            return new  .command.CommandConnect(request.target, request.source, request.source);
          }
-         else if (request.source instanceof draw2d.OutputPort) {
+         else if (request.source instanceof  .OutputPort) {
             // This is the different to the OutputPort implementation of createCommand
-            return new draw2d.command.CommandConnect(request.source, request.target, request.source);
+            return new  .command.CommandConnect(request.source, request.target, request.source);
          }
-         else if (request.source instanceof draw2d.HybridPort) {
+         else if (request.source instanceof  .HybridPort) {
             // This is the different to the OutputPort implementation of createCommand
-            return new draw2d.command.CommandConnect(request.target, request.source, request.source);
+            return new  .command.CommandConnect(request.target, request.source, request.source);
          }
 
          return null;

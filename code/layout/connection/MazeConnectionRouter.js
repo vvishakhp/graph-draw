@@ -1,19 +1,19 @@
 /**
- * @class draw2d.layout.connection.MazeConnectionRouter
+ * @class  .layout.connection.MazeConnectionRouter
  * <b>BETA VERSION. Not for production!!!<br></b>
  *
  * @inheritable
  * @author Andreas Herz
  *
- * @extends  draw2d.layout.connection.ConnectionRouter
+ * @extends   .layout.connection.ConnectionRouter
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
 
 let ROUTER_RECTS = null
 
-draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.ConnectionRouter.extend({
-  NAME: "draw2d.layout.connection.MazeConnectionRouter",
+ .layout.connection.MazeConnectionRouter =  .layout.connection.ConnectionRouter.extend({
+  NAME: " .layout.connection.MazeConnectionRouter",
 
 
   /**
@@ -45,12 +45,12 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
    * @method
    * Callback method if the router has been assigned to a connection.
    *
-   * @param {draw2d.Connection} connection The assigned connection
+   * @param { .Connection} connection The assigned connection
    * @template
    * @since 2.7.2
    */
   onInstall: function (connection) {
-    connection.installEditPolicy(new draw2d.policy.line.LineSelectionFeedbackPolicy())
+    connection.installEditPolicy(new  .policy.line.LineSelectionFeedbackPolicy())
   },
 
   /**
@@ -83,10 +83,10 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
    * <p>
 
    * @private
-   * @param {draw2d.Connection} conn
-   * @param {draw2d.geo.Point} fromPt
+   * @param { .Connection} conn
+   * @param { .geo.Point} fromPt
    * @param {Number} fromDir
-   * @param {draw2d.geo.Point} toPt
+   * @param { .geo.Point} toPt
    * @param {Number} toDir
    */
   _route: function (conn, fromPt, fromDir, toPt, toDir) {
@@ -170,10 +170,10 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
 
 
     if (this.useSpline) {
-      let p = new draw2d.util.ArrayList()
+      let p = new  .util.ArrayList()
       p.add(oldFromPt)
       path.forEach(e => {
-        p.add(new draw2d.geo.Point(e[0], e[1]))
+        p.add(new  .geo.Point(e[0], e[1]))
       })
       p.add(oldToPt)
 
@@ -191,7 +191,7 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
         ROUTER_RECTS.push(conn.canvas.paper.path(svgPathBefore).attr({"stroke": "#00ff00"}))
       }
 
-      this.spline = new draw2d.util.spline.CubicSpline()
+      this.spline = new  .util.spline.CubicSpline()
       let splinePoints = this.spline.generate(p, 8)
 
       if (this.useSimplify) {
@@ -336,23 +336,23 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
    * @method
    * move the point in the given direction with the given offset
    *
-   * @param {draw2d.geo.Point} pt
+   * @param { .geo.Point} pt
    * @param {Number} direction
    * @param {Number} adjustment
    *
-   * @returns {draw2d.geo.Point}
+   * @returns { .geo.Point}
    */
   getAdjustedPoint: function (pt, direction, adjustment) {
 
     switch (direction) {
-      case draw2d.geo.Rectangle.DIRECTION_UP:
-        return new draw2d.geo.Point(pt.x, pt.y - adjustment)
-      case draw2d.geo.Rectangle.DIRECTION_RIGHT:
-        return new draw2d.geo.Point(pt.x + adjustment, pt.y)
-      case draw2d.geo.Rectangle.DIRECTION_DOWN:
-        return new draw2d.geo.Point(pt.x, pt.y + adjustment)
-      case draw2d.geo.Rectangle.DIRECTION_LEFT:
-        return new draw2d.geo.Point(pt.x - adjustment, pt.y)
+      case  .geo.Rectangle.DIRECTION_UP:
+        return new  .geo.Point(pt.x, pt.y - adjustment)
+      case  .geo.Rectangle.DIRECTION_RIGHT:
+        return new  .geo.Point(pt.x + adjustment, pt.y)
+      case  .geo.Rectangle.DIRECTION_DOWN:
+        return new  .geo.Point(pt.x, pt.y + adjustment)
+      case  .geo.Rectangle.DIRECTION_LEFT:
+        return new  .geo.Point(pt.x - adjustment, pt.y)
     }
   },
 

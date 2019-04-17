@@ -1,6 +1,6 @@
 
 /**
- * @class draw2d.policy.connection.ClickConnectionCreatePolicy
+ * @class  .policy.connection.ClickConnectionCreatePolicy
  *
  * The ClickConnectionCreatePolicy can be installed into the canvas to override the
  * default connection crate behaviour. Normally you can create connections by drag&drop a port.
@@ -27,12 +27,12 @@
  *
  *     // Override the default connection creation.
  *     //
- *     canvas.installEditPolicy( new draw2d.policy.connection.ClickConnectionCreatePolicy());
+ *     canvas.installEditPolicy( new  .policy.connection.ClickConnectionCreatePolicy());
  *
  *     // create and add two Node which contains Ports (In and OUT)
  *     //
- *     var start = new draw2d.shape.node.Start({x:50, y:50});
- *     var endNode   = new draw2d.shape.node.End({x:200, y:70});
+ *     var start = new  .shape.node.Start({x:50, y:50});
+ *     var endNode   = new  .shape.node.End({x:200, y:70});
  *
  *     // add the two nodes to the canvas
  *     //
@@ -42,14 +42,14 @@
  *
  * @author Andreas Herz
  *
- * @extends draw2d.policy.connection.ConnectionCreatePolicy
+ * @extends  .policy.connection.ConnectionCreatePolicy
  * @since 6.1.0
  */
-import draw2d from '../../packages';
+import   from '../../packages';
 
-draw2d.policy.connection.ClickConnectionCreatePolicy = draw2d.policy.connection.ConnectionCreatePolicy.extend({
+ .policy.connection.ClickConnectionCreatePolicy =  .policy.connection.ConnectionCreatePolicy.extend({
 
-    NAME : "draw2d.policy.connection.ClickConnectionCreatePolicy",
+    NAME : " .policy.connection.ClickConnectionCreatePolicy",
     
     /**
      * @constructor
@@ -72,7 +72,7 @@ draw2d.policy.connection.ClickConnectionCreatePolicy = draw2d.policy.connection.
      * @method
      * Called by the canvas if the user click on a figure.
      *
-     * @param {draw2d.Figure} the figure under the click event. Can be null
+     * @param { .Figure} the figure under the click event. Can be null
      * @param {Number} x the x coordinate of the mouse during the click event
      * @param {Number} y the y coordinate of the mouse during the click event
      * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -92,7 +92,7 @@ draw2d.policy.connection.ClickConnectionCreatePolicy = draw2d.policy.connection.
         // nothing found at all
         //
         if(port===null){
-            this.vertices.push(new draw2d.geo.Point(x,y));
+            this.vertices.push(new  .geo.Point(x,y));
             this.beeline.setStartPosition(x,y);
             this.tempConnection.setVertices(this.vertices);
             if(this.pulse!==null) {
@@ -105,7 +105,7 @@ draw2d.policy.connection.ClickConnectionCreatePolicy = draw2d.policy.connection.
 
         //just consider ports
         //
-        if(!(port instanceof draw2d.Port)){
+        if(!(port instanceof  .Port)){
             return;
         }
 
@@ -115,7 +115,7 @@ draw2d.policy.connection.ClickConnectionCreatePolicy = draw2d.policy.connection.
             var canvas = port.getCanvas();
             this.port1 = port;
             this.vertices.push(port.getAbsolutePosition());
-            this.beeline = new draw2d.shape.basic.Line({
+            this.beeline = new  .shape.basic.Line({
                 start: this.port1.getAbsolutePosition(),
                 end: this.port1.getAbsolutePosition(),
                 dasharray:"- ",
@@ -132,7 +132,7 @@ draw2d.policy.connection.ClickConnectionCreatePolicy = draw2d.policy.connection.
             };
             this.beeline.show(canvas);
 
-            this.tempConnection = new draw2d.shape.basic.PolyLine({
+            this.tempConnection = new  .shape.basic.PolyLine({
                 start: this.port1.getAbsolutePosition(),
                 end: this.port1.getAbsolutePosition(),
                 stroke:2,
@@ -166,16 +166,16 @@ draw2d.policy.connection.ClickConnectionCreatePolicy = draw2d.policy.connection.
 
         var possibleTarget = port.delegateTarget(this.port1);
 
-        if(!(possibleTarget instanceof draw2d.Port)){
+        if(!(possibleTarget instanceof  .Port)){
             return; // silently
         }
 
-        var request = new draw2d.command.CommandType(draw2d.command.CommandType.CONNECT);
+        var request = new  .command.CommandType( .command.CommandType.CONNECT);
         request.source = this.port1;
         request.target = port;
 
         var command = null;
-        if(this.port1 instanceof draw2d.InputPort) {
+        if(this.port1 instanceof  .InputPort) {
              command = this.port1.createCommand(request);
         }
         else{
@@ -203,7 +203,7 @@ draw2d.policy.connection.ClickConnectionCreatePolicy = draw2d.policy.connection.
     /**
      * @method
      *
-     * @param {draw2d.Canvas} canvas
+     * @param { .Canvas} canvas
      * @param {Number} x the x-coordinate of the mouse event
      * @param {Number} y the y-coordinate of the mouse event
      * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -220,7 +220,7 @@ draw2d.policy.connection.ClickConnectionCreatePolicy = draw2d.policy.connection.
      * @method
      * Callback if the user press a key down
      *
-     * @param {draw2d.Canvas} canvas the related canvas
+     * @param { .Canvas} canvas the related canvas
      * @param {Number} keyCode the pressed key
      * @param {Boolean} shiftKey true if the shift key has been pressed during this event
      * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
@@ -247,10 +247,10 @@ draw2d.policy.connection.ClickConnectionCreatePolicy = draw2d.policy.connection.
     {
         var connection = this._super();
         if(this.vertices.length===2){
-            connection.setRouter(new draw2d.layout.connection.DirectRouter());
+            connection.setRouter(new  .layout.connection.DirectRouter());
         }
         else {
-            connection.setRouter(new draw2d.layout.connection.VertexRouter());
+            connection.setRouter(new  .layout.connection.VertexRouter());
             connection.setVertices(this.vertices);
         }
         connection.setRadius(10);

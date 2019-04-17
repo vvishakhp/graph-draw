@@ -1,5 +1,5 @@
 /**
- * @class draw2d.layout.anchor.ChopboxConnectionAnchor
+ * @class  .layout.anchor.ChopboxConnectionAnchor
  *
  * The ChopboxAnchor's location is found by calculating the intersection of a
  * line drawn from the center point of its owner's box (the parent of the
@@ -10,19 +10,19 @@
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.layout.anchor.ConnectionAnchor
+ * @extends  .layout.anchor.ConnectionAnchor
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
 
-draw2d.layout.anchor.ChopboxConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor.extend({
+ .layout.anchor.ChopboxConnectionAnchor =  .layout.anchor.ConnectionAnchor.extend({
 
-  NAME: "draw2d.layout.anchor.ChopboxConnectionAnchor",
+  NAME: " .layout.anchor.ChopboxConnectionAnchor",
 
   /**
    * @constructor
    *
-   * @param {draw2d.Figure} owner the figure to use for the anchor calculation
+   * @param { .Figure} owner the figure to use for the anchor calculation
 
    */
   init: function (owner) {
@@ -36,13 +36,13 @@ draw2d.layout.anchor.ChopboxConnectionAnchor = draw2d.layout.anchor.ConnectionAn
    * absolute coordinates. The anchor may use the given reference
    * Point to calculate this location.
    *
-   * @param {draw2d.geo.Point} reference The reference Point in absolute coordinates
-   * @param {draw2d.Connection} [inquiringConnection] the connection who ask for the location.
+   * @param { .geo.Point} reference The reference Point in absolute coordinates
+   * @param { .Connection} [inquiringConnection] the connection who ask for the location.
    *
-   * @return {draw2d.geo.Point} The anchor's location
+   * @return { .geo.Point} The anchor's location
    */
   getLocation: function (reference, inquiringConnection) {
-    let r = new draw2d.geo.Rectangle(0, 0)
+    let r = new  .geo.Rectangle(0, 0)
     r.setBounds(this.getBox())
     r.translate(-1, -1)
     r.resize(1, 1)
@@ -71,7 +71,7 @@ draw2d.layout.anchor.ChopboxConnectionAnchor = draw2d.layout.anchor.ConnectionAn
    * override this method to adjust the box. Maybe you return the box
    * of the port parent (the parent figure)
    *
-   * @return {draw2d.geo.Rectangle} The bounds of this Anchor's owner
+   * @return { .geo.Rectangle} The bounds of this Anchor's owner
    */
   getBox: function () {
     return this.getOwner().getParent().getBoundingBox()
@@ -83,8 +83,8 @@ draw2d.layout.anchor.ChopboxConnectionAnchor = draw2d.layout.anchor.ConnectionAn
    * Returns the reference point for this anchor in absolute coordinates. This might be used
    * by another anchor to determine its own location.
    *
-   * @param {draw2d.Connection} [inquiringConnection] the connection who ask for the location.
-   * @return {draw2d.geo.Point} The bounds of this Anchor's owner
+   * @param { .Connection} [inquiringConnection] the connection who ask for the location.
+   * @return { .geo.Point} The bounds of this Anchor's owner
    */
   getReferencePoint: function (inquiringConnection) {
     return this.getBox().getCenter()

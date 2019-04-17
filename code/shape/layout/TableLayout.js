@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.layout.TableLayout
+ * @class  .shape.layout.TableLayout
  *
  * The TableLayout class arranges the children in a row/column order. Each cell can be styled
  * with valign, align and padding.
@@ -10,12 +10,12 @@
  *
  *     @example preview small frame
  *
- *         let label1 =  new draw2d.shape.basic.Label({text:"[0,1] with long long long long label", fontColor:"#00AF00"});
- *         let label2 =  new draw2d.shape.basic.Label({text:"[1,1] padding:10", fontColor:"#00AF00"});
- *         let label3 =  new draw2d.shape.basic.Label({text:"[2,1] align:right", fontColor:"#00AF00"});
- *         let label4 =  new draw2d.shape.basic.Label({text:"[3,1] resize:true",resizeable:true, fontColor:"#00AF00"});
+ *         let label1 =  new  .shape.basic.Label({text:"[0,1] with long long long long label", fontColor:"#00AF00"});
+ *         let label2 =  new  .shape.basic.Label({text:"[1,1] padding:10", fontColor:"#00AF00"});
+ *         let label3 =  new  .shape.basic.Label({text:"[2,1] align:right", fontColor:"#00AF00"});
+ *         let label4 =  new  .shape.basic.Label({text:"[3,1] resize:true",resizeable:true, fontColor:"#00AF00"});
  *
- *         let container = new draw2d.shape.layout.TableLayout();
+ *         let container = new  .shape.layout.TableLayout();
  *
  *         container.addRow("[0,0]", label1 ,"[0,2] align:center");
  *         container.addRow("[1,0] valign:bottom", label2,"[1,2] long long long label");
@@ -33,14 +33,14 @@
  *
  *
  * @author Andreas Herz
- * @extends draw2d.shape.layout.Layout
+ * @extends  .shape.layout.Layout
  * @since 5.3.0
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.layout.TableLayout = draw2d.shape.layout.Layout.extend({
+ .shape.layout.TableLayout =  .shape.layout.Layout.extend({
 
-  NAME: "draw2d.shape.layout.TableLayout",
+  NAME: " .shape.layout.TableLayout",
 
   DUMMY_CELL: {
     getMinHeight: function () {
@@ -285,7 +285,7 @@ draw2d.shape.layout.TableLayout = draw2d.shape.layout.Layout.extend({
 
     args.forEach(function (figure, index) {
       if (typeof figure === "string") {
-        figure = new draw2d.shape.basic.Label({text: figure})
+        figure = new  .shape.basic.Label({text: figure})
       }
       row.push(figure)
       figuresToAdd.push(figure)

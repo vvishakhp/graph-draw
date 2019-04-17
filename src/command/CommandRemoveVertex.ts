@@ -1,27 +1,27 @@
 /**
- * @class draw2d.command.CommandRemoveVertex
+ * @class  .command.CommandRemoveVertex
  *
  * Remove a vertex from a polyline or polygon
  *
  * @inheritable
  * @author Andreas Herz
  *
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandRemoveVertex = draw2d.command.Command.extend({
-  NAME: "draw2d.command.CommandRemoveVertex",
+ .command.CommandRemoveVertex =  .command.Command.extend({
+  NAME: " .command.CommandRemoveVertex",
 
   /**
    * @constructor
    * Create a new Command objects which add a vertex to a PloyLine.
    *
-   * @param {draw2d.shape.basic.PolyLine} line the related line
+   * @param { .shape.basic.PolyLine} line the related line
    * @param {Number} index the index where to add
    */
   init: function (line, index) {
-    this._super(draw2d.Configuration.i18n.command.deleteVertex)
+    this._super( .Configuration.i18n.command.deleteVertex)
 
     this.line = line
     this.index = index

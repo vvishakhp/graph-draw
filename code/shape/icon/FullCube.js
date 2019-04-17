@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.FullCube
+ * @class  .shape.icon.FullCube
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.FullCube();
+ *     let icon =  new  .shape.icon.FullCube();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.FullCube = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.FullCube",
+ .shape.icon.FullCube =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.FullCube",
 
   /**
    *

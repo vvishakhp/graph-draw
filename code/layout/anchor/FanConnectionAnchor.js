@@ -1,5 +1,5 @@
 /**
- * @class draw2d.layout.anchor.FanConnectionAnchor
+ * @class  .layout.anchor.FanConnectionAnchor
  *
  * The FanConnectionAnchor's location is found by calculating the intersection of a
  * line drawn from the center point of its owner's box (the parent of the
@@ -12,19 +12,19 @@
  * @inheritable
  * @author Andreas Herz
  * @since 4.6.0
- * @extends draw2d.layout.anchor.ConnectionAnchor
+ * @extends  .layout.anchor.ConnectionAnchor
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
 
-draw2d.layout.anchor.FanConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor.extend({
+ .layout.anchor.FanConnectionAnchor =  .layout.anchor.ConnectionAnchor.extend({
 
-  NAME: "draw2d.layout.anchor.FanConnectionAnchor",
+  NAME: " .layout.anchor.FanConnectionAnchor",
 
   /**
    * @constructor
    *
-   * @param {draw2d.Figure} owner the figure to use for the anchor calculation
+   * @param { .Figure} owner the figure to use for the anchor calculation
    * @param {Number} [separation] the separation or fan distance between the concurrent/conflicting anchors
    */
   init: function (owner, separation) {
@@ -45,14 +45,14 @@ draw2d.layout.anchor.FanConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor
    * absolute coordinates. The anchor may use the given reference
    * Point to calculate this location.
    *
-   * @param {draw2d.geo.Point} reference The reference Point in absolute coordinates
-   * @param {draw2d.Connection} inquiringConnection the connection who ask for the location.
+   * @param { .geo.Point} reference The reference Point in absolute coordinates
+   * @param { .Connection} inquiringConnection the connection who ask for the location.
    *
-   * @return {draw2d.geo.Point} The anchor's location
+   * @return { .geo.Point} The anchor's location
    */
   getLocation: function (reference, inquiringConnection) {
 
-    let r = new draw2d.geo.Rectangle(0, 0)
+    let r = new  .geo.Rectangle(0, 0)
     r.setBounds(this.getBox())
     r.translate(-1, -1)
     r.resize(1, 1)
@@ -74,11 +74,11 @@ draw2d.layout.anchor.FanConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor
     let index = lines.indexOf(inquiringConnection) + 1
     let position = center.getPosition(reference)
     let ray
-    if (position === draw2d.geo.PositionConstants.SOUTH || position === draw2d.geo.PositionConstants.EAST) {
-      ray = new draw2d.geo.Point(reference.x - center.x, reference.y - center.y)
+    if (position ===  .geo.PositionConstants.SOUTH || position ===  .geo.PositionConstants.EAST) {
+      ray = new  .geo.Point(reference.x - center.x, reference.y - center.y)
     }
     else {
-      ray = new draw2d.geo.Point(center.x - reference.x, center.y - reference.y)
+      ray = new  .geo.Point(center.x - reference.x, center.y - reference.y)
     }
     let length = Math.sqrt(ray.x * ray.x + ray.y * ray.y)
     if (index <= 2) {
@@ -87,10 +87,10 @@ draw2d.layout.anchor.FanConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor
     let xSeparation = this.separation * ray.x / length
     let ySeparation = this.separation * ray.y / length
     if (index % 2 === 0) {
-      center = new draw2d.geo.Point(center.x + (index / 2) * (-1 * ySeparation), center.y + (index / 2) * xSeparation)
+      center = new  .geo.Point(center.x + (index / 2) * (-1 * ySeparation), center.y + (index / 2) * xSeparation)
     }
     else {
-      center = new draw2d.geo.Point(center.x + (index / 2) * ySeparation, center.y + (index / 2) * (-1 * xSeparation))
+      center = new  .geo.Point(center.x + (index / 2) * ySeparation, center.y + (index / 2) * (-1 * xSeparation))
     }
 
     let intersections = this.getBox().intersectionWithLine(center, reference)
@@ -132,7 +132,7 @@ draw2d.layout.anchor.FanConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor
    * override this method to adjust the box. Maybe you return the box
    * of the port parent (the parent figure)
    *
-   * @return {draw2d.geo.Rectangle} The bounds of this Anchor's owner
+   * @return { .geo.Rectangle} The bounds of this Anchor's owner
    */
   getBox: function () {
     return this.getOwner().getParent().getBoundingBox()
@@ -144,9 +144,9 @@ draw2d.layout.anchor.FanConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor
    * Returns the reference point for this anchor in absolute coordinates. This might be used
    * by another anchor to determine its own location.
    *
-   * @param {draw2d.Connection} inquiringConnection the connection who ask for the location.
+   * @param { .Connection} inquiringConnection the connection who ask for the location.
    *
-   * @return {draw2d.geo.Point} The bounds of this Anchor's owner
+   * @return { .geo.Point} The bounds of this Anchor's owner
    */
   getReferencePoint: function (inquiringConnection) {
     return this.getBox().getCenter()

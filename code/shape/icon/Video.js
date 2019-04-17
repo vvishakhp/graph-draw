@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Video
+ * @class  .shape.icon.Video
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Video();
+ *     let icon =  new  .shape.icon.Video();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Video = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Video",
+ .shape.icon.Video =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Video",
 
   /**
    *

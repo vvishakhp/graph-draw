@@ -1,26 +1,26 @@
 /**
- * @class draw2d.command.CommandMoveConnection
+ * @class  .command.CommandMoveConnection
  *
  * Command for the movement of figures.
  *
  * @inheritable
  * @author Andreas Herz
  *
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandMoveConnection = draw2d.command.Command.extend({
-  NAME: "draw2d.command.CommandMoveConnection",
+ .command.CommandMoveConnection =  .command.Command.extend({
+  NAME: " .command.CommandMoveConnection",
 
   /**
    * @constructor
    * Create a new Command objects which can be execute via the CommandStack.
    *
-   * @param {draw2d.Connection} figure the connection to move
+   * @param { .Connection} figure the connection to move
    */
   init: function (figure) {
-    this._super(draw2d.Configuration.i18n.command.moveLine)
+    this._super( .Configuration.i18n.command.moveLine)
     this.line = figure
     this.dx = 0
     this.dy = 0

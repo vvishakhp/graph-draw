@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.SlideShare
+ * @class  .shape.icon.SlideShare
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.SlideShare();
+ *     let icon =  new  .shape.icon.SlideShare();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.SlideShare = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.SlideShare",
+ .shape.icon.SlideShare =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.SlideShare",
 
   /**
    *

@@ -1,12 +1,12 @@
 /**
- * @class draw2d.shape.basic.PolyLine
+ * @class  .shape.basic.PolyLine
  *
  * A PolyLine is a line with more than 2 points.
  *
  *
  *     @example preview small frame
  *
- *     let line = new draw2d.shape.basic.PolyLine();
+ *     let line = new  .shape.basic.PolyLine();
  *     line.setVertices([{x:10,y:10},{x:80,y:70},{x:100,y:110}]);
  *     canvas.add(line);
  *
@@ -15,15 +15,15 @@
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.basic.Line
+ * @extends  .shape.basic.Line
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import jsonUtil from '../../util/JSONUtil'
 import extend from '../../util/extend'
 
-draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
+ .shape.basic.PolyLine =  .shape.basic.Line.extend({
 
-  NAME: "draw2d.shape.basic.PolyLine",
+  NAME: " .shape.basic.PolyLine",
 
   /**
    * @constructor
@@ -39,17 +39,17 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
 
     this.router = null
     this.routingRequired = true
-    this.lineSegments = new draw2d.util.ArrayList()
+    this.lineSegments = new  .util.ArrayList()
 
     this.radius = ""
 
     this._super(
       extend(
         {
-          router: new draw2d.layout.connection.VertexRouter()
+          router: new  .layout.connection.VertexRouter()
         }, attr),
       extend({}, {
-        /** @attr {draw2d.layout.connection.ConnectionRouter} the router to use to layout the polyline */
+        /** @attr { .layout.connection.ConnectionRouter} the router to use to layout the polyline */
         router: this.setRouter,
         /** @attr {Number} radius the radius to render the line edges */
         radius: this.setRadius
@@ -112,7 +112,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
       this.vertices.first().setPosition(x, y)
     }
     else {
-      this.vertices.add(new draw2d.geo.Point(x, y))
+      this.vertices.add(new  .geo.Point(x, y))
     }
     this.start = this.vertices.first().clone()
     //     if(this.isInDragDrop===false)
@@ -122,7 +122,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
 
     let _this = this
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
     })
@@ -144,7 +144,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
       this.vertices.last().setPosition(x, y)
     }
     else {
-      this.vertices.add(new draw2d.geo.Point(x, y))
+      this.vertices.add(new  .geo.Point(x, y))
     }
     this.end = this.vertices.last().clone()
 
@@ -155,7 +155,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
 
     let _this = this
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
     })
@@ -166,15 +166,15 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
 
   /**
    * @method
-   * Inserts the draw2d.geo.Point object into the vertex list of the polyline just after the object with the given index.
+   * Inserts the  .geo.Point object into the vertex list of the polyline just after the object with the given index.
    *
-   * @param {Number|draw2d.geo.Point} x the x coordinate or the draw2d.geo.Point object
+   * @param {Number| .geo.Point} x the x coordinate or the  .geo.Point object
    * @param {Number} [y] the y coordinate or undefined of the second argument is a point
    *
    * @since 4.0.0
    */
   addVertex: function (x, y) {
-    this.vertices.add(new draw2d.geo.Point(x, y))
+    this.vertices.add(new  .geo.Point(x, y))
 
     this.start = this.vertices.first().clone()
     this.end = this.vertices.last().clone()
@@ -185,7 +185,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
     if (!this.selectionHandles.isEmpty()) {
       let _this = this
       this.editPolicy.each(function (i, e) {
-        if (e instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
+        if (e instanceof  .policy.figure.SelectionFeedbackPolicy) {
           e.onUnselect(_this.canvas, _this)
           e.onSelect(_this.canvas, _this)
         }
@@ -199,16 +199,16 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
 
   /**
    * @method
-   * Inserts the draw2d.geo.Point object into the vertex list of the polyline just after the object with the given index.
+   * Inserts the  .geo.Point object into the vertex list of the polyline just after the object with the given index.
    *
    * @param {Number} index the insert index
-   * @param {Number|draw2d.geo.Point} x the x coordinate or the draw2d.geo.Point object
+   * @param {Number| .geo.Point} x the x coordinate or the  .geo.Point object
    * @param {Number} [y] the y coordinate or undefined of the second argument is a point
    *
    * @since 4.0.0
    */
   insertVertexAt: function (index, x, y) {
-    let vertex = new draw2d.geo.Point(x, y)
+    let vertex = new  .geo.Point(x, y)
 
     this.vertices.insertElementAt(vertex, index)
 
@@ -221,7 +221,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
     if (!this.selectionHandles.isEmpty()) {
       let _this = this
       this.editPolicy.each(function (i, e) {
-        if (e instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
+        if (e instanceof  .policy.figure.SelectionFeedbackPolicy) {
           e.onUnselect(_this.canvas, _this)
           e.onSelect(_this.canvas, _this)
         }
@@ -239,7 +239,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    * can send an veto for this operation.
    *
    * @param index
-   * @returns {draw2d.geo.Point} the removed point or null of the current router decline this operation
+   * @returns { .geo.Point} the removed point or null of the current router decline this operation
    * @since 4.0.0
    */
   removeVertexAt: function (index) {
@@ -254,7 +254,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
     if (!this.selectionHandles.isEmpty()) {
       let _this = this
       this.editPolicy.each(function (i, e) {
-        if (e instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
+        if (e instanceof  .policy.figure.SelectionFeedbackPolicy) {
           e.onUnselect(_this.canvas, _this)
           e.onSelect(_this.canvas, _this)
         }
@@ -270,7 +270,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    * @method
    * Set the router for this connection.
    *
-   * @param {draw2d.layout.connection.ConnectionRouter} [router] the new router for this connection or null if the connection should use the default routing
+   * @param { .layout.connection.ConnectionRouter} [router] the new router for this connection or null if the connection should use the default routing
    **/
   setRouter: function (router) {
     if (this.router !== null) {
@@ -278,7 +278,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
     }
 
     if (typeof router === "undefined" || router === null) {
-      this.router = new draw2d.layout.connection.DirectRouter()
+      this.router = new  .layout.connection.DirectRouter()
     }
     else {
       this.router = router
@@ -300,7 +300,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    * @method
    * Return the current active router of this connection.
    *
-   * @type draw2d.layout.connection.ConnectionRouter
+   * @type  .layout.connection.ConnectionRouter
    **/
   getRouter: function () {
     return this.router
@@ -330,8 +330,8 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
     // cleanup the routing cache
     //
     this.oldPoint = null
-    this.lineSegments = new draw2d.util.ArrayList()
-    this.vertices = new draw2d.util.ArrayList()
+    this.lineSegments = new  .util.ArrayList()
+    this.vertices = new  .util.ArrayList()
 
     // Use the internal router
     //
@@ -368,7 +368,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    * @method
    * Return all line segments of the polyline.
    *
-   * @returns {draw2d.util.ArrayList}
+   * @returns { .util.ArrayList}
    */
   getSegments: function () {
     return this.lineSegments
@@ -381,9 +381,9 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    * @protected
    *
    **/
-  addPoint: function (/*:draw2d.geo.Point*/ p, y) {
+  addPoint: function (/*: .geo.Point*/ p, y) {
     if (typeof y !== "undefined") {
-      p = new draw2d.geo.Point(p, y)
+      p = new  .geo.Point(p, y)
     }
     this.vertices.add(p)
 
@@ -453,7 +453,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    *
    * @param {Number} px the x coordinate of the test point
    * @param {Number} py the y coordinate of the test point
-   * @return {draw2d.geo.Point}
+   * @return { .geo.Point}
    **/
   pointProjection: function (px, py) {
     let result = null,
@@ -462,12 +462,12 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
       p2 = null,
       segment = null
     let lastDist = Number.MAX_SAFE_INTEGER
-    let pt = new draw2d.geo.Point(px, py)
+    let pt = new  .geo.Point(px, py)
     for (let i = 0; i < this.lineSegments.getSize(); i++) {
       segment = this.lineSegments.get(i)
       p1 = segment.start
       p2 = segment.end
-      projection = draw2d.geo.Line.pointProjection(p1.x, p1.y, p2.x, p2.y, pt.x, pt.y)
+      projection =  .geo.Line.pointProjection(p1.x, p1.y, p2.x, p2.y, pt.x, pt.y)
       if (projection !== null) {
         let dist = projection.distance(pt)
         if (result == null || dist < lastDist) {
@@ -488,7 +488,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
       segment = this.lineSegments.get(result.index)
       p1 = segment.start
       p2 = segment.end
-      length += p1.distance(p2) * draw2d.geo.Line.inverseLerp(p2.x, p2.y, p1.x, p1.y, result.x, result.y)
+      length += p1.distance(p2) *  .geo.Line.inverseLerp(p2.x, p2.y, p1.x, p1.y, result.x, result.y)
       result.percentage = (1.0 / this.getLength()) * length
     }
     return result
@@ -499,7 +499,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    * Returns the point onto the line which has the relative 'percentage' position onto the line.
    *
    * @param {Number} percentage the relative position between [0..1]
-   * @returns {draw2d.geo.Point}
+   * @returns { .geo.Point}
    */
   lerp: function (percentage) {
     let length = this.getLength() * percentage
@@ -512,7 +512,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
       length = length - p1.distance(p2)
       if (length <= 0) {
         percentage = 1.0 / p1.distance(p2) * lastValidLength
-        return new draw2d.geo.Point(p1.x + (p2.x - p1.x) * percentage, p1.y + (p2.y - p1.y) * percentage)
+        return new  .geo.Point(p1.x + (p2.x - p1.x) * percentage, p1.y + (p2.y - p1.y) * percentage)
       }
       lastValidLength = length
     }
@@ -534,7 +534,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
   hitSegment: function (px, py) {
     for (let i = 0; i < this.lineSegments.getSize(); i++) {
       let segment = this.lineSegments.get(i)
-      if (draw2d.shape.basic.Line.hit(this.corona + this.stroke, segment.start.x, segment.start.y, segment.end.x, segment.end.y, px, py)) {
+      if ( .shape.basic.Line.hit(this.corona + this.stroke, segment.start.x, segment.start.y, segment.end.x, segment.end.y, px, py)) {
         return {index: i, start: segment.start, end: segment.end}
       }
     }
@@ -560,19 +560,19 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    */
   createCommand: function (request) {
 
-    if (request.getPolicy() === draw2d.command.CommandType.DELETE) {
+    if (request.getPolicy() ===  .command.CommandType.DELETE) {
       if (this.isDeleteable() === true) {
-        return new draw2d.command.CommandDelete(this)
+        return new  .command.CommandDelete(this)
       }
     }
-    else if (request.getPolicy() === draw2d.command.CommandType.MOVE_VERTEX) {
+    else if (request.getPolicy() ===  .command.CommandType.MOVE_VERTEX) {
       if (this.isResizeable() === true) {
-        return new draw2d.command.CommandMoveVertex(this)
+        return new  .command.CommandMoveVertex(this)
       }
     }
-    else if (request.getPolicy() === draw2d.command.CommandType.MOVE_VERTICES) {
+    else if (request.getPolicy() ===  .command.CommandType.MOVE_VERTICES) {
       if (this.isResizeable() === true) {
-        return new draw2d.command.CommandMoveVertices(this)
+        return new  .command.CommandMoveVertices(this)
       }
     }
 

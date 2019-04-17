@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.composite.Jailhouse
+ * @class  .shape.composite.Jailhouse
  *
  * A Jailhouse is a figure that acts as a container for other figures. A Jailhouse
  * is a StrongComposite node that controls a set of child figures. Child nodes can't
@@ -8,13 +8,13 @@
  * respect to other figures.
  *
  * @author Andreas Herz
- * @extends draw2d.shape.composite.StrongComposite
+ * @extends  .shape.composite.StrongComposite
  * @since 4.8.0
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.composite.Jailhouse = draw2d.shape.composite.StrongComposite.extend({
-  NAME: "draw2d.shape.composite.Jailhouse",
+ .shape.composite.Jailhouse =  .shape.composite.StrongComposite.extend({
+  NAME: " .shape.composite.Jailhouse",
 
   /**
    * @constructor
@@ -23,7 +23,7 @@ draw2d.shape.composite.Jailhouse = draw2d.shape.composite.StrongComposite.extend
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
-    this.policy = new draw2d.policy.figure.RegionEditPolicy(0, 0, 10, 10)
+    this.policy = new  .policy.figure.RegionEditPolicy(0, 0, 10, 10)
     this._super(extend({bgColor: "#f0f0f0", color: "#333333"}, attr), setter, getter)
 
     this.stickFigures = false
@@ -47,7 +47,7 @@ draw2d.shape.composite.Jailhouse = draw2d.shape.composite.StrongComposite.extend
    * @method
    * Set the position of the object.
    *
-   * @param {Number/draw2d.geo.Point} x The new x coordinate of the figure
+   * @param {Number/ .geo.Point} x The new x coordinate of the figure
    * @param {Number} [y] The new y coordinate of the figure
    **/
   setPosition: function (x, y) {
@@ -80,7 +80,7 @@ draw2d.shape.composite.Jailhouse = draw2d.shape.composite.StrongComposite.extend
    * The bounding box of the group is recalculated and the union of the current bounding box with the
    * figure bounding box.
    *
-   * @param {draw2d.Figure} figure
+   * @param { .Figure} figure
    */
   assignFigure: function (figure) {
     if (!this.assignedFigures.contains(figure) && figure !== this) {
@@ -99,7 +99,7 @@ draw2d.shape.composite.Jailhouse = draw2d.shape.composite.StrongComposite.extend
    * @method
    * Remove the given figure from the group assignment
    *
-   * @param {draw2d.Figure} figure the figure to remove
+   * @param { .Figure} figure the figure to remove
    *
    */
   unassignFigure: function (figure) {
@@ -122,7 +122,7 @@ draw2d.shape.composite.Jailhouse = draw2d.shape.composite.StrongComposite.extend
   },
 
   onCatch: function (droppedFigure, x, y, shiftKey, ctrlKey) {
-    this.getCanvas().getCommandStack().execute(new draw2d.command.CommandAssignFigure(droppedFigure, this))
+    this.getCanvas().getCommandStack().execute(new  .command.CommandAssignFigure(droppedFigure, this))
   },
 
 

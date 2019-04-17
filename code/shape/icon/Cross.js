@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Cross
+ * @class  .shape.icon.Cross
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Cross();
+ *     let icon =  new  .shape.icon.Cross();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Cross = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Cross",
+ .shape.icon.Cross =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Cross",
 
   /**
    *

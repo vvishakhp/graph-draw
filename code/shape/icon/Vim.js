@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Vim
+ * @class  .shape.icon.Vim
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Vim();
+ *     let icon =  new  .shape.icon.Vim();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Vim = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Vim",
+ .shape.icon.Vim =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Vim",
 
   /**
    *

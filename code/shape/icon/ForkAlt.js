@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.ForkAlt
+ * @class  .shape.icon.ForkAlt
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.ForkAlt();
+ *     let icon =  new  .shape.icon.ForkAlt();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.ForkAlt = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.ForkAlt",
+ .shape.icon.ForkAlt =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.ForkAlt",
 
   /**
    *

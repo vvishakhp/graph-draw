@@ -1,7 +1,7 @@
 /**
- * @class draw2d.layout.connection.CircuitConnectionRouter
+ * @class  .layout.connection.CircuitConnectionRouter
  *
- * Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source
+ * Provides a {@link  .Connection} with an orthogonal route between the Connection's source
  * and target anchors.
  * <br>
  * Additional a <b>bridge</b> is added to each connection which didn't have a common source or target
@@ -13,23 +13,23 @@
  *     @example preview small frame
  *
  *     let createConnection=function(){
- *        let con = new draw2d.Connection();
- *        con.setRouter(new draw2d.layout.connection.CircuitConnectionRouter());
+ *        let con = new  .Connection();
+ *        con.setRouter(new  .layout.connection.CircuitConnectionRouter());
  *        return con;
  *     };
  *
  *     // install a custom connection create policy
  *     //
- *     canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
+ *     canvas.installEditPolicy(  new  .policy.connection.DragConnectionCreatePolicy({
  *            createConnection: createConnection
  *     }));
  *
  *     // create and add two nodes which contains Ports (In and OUT)
  *     //
- *     let f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});
- *     let f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});
- *     let f3 = new draw2d.shape.analog.ResistorVertical({x:250, y:70});
- *     let f4 = new draw2d.shape.analog.ResistorVertical({x:10, y:90});
+ *     let f1 = new  .shape.analog.OpAmp({x:10, y:10});
+ *     let f2 = new  .shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});
+ *     let f3 = new  .shape.analog.ResistorVertical({x:250, y:70});
+ *     let f4 = new  .shape.analog.ResistorVertical({x:10, y:90});
  *
  *     // ...add it to the canvas
  *     //
@@ -56,13 +56,13 @@
  * @inheritable
  * @author Andreas Herz
  *
- * @extends  draw2d.layout.connection.ManhattanConnectionRouter
+ * @extends   .layout.connection.ManhattanConnectionRouter
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
 
-draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend({
-  NAME: "draw2d.layout.connection.CircuitConnectionRouter",
+ .layout.connection.CircuitConnectionRouter =  .layout.connection.ManhattanConnectionRouter.extend({
+  NAME: " .layout.connection.CircuitConnectionRouter",
 
   /**
    * @constructor
@@ -84,12 +84,12 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
    * @method
    * Callback method if the router has been assigned to a connection.
    *
-   * @param {draw2d.Connection} connection The assigned connection
+   * @param { .Connection} connection The assigned connection
    * @template
    * @since 2.7.2
    */
   onInstall: function (connection) {
-    connection.installEditPolicy(new draw2d.policy.line.LineSelectionFeedbackPolicy())
+    connection.installEditPolicy(new  .policy.line.LineSelectionFeedbackPolicy())
   },
 
   /**
@@ -97,7 +97,7 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
    * Callback method if the router has been removed from the connection. In the case of the CircuitRouter
    * all vertex nodes will be removed from the canvas.
    *
-   * @param {draw2d.Connection} connection The related connection
+   * @param { .Connection} connection The related connection
    * @template
    * @since 2.7.2
    */
@@ -204,7 +204,7 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
       // vertex => the connections did have a common source or target port
       //
       intersectionForCalc.each((ii, interP) => {
-        if (draw2d.shape.basic.Line.hit(1, oldP.x, oldP.y, p.x, p.y, interP.x, interP.y) === true) {
+        if ( .shape.basic.Line.hit(1, oldP.x, oldP.y, p.x, p.y, interP.x, interP.y) === true) {
 
           // It is a vertex node..
           //

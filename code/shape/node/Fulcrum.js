@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.node.Fulcrum
+ * @class  .shape.node.Fulcrum
  *
  * A horizontal bus shape with a special kind of port handling. The hole figure is a hybrid port.
  *
@@ -7,18 +7,18 @@
  *
  *     @example preview small frame
  *
- *     canvas.add( new draw2d.shape.node.Fulcrum(),50,10);
- *     canvas.add( new draw2d.shape.node.Fulcrum(),80,100);
- *     canvas.add( new draw2d.shape.node.Fulcrum(),150,50);
+ *     canvas.add( new  .shape.node.Fulcrum(),50,10);
+ *     canvas.add( new  .shape.node.Fulcrum(),80,100);
+ *     canvas.add( new  .shape.node.Fulcrum(),150,50);
  *
- * @extends draw2d.shape.node.Hub
+ * @extends  .shape.node.Hub
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import jsonUtil from '../../util/JSONUtil'
 
-draw2d.shape.node.Fulcrum = draw2d.shape.node.Hub.extend({
+ .shape.node.Fulcrum =  .shape.node.Hub.extend({
 
-  NAME: "draw2d.shape.node.Fulcrum",
+  NAME: " .shape.node.Fulcrum",
 
   /**
    * @constructor
@@ -29,7 +29,7 @@ draw2d.shape.node.Fulcrum = draw2d.shape.node.Hub.extend({
     this._super(extend({width: 40, height: 40}, attr), setter, getter)
 
 
-    this.port.setConnectionAnchor(new draw2d.layout.anchor.ConnectionAnchor(this.port))
+    this.port.setConnectionAnchor(new  .layout.anchor.ConnectionAnchor(this.port))
     this.port.setVisible(true)
     this.port.hitTest = this.port._orig_hitTest
 
@@ -38,7 +38,7 @@ draw2d.shape.node.Fulcrum = draw2d.shape.node.Hub.extend({
     this.setRadius(10)
     this.setBackgroundColor(null)
     this.setStroke(0)
-    this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy())
+    this.installEditPolicy(new  .policy.figure.AntSelectionFeedbackPolicy())
   },
 
   /**

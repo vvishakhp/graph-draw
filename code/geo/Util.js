@@ -1,18 +1,18 @@
 
 
 /**
- * @class draw2d.geo.Ray
+ * @class  .geo.Ray
  * A ray is a line starting in [0,0,] with some additional
  * helper functions required for some router.
  * 
  * @inheritable
- * @extends draw2d.geo.Point
+ * @extends  .geo.Point
  * @author Andreas Herz
  */
-import draw2d from '../packages';
+import   from '../packages';
 
 
-draw2d.geo.Util=
+ .geo.Util=
 {
 
     insetPoint: function(start, end, distanceFromStart){

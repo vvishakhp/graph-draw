@@ -1,5 +1,5 @@
 /**
- * @class draw2d.layout.locator.ParallelMidpointLocator
+ * @class  .layout.locator.ParallelMidpointLocator
  *
  * A ParallelMidpointLocator that is used to place label at the midpoint of a  routed
  * connection. The midpoint is always in the center of an edge.
@@ -7,13 +7,13 @@
  *
  *
  * @author Andreas Herz
- * @extend draw2d.layout.locator.ConnectionLocator
+ * @extend  .layout.locator.ConnectionLocator
  * @since 4.4.4
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.layout.locator.ParallelMidpointLocator = draw2d.layout.locator.ConnectionLocator.extend({
-  NAME: "draw2d.layout.locator.ParallelMidpointLocator",
+ .layout.locator.ParallelMidpointLocator =  .layout.locator.ConnectionLocator.extend({
+  NAME: " .layout.locator.ParallelMidpointLocator",
 
   /**
    * @constructor
@@ -41,7 +41,7 @@ draw2d.layout.locator.ParallelMidpointLocator = draw2d.layout.locator.Connection
    * Relocates the given Figure always in the center of an edge.
    *
    * @param {Number} index child index of the target
-   * @param {draw2d.Figure} target The figure to relocate
+   * @param { .Figure} target The figure to relocate
    **/
   relocate: function (index, target) {
     var conn = target.getParent()

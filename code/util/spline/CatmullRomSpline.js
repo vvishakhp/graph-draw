@@ -1,18 +1,18 @@
 /**
- * @class draw2d.util.spline.CatmullRomSpline
+ * @class  .util.spline.CatmullRomSpline
  *
  * A catmull-rom spline object.
  *
  * @inheritable
  * @author Andreas Herz
  *
- * @extends draw2d.util.spline.CubicSpline
+ * @extends  .util.spline.CubicSpline
  */
-import draw2d from '../../packages';
+import   from '../../packages';
 
-draw2d.util.spline.CatmullRomSpline = draw2d.util.spline.CubicSpline.extend(
+ .util.spline.CatmullRomSpline =  .util.spline.CubicSpline.extend(
 {
-    NAME : "draw2d.util.spline.CatmullRomSpline",
+    NAME : " .util.spline.CatmullRomSpline",
 
     /**
      * @constructor

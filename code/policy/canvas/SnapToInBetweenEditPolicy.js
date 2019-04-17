@@ -1,5 +1,5 @@
 /**
- * @class draw2d.policy.canvas.SnapToInBetweenEditPolicy
+ * @class  .policy.canvas.SnapToInBetweenEditPolicy
  *
  * Snapping is based on the existing children of a container. When snapping a shape,
  * the edges of the bounding box will snap to edges of other rectangles generated
@@ -8,14 +8,14 @@
  *
  * @author Andreas Herz
  *
- * @extends draw2d.policy.canvas.SnapToEditPolicy
+ * @extends  .policy.canvas.SnapToEditPolicy
  * @since 5.6.4
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEditPolicy.extend({
+ .policy.canvas.SnapToInBetweenEditPolicy =  .policy.canvas.SnapToEditPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.SnapToInBetweenEditPolicy",
+  NAME: " .policy.canvas.SnapToInBetweenEditPolicy",
 
   SNAP_THRESHOLD: 5,
   FADEOUT_DURATION: 500,
@@ -39,7 +39,7 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
   /**
    * @method
    *
-   * @param {draw2d.Canvas} canvas
+   * @param { .Canvas} canvas
    * @param {Number} x the x-coordinate of the mouse down event
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -56,20 +56,20 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
    * @method
    * Adjust the coordinates to the canvas neighbours
    *
-   * @param {draw2d.Canvas} canvas the related canvas
-   * @param {draw2d.Figure} figure the figure to snap
-   * @param {draw2d.geo.Point} modifiedPos the already modified position of the figure (e.g. from an another Policy)
-   * @param {draw2d.geo.Point} originalPos the original requested position of the figure
+   * @param { .Canvas} canvas the related canvas
+   * @param { .Figure} figure the figure to snap
+   * @param { .geo.Point} modifiedPos the already modified position of the figure (e.g. from an another Policy)
+   * @param { .geo.Point} originalPos the original requested position of the figure
    *
-   * @returns {draw2d.geo.Point} the constraint position of the figure
+   * @returns { .geo.Point} the constraint position of the figure
    */
   snap: function (canvas, figure, modifiedPos, originalPos) {
     // do nothing for resize handles
-    if (figure instanceof draw2d.ResizeHandle) {
+    if (figure instanceof  .ResizeHandle) {
       return modifiedPos
     }
     // do nothing for lines
-    if (figure instanceof draw2d.shape.basic.Line) {
+    if (figure instanceof  .shape.basic.Line) {
       return modifiedPos
     }
 
@@ -77,7 +77,7 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
     var allowXChanges = modifiedPos.x === originalPos.x
     var allowYChanges = modifiedPos.y === originalPos.y
 
-    var inputBounds = new draw2d.geo.Rectangle(modifiedPos.x, modifiedPos.y, figure.getWidth(), figure.getHeight())
+    var inputBounds = new  .geo.Rectangle(modifiedPos.x, modifiedPos.y, figure.getWidth(), figure.getHeight())
 
     modifiedPos = modifiedPos.clone()
 
@@ -158,7 +158,7 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
     var leftInputPoint = center.clone()
     leftInputPoint.x = 0
     this.bounds.forEach(function (bbox, index) {
-      intersectionPoint = draw2d.shape.basic.Line.intersection(bbox.getTopRight(), bbox.getBottomRight(), center, leftInputPoint)
+      intersectionPoint =  .shape.basic.Line.intersection(bbox.getTopRight(), bbox.getBottomRight(), center, leftInputPoint)
       if (intersectionPoint !== null) {
         intersectionPoint.causedBBox = bbox
         leftIntersections.push(intersectionPoint)
@@ -197,7 +197,7 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
     var rightInputPoint = center.clone()
     rightInputPoint.x = Number.MAX_SAFE_INTEGER
     this.bounds.forEach(function (bbox, index) {
-      intersectionPoint = draw2d.shape.basic.Line.intersection(bbox.getTopLeft(), bbox.getBottomLeft(), center, rightInputPoint)
+      intersectionPoint =  .shape.basic.Line.intersection(bbox.getTopLeft(), bbox.getBottomLeft(), center, rightInputPoint)
       if (intersectionPoint !== null) {
         intersectionPoint.causedBBox = bbox
         rightIntersections.push(intersectionPoint)
@@ -281,7 +281,7 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
     var topInputPoint = center.clone()
     topInputPoint.y = 0
     this.bounds.forEach(function (bbox) {
-      intersectionPoint = draw2d.shape.basic.Line.intersection(bbox.getBottomLeft(), bbox.getBottomRight(), center, topInputPoint)
+      intersectionPoint =  .shape.basic.Line.intersection(bbox.getBottomLeft(), bbox.getBottomRight(), center, topInputPoint)
       if (intersectionPoint !== null) {
         intersectionPoint.causedBBox = bbox
         topIntersections.push(intersectionPoint)
@@ -320,7 +320,7 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
     var bottomInputPoint = center.clone()
     bottomInputPoint.y = Number.MAX_SAFE_INTEGER
     this.bounds.forEach(function (bbox) {
-      intersectionPoint = draw2d.shape.basic.Line.intersection(bbox.getTopLeft(), bbox.getTopRight(), center, bottomInputPoint)
+      intersectionPoint =  .shape.basic.Line.intersection(bbox.getTopLeft(), bbox.getTopRight(), center, bottomInputPoint)
       if (intersectionPoint !== null) {
         intersectionPoint.causedBBox = bbox
         bottomIntersections.push(intersectionPoint)

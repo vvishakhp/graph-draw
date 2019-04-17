@@ -1,16 +1,16 @@
 
 /**
- * @class draw2d.policy.figure.HBusSelectionFeedbackPolicy
+ * @class  .policy.figure.HBusSelectionFeedbackPolicy
  *
  *
  * @author Andreas Herz
- * @extends draw2d.policy.figure.BusSelectionFeedbackPolicy
+ * @extends  .policy.figure.BusSelectionFeedbackPolicy
  */
-import draw2d from '../../packages';
+import   from '../../packages';
 
-draw2d.policy.figure.HBusSelectionFeedbackPolicy = draw2d.policy.figure.BusSelectionFeedbackPolicy.extend({
+ .policy.figure.HBusSelectionFeedbackPolicy =  .policy.figure.BusSelectionFeedbackPolicy.extend({
 
-    NAME : "draw2d.policy.figure.HBusSelectionFeedbackPolicy",
+    NAME : " .policy.figure.HBusSelectionFeedbackPolicy",
     /**
      * @constructor
      * Creates a new Router object

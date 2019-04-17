@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Refresh
+ * @class  .shape.icon.Refresh
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Refresh();
+ *     let icon =  new  .shape.icon.Refresh();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Refresh = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Refresh",
+ .shape.icon.Refresh =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Refresh",
 
   /**
    *

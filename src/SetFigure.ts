@@ -1,18 +1,18 @@
 /**
- * @class draw2d.SetFigure
+ * @class  .SetFigure
  *
  * A SetFigure is a composition of different SVG elements.
  *
  * @author Andreas Herz
- * @extends draw2d.shape.basic.Rectangle
+ * @extends  .shape.basic.Rectangle
  */
 
-import draw2d from 'packages'
+import   from 'packages'
 import extend from 'util/extend'
 
-draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend({
+ .SetFigure =  .shape.basic.Rectangle.extend({
 
-  NAME: "draw2d.SetFigure",
+  NAME: " .SetFigure",
 
   /**
    * @constructor
@@ -39,7 +39,7 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend({
    * @method
    * Set/Reset the canvas for the element.
    *
-   * @param {draw2d.Canvas} canvas the canvas to use
+   * @param { .Canvas} canvas the canvas to use
    */
   setCanvas: function (canvas) {
     // remove the shape if we reset the canvas and the element
@@ -177,19 +177,19 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend({
    *
    * Optional: Inserts current object in front of the given one.
    *
-   * @param {draw2d.Figure} [figure] move current object in front of the given one.
+   * @param { .Figure} [figure] move current object in front of the given one.
    * @since 3.0.0
    */
   toFront: function (figure) {
     ////////////////////////////////////////////////////////////////////
-    // NOTE: the code has a complete different order of draw2d.Figure.
+    // NOTE: the code has a complete different order of  .Figure.
     //       we must respect the svgNodes here
     ////////////////////////////////////////////////////////////////////
 
     // ensure that the z-oder is still correct if the figure is assigned
     // to a StrongComposite
     //
-    if (this.composite instanceof draw2d.shape.composite.StrongComposite && (typeof figure !== "undefined")) {
+    if (this.composite instanceof  .shape.composite.StrongComposite && (typeof figure !== "undefined")) {
       let indexFigure = figure.getZOrder()
       let indexComposite = this.composite.getZOrder()
       if (indexFigure < indexComposite) {
@@ -273,13 +273,13 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend({
    *
    * Optional: Inserts current object in front of the given one.
    *
-   * @param {draw2d.Figure} [figure] move current object in front of the given one.
+   * @param { .Figure} [figure] move current object in front of the given one.
    * @since 4.7.2
    */
   toBack: function (figure) {
     // it is not allowed that a figure is behind the assigned composite
     //
-    if (this.composite instanceof draw2d.shape.composite.StrongComposite) {
+    if (this.composite instanceof  .shape.composite.StrongComposite) {
       this.toFront(this.composite)
       return
     }
@@ -383,7 +383,7 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend({
 
   /**
    * @method
-   * Override this method to add your own SVG elements. See {@link draw2d.shape.basic.Label} as example.
+   * Override this method to add your own SVG elements. See {@link  .shape.basic.Label} as example.
    *
    * @template
    */

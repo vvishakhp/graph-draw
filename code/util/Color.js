@@ -1,12 +1,12 @@
 /**
  * @class
- * Util class to handle colors in the draw2d enviroment.
+ * Util class to handle colors in the   enviroment.
  *
  *      // Create a new Color with RGB values
- *      var color = new draw2d.util.Color(127,0,0);
+ *      var color = new  .util.Color(127,0,0);
  *
  *      // of from a hex string
- *      var color2 = new draw2d.util.Color("#f00000");
+ *      var color2 = new  .util.Color("#f00000");
  *
  *      // Create a little bit darker color
  *      var darkerColor = color.darker(0.2); // 20% darker
@@ -16,15 +16,15 @@
  *      var fontColor = color.getIdealTextColor();
  *
  */
-import draw2d from '../packages';
+import   from '../packages';
 
-draw2d.util.Color = Class.extend({
+ .util.Color = Class.extend({
 
     /**
      * @constructor
      * Create a new Color object
      *
-     * @param {Number|String|draw2d.util.Color|Array} red
+     * @param {Number|String| .util.Color|Array} red
      * @param {Number} green
      * @param {Number} blue
      */
@@ -35,7 +35,7 @@ draw2d.util.Color = Class.extend({
       if(typeof red === "undefined" || red===null){
           this.hashString = "none";
       }
-      else if(red instanceof draw2d.util.Color){
+      else if(red instanceof  .util.Color){
           if(red.hashString==="none"){
               this.hashString = "none";
           }
@@ -137,13 +137,13 @@ draw2d.util.Color = Class.extend({
      * @method
      * Returns the ideal Text Color. Useful for font color selection by a given background color.
      *
-     * @return {draw2d.util.Color} The <i>ideal</i> inverse color.
+     * @return { .util.Color} The <i>ideal</i> inverse color.
      **/
     getIdealTextColor: function()
     {
        let nThreshold = 105;
        let bgDelta = (this.red * 0.299) + (this.green * 0.587) + (this.blue * 0.114);
-       return (255 - bgDelta < nThreshold) ? new  draw2d.util.Color(0,0,0) : new  draw2d.util.Color(255,255,255);
+       return (255 - bgDelta < nThreshold) ? new   .util.Color(0,0,0) : new   .util.Color(255,255,255);
     },
 
 
@@ -196,7 +196,7 @@ draw2d.util.Color = Class.extend({
      * Returns a darker color of the given one. The original color is unchanged.
      *
      * @param {Number} fraction  Darkness fraction between [0..1].
-     * @return{draw2d.util.Color}        Darker color.
+     * @return{ .util.Color}        Darker color.
      */
     darker: function(fraction)
     {
@@ -213,7 +213,7 @@ draw2d.util.Color = Class.extend({
        if (green < 0) green = 0; else if (green > 255) green = 255;
        if (blue  < 0) blue  = 0; else if (blue  > 255) blue  = 255;
 
-       return new draw2d.util.Color(red, green, blue);
+       return new  .util.Color(red, green, blue);
     },
 
 
@@ -222,7 +222,7 @@ draw2d.util.Color = Class.extend({
      * Make a color lighter. The original color is unchanged.
      *
      * @param {Number} fraction  lighter fraction between [0..1].
-     * @return {draw2d.util.Color} Lighter color.
+     * @return { .util.Color} Lighter color.
      */
     lighter: function( fraction)
     {
@@ -239,15 +239,15 @@ draw2d.util.Color = Class.extend({
         if (green < 0) green = 0; else if (green > 255) green = 255;
         if (blue  < 0) blue  = 0; else if (blue  > 255) blue  = 255;
 
-        return new draw2d.util.Color(red, green, blue);
+        return new  .util.Color(red, green, blue);
     },
 
     /**
      * @method
      * Return a new color wich is faded to the given color.
-     * @param {draw2d.util.Color} color
+     * @param { .util.Color} color
      * @param {Number} pc the fade percentage in [0..1]
-     * @returns {draw2d.util.Color}
+     * @returns { .util.Color}
      *
      * @since 2.1.0
      */
@@ -257,19 +257,19 @@ draw2d.util.Color = Class.extend({
         var g= Math.floor(this.green+(pc*(color.green-this.green)) + .5);
         var b= Math.floor(this.blue+(pc*(color.blue-this.blue)) + .5);
 
-        return new draw2d.util.Color(r,g,b);
+        return new  .util.Color(r,g,b);
     },
 
 	/**
 	 * @method
 	 * Compares two color objects
 	 *
-	 * @param {draw2d.util.Color} o
+	 * @param { .util.Color} o
 	 * @return {Boolean}
 	 **/
 	equals: function( o)
 	{
-		if(!(o instanceof draw2d.util.Color)){
+		if(!(o instanceof  .util.Color)){
 			return false;
 		}
 		return this.hash()==o.hash();
@@ -277,4 +277,4 @@ draw2d.util.Color = Class.extend({
 
 });
 
-module.exports = draw2d.util.Color;
+module.exports =  .util.Color;

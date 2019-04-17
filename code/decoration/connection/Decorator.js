@@ -1,17 +1,17 @@
 /**
- * @class draw2d.decoration.connection.Decorator
+ * @class  .decoration.connection.Decorator
  *
  *
  * @inheritable
  * @author Andreas Herz
  */
-import draw2d from '../../packages';
+import   from '../../packages';
 import Color  from '../../util/Color'
 
 
-draw2d.decoration.connection.Decorator = Class.extend({
+ .decoration.connection.Decorator = Class.extend({
 
-	NAME : "draw2d.decoration.connection.Decorator",
+	NAME : " .decoration.connection.Decorator",
 
 	/**
 	 * @constructor
@@ -67,7 +67,7 @@ draw2d.decoration.connection.Decorator = Class.extend({
 	 * @method
 	 * Set the stroke color for the decoration
 	 *
-	 * @param {draw2d.util.Color|String} c
+	 * @param { .util.Color|String} c
 	 */
 	setColor: function(c) {
 		this.color = new Color(c);
@@ -79,7 +79,7 @@ draw2d.decoration.connection.Decorator = Class.extend({
 	 * @method
 	 * Set the background color for the decoration
 	 *
-	 * @param {draw2d.util.Color|String} c
+	 * @param { .util.Color|String} c
 	 */
 	setBackgroundColor: function(c) {
 		this.backgroundColor = new Color(c);

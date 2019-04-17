@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.diagram.Sparkline
+ * @class  .shape.diagram.Sparkline
  *
  * Small data line diagram.
  *
@@ -12,7 +12,7 @@
  *       testData.push(Math.floor(Math.random() * 100));
  *     }
  *
- *     let sparkline = new draw2d.shape.diagram.Sparkline({
+ *     let sparkline = new  .shape.diagram.Sparkline({
  *     	data: testData,
  *      width:150,
  *      height:50,
@@ -22,12 +22,12 @@
  *
  *     canvas.add( sparkline);
  *
- * @extends draw2d.shape.diagram.Diagram
+ * @extends  .shape.diagram.Diagram
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.shape.diagram.Sparkline = draw2d.shape.diagram.Diagram.extend({
+ .shape.diagram.Sparkline =  .shape.diagram.Diagram.extend({
 
   /**
    *

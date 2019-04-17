@@ -1,25 +1,25 @@
 /**
- * @class draw2d.command.CommandUngroup
+ * @class  .command.CommandUngroup
  * Command to ungroup a given group figures
  *
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
 
-draw2d.command.CommandUngroup = draw2d.command.Command.extend({
-  NAME: "draw2d.command.CommandUngroup",
+ .command.CommandUngroup =  .command.Command.extend({
+  NAME: " .command.CommandUngroup",
 
   /**
    * @constructor
    * Create a group command for the given figure.
    *
-   * @param {draw2d.Canvas} canvas the responsible canvas
-   * @param {draw2d.util.ArrayList|draw2d.Selection} group the figures to group
+   * @param { .Canvas} canvas the responsible canvas
+   * @param { .util.ArrayList| .Selection} group the figures to group
    */
   init: function (canvas, group) {
-    this._super(draw2d.Configuration.i18n.command.ungroupShapes)
-    if (group instanceof draw2d.Selection) {
+    this._super( .Configuration.i18n.command.ungroupShapes)
+    if (group instanceof  .Selection) {
       this.group = group.getAll().first()
     }
     else {

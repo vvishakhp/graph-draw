@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.layout.FlexGridLayout
+ * @class  .shape.layout.FlexGridLayout
  *
  * FlexGridLayout is a powerful, flexible and precise layout manager that aligns components vertically and
  * horizontally in a dynamic rectangular grid of cells, with each component occupying in one or more cell.
@@ -39,7 +39,7 @@
  * Example Implementation of a shape:
  *
  *     @example preview small frame
- *     let PredefinedProcess = draw2d.shape.layout.FlexGridLayout.extend({
+ *     let PredefinedProcess =  .shape.layout.FlexGridLayout.extend({
  *
  *
  *          //     10px       grow         10px
@@ -66,8 +66,8 @@
  *             getter);
  *
  *
- *             this.label = new draw2d.shape.basic.Label({text:"Process Name", resizeable:true, stroke:2});
- *             this.label.installEditor(new draw2d.ui.LabelInplaceEditor());
+ *             this.label = new  .shape.basic.Label({text:"Process Name", resizeable:true, stroke:2});
+ *             this.label.installEditor(new  .ui.LabelInplaceEditor());
  *             this.add(this.label, {row:0, col:1});
  *
  *             this.setDimension(120,80);
@@ -78,15 +78,15 @@
  *
  *
  * @author Andreas Herz
- * @extends draw2d.shape.layout.Layout
+ * @extends  .shape.layout.Layout
  * @since 2.5.1
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.shape.layout.FlexGridLayout = draw2d.shape.layout.Layout.extend({
+ .shape.layout.FlexGridLayout =  .shape.layout.Layout.extend({
 
-  NAME: "draw2d.shape.layout.FlexGridLayout",
+  NAME: " .shape.layout.FlexGridLayout",
 
 
   /**
@@ -172,7 +172,7 @@ draw2d.shape.layout.FlexGridLayout = draw2d.shape.layout.Layout.extend({
       _this.gridDef.layoutRequired = true
       // propagate the event to the parent or other listener if existing
       //
-      if (_this.getParent() instanceof draw2d.shape.layout.Layout) {
+      if (_this.getParent() instanceof  .shape.layout.Layout) {
         _this.fireEvent("resize")
       }
       // or we are the parent and must consume it self
@@ -195,7 +195,7 @@ draw2d.shape.layout.FlexGridLayout = draw2d.shape.layout.Layout.extend({
       this.gridDef.def_rows[i] = this.cellWidthFromDef(rows[i])
     }
 
-    this.installEditPolicy(new draw2d.policy.figure.RectangleSelectionFeedbackPolicy())
+    this.installEditPolicy(new  .policy.figure.RectangleSelectionFeedbackPolicy())
   },
 
   add: function (figure, cellConstraint) {

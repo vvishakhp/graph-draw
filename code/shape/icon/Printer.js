@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Printer
+ * @class  .shape.icon.Printer
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Printer();
+ *     let icon =  new  .shape.icon.Printer();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Printer = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Printer",
+ .shape.icon.Printer =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Printer",
 
   /**
    *

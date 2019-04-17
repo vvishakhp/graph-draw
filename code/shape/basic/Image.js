@@ -1,17 +1,17 @@
 /**
- * @class draw2d.shape.basic.Image
+ * @class  .shape.basic.Image
  * Simple Image shape.
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.node.Node
+ * @extends  .shape.node.Node
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import extend from '../../util/extend'
 
 
-draw2d.shape.basic.Image = draw2d.shape.node.Node.extend({
-  NAME: "draw2d.shape.basic.Image",
+ .shape.basic.Image =  .shape.node.Node.extend({
+  NAME: " .shape.basic.Image",
 
   /**
    * @constructor

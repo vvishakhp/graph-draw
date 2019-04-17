@@ -1,23 +1,23 @@
 /**
- * @class draw2d.command.CommandDelete
+ * @class  .command.CommandDelete
  * Command to remove a figure with CommandStack support.
  *
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandDelete = draw2d.command.Command.extend({
+ .command.CommandDelete =  .command.Command.extend({
 
-  NAME: "draw2d.command.CommandDelete",
+  NAME: " .command.CommandDelete",
 
   /**
    * @constructor
    * Create a delete command for the given figure.
    *
-   * @param {draw2d.Figure} figure
+   * @param { .Figure} figure
    */
   init: function (figure) {
-    this._super(draw2d.Configuration.i18n.command.deleteShape)
+    this._super( .Configuration.i18n.command.deleteShape)
 
     this.parent = figure.getParent()
     this.figure = figure
@@ -65,7 +65,7 @@ draw2d.command.CommandDelete = draw2d.command.Command.extend({
       this.canvas.setCurrentSelection(this.figure)
     }
 
-    if (this.figure instanceof draw2d.Connection) {
+    if (this.figure instanceof  .Connection) {
       this.figure.reconnect()
     }
 
@@ -89,16 +89,16 @@ draw2d.command.CommandDelete = draw2d.command.Command.extend({
     // must be deleted too.
     //
     if (this.connections === null) {
-      if (this.figure instanceof draw2d.shape.node.Node) {
+      if (this.figure instanceof  .shape.node.Node) {
         this.connections = this.figure.getConnections()
       }
       else {
-        this.connections = new draw2d.util.ArrayList()
+        this.connections = new  .util.ArrayList()
       }
     }
 
     // already done in the canvas.remove(..) method
-    //    if(this.figure instanceof draw2d.Connection){
+    //    if(this.figure instanceof  .Connection){
     //        this.figure.disconnect();
     //    }
 

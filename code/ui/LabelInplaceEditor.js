@@ -1,13 +1,13 @@
 /**
- * @class draw2d.ui.LabelInplaceEditor
+ * @class  .ui.LabelInplaceEditor
  *
- * Inplace editor for draw2d.shape.base.Label
+ * Inplace editor for  .shape.base.Label
  *
  *     @example preview small frame
  *
- *     var label =  new draw2d.shape.basic.Label({text:"Double Click on me"});
+ *     var label =  new  .shape.basic.Label({text:"Double Click on me"});
  *
- *     label.installEditor(new draw2d.ui.LabelInplaceEditor({
+ *     label.installEditor(new  .ui.LabelInplaceEditor({
  *        // called after the value has been set to the LabelFigure
  *        onCommit: $.proxy(function(value){
  *            alert("new value set to:"+value);
@@ -20,16 +20,16 @@
  *     canvas.add(label,50,10);
  *
  * @author Andreas Herz
- * @extends draw2d.ui.LabelEditor
+ * @extends  .ui.LabelEditor
 */
-import draw2d from '../packages';
+import   from '../packages';
 
 
 import r from "lib/jquery.autoresize";
 
-draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
+ .ui.LabelInplaceEditor =   .ui.LabelEditor.extend({
 
-    NAME: "draw2d.ui.LabelInplaceEditor",
+    NAME: " .ui.LabelInplaceEditor",
 
     /**
      * @constructor
@@ -51,7 +51,7 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
      * @method
      * Trigger the edit of the label text.
      *
-     * @param {draw2d.shape.basic.Label} label the label to edit
+     * @param { .shape.basic.Label} label the label to edit
      */
     start: function( label)
     {
@@ -129,7 +129,7 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
         this.html.unbind("blur",this.commitCallback);
         $("body").unbind("click",this.commitCallback);
         var label = this.html.val();
-        var cmd =new draw2d.command.CommandAttr(this.label, {text:label});
+        var cmd =new  .command.CommandAttr(this.label, {text:label});
         this.label.getCanvas().getCommandStack().execute(cmd);
         this.html.fadeOut(()=>{
             this.html.remove();

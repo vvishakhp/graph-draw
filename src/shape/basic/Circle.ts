@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.basic.Circle
+ * @class  .shape.basic.Circle
  * A circle figure with basic background and stroke API. <br>
  * A circle can not be streched. <strong>The aspect ration is always 1:1</strong>.
  *
@@ -7,20 +7,20 @@
  *
  *     @example preview small frame
  *
- *     let shape =  new draw2d.shape.basic.Circle({x:40,y:10, stroke:3, color:"#3d3d3d", bgColor:"#3dff3d"});
+ *     let shape =  new  .shape.basic.Circle({x:40,y:10, stroke:3, color:"#3d3d3d", bgColor:"#3dff3d"});
  *
  *     canvas.add(shape);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.basic.Oval
+ * @extends  .shape.basic.Oval
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.shape.basic.Circle = draw2d.shape.basic.Oval.extend({
+ .shape.basic.Circle =  .shape.basic.Oval.extend({
 
-  NAME: "draw2d.shape.basic.Circle",
+  NAME: " .shape.basic.Circle",
 
   /**
    * @constructor

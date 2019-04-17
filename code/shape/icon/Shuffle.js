@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Shuffle
+ * @class  .shape.icon.Shuffle
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Shuffle();
+ *     let icon =  new  .shape.icon.Shuffle();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Shuffle = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Shuffle",
+ .shape.icon.Shuffle =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Shuffle",
 
   /**
    *

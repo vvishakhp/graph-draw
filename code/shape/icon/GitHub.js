@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.GitHub
+ * @class  .shape.icon.GitHub
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.GitHub();
+ *     let icon =  new  .shape.icon.GitHub();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.GitHub = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.GitHub",
+ .shape.icon.GitHub =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.GitHub",
 
   /**
    *

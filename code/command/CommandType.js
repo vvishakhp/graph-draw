@@ -1,5 +1,5 @@
 /**
- * @class draw2d.command.CommandType
+ * @class  .command.CommandType
  *
  * EditPolicies should determine an Figures editing capabilities.
  * It is possible to implement an Figure such that it handles all editing
@@ -11,12 +11,12 @@
  *
  * @author Andreas Herz
  */
-import draw2d from '../packages'
+import   from '../packages'
 
 
-draw2d.command.CommandType = Class.extend({
+ .command.CommandType = Class.extend({
 
-  NAME: "draw2d.command.CommandType",
+  NAME: " .command.CommandType",
 
   /**
    * @constructor
@@ -39,15 +39,15 @@ draw2d.command.CommandType = Class.extend({
   }
 })
 
-draw2d.command.CommandType.DELETE = "DELETE"
-draw2d.command.CommandType.MOVE = "MOVE"
-draw2d.command.CommandType.CONNECT = "CONNECT"
-draw2d.command.CommandType.MOVE_BASEPOINT = "MOVE_BASEPOINT"
-draw2d.command.CommandType.MOVE_VERTEX = "MOVE_VERTEX"
-draw2d.command.CommandType.MOVE_VERTICES = "MOVE_VERTICES"
-draw2d.command.CommandType.MOVE_GHOST_VERTEX = "MOVE_GHOST_VERTEX"
-draw2d.command.CommandType.RESIZE = "RESIZE"
-draw2d.command.CommandType.RESET = "RESET"
-draw2d.command.CommandType.ROTATE = "ROTATE"
+ .command.CommandType.DELETE = "DELETE"
+ .command.CommandType.MOVE = "MOVE"
+ .command.CommandType.CONNECT = "CONNECT"
+ .command.CommandType.MOVE_BASEPOINT = "MOVE_BASEPOINT"
+ .command.CommandType.MOVE_VERTEX = "MOVE_VERTEX"
+ .command.CommandType.MOVE_VERTICES = "MOVE_VERTICES"
+ .command.CommandType.MOVE_GHOST_VERTEX = "MOVE_GHOST_VERTEX"
+ .command.CommandType.RESIZE = "RESIZE"
+ .command.CommandType.RESET = "RESET"
+ .command.CommandType.ROTATE = "ROTATE"
 
 

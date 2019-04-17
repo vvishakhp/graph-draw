@@ -1,7 +1,7 @@
-import draw2d from '../packages'
+import   from '../packages'
 
 /**
- * @class draw2d.util.ArrayList
+ * @class  .util.ArrayList
  *
  * <Disclaimer> Writing my own class for arrays was one of my worst ideas...
  *
@@ -10,7 +10,7 @@ import draw2d from '../packages'
  * and it is resized dynamically. This can be very convenient, but it's slower than making
  * an array of objects when using many elements.
  */
-draw2d.util.ArrayList = Class.extend({
+ .util.ArrayList = Class.extend({
 
   /**
    * @constructor
@@ -208,12 +208,12 @@ draw2d.util.ArrayList = Class.extend({
    * @method
    * Add all elements into this array.
    *
-   * @param {draw2d.util.ArrayList} list
+   * @param { .util.ArrayList} list
    * @param {Boolean} [avoidDuplicates] checks whenever the new elements exists before insert if the parameter is to [true]
    *
    */
   addAll: function (list, avoidDuplicates) {
-    if (!(list instanceof draw2d.util.ArrayList)) {
+    if (!(list instanceof  .util.ArrayList)) {
       throw "Unable to handle unknown object type in ArrayList.addAll"
     }
 
@@ -297,10 +297,10 @@ draw2d.util.ArrayList = Class.extend({
    * @method
    * removes all given elements in the ArrayList
    *
-   * @param {draw2d.util.ArrayList} elements The elements to remove
+   * @param { .util.ArrayList} elements The elements to remove
    */
   removeAll: function (elements) {
-    if (elements instanceof draw2d.util.ArrayList) {
+    if (elements instanceof  .util.ArrayList) {
       elements = elements.data
     }
 
@@ -346,7 +346,7 @@ draw2d.util.ArrayList = Class.extend({
    *
    * @param {String|Function} f the field name for the sorting or a sort function
    *
-   * @return {draw2d.util.ArrayList} self
+   * @return { .util.ArrayList} self
    */
   sort: function (f) {
     if (typeof f === "function") {
@@ -370,10 +370,10 @@ draw2d.util.ArrayList = Class.extend({
    *
    * @param {Boolean} [deep] call "clone" of each elements and add the clone to the new ArrayList
    *
-   * @returns {draw2d.util.ArrayList} the new ArrayList
+   * @returns { .util.ArrayList} the new ArrayList
    */
   clone: function (deep) {
-    let newVector = new draw2d.util.ArrayList()
+    let newVector = new  .util.ArrayList()
 
 
     if (deep) {
@@ -443,6 +443,6 @@ draw2d.util.ArrayList = Class.extend({
 
 })
 
-draw2d.util.ArrayList.EMPTY_LIST = new draw2d.util.ArrayList()
+ .util.ArrayList.EMPTY_LIST = new  .util.ArrayList()
 
 

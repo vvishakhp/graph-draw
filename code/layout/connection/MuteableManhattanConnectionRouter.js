@@ -1,23 +1,23 @@
 /**
- * @class draw2d.layout.connection.MuteableManhattanConnectionRouter
+ * @class  .layout.connection.MuteableManhattanConnectionRouter
  *
  * JUST FOR RESEARCH AT THE MOMENT!!!!!!
  *
  * @inheritable
  * @author Andreas Herz
  *
- * @extends  draw2d.layout.connection.ManhattanConnectionRouter
+ * @extends   .layout.connection.ManhattanConnectionRouter
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
 
-draw2d.layout.connection.MuteableManhattanConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend({
-  NAME: "draw2d.layout.connection.MuteableManhattanConnectionRouter",
+ .layout.connection.MuteableManhattanConnectionRouter =  .layout.connection.ManhattanConnectionRouter.extend({
+  NAME: " .layout.connection.MuteableManhattanConnectionRouter",
 
-  UP: new draw2d.geo.Ray(0, -1),
-  DOWN: new draw2d.geo.Ray(0, 1),
-  LEFT: new draw2d.geo.Ray(-1, 0),
-  RIGHT: new draw2d.geo.Ray(1, 0),
+  UP: new  .geo.Ray(0, -1),
+  DOWN: new  .geo.Ray(0, 1),
+  LEFT: new  .geo.Ray(-1, 0),
+  RIGHT: new  .geo.Ray(1, 0),
 
   /**
    * @constructor
@@ -49,15 +49,15 @@ draw2d.layout.connection.MuteableManhattanConnectionRouter = draw2d.layout.conne
     let startPoint = conn.getStartPoint()
     let endPoint = conn.getEndPoint()
 
-    let start = new draw2d.geo.Ray(startPoint)
-    let end = new draw2d.geo.Ray(endPoint)
-    let average = new draw2d.geo.Ray((start.x + end.x) / 2, (start.y + end.y) / 2)
+    let start = new  .geo.Ray(startPoint)
+    let end = new  .geo.Ray(endPoint)
+    let average = new  .geo.Ray((start.x + end.x) / 2, (start.y + end.y) / 2)
 
-    let direction = new draw2d.geo.Ray(end.x - start.x, end.y - start.y)
+    let direction = new  .geo.Ray(end.x - start.x, end.y - start.y)
     let startNormal = this.getStartDirection(conn)
     let endNormal = this.getEndDirection(conn)
 
-    let positions = new draw2d.util.ArrayList()
+    let positions = new  .util.ArrayList()
     let horizontal = startNormal.isHorizontal()
 
     if (horizontal) {
@@ -131,13 +131,13 @@ draw2d.layout.connection.MuteableManhattanConnectionRouter = draw2d.layout.conne
 
             let next = endNormal.similarity(end.translated(endNormal.scaled(10)))
 
-            let trial = new draw2d.geo.Ray((positions.get(positions.getSize() - 1)), j)
-            let figure = this.findFirstFigureAtStraightLine(canvas, trial, this.LEFT, draw2d.util.ArrayList.EMPTY_LIST)
+            let trial = new  .geo.Ray((positions.get(positions.getSize() - 1)), j)
+            let figure = this.findFirstFigureAtStraightLine(canvas, trial, this.LEFT,  .util.ArrayList.EMPTY_LIST)
 
             while (figure != null && figure.getBoundingBox().x + figure.getBoundingBox().width > next) {
               j = figure.getBoundingBox().y + figure.getBoundingBox().height + 5
               trial.y = j
-              figure = this.findFirstFigureAtStraightLine(canvas, trial, this.LEFT, draw2d.util.ArrayList.EMPTY_LIST)
+              figure = this.findFirstFigureAtStraightLine(canvas, trial, this.LEFT,  .util.ArrayList.EMPTY_LIST)
             }
 
             i = j
@@ -147,7 +147,7 @@ draw2d.layout.connection.MuteableManhattanConnectionRouter = draw2d.layout.conne
             if (figure == null)
               i = average.x
             else {
-              i = Math.min(average.x, start.translated(new draw2d.geo.Ray(3 * (figure.getBoundingBox().x - start.x) / 4, 0)).x)
+              i = Math.min(average.x, start.translated(new  .geo.Ray(3 * (figure.getBoundingBox().x - start.x) / 4, 0)).x)
               i = Math.max(start.x, i)
             }
             i = this.adjust(conn, i)
@@ -172,7 +172,7 @@ draw2d.layout.connection.MuteableManhattanConnectionRouter = draw2d.layout.conne
   /**
    * @method
    *
-   * @param {draw2d.Connection} connection
+   * @param { .Connection} connection
    * @param {Number} r
    * @param {Number} n
    * @param {Number} x
@@ -344,7 +344,7 @@ draw2d.layout.connection.MuteableManhattanConnectionRouter = draw2d.layout.conne
       pos.push(end.y)
     }
 
-    conn.addPoint(new draw2d.geo.Point(start.x, start.y))
+    conn.addPoint(new  .geo.Point(start.x, start.y))
     let p
     let current, prev, min, max
     let adjust
@@ -360,18 +360,18 @@ draw2d.layout.connection.MuteableManhattanConnectionRouter = draw2d.layout.conne
           max = pos[i + 2]
           pos[i] = current = this.getRowNear(conn, current, min, max)
         }
-        p = new draw2d.geo.Point(prev, current)
+        p = new  .geo.Point(prev, current)
       } else {
         if (adjust) {
           min = pos[i - 2]
           max = pos[i + 2]
           pos[i] = current = this.getColumnNear(conn, current, min, max)
         }
-        p = new draw2d.geo.Point(current, prev)
+        p = new  .geo.Point(current, prev)
       }
       conn.addPoint(p)
     }
-    conn.addPoint(new draw2d.geo.Point(end.x, end.y))
+    conn.addPoint(new  .geo.Point(end.x, end.y))
   },
 
 
@@ -392,7 +392,7 @@ draw2d.layout.connection.MuteableManhattanConnectionRouter = draw2d.layout.conne
   reserveColumn: function (connection, column) {
     let info = this.reservedInfo[connection]
     if (typeof info === "undefined" || info === null) {
-      info = {reservedCols: new draw2d.util.ArrayList(), reservedRows: new draw2d.util.ArrayList()}
+      info = {reservedCols: new  .util.ArrayList(), reservedRows: new  .util.ArrayList()}
       this.reservedInfo[connection] = info
     }
     info.reservedCols.add(column)
@@ -401,7 +401,7 @@ draw2d.layout.connection.MuteableManhattanConnectionRouter = draw2d.layout.conne
   reserveRow: function (connection, row) {
     let info = this.reservedInfo[connection]
     if (typeof info === "undefined" || info === null) {
-      info = {reservedCols: new draw2d.util.ArrayList(), reservedRows: new draw2d.util.ArrayList()}
+      info = {reservedCols: new  .util.ArrayList(), reservedRows: new  .util.ArrayList()}
       this.reservedInfo[connection] = info
     }
     info.reservedRows.add(row)
@@ -423,7 +423,7 @@ draw2d.layout.connection.MuteableManhattanConnectionRouter = draw2d.layout.conne
   },
 
   getExcludingFigures: function (conn) {
-    let excluding = new draw2d.util.ArrayList()
+    let excluding = new  .util.ArrayList()
 
     excluding.add(conn.getSource().getParent())
     excluding.add(conn.getTarget().getParent())

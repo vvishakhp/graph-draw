@@ -1,17 +1,17 @@
 /**
- * @class draw2d.shape.basic.Rectangle
+ * @class  .shape.basic.Rectangle
  * A Rectangle Figure.
  *
  * See the example:
  *
  *     @example preview small frame
  *
- *     let rect1 =  new draw2d.shape.basic.Rectangle({
+ *     let rect1 =  new  .shape.basic.Rectangle({
  *     	x:10,
  *      y:10
  *     });
  *
- *     let rect2 =  new draw2d.shape.basic.Rectangle({
+ *     let rect2 =  new  .shape.basic.Rectangle({
  *       x: 100,
  *       y: 10,
  *       bgColor: "#f0f000",
@@ -27,13 +27,13 @@
  *     canvas.setCurrentSelection(rect2);
  *
  * @author Andreas Herz
- * @extends draw2d.VectorFigure
+ * @extends  .VectorFigure
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.shape.basic.Rectangle = draw2d.VectorFigure.extend({
-  NAME: "draw2d.shape.basic.Rectangle",
+ .shape.basic.Rectangle =  .VectorFigure.extend({
+  NAME: " .shape.basic.Rectangle",
 
   /**
    * @constructor

@@ -1,13 +1,13 @@
 /**
- * @class draw2d.shape.basic.Polygon
+ * @class  .shape.basic.Polygon
  * A Polygon figure.
  *
  * See the example:
  *
  *     @example preview small frame
  *
- *     let p1 =  new draw2d.shape.basic.Polygon({width:100, height:100});
- *     let p2 =  new draw2d.shape.basic.Polygon({width:100, height:60});
+ *     let p1 =  new  .shape.basic.Polygon({width:100, height:100});
+ *     let p2 =  new  .shape.basic.Polygon({width:100, height:60});
  *
  *     canvas.add(p1,10,10);
  *     canvas.add(p2,100,10);
@@ -17,15 +17,15 @@
  *     canvas.setCurrentSelection(p2);
  *
  * @author Andreas Herz
- * @extends draw2d.VectorFigure
+ * @extends  .VectorFigure
  */
 
-import draw2d from '../../packages'
+import   from '../../packages'
 import jsonUtil from '../../util/JSONUtil'
 
-draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
+ .shape.basic.Polygon =  .VectorFigure.extend({
 
-  NAME: "draw2d.shape.basic.Polygon",
+  NAME: " .shape.basic.Polygon",
 
   /**
    * @constructor
@@ -37,7 +37,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     this.minY = 0
     this.maxX = 0
     this.maxY = 0
-    this.vertices = new draw2d.util.ArrayList()
+    this.vertices = new  .util.ArrayList()
 
     this._super(attr, setter, getter)
 
@@ -47,16 +47,16 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
       let w = this.width
       let h = this.height
       let pos = this.getPosition()
-      this.addVertex(new draw2d.geo.Point(0, 0))
-      this.addVertex(new draw2d.geo.Point(w, 0))
-      this.addVertex(new draw2d.geo.Point(w, h))
+      this.addVertex(new  .geo.Point(0, 0))
+      this.addVertex(new  .geo.Point(w, 0))
+      this.addVertex(new  .geo.Point(w, h))
 
       this.setPosition(pos)
     }
 
     this.svgPathString = null
 
-    this.installEditPolicy(new draw2d.policy.figure.VertexSelectionFeedbackPolicy())
+    this.installEditPolicy(new  .policy.figure.VertexSelectionFeedbackPolicy())
   },
 
   /**
@@ -109,13 +109,13 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
         length = length - 1
         end = this.vertices.get(length - 1)
       }
-      let begin = draw2d.geo.Util.insetPoint(start, end, radius)
+      let begin =  .geo.Util.insetPoint(start, end, radius)
       path.push("M", begin.x, ",", begin.y)
       for (let i = 0; i < length; i++) {
         start = this.vertices.get(i)
         end = this.vertices.get((i + 1) % length)
-        let modStart = draw2d.geo.Util.insetPoint(start, end, radius)
-        let modEnd = draw2d.geo.Util.insetPoint(end, start, radius)
+        let modStart =  .geo.Util.insetPoint(start, end, radius)
+        let modEnd =  .geo.Util.insetPoint(end, start, radius)
         path.push("Q", start.x, ",", start.y, " ", modStart.x, ", ", modStart.y)
         path.push("L", modEnd.x, ",", modEnd.y)
       }
@@ -162,7 +162,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     dx = this.x + dx
     dy = this.y + dy
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         let newPos = e.adjustPosition(_this, dx, dy)
         dx = newPos.x
         dy = newPos.y
@@ -185,7 +185,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     // element via an API call.
     //
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
     })
@@ -201,11 +201,11 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
    * @method
    * Change the position of the polygon. This method updates all vertices.
    *
-   * @param {Number|draw2d.geo.Point} x
+   * @param {Number| .geo.Point} x
    * @param {Number} [y]
    */
   setPosition: function (x, y) {
-    if (x instanceof draw2d.geo.Point) {
+    if (x instanceof  .geo.Point) {
       y = x.y
       x = x.x
     }
@@ -254,7 +254,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
    * @method
    * Return all vertices of the polygon.
    *
-   * @returns {draw2d.util.ArrayList}
+   * @returns { .util.ArrayList}
    */
   getVertices: function () {
     return this.vertices
@@ -274,7 +274,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
 
   resetVertices: function () {
-    this.vertices = new draw2d.util.ArrayList()
+    this.vertices = new  .util.ArrayList()
 
     this.svgPathString = null
     this.repaint()
@@ -282,7 +282,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     this.updateBoundingBox()
 
     this.editPolicy.each((i, e) => {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(this.canvas, this)
       }
     })
@@ -318,7 +318,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
     let _this = this
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
     })
@@ -331,11 +331,11 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
    * @method
    * Append a new vertex to the polygon.
    *
-   * @param {Number | draw2d.geo.Point} x
+   * @param {Number |  .geo.Point} x
    * @param {Number} [y]
    */
   addVertex: function (x, y) {
-    this.vertices.add(new draw2d.geo.Point(x, y))
+    this.vertices.add(new  .geo.Point(x, y))
 
     this.svgPathString = null
     this.repaint()
@@ -344,7 +344,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
     let _this = this
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
     })
@@ -363,7 +363,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
    * @param {Number} y
    */
   insertVertexAt: function (index, x, y) {
-    this.vertices.insertElementAt(new draw2d.geo.Point(x, y), index)
+    this.vertices.insertElementAt(new  .geo.Point(x, y), index)
 
     this.svgPathString = null
     this.repaint()
@@ -373,7 +373,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     if (!this.selectionHandles.isEmpty()) {
       let _this = this
       this.editPolicy.each(function (i, e) {
-        if (e instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
+        if (e instanceof  .policy.figure.SelectionFeedbackPolicy) {
           e.onUnselect(_this.canvas, _this)
           e.onSelect(_this.canvas, _this)
         }
@@ -391,7 +391,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
    *
    * @param {Number} index
    *
-   * @returns {draw2d.geo.Point} the removed vertex
+   * @returns { .geo.Point} the removed vertex
    */
   removeVertexAt: function (index) {
     // a polygon need at least 3 vertices
@@ -410,7 +410,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     if (!this.selectionHandles.isEmpty()) {
       let _this = this
       this.editPolicy.each(function (i, e) {
-        if (e instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
+        if (e instanceof  .policy.figure.SelectionFeedbackPolicy) {
           e.onUnselect(_this.canvas, _this)
           e.onSelect(_this.canvas, _this)
         }
@@ -457,7 +457,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     //
     let _this = this
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
     })
@@ -498,9 +498,9 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
    */
   createCommand: function (request) {
 
-    if (request.getPolicy() === draw2d.command.CommandType.MOVE_VERTEX) {
+    if (request.getPolicy() ===  .command.CommandType.MOVE_VERTEX) {
       if (this.isResizeable() === true) {
-        return new draw2d.command.CommandMoveVertex(this)
+        return new  .command.CommandMoveVertex(this)
       }
     }
 
@@ -532,7 +532,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     // restore the points from the JSON data and add them to the polyline
     //
     if (typeof memento.vertices !== "undefined") {
-      this.vertices = new draw2d.util.ArrayList()
+      this.vertices = new  .util.ArrayList()
       memento.vertices.forEach(point => {
         this.addVertex(point)
       })

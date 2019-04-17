@@ -11,10 +11,10 @@ export class LeftLocator extends Locator {
     // I made a wrong decision in the port handling: anchor point
     // is in the center and not topLeft. Now I must correct this flaw here, and there, and...
     // shit happens.
-    let offset = (parent instanceof draw2d.Port) ? boundingBox.h / 2 : 0
+    let offset = (parent instanceof  .Port) ? boundingBox.h / 2 : 0
 
 
-    if (target instanceof draw2d.Port) {
+    if (target instanceof  .Port) {
       target.setPosition(0, (boundingBox.h / 2) - offset)
     }
     else {

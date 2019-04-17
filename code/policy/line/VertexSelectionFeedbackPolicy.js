@@ -1,16 +1,16 @@
 /**
- * @class draw2d.policy.line.VertexSelectionFeedbackPolicy
+ * @class  .policy.line.VertexSelectionFeedbackPolicy
  *
  * Feedback and edit policy for the VertexRouter.
  *
  * @author  Andreas Herz
- * @extends draw2d.policy.line.LineSelectionFeedbackPolicy
+ * @extends  .policy.line.LineSelectionFeedbackPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.line.VertexSelectionFeedbackPolicy = draw2d.policy.line.LineSelectionFeedbackPolicy.extend({
+ .policy.line.VertexSelectionFeedbackPolicy =  .policy.line.LineSelectionFeedbackPolicy.extend({
 
-  NAME: "draw2d.policy.line.VertexSelectionFeedbackPolicy",
+  NAME: " .policy.line.VertexSelectionFeedbackPolicy",
 
   /**
    * @constructor
@@ -24,13 +24,13 @@ draw2d.policy.line.VertexSelectionFeedbackPolicy = draw2d.policy.line.LineSelect
   /**
    * @method
    *
-   * @param {draw2d.Canvas} canvas the related canvas
-   * @param {draw2d.Connection} figure the selected figure
+   * @param { .Canvas} canvas the related canvas
+   * @param { .Connection} figure the selected figure
    * @param {Boolean} isPrimarySelection
    */
   onSelect: function (canvas, figure, isPrimarySelection) {
-    let startHandle = new draw2d.shape.basic.LineStartResizeHandle(figure)
-    let endHandle = new draw2d.shape.basic.LineEndResizeHandle(figure)
+    let startHandle = new  .shape.basic.LineStartResizeHandle(figure)
+    let endHandle = new  .shape.basic.LineEndResizeHandle(figure)
     figure.selectionHandles.add(startHandle)
     figure.selectionHandles.add(endHandle)
 
@@ -38,11 +38,11 @@ draw2d.policy.line.VertexSelectionFeedbackPolicy = draw2d.policy.line.LineSelect
     let count = points.getSize() - 1
     let i = 1
     for (; i < count; i++) {
-      figure.selectionHandles.add(new draw2d.shape.basic.VertexResizeHandle(figure, i))
-      figure.selectionHandles.add(new draw2d.shape.basic.GhostVertexResizeHandle(figure, i - 1))
+      figure.selectionHandles.add(new  .shape.basic.VertexResizeHandle(figure, i))
+      figure.selectionHandles.add(new  .shape.basic.GhostVertexResizeHandle(figure, i - 1))
     }
 
-    figure.selectionHandles.add(new draw2d.shape.basic.GhostVertexResizeHandle(figure, i - 1))
+    figure.selectionHandles.add(new  .shape.basic.GhostVertexResizeHandle(figure, i - 1))
 
     figure.selectionHandles.each( (i, e) => {
       e.setDraggable(figure.isResizeable())

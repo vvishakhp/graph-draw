@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.state.Connection
+ * @class  .shape.state.Connection
  *
  * Connection designed for a state diagram with arrow decoration at the
  * target of the connection and a label
@@ -10,8 +10,8 @@
  *
  *     // create and add two nodes which contains Ports (In and OUT)
  *     //
- *     let start = new draw2d.shape.state.Start();
- *     let end   = new draw2d.shape.state.End();
+ *     let start = new  .shape.state.Start();
+ *     let end   = new  .shape.state.End();
 
  *     // ...add it to the canvas
  *     canvas.add( start, 50,50);
@@ -19,7 +19,7 @@
  *
  *     // Create a Connection and connect the Start and End node
  *     //
- *     let c = new draw2d.shape.state.Connection({
+ *     let c = new  .shape.state.Connection({
  *     	 source : start.getOutputPort(0),
  *       target : end.getInputPort(0)
  *     });
@@ -28,27 +28,27 @@
  *     canvas.add(c);
  *
  *
- * @extends draw2d.Connection
+ * @extends  .Connection
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.state.Connection = draw2d.Connection.extend({
+ .shape.state.Connection =  .Connection.extend({
 
-  NAME: "draw2d.shape.state.Connection",
+  NAME: " .shape.state.Connection",
 
-  DEFAULT_COLOR: new draw2d.util.Color("#4D90FE"),
+  DEFAULT_COLOR: new  .util.Color("#4D90FE"),
 
   init: function (attr, setter, getter) {
     this._super(extend({router: null, stroke: 2}, attr), setter, getter)
 
-    this.setTargetDecorator(new draw2d.decoration.connection.ArrowDecorator(17, 8))
+    this.setTargetDecorator(new  .decoration.connection.ArrowDecorator(17, 8))
 
 
-    this.label = new draw2d.shape.basic.Label({text: "label"})
+    this.label = new  .shape.basic.Label({text: "label"})
     this.label.setStroke(1)
     this.label.setPadding(2)
     this.label.setBackgroundColor("#f0f0f0")
-    this.add(this.label, new draw2d.layout.locator.ParallelMidpointLocator())
+    this.add(this.label, new  .layout.locator.ParallelMidpointLocator())
 
   },
   /**

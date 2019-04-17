@@ -1,15 +1,15 @@
 /**
- * @class draw2d.policy.line.LineSelectionFeedbackPolicy
+ * @class  .policy.line.LineSelectionFeedbackPolicy
  *
  *
  * @author Andreas Herz
- * @extends draw2d.policy.figure.SelectionFeedbackPolicy
+ * @extends  .policy.figure.SelectionFeedbackPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.line.LineSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend({
+ .policy.line.LineSelectionFeedbackPolicy =  .policy.figure.SelectionFeedbackPolicy.extend({
 
-  NAME: "draw2d.policy.line.LineSelectionFeedbackPolicy",
+  NAME: " .policy.line.LineSelectionFeedbackPolicy",
 
   /**
    * @constructor
@@ -24,14 +24,14 @@ draw2d.policy.line.LineSelectionFeedbackPolicy = draw2d.policy.figure.SelectionF
    * @method
    * Called by the framework of the Policy should show a resize handle for the given shape
    *
-   * @param {draw2d.Canvas} canvas The host canvas
-   * @param {draw2d.Figure} figure The related figure
+   * @param { .Canvas} canvas The host canvas
+   * @param { .Figure} figure The related figure
    * @param {Boolean} [isPrimarySelection]
    */
   onSelect: function (canvas, figure, isPrimarySelection) {
     if (figure.selectionHandles.isEmpty()) {
-      figure.selectionHandles.add(new draw2d.shape.basic.LineStartResizeHandle(figure))
-      figure.selectionHandles.add(new draw2d.shape.basic.LineEndResizeHandle(figure))
+      figure.selectionHandles.add(new  .shape.basic.LineStartResizeHandle(figure))
+      figure.selectionHandles.add(new  .shape.basic.LineEndResizeHandle(figure))
 
       figure.selectionHandles.each( (i, e) => {
         e.setDraggable(figure.isResizeable())

@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Location
+ * @class  .shape.icon.Location
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Location();
+ *     let icon =  new  .shape.icon.Location();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Location = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Location",
+ .shape.icon.Location =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Location",
 
   /**
    *

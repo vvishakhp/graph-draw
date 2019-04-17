@@ -1,20 +1,20 @@
 /**
- * @class draw2d.command.Command
+ * @class  .command.Command
  *
  * Commands are passed around throughout editing. They are used to encapsulate and combine
  * changes to the application's model. An application has a single command stack. Commands must
  * be executed using the command stack rather than directly calling execute.
  * <br>
- * This is requried for a deneric support for the undo/redo concept within draw2d.<br>
+ * This is requried for a deneric support for the undo/redo concept within  .<br>
  *
  * @inheritable
  * @author Andreas Herz
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.Command = Class.extend({
+ .command.Command = Class.extend({
 
-  NAME: "draw2d.command.Command",
+  NAME: " .command.Command",
 
   /**
    * @constructor

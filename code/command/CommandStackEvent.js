@@ -1,16 +1,16 @@
 /**
- * @class draw2d.command.CommandStackEvent
+ * @class  .command.CommandStackEvent
  * Event class which will be fired for every CommandStack operation. Required for CommandStackListener.
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandStackEvent = Class.extend({
-  NAME: "draw2d.command.CommandStackEvent",
+ .command.CommandStackEvent = Class.extend({
+  NAME: " .command.CommandStackEvent",
 
   /**
    * @constructor
    * Create a new CommandStack objects which can be execute via the CommandStack.
-   * @param {draw2d.command.Command} command the related command
+   * @param { .command.Command} command the related command
    * @param {Number} details the current state of the command execution
    *
    */
@@ -26,7 +26,7 @@ draw2d.command.CommandStackEvent = Class.extend({
    * @method
    * Return the corresponding stack of the event.
    *
-   * @return {draw2d.command.CommandStack}
+   * @return { .command.CommandStack}
    **/
   getStack: function () {
     return this.stack
@@ -37,7 +37,7 @@ draw2d.command.CommandStackEvent = Class.extend({
    * @method
    * Returns null or a Command if a command is relevant to the current event.
    *
-   * @return {draw2d.command.Command}
+   * @return { .command.Command}
    **/
   getCommand: function () {
     return this.command
@@ -46,7 +46,7 @@ draw2d.command.CommandStackEvent = Class.extend({
   /**
    * @method
    * Returns an integer identifying the type of event which has occurred.
-   * Defined by {@link draw2d.command.CommandStack}.
+   * Defined by {@link  .command.CommandStack}.
    *
    * @return {Number}
    **/
@@ -62,7 +62,7 @@ draw2d.command.CommandStackEvent = Class.extend({
    * @return {Boolean} true if post-change event
    **/
   isPostChangeEvent: function () {
-    return 0 !== (this.getDetails() & draw2d.command.CommandStack.POST_MASK)
+    return 0 !== (this.getDetails() &  .command.CommandStack.POST_MASK)
   },
 
   /**
@@ -72,6 +72,6 @@ draw2d.command.CommandStackEvent = Class.extend({
    * @return {Boolean} true if pre-change event
    **/
   isPreChangeEvent: function () {
-    return 0 !== (this.getDetails() & draw2d.command.CommandStack.PRE_MASK)
+    return 0 !== (this.getDetails() &  .command.CommandStack.PRE_MASK)
   }
 })

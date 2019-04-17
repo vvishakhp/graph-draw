@@ -1,6 +1,6 @@
 
 /**
- * @class draw2d.policy.connection.DragConnectionCreatePolicy
+ * @class  .policy.connection.DragConnectionCreatePolicy
  *
  * The DragConnectionCreatePolicy is the default configuration for connection creation.
  * You must drag a port and drop them onto another port to create connection.
@@ -21,12 +21,12 @@
  *
  *     // Override the default connection creation.
  *     //
- *     canvas.installEditPolicy( new draw2d.policy.connection.DragConnectionCreatePolicy());
+ *     canvas.installEditPolicy( new  .policy.connection.DragConnectionCreatePolicy());
  *
  *     // create and add two Node which contains Ports (In and OUT)
  *     //
- *     var start = new draw2d.shape.node.Start({x:50, y:50});
- *     var endNode   = new draw2d.shape.node.End({x:200, y:70});
+ *     var start = new  .shape.node.Start({x:50, y:50});
+ *     var endNode   = new  .shape.node.End({x:200, y:70});
  *
  *     // add the two nodes to the canvas
  *     //
@@ -35,13 +35,13 @@
  *
  * @author Andreas Herz
  *
- * @extends draw2d.policy.connection.ConnectionCreatePolicy
+ * @extends  .policy.connection.ConnectionCreatePolicy
  */
-import draw2d from '../../packages';
+import   from '../../packages';
 
-draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.ConnectionCreatePolicy.extend({
+ .policy.connection.DragConnectionCreatePolicy =  .policy.connection.ConnectionCreatePolicy.extend({
 
-    NAME : "draw2d.policy.connection.DragConnectionCreatePolicy",
+    NAME : " .policy.connection.DragConnectionCreatePolicy",
     
     /**
      * @constructor
@@ -60,7 +60,7 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
     /**
      * @method
      *
-     * @param {draw2d.Canvas} canvas
+     * @param { .Canvas} canvas
      * @param {Number} x the x-coordinate of the mouse down event
      * @param {Number} y the y-coordinate of the mouse down event
      * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -82,7 +82,7 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
         // may there is a resize handle below the port or another figure
         // in this case the ResizeHandle has prio. and handled by another
         // Policy
-        if(!(port instanceof draw2d.Port)){
+        if(!(port instanceof  .Port)){
             return;
         }
 
@@ -111,7 +111,7 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
     /**
      * @method
      *
-     * @param {draw2d.Canvas} canvas
+     * @param { .Canvas} canvas
      * @param {Number} dx The x diff between start of dragging and this event
      * @param {Number} dy The y diff between start of dragging and this event
      * @param {Number} dx2 The x diff since the last call of this dragging operation
@@ -136,7 +136,7 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
                         ct.onDragLeave(de);
                         ct.fireEvent("dragLeave",{draggingElement:de});
                         de.editPolicy.each(function(i,e){
-                            if(e instanceof draw2d.policy.port.PortFeedbackPolicy){
+                            if(e instanceof  .policy.port.PortFeedbackPolicy){
                                 e.onHoverLeave(canvas, de, ct);
                             }
                         });
@@ -150,7 +150,7 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
                             ct.onDragEnter(de); // legacy
                             ct.fireEvent("dragEnter",{draggingElement:de});
                             de.editPolicy.each(function(i,e){
-                                if(e instanceof draw2d.policy.port.PortFeedbackPolicy){
+                                if(e instanceof  .policy.port.PortFeedbackPolicy){
                                     e.onHoverEnter(canvas, de, ct);
                                 }
                             });
@@ -193,7 +193,7 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
     /**
      * @method
      *
-     * @param {draw2d.Figure} figure the shape below the mouse or null
+     * @param { .Figure} figure the shape below the mouse or null
      * @param {Number} x the x-coordinate of the mouse down event
      * @param {Number} y the y-coordinate of the mouse down event
      * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -213,14 +213,14 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
             //
             if(ct){
                 de.editPolicy.each(function(i,e){
-                    if(e instanceof draw2d.policy.port.PortFeedbackPolicy){
+                    if(e instanceof  .policy.port.PortFeedbackPolicy){
                         e.onHoverLeave(canvas, de, ct);
                     }
                 });
             }
 
             de.editPolicy.each(function(i,e){
-                if(e instanceof draw2d.policy.figure.DragDropEditPolicy){
+                if(e instanceof  .policy.figure.DragDropEditPolicy){
                     e.onDragEnd(canvas, de, x, y, shiftKey, ctrlKey);
                 }
             });
@@ -246,8 +246,8 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
 
                 // Ports accepts only Ports as DropTarget
                 //
-                if(this.currentDropTarget instanceof draw2d.Port){
-                    var request = new draw2d.command.CommandType(draw2d.command.CommandType.CONNECT);
+                if(this.currentDropTarget instanceof  .Port){
+                    var request = new  .command.CommandType( .command.CommandType.CONNECT);
                     request.source = this.currentDropTarget;
                     request.target = this.mouseDraggingElement;
                     var command = this.mouseDraggingElement.createCommand(request);
@@ -271,7 +271,7 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
     createConnection: function()
     {
         var connection = this._super();
-        connection.setRouter(new draw2d.layout.connection.DirectRouter());
+        connection.setRouter(new  .layout.connection.DirectRouter());
 
         return connection;
     }

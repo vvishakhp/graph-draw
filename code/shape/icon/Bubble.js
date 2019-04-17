@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Bubble
+ * @class  .shape.icon.Bubble
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Bubble();
+ *     let icon =  new  .shape.icon.Bubble();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Bubble = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Bubble",
+ .shape.icon.Bubble =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Bubble",
 
   /**
    *

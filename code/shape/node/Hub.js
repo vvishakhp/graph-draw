@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.node.Hub
+ * @class  .shape.node.Hub
  *
  * A hub is a shape with a special kind of port handling. The hole figure is a hybrid port. You can drag&drop a Port directly on
  * the figure.
@@ -9,18 +9,18 @@
  *     @example preview small frame
  *
  *
- *     canvas.add(new draw2d.shape.node.Start({x:50, y:50}));
- *     canvas.add(new draw2d.shape.node.Hub({x:150, y:50}));
+ *     canvas.add(new  .shape.node.Start({x:50, y:50}));
+ *     canvas.add(new  .shape.node.Hub({x:150, y:50}));
  *
- * @extends draw2d.shape.basic.Rectangle
+ * @extends  .shape.basic.Rectangle
  */
 
-import draw2d from '../../packages'
+import   from '../../packages'
 import Color from '../../util/Color'
 
-draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
+ .shape.node.Hub =  .shape.basic.Rectangle.extend({
 
-  NAME: "draw2d.shape.node.Hub",
+  NAME: " .shape.node.Hub",
 
   DEFAULT_COLOR: new Color("#4DF0FE"),
   BACKGROUND_COLOR: new Color("#29AA77"),
@@ -46,9 +46,9 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
         text: this.getLabel
       }, getter))
 
-    let _port = this.port = this.createPort("hybrid", new draw2d.layout.locator.CenterLocator())
+    let _port = this.port = this.createPort("hybrid", new  .layout.locator.CenterLocator())
 
-    let r = draw2d.geo.Rectangle
+    let r =  .geo.Rectangle
     this.CONNECTION_DIR_STRATEGY = [function (peerPort) {
       return _port.getParent().getBoundingBox().getDirection(peerPort.getAbsolutePosition())
     },
@@ -69,7 +69,7 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
     // provide a special connection anchor for this port. We use the bounding box of the
     // parent as connection border
     //
-    this.port.setConnectionAnchor(new draw2d.layout.anchor.ShortesPathConnectionAnchor(this.port))
+    this.port.setConnectionAnchor(new  .layout.anchor.ShortesPathConnectionAnchor(this.port))
     this.port.setVisible(false)
     this.port.setVisible = function () {
     }
@@ -81,9 +81,9 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
    * @method
    * Called by the framework during drag&drop operations if the user drag a figure over this figure
    *
-   * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
+   * @param { .Figure} draggedFigure The figure which is currently dragging
    *
-   * @return {draw2d.Figure} the figure which should receive the drop event or null if the element didn't want a drop event
+   * @return { .Figure} the figure which should receive the drop event or null if the element didn't want a drop event
    **/
   delegateTarget: function (draggedFigure) {
     // redirect the dragEnter handling to the hybrid port
@@ -145,15 +145,15 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
    * @since 3.0.4
    */
   setLabel: function (label) {
-    // Create any Draw2D figure as decoration for the connection
+    // Create any   figure as decoration for the connection
     //
     if (this.label === null) {
       let _this = this
 
-      this.label = new draw2d.shape.basic.Label({text: label, color: "#0d0d0d", fontColor: "#0d0d0d", stroke: 0})
+      this.label = new  .shape.basic.Label({text: label, color: "#0d0d0d", fontColor: "#0d0d0d", stroke: 0})
       // add the new decoration to the connection with a position locator.
       //
-      this.add(this.label, new draw2d.layout.locator.CenterLocator())
+      this.add(this.label, new  .layout.locator.CenterLocator())
       this.label.setSelectionAdapter(function () {
         return _this
       })

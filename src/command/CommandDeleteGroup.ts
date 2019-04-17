@@ -1,24 +1,24 @@
 /**
- * @class draw2d.command.CommandDeleteGroup
+ * @class  .command.CommandDeleteGroup
  *
  * Command to remove a group with all related children.
  *
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandDeleteGroup = draw2d.command.Command.extend({
+ .command.CommandDeleteGroup =  .command.Command.extend({
 
-  NAME: "draw2d.command.CommandDeleteGroup",
+  NAME: " .command.CommandDeleteGroup",
 
   /**
    * @constructor
    * Create a delete command for the given figure.
    *
-   * @param {draw2d.shape.composite.Group} group
+   * @param { .shape.composite.Group} group
    */
   init: function (group) {
-    this._super(draw2d.Configuration.i18n.command.deleteShape)
+    this._super( .Configuration.i18n.command.deleteShape)
 
     this.parent = group.getParent()
     this.group = group
@@ -76,11 +76,11 @@ draw2d.command.CommandDeleteGroup = draw2d.command.Command.extend({
    **/
   redo: function () {
     if (this.batchDelete === null) {
-      this.batchDelete = new draw2d.command.CommandCollection()
+      this.batchDelete = new  .command.CommandCollection()
 
       // remove the assignment of the children to the group before we delete the group
       //
-      this.batchDelete.add(new draw2d.command.CommandUngroup(this.canvas, this.group))
+      this.batchDelete.add(new  .command.CommandUngroup(this.canvas, this.group))
 
       // add the delete command of the children to the batch
       //
@@ -89,7 +89,7 @@ draw2d.command.CommandDeleteGroup = draw2d.command.Command.extend({
         let child = children.get(i)
         // request a delete Command from the child instead of create one by my own. May the child
         // provides its own implementation
-        let cmd = child.createCommand(new draw2d.command.CommandType(draw2d.command.CommandType.DELETE))
+        let cmd = child.createCommand(new  .command.CommandType( .command.CommandType.DELETE))
         this.batchDelete.add(cmd)
       }
 

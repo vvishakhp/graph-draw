@@ -1,19 +1,19 @@
 /**
- * @class draw2d.shape.node.Node
+ * @class  .shape.node.Node
  *
- * A Node is the base class for all figures which can have {@link draw2d.Port}s. A {@link draw2d.Port} is the
- * anchor for a {@link draw2d.Connection} line.<br><br>A {@link draw2d.Port} is a green dot which can
+ * A Node is the base class for all figures which can have {@link  .Port}s. A {@link  .Port} is the
+ * anchor for a {@link  .Connection} line.<br><br>A {@link  .Port} is a green dot which can
  * be dragged and dropped over another port.<br>
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.Figure
+ * @extends  .Figure
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.shape.node.Node = draw2d.Figure.extend({
+ .shape.node.Node =  .Figure.extend({
 
-  NAME: "draw2d.shape.node.Node",
+  NAME: " .shape.node.Node",
 
   /**
    * @constructor
@@ -22,9 +22,9 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
-    this.inputPorts = new draw2d.util.ArrayList()
-    this.outputPorts = new draw2d.util.ArrayList()
-    this.hybridPorts = new draw2d.util.ArrayList()
+    this.inputPorts = new  .util.ArrayList()
+    this.outputPorts = new  .util.ArrayList()
+    this.hybridPorts = new  .util.ArrayList()
 
     // flag which indicates if the figure should read/write ports to
     // JSON
@@ -52,7 +52,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
 
   /**
    * @method
-   * Indicates if the node should read/write the ports via the draw2d.Figure.getPersistenAttributes
+   * Indicates if the node should read/write the ports via the  .Figure.getPersistenAttributes
    * to the JSON object
    *
    * @param {Boolean} flag
@@ -139,12 +139,12 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    * to false to retrieve direct assigned ports only.
    *
    * @param {Boolean} [recursive] indicates if the method should return children ports too. Default is <b>true</b>
-   * @return  {draw2d.util.ArrayList}
+   * @return  { .util.ArrayList}
    **/
   getPorts: function (recursive) {
 
     if (typeof recursive === "boolean" && recursive === false) {
-      let ports = new draw2d.util.ArrayList()
+      let ports = new  .util.ArrayList()
       ports.addAll(this.inputPorts)
       ports.addAll(this.outputPorts)
       ports.addAll(this.hybridPorts)
@@ -152,7 +152,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
     }
 
     if (this.cachedPorts === null) {
-      this.cachedPorts = new draw2d.util.ArrayList()
+      this.cachedPorts = new  .util.ArrayList()
       this.cachedPorts.addAll(this.inputPorts)
       this.cachedPorts.addAll(this.outputPorts)
       this.cachedPorts.addAll(this.hybridPorts)
@@ -169,7 +169,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    * @method
    * Return all input ports of the node.
    *
-   * @return {draw2d.util.ArrayList}
+   * @return { .util.ArrayList}
    **/
   getInputPorts: function () {
     return this.inputPorts
@@ -181,7 +181,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    * @method
    * Return all output ports of the node.
    *
-   * @return {draw2d.util.ArrayList}
+   * @return { .util.ArrayList}
    **/
   getOutputPorts: function () {
     return this.outputPorts
@@ -235,7 +235,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    *
    *
    * @param {String} portName The name of the port to return.
-   * @return {draw2d.Port} Returns the port with the hands over name or null.
+   * @return { .Port} Returns the port with the hands over name or null.
    **/
   getPort: function (portName) {
     return this.getPorts().find(e => e.getName() === portName)
@@ -247,7 +247,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    *
    *
    * @param {String/Number} portNameOrIndex The name or numeric index of the port to return.
-   * @return {draw2d.InputPort} Returns the port with the hands over name or null.
+   * @return { .InputPort} Returns the port with the hands over name or null.
    **/
   getInputPort: function (portNameOrIndex) {
     if (typeof portNameOrIndex === "number") {
@@ -269,7 +269,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    * Return the output port with the corresponding name.
    *
    * @param {String/Number} portNameOrIndex The name or the numeric index of the port to return.
-   * @return {draw2d.OutputPort} Returns the port with the hands over name or null.
+   * @return { .OutputPort} Returns the port with the hands over name or null.
    **/
   getOutputPort: function (portNameOrIndex) {
     if (typeof portNameOrIndex === "number") {
@@ -292,7 +292,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    *
    *
    * @param {String/Number} portNameOrIndex The name or numeric index of the port to return.
-   * @return {draw2d.InputPort} Returns the port with the hands over name or null.
+   * @return { .InputPort} Returns the port with the hands over name or null.
    **/
   getHybridPort: function (portNameOrIndex) {
     if (typeof portNameOrIndex === "number") {
@@ -313,12 +313,12 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    * @method
    * Add a port to this node at the given position.<br>
    *
-   * @param {draw2d.Port} port The new port to add.
-   * @param {draw2d.layout.locator.Locator} locator The layout for the port.
+   * @param { .Port} port The new port to add.
+   * @param { .layout.locator.Locator} locator The layout for the port.
    **/
   addPort: function (port, locator) {
-    if (!(port instanceof draw2d.Port)) {
-      throw "Argument is not typeof 'draw2d.Port'. \nFunction: draw2d.shape.node.Node#addPort"
+    if (!(port instanceof  .Port)) {
+      throw "Argument is not typeof ' .Port'. \nFunction:  .shape.node.Node#addPort"
     }
 
     // add to the internal cache if already build
@@ -328,17 +328,17 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
 
     this.portRelayoutRequired = true
 
-    if (port instanceof draw2d.InputPort) {
+    if (port instanceof  .InputPort) {
       this.inputPorts.add(port)
     }
-    else if (port instanceof draw2d.OutputPort) {
+    else if (port instanceof  .OutputPort) {
       this.outputPorts.add(port)
     }
-    else if (port instanceof draw2d.HybridPort) {
+    else if (port instanceof  .HybridPort) {
       this.hybridPorts.add(port)
     }
 
-    if ((typeof locator !== "undefined") && (locator instanceof draw2d.layout.locator.Locator)) {
+    if ((typeof locator !== "undefined") && (locator instanceof  .layout.locator.Locator)) {
       port.setLocator(locator)
     }
 
@@ -372,7 +372,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    * @method
    * Removes a port and all related connections from this node.<br>
    *
-   * @param {draw2d.Port} port The port to remove.
+   * @param { .Port} port The port to remove.
    **/
   removePort: function (port) {
     this.portRelayoutRequired = true
@@ -402,7 +402,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    * method to create its own type of ports.
    *
    * @param {String} type the type of the requested port. possible ["input", "output"]
-   * @param {draw2d.layout.locator.Locator} [locator] the layouter to use for this port
+   * @param { .layout.locator.Locator} [locator] the layouter to use for this port
    * @template
    */
   createPort: function (type, locator) {
@@ -411,15 +411,15 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
 
     switch (type) {
       case "input":
-        newPort = draw2d.Configuration.factory.createInputPort(this)
+        newPort =  .Configuration.factory.createInputPort(this)
         count = this.inputPorts.getSize()
         break
       case "output":
-        newPort = draw2d.Configuration.factory.createOutputPort(this)
+        newPort =  .Configuration.factory.createOutputPort(this)
         count = this.outputPorts.getSize()
         break
       case "hybrid":
-        newPort = draw2d.Configuration.factory.createHybridPort(this)
+        newPort =  .Configuration.factory.createHybridPort(this)
         count = this.hybridPorts.getSize()
         break
       default:
@@ -439,10 +439,10 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    * @method
    * Return all connections related to this node.
    *
-   * @returns {draw2d.util.ArrayList}
+   * @returns { .util.ArrayList}
    */
   getConnections: function () {
-    let connections = new draw2d.util.ArrayList()
+    let connections = new  .util.ArrayList()
     let ports = this.getPorts()
     for (let i = 0; i < ports.getSize(); i++) {
       let port = ports.get(i)
@@ -509,7 +509,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    * @method
    * Called if the value of any port has been changed
    *
-   * @param {draw2d.Port} relatedPort
+   * @param { .Port} relatedPort
    * @template
    */
   onPortValueChanged: function (relatedPort) {
@@ -552,8 +552,8 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    * @method
    * Returns the Command to perform the specified Request or null.
    *
-   * @param {draw2d.command.CommandType} request describes the Command being requested
-   * @return {draw2d.command.Command} null or a Command
+   * @param { .command.CommandType} request describes the Command being requested
+   * @return { .command.Command} null or a Command
    * @private
    **/
   createCommand: function (request) {
@@ -561,8 +561,8 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
       return null
     }
 
-    if (request.getPolicy() === draw2d.command.CommandType.ROTATE) {
-      return new draw2d.command.CommandRotate(this, (this.getRotationAngle() + 90) % 360)
+    if (request.getPolicy() ===  .command.CommandType.ROTATE) {
+      return new  .command.CommandRotate(this, (this.getRotationAngle() + 90) % 360)
     }
 
 

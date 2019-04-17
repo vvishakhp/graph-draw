@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Landscape1
+ * @class  .shape.icon.Landscape1
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Landscape1();
+ *     let icon =  new  .shape.icon.Landscape1();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Landscape1 = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Landscape1",
+ .shape.icon.Landscape1 =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Landscape1",
 
   /**
    *

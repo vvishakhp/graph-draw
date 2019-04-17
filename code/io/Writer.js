@@ -1,15 +1,15 @@
 
 /**
- * @class draw2d.io.Writer
+ * @class  .io.Writer
  * Serialize the canvas to an external format. This is only a template/interface class.
  * Inherit classes must implement the export format.
  *
  * @author Andreas Herz
  */
-import draw2d from '../packages';
+import   from '../packages';
 
 
-draw2d.io.Writer = Class.extend({
+ .io.Writer = Class.extend({
 
     /**
      * @constructor
@@ -31,7 +31,7 @@ draw2d.io.Writer = Class.extend({
      *
      * @template
      * @since 2.10.1
-     * @param {draw2d.Canvas} canvas
+     * @param { .Canvas} canvas
      * @param {Function} resultCallback the method to call on success. The first argument is the result object, the second the base64 content of a corresponding file
      * @returns {Object}
      *

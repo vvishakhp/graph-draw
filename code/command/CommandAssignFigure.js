@@ -1,32 +1,32 @@
 /**
- * @class draw2d.command.CommandAssignFigure
+ * @class  .command.CommandAssignFigure
  *
  * Assign a figure to a compiste
  *
  * @author Andreas Herz
  *
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  * @since 4.9.0
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandAssignFigure = draw2d.command.Command.extend({
-  NAME: "draw2d.command.CommandAssignFigure",
+ .command.CommandAssignFigure =  .command.Command.extend({
+  NAME: " .command.CommandAssignFigure",
 
   /**
    * @constructor
    * Create a new Command objects which can be execute via the CommandStack.
    *
-   * @param {draw2d.Figure} figure the figure to assign
-   * @param {draw2d.Figure} composite the composite where the figure should assign
+   * @param { .Figure} figure the figure to assign
+   * @param { .Figure} composite the composite where the figure should assign
    */
   init: function (figure, composite) {
-    this._super(draw2d.Configuration.i18n.command.assignShape)
+    this._super( .Configuration.i18n.command.assignShape)
 
     this.figure = figure
     this.composite = composite
-    this.assignedConnections = new draw2d.util.ArrayList()
-    this.isNode = this.figure instanceof draw2d.shape.node.Node
+    this.assignedConnections = new  .util.ArrayList()
+    this.isNode = this.figure instanceof  .shape.node.Node
     this.oldBoundingBox = composite.getBoundingBox()
   },
 

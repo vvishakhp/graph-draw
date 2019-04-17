@@ -1,5 +1,5 @@
 /**
- * @class draw2d.layout.locator.XYAbsPortLocator
+ * @class  .layout.locator.XYAbsPortLocator
  *
  * Create a locator for fixed x/y coordinate position. The port in the example below is
  * always 20px below of the top border.
@@ -8,24 +8,24 @@
  *
  *     @example preview small frame
  *
- *     var figure =  new draw2d.shape.basic.Rectangle({x:130,y:30,width:100,height:60});
- *     figure.createPort("input", new draw2d.layout.locator.XYAbsPortLocator(0,20));
+ *     var figure =  new  .shape.basic.Rectangle({x:130,y:30,width:100,height:60});
+ *     figure.createPort("input", new  .layout.locator.XYAbsPortLocator(0,20));
  *
  *     canvas.add(figure);
  *
  * @author Andreas Herz
- * @extend draw2d.layout.locator.PortLocator
+ * @extend  .layout.locator.PortLocator
  * @since 4.0.0
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.layout.locator.XYAbsPortLocator = draw2d.layout.locator.PortLocator.extend({
-  NAME: "draw2d.layout.locator.XYAbsPortLocator",
+ .layout.locator.XYAbsPortLocator =  .layout.locator.PortLocator.extend({
+  NAME: " .layout.locator.XYAbsPortLocator",
 
   /**
    * @constructor
    *
-   * {@link draw2d.shape.node.Node}
+   * {@link  .shape.node.Node}
    *
    * @param {Number} x the x coordinate of the port relative to the left of the parent
    * @param {Number} y the y coordinate of the port relative to the top of the parent
@@ -39,10 +39,10 @@ draw2d.layout.locator.XYAbsPortLocator = draw2d.layout.locator.PortLocator.exten
 
   /**
    * @method
-   * Controls the location of an {@link draw2d.Figure}
+   * Controls the location of an {@link  .Figure}
    *
    * @param {Number} index child index of the figure
-   * @param {draw2d.Figure} figure the figure to control
+   * @param { .Figure} figure the figure to control
    *
    * @template
    **/

@@ -1,5 +1,5 @@
 /**
- * @class draw2d.Selection
+ * @class  .Selection
  *
  * Represents the current selection in the canvas. The selection element is a pure passive element which
  * manage/store the selection.
@@ -8,11 +8,11 @@
  * @author Andreas Herz
  */
 
-import draw2d from 'packages';
+import   from 'packages';
 
-draw2d.Selection = Class.extend({
+ .Selection = Class.extend({
 
-  NAME: "draw2d.Selection",
+  NAME: " .Selection",
 
   /**
    * @constructor
@@ -21,7 +21,7 @@ draw2d.Selection = Class.extend({
    */
   init: function () {
     this.primary = null;
-    this.all = new draw2d.util.ArrayList();
+    this.all = new  .util.ArrayList();
   },
 
   /**
@@ -31,7 +31,7 @@ draw2d.Selection = Class.extend({
    */
   clear: function () {
     this.primary = null;
-    this.all = new draw2d.util.ArrayList();
+    this.all = new  .util.ArrayList();
 
     return this;
   },
@@ -40,7 +40,7 @@ draw2d.Selection = Class.extend({
    * @method
    * Return the primary selection. This can only one figure at once.
    *
-   * @return {draw2d.Figure} the primary selected figure
+   * @return { .Figure} the primary selected figure
    */
   getPrimary: function () {
     return this.primary;
@@ -50,7 +50,7 @@ draw2d.Selection = Class.extend({
    * @method
    * Set the primary selection.
    *
-   * @param {draw2d.Figure} figure The new primary selection
+   * @param { .Figure} figure The new primary selection
    */
   setPrimary: function (figure) {
     this.primary = figure;
@@ -63,7 +63,7 @@ draw2d.Selection = Class.extend({
    * @method
    * Remove the given figure from the selection (primary,all)
    *
-   * @param {draw2d.Figure} figure
+   * @param { .Figure} figure
    */
   remove: function (figure) {
     this.all.remove(figure);
@@ -95,7 +95,7 @@ draw2d.Selection = Class.extend({
    * @method
    * return true if the given figure part of the selection.
    *
-   * @param {draw2d.Figure} figure The figure to check
+   * @param { .Figure} figure The figure to check
    * @param {Boolean} [checkDescendant] Check if the figure provided by the argument is a descendant of the selection whether it is a direct child or nested more deeply.
    *
    * @since 2.2.0
@@ -129,16 +129,16 @@ draw2d.Selection = Class.extend({
    * Return the complete selection - including the primary selection.
    *
    * @param {Boolean} [expand] expand all StrongComposite and WeakComposite to get all figures. Didn't expand any SetFigures or LayoutFigures
-   * @return {draw2d.util.ArrayList}
+   * @return { .util.ArrayList}
    *
    */
   getAll: function (expand) {
     if (expand === true) {
-      let result = new draw2d.util.ArrayList();
+      let result = new  .util.ArrayList();
       let addRecursive = (figures) => {
         result.addAll(figures, true);
         figures.each((index, figure) => {
-          if (figure instanceof draw2d.shape.composite.StrongComposite) {
+          if (figure instanceof  .shape.composite.StrongComposite) {
             addRecursive(figure.getAssignedFigures());
           }
         });

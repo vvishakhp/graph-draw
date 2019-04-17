@@ -1,16 +1,16 @@
 /**
- * @class draw2d.policy.port.IntrusivePortsFeedbackPolicy
+ * @class  .policy.port.IntrusivePortsFeedbackPolicy
  *
  *
  * @author Andreas Herz
- * @extends draw2d.policy.figure.DragDropEditPolicy
+ * @extends  .policy.figure.DragDropEditPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import {Tweenable} from "shifty"
 
-draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbackPolicy.extend({
+ .policy.port.IntrusivePortsFeedbackPolicy =  .policy.port.PortFeedbackPolicy.extend({
 
-  NAME: "draw2d.policy.port.IntrusivePortsFeedbackPolicy",
+  NAME: " .policy.port.IntrusivePortsFeedbackPolicy",
 
   /**
    * @constructor
@@ -26,8 +26,8 @@ draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbac
    * Called by the framework if the related shape has init a drag&drop
    * operation
    *
-   * @param {draw2d.Canvas} canvas The host canvas
-   * @param {draw2d.Figure} figure The related figure
+   * @param { .Canvas} canvas The host canvas
+   * @param { .Figure} figure The related figure
    * @param {Number} x the x-coordinate of the mouse up event
    * @param {Number} y the y-coordinate of the mouse up event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -47,7 +47,7 @@ draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbac
     // animate the resize of the ports
     //
     allPorts.grep(function (p) {
-      return (p.NAME != figure.NAME && p.parent !== figure.parent) || (p instanceof draw2d.HybridPort) || (figure instanceof draw2d.HybridPort)
+      return (p.NAME != figure.NAME && p.parent !== figure.parent) || (p instanceof  .HybridPort) || (figure instanceof  .HybridPort)
     })
     this.tweenable = new Tweenable()
     this.tweenable.tween({
@@ -66,7 +66,7 @@ draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbac
       }
     })
 
-    this.connectionLine = new draw2d.shape.basic.Line()
+    this.connectionLine = new  .shape.basic.Line()
     this.connectionLine.setCanvas(canvas)
     this.connectionLine.getShapeElement()
     this.connectionLine.setDashArray("- ")
@@ -82,8 +82,8 @@ draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbac
    * @method
    * Called by the framework during drag a figure.
    *
-   * @param {draw2d.Canvas} canvas The host canvas
-   * @param {draw2d.Figure} figure The related figure
+   * @param { .Canvas} canvas The host canvas
+   * @param { .Figure} figure The related figure
    * @template
    */
   onDrag: function (canvas, figure) {
@@ -98,8 +98,8 @@ draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbac
    * @method
    * Called by the framework if the drag drop operation ends.
    *
-   * @param {draw2d.Canvas} canvas The host canvas
-   * @param {draw2d.Figure} figure The related figure
+   * @param { .Canvas} canvas The host canvas
+   * @param { .Figure} figure The related figure
    * @template
    */
   onDragEnd: function (canvas, figure, x, y, shiftKey, ctrlKey) {

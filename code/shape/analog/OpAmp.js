@@ -1,26 +1,26 @@
 /**
- * @class draw2d.shape.analog.OpAmp
+ * @class  .shape.analog.OpAmp
  * Hand drawn arrow which points down left
  *
  * See the example:
  *
  *     @example preview small frame
  *
- *     let figure =  new draw2d.shape.analog.OpAmp({x:10, y:10});
+ *     let figure =  new  .shape.analog.OpAmp({x:10, y:10});
  *
  *     canvas.add(figure);
  *
  *
- * @extends draw2d.SVGFigure
+ * @extends  .SVGFigure
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.analog.OpAmp = draw2d.SVGFigure.extend({
+ .shape.analog.OpAmp =  .SVGFigure.extend({
 
-  NAME: "draw2d.shape.analog.OpAmp",
+  NAME: " .shape.analog.OpAmp",
 
   // custom locator for the special design of the OpAmp Input area
-  MyInputPortLocator: draw2d.layout.locator.PortLocator.extend({
+  MyInputPortLocator:  .layout.locator.PortLocator.extend({
     init: function () {
       this._super()
     },

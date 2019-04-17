@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.node.Start
+ * @class  .shape.node.Start
  *
  * A generic Node which has an OutputPort. Mainly used for demo and examples.
  *
@@ -7,18 +7,18 @@
  *
  *     @example preview small frame
  *
- *     let figure =  new draw2d.shape.node.Start({color: "#3d3d3d"});
+ *     let figure =  new  .shape.node.Start({color: "#3d3d3d"});
  *
  *     canvas.add(figure,50,10);
  *
- * @extends draw2d.shape.basic.Rectangle
+ * @extends  .shape.basic.Rectangle
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.node.Start = draw2d.shape.basic.Rectangle.extend({
+ .shape.node.Start =  .shape.basic.Rectangle.extend({
 
-  NAME: "draw2d.shape.node.Start",
-  DEFAULT_COLOR: new draw2d.util.Color("#4D90FE"),
+  NAME: " .shape.node.Start",
+  DEFAULT_COLOR: new  .util.Color("#4D90FE"),
 
   /**
    * @constructor
@@ -33,7 +33,7 @@ draw2d.shape.node.Start = draw2d.shape.basic.Rectangle.extend({
       height: 50
     }, attr), setter, getter)
     this.createPort("output")
-    this.installEditPolicy(new draw2d.policy.figure.RectangleSelectionFeedbackPolicy())
+    this.installEditPolicy(new  .policy.figure.RectangleSelectionFeedbackPolicy())
     this.createPort("output")
   }
 

@@ -1,13 +1,13 @@
 /**
- * @class draw2d.shape.state.State
+ * @class  .shape.state.State
  *
  * a state shape for a state diagram
  *
  *     @example preview small frame
  *     // create and add two nodes which contains Ports (In and OUT)
  *     //
- *     let start = new draw2d.shape.state.Start();
- *     let state   = new draw2d.shape.state.State();
+ *     let start = new  .shape.state.Start();
+ *     let state   = new  .shape.state.State();
 
  *     // ...add it to the canvas
  *     canvas.add( start, 50,50);
@@ -15,7 +15,7 @@
  *
  *     // Create a Connection and connect the Start and End node
  *     //
- *     let c = new draw2d.shape.state.Connection({
+ *     let c = new  .shape.state.Connection({
  *     		source : start.getOutputPort(0),
  *          target : state.getInputPort(0)
  *     });
@@ -24,19 +24,19 @@
  *     // and finally add the connection to the canvas
  *     canvas.add(c);
  *
- * @extends draw2d.shape.layout.VerticalLayout
+ * @extends  .shape.layout.VerticalLayout
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.state.State = draw2d.shape.layout.VerticalLayout.extend({
+ .shape.state.State =  .shape.layout.VerticalLayout.extend({
 
-  NAME: "draw2d.shape.state.State",
+  NAME: " .shape.state.State",
 
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)
 
-    this.port = this.createPort("hybrid", new draw2d.layout.locator.BottomLocator())
-    this.port.setConnectionAnchor(new draw2d.layout.anchor.ChopboxConnectionAnchor(this.port))
+    this.port = this.createPort("hybrid", new  .layout.locator.BottomLocator())
+    this.port.setConnectionAnchor(new  .layout.anchor.ChopboxConnectionAnchor(this.port))
 
 
     this.setBackgroundColor("#f3f3f3")
@@ -54,7 +54,7 @@ draw2d.shape.state.State = draw2d.shape.layout.VerticalLayout.extend({
     // the middle part of the shape
     // This part contains the ports for the connection
     //
-    let center = new draw2d.shape.basic.Rectangle()
+    let center = new  .shape.basic.Rectangle()
     center.getHeight = function () {
       return 1
     }
@@ -63,7 +63,7 @@ draw2d.shape.state.State = draw2d.shape.layout.VerticalLayout.extend({
 
     // the bottom of the activity shape
     //
-    let bottom = new draw2d.shape.basic.Rectangle()
+    let bottom = new  .shape.basic.Rectangle()
     bottom.setMinHeight(30)
     bottom.setStroke(0)
     bottom.setBackgroundColor(null)
@@ -104,11 +104,11 @@ draw2d.shape.state.State = draw2d.shape.layout.VerticalLayout.extend({
    * helper method to create some labels
    *
    * @param {String} txt the label to display
-   * @returns {draw2d.shape.basic.Label}
+   * @returns { .shape.basic.Label}
    * @private
    */
   createLabel: function (txt) {
-    let label = new draw2d.shape.basic.Label(txt)
+    let label = new  .shape.basic.Label(txt)
     label.setStroke(1)
     label.setColor(this.darkerBgColor)
     label.setRadius(0)

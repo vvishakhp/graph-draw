@@ -1,5 +1,5 @@
 /**
- * @class draw2d.layout.locator.RightLocator
+ * @class  .layout.locator.RightLocator
  *
  * A RightLocator is used to place figures to the right of a parent shape.
  *
@@ -11,20 +11,20 @@
  *
  *     // create a basic figure and add a Label/child via API call
  *     //
- *     var end = new draw2d.shape.node.End();
- *     end.add(new draw2d.shape.basic.Label({text:"Right Label"}), new draw2d.layout.locator.RightLocator({
+ *     var end = new  .shape.node.End();
+ *     end.add(new  .shape.basic.Label({text:"Right Label"}), new  .layout.locator.RightLocator({
  *          margin: 10 // distance to the parent shape
  *     }));
  *     canvas.add( end, 50,50);
  *
  *
  * @author Andreas Herz
- * @extend draw2d.layout.locator.Locator
+ * @extend  .layout.locator.Locator
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.layout.locator.RightLocator = draw2d.layout.locator.Locator.extend({
-  NAME: "draw2d.layout.locator.RightLocator",
+ .layout.locator.RightLocator =  .layout.locator.Locator.extend({
+  NAME: " .layout.locator.RightLocator",
 
   /**
    * @constructor
@@ -43,7 +43,7 @@ draw2d.layout.locator.RightLocator = draw2d.layout.locator.Locator.extend({
    * Relocates the given Figure.
    *
    * @param {Number} index child index of the target
-   * @param {draw2d.Figure} target The figure to relocate
+   * @param { .Figure} target The figure to relocate
    **/
   relocate: function (index, target) {
     var parent = target.getParent()
@@ -52,9 +52,9 @@ draw2d.layout.locator.RightLocator = draw2d.layout.locator.Locator.extend({
     // I made a wrong decision in the port handling: anchor point
     // is in the center and not topLeft. Now I must correct this flaw here, and there, and...
     // shit happens.
-    var offset = (parent instanceof draw2d.Port) ? boundingBox.h / 2 : 0
+    var offset = (parent instanceof  .Port) ? boundingBox.h / 2 : 0
 
-    if (target instanceof draw2d.Port) {
+    if (target instanceof  .Port) {
       target.setPosition(boundingBox.w, (boundingBox.h / 2) - offset)
     }
     else {

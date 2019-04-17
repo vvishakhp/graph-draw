@@ -1,13 +1,13 @@
 
 /**
- * @class draw2d.layout.mesh.ProposedMeshChange
+ * @class  .layout.mesh.ProposedMeshChange
  * Change proposal for grid/mesh layout changes.
  *
  * @author Andreas Herz
  */
-import draw2d from '../../packages';
+import   from '../../packages';
 
-draw2d.layout.mesh.ProposedMeshChange = Class.extend({
+ .layout.mesh.ProposedMeshChange = Class.extend({
 
 	/**
 	 * @constructor
@@ -24,7 +24,7 @@ draw2d.layout.mesh.ProposedMeshChange = Class.extend({
      * @method
      * Return the related figure.
      *
-     * @return {draw2d.Figure} the figure to the related change proposal
+     * @return { .Figure} the figure to the related change proposal
      */
     getFigure: function( )
     {

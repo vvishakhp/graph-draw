@@ -15,7 +15,7 @@ export class LeftLocator extends Locator {
 }
 
 /**
- * @class draw2d.layout.locator.LeftLocator
+ * @class  .layout.locator.LeftLocator
  *
  * A LeftLocator is used to place figures to the left of a parent shape.
  *
@@ -27,24 +27,24 @@ export class LeftLocator extends Locator {
  *
  *     // create a basic figure and add a Label/child via API call
  *     //
- *     let start = new draw2d.shape.node.Start();
- *     start.add(new draw2d.shape.basic.Label({text:"Left Label"}), new draw2d.layout.locator.LeftLocator({
+ *     let start = new  .shape.node.Start();
+ *     start.add(new  .shape.basic.Label({text:"Left Label"}), new  .layout.locator.LeftLocator({
  *      margin:10  // distance to the parent shape
  *     }));
  *     canvas.add( start, 100,50);
  *
  *
  * @author Andreas Herz
- * @extend draw2d.layout.locator.Locator
+ * @extend  .layout.locator.Locator
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import { Type, createInstenceFromType } from '../../../src/TypeRegistry';
 import extend from '../../../src/util/extend';
 import { Locator } from './Locator';
 import { AttributeCollection } from '../../../src/Canvas';
 
-draw2d.layout.locator.LeftLocator = draw2d.layout.locator.Locator.extend({
-  NAME: "draw2d.layout.locator.LeftLocator",
+ .layout.locator.LeftLocator =  .layout.locator.Locator.extend({
+  NAME: " .layout.locator.LeftLocator",
 
   /**
    * @constructor
@@ -64,7 +64,7 @@ draw2d.layout.locator.LeftLocator = draw2d.layout.locator.Locator.extend({
    * Relocates the given Figure.
    *
    * @param {Number} index child index of the target
-   * @param {draw2d.Figure} target The figure to relocate
+   * @param { .Figure} target The figure to relocate
    **/
   relocate: function (index, target) {
     let parent = target.getParent()
@@ -73,10 +73,10 @@ draw2d.layout.locator.LeftLocator = draw2d.layout.locator.Locator.extend({
     // I made a wrong decision in the port handling: anchor point
     // is in the center and not topLeft. Now I must correct this flaw here, and there, and...
     // shit happens.
-    let offset = (parent instanceof draw2d.Port) ? boundingBox.h / 2 : 0
+    let offset = (parent instanceof  .Port) ? boundingBox.h / 2 : 0
 
 
-    if (target instanceof draw2d.Port) {
+    if (target instanceof  .Port) {
       target.setPosition(0, (boundingBox.h / 2) - offset)
     }
     else {

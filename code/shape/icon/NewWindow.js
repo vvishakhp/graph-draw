@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.NewWindow
+ * @class  .shape.icon.NewWindow
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.NewWindow();
+ *     let icon =  new  .shape.icon.NewWindow();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.NewWindow = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.NewWindow",
+ .shape.icon.NewWindow =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.NewWindow",
 
   /**
    *

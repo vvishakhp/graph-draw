@@ -1,19 +1,19 @@
 /**
- * @class draw2d.util.spline.BezierSpline
+ * @class  .util.spline.BezierSpline
  *
  * A bezier spline object.
  *
  * @inheritable
  * @author Andreas Herz
  *
- * @extends draw2d.util.spline.Spline
+ * @extends  .util.spline.Spline
  */
 
-import draw2d from '../../packages';
+import   from '../../packages';
 
-draw2d.util.spline.BezierSpline = draw2d.util.spline.Spline.extend(
+ .util.spline.BezierSpline =  .util.spline.Spline.extend(
 {
-    NAME : "draw2d.util.spline.BezierSpline",
+    NAME : " .util.spline.BezierSpline",
 
     /**
      * @constructor
@@ -33,12 +33,12 @@ draw2d.util.spline.BezierSpline = draw2d.util.spline.Spline.extend(
      * @param {Array} controlPoints  Control points of spline (x0,y0,z0,x1,y1,z1,...).
      * @param {Number} parts Number of parts to divide each leg into.
      *
-     * @returns {Array} the new generated array with new draw2d.geo.Point
+     * @returns {Array} the new generated array with new  .geo.Point
      */
     generate: function(controlPoints, parts)
     {
       var n = controlPoints.getSize();
-      var spline = new draw2d.util.ArrayList();
+      var spline = new  .util.ArrayList();
 
       spline.add(this.p(0, 0, controlPoints));
 
@@ -68,7 +68,7 @@ draw2d.util.spline.BezierSpline = draw2d.util.spline.Spline.extend(
         y += b * p.y;
      }
 
-      return new draw2d.geo.Point( x, y);
+      return new  .geo.Point( x, y);
     },
 
 

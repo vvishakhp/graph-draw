@@ -1,5 +1,5 @@
 /**
- * @class draw2d.policy.canvas.SnapToVerticesEditPolicy
+ * @class  .policy.canvas.SnapToVerticesEditPolicy
  *
  * Snapping is based on the existing children of a container. When snapping a shape,
  * the edges of the bounding box will snap to edges of other rectangles generated
@@ -8,13 +8,13 @@
  *
  * @author Andreas Herz
  *
- * @extends draw2d.policy.canvas.SnapToEditPolicy
+ * @extends  .policy.canvas.SnapToEditPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.canvas.SnapToVerticesEditPolicy = draw2d.policy.canvas.SnapToEditPolicy.extend({
+ .policy.canvas.SnapToVerticesEditPolicy =  .policy.canvas.SnapToEditPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.SnapToVerticesEditPolicy",
+  NAME: " .policy.canvas.SnapToVerticesEditPolicy",
 
   SNAP_THRESHOLD: 3,
   FADEOUT_DURATION: 300,
@@ -36,7 +36,7 @@ draw2d.policy.canvas.SnapToVerticesEditPolicy = draw2d.policy.canvas.SnapToEditP
   /**
    * @method
    *
-   * @param {draw2d.Figure} figure the shape below the mouse or null
+   * @param { .Figure} figure the shape below the mouse or null
    * @param {Number} x the x-coordinate of the mouse down event
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -52,17 +52,17 @@ draw2d.policy.canvas.SnapToVerticesEditPolicy = draw2d.policy.canvas.SnapToEditP
    * @method
    * Adjust the coordinates to the canvas neighbours
    *
-   * @param {draw2d.Canvas} canvas the related canvas
-   * @param {draw2d.Figure} figure the figure to snap
-   * @param {draw2d.geo.Point} modifiedPos the already modified position of the figure (e.g. from an another Policy)
-   * @param {draw2d.geo.Point} originalPos the original requested position of the figure
+   * @param { .Canvas} canvas the related canvas
+   * @param { .Figure} figure the figure to snap
+   * @param { .geo.Point} modifiedPos the already modified position of the figure (e.g. from an another Policy)
+   * @param { .geo.Point} originalPos the original requested position of the figure
    *
-   * @returns {draw2d.geo.Point} the constraint position of the figure
+   * @returns { .geo.Point} the constraint position of the figure
    */
   snap: function (canvas, figure, modifiedPos, originalPos) {
     // can only handle PolyLies at the moment
     //
-    if (!(figure instanceof draw2d.shape.basic.VertexResizeHandle)) {
+    if (!(figure instanceof  .shape.basic.VertexResizeHandle)) {
       return modifiedPos
     }
 

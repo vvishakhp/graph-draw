@@ -1,13 +1,13 @@
 /**
- * @class draw2d.decoration.connection.DiamondDecorator
+ * @class  .decoration.connection.DiamondDecorator
  * See the example:
  *
  *     @example preview small frame
  *
  *     // create and add two nodes which contains Ports (In and OUT)
  *     //
- *     var start = new draw2d.shape.node.Start();
- *     var end   = new draw2d.shape.node.End();
+ *     var start = new  .shape.node.Start();
+ *     var end   = new  .shape.node.End();
 
  *     // ...add it to the canvas
  *     canvas.add( start, 50,50);
@@ -15,15 +15,15 @@
  *
  *     // Create a Connection and connect the Start and End node
  *     //
- *     var c = new draw2d.Connection();
+ *     var c = new  .Connection();
  *
  *     // toggle from ManhattenRouter to DirectRouter to show the rotation of decorations
- *     c.setRouter(new draw2d.layout.connection.DirectRouter());
+ *     c.setRouter(new  .layout.connection.DirectRouter());
  *
  *     // Set the endpoint decorations for the connection
  *     //
- *     c.setSourceDecorator(new draw2d.decoration.connection.DiamondDecorator());
- *     c.setTargetDecorator(new draw2d.decoration.connection.DiamondDecorator());
+ *     c.setSourceDecorator(new  .decoration.connection.DiamondDecorator());
+ *     c.setTargetDecorator(new  .decoration.connection.DiamondDecorator());
  *     // Connect the endpoints with the start and end port
  *     //
  *     c.setSource(start.getOutputPort(0));
@@ -35,14 +35,14 @@
  *
  * @inheritable
  * @author Andreas Herz
- * @extend draw2d.decoration.connection.Decorator
+ * @extend  .decoration.connection.Decorator
  */
-import draw2d from '../../packages';
+import   from '../../packages';
 
 
-draw2d.decoration.connection.DiamondDecorator = draw2d.decoration.connection.Decorator.extend({
+ .decoration.connection.DiamondDecorator =  .decoration.connection.Decorator.extend({
 
-	NAME : "draw2d.decoration.connection.DiamondDecorator",
+	NAME : " .decoration.connection.DiamondDecorator",
 
 	/**
 	 * @constructor
@@ -58,7 +58,7 @@ draw2d.decoration.connection.DiamondDecorator = draw2d.decoration.connection.Dec
 	/**
 	 * Draw a filled diamond decoration.
 	 *
-	 * It's not your work to rotate the arrow. The draw2d do this job for you.
+	 * It's not your work to rotate the arrow. The   do this job for you.
 	 *
 	 * @param {Raphael} paper the raphael paper object for the paint operation
 	 **/

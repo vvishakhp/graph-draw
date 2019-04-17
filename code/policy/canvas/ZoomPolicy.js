@@ -1,20 +1,20 @@
 /**
- * @class draw2d.policy.canvas.ZoomPolicy
+ * @class  .policy.canvas.ZoomPolicy
  * Generic zoom policy installable into a canvas object.
  * This is the legacy implementation of the very first zooming in
- * Draw2D. You can use this implementation if you want backward compatible.
+ *  . You can use this implementation if you want backward compatible.
  *
  *
  * @author Andreas Herz
- * @extends draw2d.policy.canvas.CanvasPolicy
+ * @extends  .policy.canvas.CanvasPolicy
  * @since 5.8.0
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import {Tweenable} from "shifty"
 
-draw2d.policy.canvas.ZoomPolicy = draw2d.policy.canvas.CanvasPolicy.extend({
+ .policy.canvas.ZoomPolicy =  .policy.canvas.CanvasPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.ZoomPolicy",
+  NAME: " .policy.canvas.ZoomPolicy",
 
   /**
    * @constructor

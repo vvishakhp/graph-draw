@@ -1,5 +1,5 @@
 /**
- * @class draw2d.policy.canvas.GhostMoveSelectionPolicy
+ * @class  .policy.canvas.GhostMoveSelectionPolicy
  *
  * A drag&Drop feedback handler for the canvas. The policy didn't move the
  * shapes in real time rather it shows a ghost rectangle as feedback. <br>
@@ -12,23 +12,23 @@
  *       @example preview small frame
  *
  *       // install the policy to the canvas
- *       canvas.installEditPolicy(new draw2d.policy.canvas.GhostMoveSelectionPolicy());
+ *       canvas.installEditPolicy(new  .policy.canvas.GhostMoveSelectionPolicy());
  *
  *       // add some demo figure to the canvas
- *       canvas.add(new draw2d.shape.basic.Circle({diameter: 50, x: 10,  y: 30}));
- *       canvas.add(new draw2d.shape.basic.Circle({diameter: 30, x: 90,  y: 50}));
- *       canvas.add(new draw2d.shape.basic.Circle({diameter: 60, x: 110, y: 30}));
+ *       canvas.add(new  .shape.basic.Circle({diameter: 50, x: 10,  y: 30}));
+ *       canvas.add(new  .shape.basic.Circle({diameter: 30, x: 90,  y: 50}));
+ *       canvas.add(new  .shape.basic.Circle({diameter: 60, x: 110, y: 30}));
  *
- *       canvas.add(new draw2d.shape.basic.Label({text:"move the circle to see the drag&drop feedback"}),5,5);
+ *       canvas.add(new  .shape.basic.Label({text:"move the circle to see the drag&drop feedback"}),5,5);
  *
  * @author Andreas Herz
- * @extends draw2d.policy.canvas.SingleSelectionPolicy
+ * @extends  .policy.canvas.SingleSelectionPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.canvas.GhostMoveSelectionPolicy = draw2d.policy.canvas.SingleSelectionPolicy.extend({
+ .policy.canvas.GhostMoveSelectionPolicy =  .policy.canvas.SingleSelectionPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.GhostMoveSelectionPolicy",
+  NAME: " .policy.canvas.GhostMoveSelectionPolicy",
 
   /**
    * @constructor
@@ -54,17 +54,17 @@ draw2d.policy.canvas.GhostMoveSelectionPolicy = draw2d.policy.canvas.SingleSelec
       if (!sel.contains(this.mouseDraggingElement)) {
         this.mouseDraggingElement.onDrag(dx, dy, dx2, dy2, shiftKey, ctrlKey)
       }
-      // it is a normal draw2d.Figure
+      // it is a normal  .Figure
       else {
         // create the ghost handles for the figure to move and update the position
         //
         if (this.ghostRectangle1 === null) {
-          this.ghostRectangle1 = new draw2d.shape.basic.Rectangle(/*{bgColor:"#303030", alpha:0.1}*/) // new API with version 5.0.0
+          this.ghostRectangle1 = new  .shape.basic.Rectangle(/*{bgColor:"#303030", alpha:0.1}*/) // new API with version 5.0.0
           // old API
           this.ghostRectangle1.setBackgroundColor("#303030")
           this.ghostRectangle1.setAlpha(0.1)
 
-          this.ghostRectangle2 = new draw2d.shape.basic.Rectangle(/*{dash:"- ", stroke:1, color:"#5497DC", bgColor:null}*/)
+          this.ghostRectangle2 = new  .shape.basic.Rectangle(/*{dash:"- ", stroke:1, color:"#5497DC", bgColor:null}*/)
           this.ghostRectangle2.setDashArray("- ")
           this.ghostRectangle2.setStroke(1)
           this.ghostRectangle2.setColor("#5497DC")
@@ -80,7 +80,7 @@ draw2d.policy.canvas.GhostMoveSelectionPolicy = draw2d.policy.canvas.SingleSelec
           this.ghostRectangle2.toFront()
 
           this.clone = this.mouseDraggingElement.clone()
-          if (this.clone instanceof draw2d.shape.node.Node) {
+          if (this.clone instanceof  .shape.node.Node) {
             this.clone.resetPorts()
           }
           this.clone.setCanvas(canvas)
@@ -96,7 +96,7 @@ draw2d.policy.canvas.GhostMoveSelectionPolicy = draw2d.policy.canvas.SingleSelec
 
         sel.each(function (i, figure) {
           // store the new location in a tmp var.
-          figure._newPos = new draw2d.geo.Point(figure.ox + dx, figure.oy + dy)
+          figure._newPos = new  .geo.Point(figure.ox + dx, figure.oy + dy)
 
           // don't move the figure. This will be done in the MouseUp event
           //figure.onDrag(dx, dy, dx2, dy2);
@@ -125,7 +125,7 @@ draw2d.policy.canvas.GhostMoveSelectionPolicy = draw2d.policy.canvas.SingleSelec
     // Connection didn't support panning at the moment. There is no special reason for that. Just an interaction
     // decision.
     //
-    else if (this.mouseDownElement !== null && !(this.mouseDownElement instanceof draw2d.Connection)) {
+    else if (this.mouseDownElement !== null && !(this.mouseDownElement instanceof  .Connection)) {
       if (this.mouseDownElement.panningDelegate !== null) {
         this.mouseDownElement.panningDelegate.fireEvent("panning", {
           dx: dx,
@@ -166,8 +166,8 @@ draw2d.policy.canvas.GhostMoveSelectionPolicy = draw2d.policy.canvas.SingleSelec
     }
 
     if (this.mouseDraggingElement !== null) {
-      let redrawConnection = new draw2d.util.ArrayList()
-      if (this.mouseDraggingElement instanceof draw2d.shape.node.Node) {
+      let redrawConnection = new  .util.ArrayList()
+      if (this.mouseDraggingElement instanceof  .shape.node.Node) {
         canvas.lineIntersections.each(function (i, inter) {
           if (!redrawConnection.contains(inter.line)) redrawConnection.add(inter.line)
           if (!redrawConnection.contains(inter.other)) redrawConnection.add(inter.other)
@@ -176,7 +176,7 @@ draw2d.policy.canvas.GhostMoveSelectionPolicy = draw2d.policy.canvas.SingleSelec
 
 
       // start CommandStack transaction
-      // Trigger an update of the connections if we have move a draw2d.shape.node.Node figure.
+      // Trigger an update of the connections if we have move a  .shape.node.Node figure.
       // (only "nodes" can have ports and connections)
       //
       canvas.getCommandStack().startTransaction()
@@ -214,7 +214,7 @@ draw2d.policy.canvas.GhostMoveSelectionPolicy = draw2d.policy.canvas.SingleSelec
       // end command stack trans
       canvas.getCommandStack().commitTransaction()
 
-      if (this.mouseDraggingElement instanceof draw2d.shape.node.Node) {
+      if (this.mouseDraggingElement instanceof  .shape.node.Node) {
         canvas.lineIntersections.each((i, inter) => {
           if (!redrawConnection.contains(inter.line)) redrawConnection.add(inter.line)
           if (!redrawConnection.contains(inter.other)) redrawConnection.add(inter.other)

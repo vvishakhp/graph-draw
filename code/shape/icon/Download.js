@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Download
+ * @class  .shape.icon.Download
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Download();
+ *     let icon =  new  .shape.icon.Download();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Download = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Download",
+ .shape.icon.Download =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Download",
 
   /**
    *

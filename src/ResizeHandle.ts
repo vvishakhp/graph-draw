@@ -1,5 +1,5 @@
 /**
- * @class draw2d.ResizeHandle
+ * @class  .ResizeHandle
  * The Resizehandles for Figures.
 
  * <pre>
@@ -17,20 +17,20 @@
  * </pre>
  *
  * @author Andreas Herz
- * @extends draw2d.shape.basic.Rectangle
+ * @extends  .shape.basic.Rectangle
  */
 
-import draw2d from 'packages'
+import   from 'packages'
 import extend from './util/extend'
 
-draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend({
-  NAME: "draw2d.ResizeHandle",
+ .ResizeHandle =  .shape.basic.Rectangle.extend({
+  NAME: " .ResizeHandle",
 
   /**
    * @constructor
    * Creates a new figure element which are not assigned to any canvas.
    *
-   * @param {draw2d.Figure} the owner if the resize handle
+   * @param { .Figure} the owner if the resize handle
    * @param {Number} type the type of the ResizeHandle.
    */
   init: function (attr, setter, getter) {
@@ -98,25 +98,25 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend({
   getSnapToDirection: function () {
     switch (this.type) {
       case 1:
-        return draw2d.SnapToHelper.NORTH_WEST
+        return  .SnapToHelper.NORTH_WEST
       case 2:
-        return draw2d.SnapToHelper.NORTH
+        return  .SnapToHelper.NORTH
       case 3:
-        return draw2d.SnapToHelper.NORTH_EAST
+        return  .SnapToHelper.NORTH_EAST
       case 4:
-        return draw2d.SnapToHelper.EAST
+        return  .SnapToHelper.EAST
       case 5:
-        return draw2d.SnapToHelper.SOUTH_EAST
+        return  .SnapToHelper.SOUTH_EAST
       case 6:
-        return draw2d.SnapToHelper.SOUTH
+        return  .SnapToHelper.SOUTH
       case 7:
-        return draw2d.SnapToHelper.SOUTH_WEST
+        return  .SnapToHelper.SOUTH_WEST
       case 8:
-        return draw2d.SnapToHelper.WEST
+        return  .SnapToHelper.WEST
       case 9:
-        return draw2d.SnapToHelper.NSEW
+        return  .SnapToHelper.NSEW
       default:
-        return draw2d.SnapToHelper.EAST
+        return  .SnapToHelper.EAST
     }
   },
 
@@ -253,8 +253,8 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend({
     this.ox = this.getAbsoluteX()
     this.oy = this.getAbsoluteY()
 
-    this.commandMove = this.owner.createCommand(new draw2d.command.CommandType(draw2d.command.CommandType.MOVE))
-    this.commandResize = this.owner.createCommand(new draw2d.command.CommandType(draw2d.command.CommandType.RESIZE))
+    this.commandMove = this.owner.createCommand(new  .command.CommandType( .command.CommandType.MOVE))
+    this.commandResize = this.owner.createCommand(new  .command.CommandType( .command.CommandType.RESIZE))
 
     return true
   },
@@ -383,13 +383,13 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend({
    * class updates the resize handles during the update of the Dimension/Position. This
    * is not neccessary for the ResizeHandles. Performance issue.
    *
-   * @param {Number|draw2d.geo.Point} x The new x coordinate of the figure
+   * @param {Number| .geo.Point} x The new x coordinate of the figure
    * @param {Number} y The new y coordinate of the figure
    **/
   setPosition: function (x, y) {
     // don't call base implementation. Base implementation will show
     // ResizeHandles...but I'm the ResizeHandle
-    if (x instanceof draw2d.geo.Point) {
+    if (x instanceof  .geo.Point) {
       this.x = x.x
       this.y = x.y
     }
@@ -424,7 +424,7 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend({
       this._super(width, height)
     }
     else {
-      if (draw2d.isTouchDevice) {
+      if ( .isTouchDevice) {
         this._super(15, 15)
       }
       else {
@@ -438,31 +438,31 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend({
 
     switch (this.type) {
       case 1:
-        this.setSnapToGridAnchor(new draw2d.geo.Point(offset, offset))
+        this.setSnapToGridAnchor(new  .geo.Point(offset, offset))
         break
       case 2:
-        this.setSnapToGridAnchor(new draw2d.geo.Point(offset2, offset))
+        this.setSnapToGridAnchor(new  .geo.Point(offset2, offset))
         break
       case 3:
-        this.setSnapToGridAnchor(new draw2d.geo.Point(0, offset))
+        this.setSnapToGridAnchor(new  .geo.Point(0, offset))
         break
       case 4:
-        this.setSnapToGridAnchor(new draw2d.geo.Point(0, offset2))
+        this.setSnapToGridAnchor(new  .geo.Point(0, offset2))
         break
       case 5:
-        this.setSnapToGridAnchor(new draw2d.geo.Point(0, 0))
+        this.setSnapToGridAnchor(new  .geo.Point(0, 0))
         break
       case 6:
-        this.setSnapToGridAnchor(new draw2d.geo.Point(offset2, 0))
+        this.setSnapToGridAnchor(new  .geo.Point(offset2, 0))
         break
       case 7:
-        this.setSnapToGridAnchor(new draw2d.geo.Point(offset, 0))
+        this.setSnapToGridAnchor(new  .geo.Point(offset, 0))
         break
       case 8:
-        this.setSnapToGridAnchor(new draw2d.geo.Point(offset, offset2))
+        this.setSnapToGridAnchor(new  .geo.Point(offset, offset2))
         break
       case 9:
-        this.setSnapToGridAnchor(new draw2d.geo.Point(offset2, offset2))
+        this.setSnapToGridAnchor(new  .geo.Point(offset2, offset2))
         break
     }
 
@@ -477,7 +477,7 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend({
    *
    * If the ResizeHandle is place inside an overlayCanvas it is automatically on top.
    *
-   * @param {draw2d.Canvas} canvas the canvas to use
+   * @param { .Canvas} canvas the canvas to use
    **/
   show: function (canvas) {
     // don't call the parent function. The parent functions delete this object
@@ -535,10 +535,10 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend({
    * Set the new background color of the figure. It is possible to hands over
    * <code>null</code> to set the background transparent.
    *
-   * @param {draw2d.util.Color} color The new background color of the figure
+   * @param { .util.Color} color The new background color of the figure
    **/
   setBackgroundColor: function (color) {
-    color = new draw2d.util.Color(color)
+    color = new  .util.Color(color)
 
     this.bgGradient = "90-" + color.darker(0.2).hash() + "-" + color.hash()
     this._super(color)

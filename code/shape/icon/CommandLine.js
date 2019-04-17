@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.CommandLine
+ * @class  .shape.icon.CommandLine
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.CommandLine();
+ *     let icon =  new  .shape.icon.CommandLine();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.CommandLine = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.CommandLine",
+ .shape.icon.CommandLine =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.CommandLine",
 
   /**
    *

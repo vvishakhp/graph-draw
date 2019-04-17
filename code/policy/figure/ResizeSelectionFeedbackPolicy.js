@@ -1,5 +1,5 @@
 /**
- * @class draw2d.policy.figure.ResizeSelectionFeedbackPolicy
+ * @class  .policy.figure.ResizeSelectionFeedbackPolicy
  *
  * Selection feedback policy without "marching ant lines" or any other rectangle highlight. Just
  * some resize handles at each corner of the shape.
@@ -7,22 +7,22 @@
  * See the example:
  *
  *     @example preview small frame
- *       circle =new draw2d.shape.basic.Circle();
- *       circle.installEditPolicy(new draw2d.policy.ResizeSelectionFeedbackPolicy());
+ *       circle =new  .shape.basic.Circle();
+ *       circle.installEditPolicy(new  .policy.ResizeSelectionFeedbackPolicy());
  *       canvas.add(circle,90,50);
  *
- *       canvas.add(new draw2d.shape.basic.Label({text:"Click on the circle to see the selection feedback"}),20,10);
+ *       canvas.add(new  .shape.basic.Label({text:"Click on the circle to see the selection feedback"}),20,10);
  *
  * @author Andreas Herz
  * @since 4.0.0
- * @extends draw2d.policy.figure.SelectionFeedbackPolicy
+ * @extends  .policy.figure.SelectionFeedbackPolicy
  *
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.figure.ResizeSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend({
+ .policy.figure.ResizeSelectionFeedbackPolicy =  .policy.figure.SelectionFeedbackPolicy.extend({
 
-  NAME: "draw2d.policy.figure.ResizeSelectionFeedbackPolicy",
+  NAME: " .policy.figure.ResizeSelectionFeedbackPolicy",
   /**
    * @constructor
    * Creates a new Router object
@@ -36,8 +36,8 @@ draw2d.policy.figure.ResizeSelectionFeedbackPolicy = draw2d.policy.figure.Select
    * @method
    * Called by the framework of the Policy should show a resize handle for the given shape
    *
-   * @param {draw2d.Canvas} canvas the related canvas
-   * @param {draw2d.Figure} figure the selected figure
+   * @param { .Canvas} canvas the related canvas
+   * @param { .Figure} figure the selected figure
    * @param {Boolean} [isPrimarySelection]
    */
   onSelect: function (canvas, figure, isPrimarySelection) {
@@ -45,10 +45,10 @@ draw2d.policy.figure.ResizeSelectionFeedbackPolicy = draw2d.policy.figure.Select
     if (figure.selectionHandles.isEmpty()) {
       // create standard Resize handles for the figure
       //
-      var r1 = draw2d.Configuration.factory.createResizeHandle(figure, 1) // 1 = LEFT TOP
-      var r3 = draw2d.Configuration.factory.createResizeHandle(figure, 3) // 3 = RIGHT_TOP
-      var r5 = draw2d.Configuration.factory.createResizeHandle(figure, 5) // 5 = RIGHT_BOTTOM
-      var r7 = draw2d.Configuration.factory.createResizeHandle(figure, 7) // 7 = LEFT_BOTTOM
+      var r1 =  .Configuration.factory.createResizeHandle(figure, 1) // 1 = LEFT TOP
+      var r3 =  .Configuration.factory.createResizeHandle(figure, 3) // 3 = RIGHT_TOP
+      var r5 =  .Configuration.factory.createResizeHandle(figure, 5) // 5 = RIGHT_BOTTOM
+      var r7 =  .Configuration.factory.createResizeHandle(figure, 7) // 7 = LEFT_BOTTOM
       figure.selectionHandles.add(r1, r3, r5, r7)
       r1.show(canvas)
       r3.show(canvas)
@@ -76,10 +76,10 @@ draw2d.policy.figure.ResizeSelectionFeedbackPolicy = draw2d.policy.figure.Select
       // show only the additional resizehandles if the figure is resizeable
       //
       if ((!figure.getKeepAspectRatio()) && figure.isResizeable()) {
-        var r2 = draw2d.Configuration.factory.createResizeHandle(figure, 2) // 2 = CENTER_TOP
-        var r4 = draw2d.Configuration.factory.createResizeHandle(figure, 4) // 4 = RIGHT_MIDDLE
-        var r6 = draw2d.Configuration.factory.createResizeHandle(figure, 6) // 6 = CENTER_BOTTOM
-        var r8 = draw2d.Configuration.factory.createResizeHandle(figure, 8) // 8 = LEFT_MIDDLE
+        var r2 =  .Configuration.factory.createResizeHandle(figure, 2) // 2 = CENTER_TOP
+        var r4 =  .Configuration.factory.createResizeHandle(figure, 4) // 4 = RIGHT_MIDDLE
+        var r6 =  .Configuration.factory.createResizeHandle(figure, 6) // 6 = CENTER_BOTTOM
+        var r8 =  .Configuration.factory.createResizeHandle(figure, 8) // 8 = LEFT_MIDDLE
         figure.selectionHandles.add(r2, r4, r6, r8)
         r2.show(canvas)
         r4.show(canvas)
@@ -95,8 +95,8 @@ draw2d.policy.figure.ResizeSelectionFeedbackPolicy = draw2d.policy.figure.Select
    * Callback if the figure has been moved. In this case we must update the position of the
    * resize handles.
    *
-   * @param {draw2d.Canvas} canvas the related canvas
-   * @param {draw2d.Figure} figure the moved figure
+   * @param { .Canvas} canvas the related canvas
+   * @param { .Figure} figure the moved figure
    *
    */
   moved: function (canvas, figure) {

@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Gear2
+ * @class  .shape.icon.Gear2
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Gear2();
+ *     let icon =  new  .shape.icon.Gear2();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Gear2 = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Gear2",
+ .shape.icon.Gear2 =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Gear2",
 
   /**
    *

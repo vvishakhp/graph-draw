@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.JQuery
+ * @class  .shape.icon.JQuery
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.JQuery();
+ *     let icon =  new  .shape.icon.JQuery();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.JQuery = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.JQuery",
+ .shape.icon.JQuery =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.JQuery",
 
   /**
    *

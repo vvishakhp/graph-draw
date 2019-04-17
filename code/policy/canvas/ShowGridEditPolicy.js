@@ -1,5 +1,5 @@
 /**
- * @class draw2d.policy.canvas.ShowGridEditPolicy
+ * @class  .policy.canvas.ShowGridEditPolicy
  *
  * A cavas decoration which paints a grid in the background.
  * <br>
@@ -8,20 +8,20 @@
  *
  *     @example preview small frame
  *
- *     canvas.installEditPolicy(new draw2d.policy.canvas.ShowGridEditPolicy());
- *     var shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with grid background."});
+ *     canvas.installEditPolicy(new  .policy.canvas.ShowGridEditPolicy());
+ *     var shape =  new  .shape.basic.Text({text:"This is a simple text in a canvas with grid background."});
  *
  *     canvas.add(shape,40,10);
  *
  * @author Andreas Herz
  *
- * @extends draw2d.policy.canvas.DecorationPolicy
+ * @extends  .policy.canvas.DecorationPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.canvas.ShowGridEditPolicy = draw2d.policy.canvas.DecorationPolicy.extend({
+ .policy.canvas.ShowGridEditPolicy =  .policy.canvas.DecorationPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.ShowGridEditPolicy",
+  NAME: " .policy.canvas.ShowGridEditPolicy",
 
   GRID_COLOR: "#f0f0f0",
   GRID_WIDTH: 20,
@@ -33,7 +33,7 @@ draw2d.policy.canvas.ShowGridEditPolicy = draw2d.policy.canvas.DecorationPolicy.
    * @param {Number} [grid] the grid width of the canvas
    */
   init: function (grid) {
-    this.color = new draw2d.util.Color(this.GRID_COLOR)
+    this.color = new  .util.Color(this.GRID_COLOR)
     this.zoom = 1
     this.svg = null
 
@@ -64,11 +64,11 @@ draw2d.policy.canvas.ShowGridEditPolicy = draw2d.policy.canvas.DecorationPolicy.
    * @method
    * Set the grid color
    *
-   * @param {draw2d.util.Color|String} color a color object or the CSS string declaration for a color
+   * @param { .util.Color|String} color a color object or the CSS string declaration for a color
    * @since 5.0.3
    */
   setGridColor: function (color) {
-    this.color = new draw2d.util.Color(color)
+    this.color = new  .util.Color(color)
     this.setGrid(this.grid)
   },
 

@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.basic.Oval
+ * @class  .shape.basic.Oval
  * Oval figure.
  *
  *
@@ -7,19 +7,19 @@
  *
  *     @example preview small frame
  *
- *     let oval =  new draw2d.shape.basic.Oval({width:150, height:100, x:50, y:10});
+ *     let oval =  new  .shape.basic.Oval({width:150, height:100, x:50, y:10});
  *
  *     canvas.add(oval);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.VectorFigure
+ * @extends  .VectorFigure
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.shape.basic.Oval = draw2d.VectorFigure.extend({
-  NAME: "draw2d.shape.basic.Oval",
+ .shape.basic.Oval =  .VectorFigure.extend({
+  NAME: " .shape.basic.Oval",
 
   /**
    *
@@ -68,11 +68,11 @@ draw2d.shape.basic.Oval = draw2d.VectorFigure.extend({
    * @method
    * Set the center of the figure.
    *
-   * @param {Number|draw2d.geo.Point} x the new x coordinate of the center or a draw2d.geo.Point object with the center
-   * @param {Number} [y] the y coordinate of the new center of the first argument isn't a draw2d.geo.Point object
+   * @param {Number| .geo.Point} x the new x coordinate of the center or a  .geo.Point object with the center
+   * @param {Number} [y] the y coordinate of the new center of the first argument isn't a  .geo.Point object
    */
   setCenter: function (x, y) {
-    let pos = new draw2d.geo.Point(x, y)
+    let pos = new  .geo.Point(x, y)
     let w2 = this.getWidth() / 2
     let h2 = this.getHeight() / 2
 
@@ -123,14 +123,14 @@ draw2d.shape.basic.Oval = draw2d.VectorFigure.extend({
     let rx = this.getWidth() / 2
     let ry = this.getHeight() / 2
 
-    let result = new draw2d.util.ArrayList()
+    let result = new  .util.ArrayList()
 
-    let origin = new draw2d.geo.Point(a1.x, a1.y)
+    let origin = new  .geo.Point(a1.x, a1.y)
     let dir = a2.subtract(a1)
-    let center = new draw2d.geo.Point(this.getAbsoluteX() + rx, this.getAbsoluteY() + ry)
+    let center = new  .geo.Point(this.getAbsoluteX() + rx, this.getAbsoluteY() + ry)
     let diff = origin.subtract(center)
-    let mDir = new draw2d.geo.Point(dir.x / (rx * rx), dir.y / (ry * ry))
-    let mDiff = new draw2d.geo.Point(diff.x / (rx * rx), diff.y / (ry * ry))
+    let mDir = new  .geo.Point(dir.x / (rx * rx), dir.y / (ry * ry))
+    let mDiff = new  .geo.Point(diff.x / (rx * rx), diff.y / (ry * ry))
 
     let a = dir.dot(mDir)
     let b = dir.dot(mDiff)

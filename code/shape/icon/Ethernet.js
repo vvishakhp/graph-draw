@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Ethernet
+ * @class  .shape.icon.Ethernet
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Ethernet();
+ *     let icon =  new  .shape.icon.Ethernet();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Ethernet = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Ethernet",
+ .shape.icon.Ethernet =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Ethernet",
 
   /**
    *

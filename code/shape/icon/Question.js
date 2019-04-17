@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Question
+ * @class  .shape.icon.Question
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Info();
+ *     let icon =  new  .shape.icon.Info();
  *     icon.setDimension(150,100);
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Question = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Question",
+ .shape.icon.Question =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Question",
 
   /**
    *

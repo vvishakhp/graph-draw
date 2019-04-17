@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Parent
+ * @class  .shape.icon.Parent
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Parent();
+ *     let icon =  new  .shape.icon.Parent();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Parent = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Parent",
+ .shape.icon.Parent =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Parent",
 
   /**
    *

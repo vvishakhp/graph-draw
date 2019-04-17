@@ -1,17 +1,17 @@
 /**
- * @class draw2d.shape.basic.VertexResizeHandle
+ * @class  .shape.basic.VertexResizeHandle
  *
  * Selection handle for polyline vertices.
  *
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.ResizeHandle
+ * @extends  .ResizeHandle
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.basic.VertexResizeHandle = draw2d.ResizeHandle.extend({
-  NAME: "draw2d.shape.basic.VertexResizeHandle",
+ .shape.basic.VertexResizeHandle =  .ResizeHandle.extend({
+  NAME: " .shape.basic.VertexResizeHandle",
 
   SNAP_THRESHOLD: 3,
   LINE_COLOR: "#1387E6",
@@ -31,7 +31,7 @@ draw2d.shape.basic.VertexResizeHandle = draw2d.ResizeHandle.extend({
    * @template
    */
   onDoubleClick: function () {
-    let cmd = new draw2d.command.CommandRemoveVertex(this.owner, this.index)
+    let cmd = new  .command.CommandRemoveVertex(this.owner, this.index)
     this.getCanvas().getCommandStack().execute(cmd)
 
     this.isDead = true
@@ -54,7 +54,7 @@ draw2d.shape.basic.VertexResizeHandle = draw2d.ResizeHandle.extend({
     }
 
     this._super()
-    this.command = this.getCanvas().getPrimarySelection().createCommand(new draw2d.command.CommandType(draw2d.command.CommandType.MOVE_VERTEX))
+    this.command = this.getCanvas().getPrimarySelection().createCommand(new  .command.CommandType( .command.CommandType.MOVE_VERTEX))
     if (this.command != null) {
       this.command.setIndex(this.index)
       this.setAlpha(0.2)
@@ -123,13 +123,13 @@ draw2d.shape.basic.VertexResizeHandle = draw2d.ResizeHandle.extend({
 
     let stack = this.getCanvas().getCommandStack()
 
-    let transactionCommand = new draw2d.command.CommandCollection()
+    let transactionCommand = new  .command.CommandCollection()
 
     try {
       transactionCommand.add(this.command)
       this.command = null
       if (this.getEnclosingAngle() > 178) {
-        transactionCommand.add(new draw2d.command.CommandRemoveVertex(this.owner, this.index))
+        transactionCommand.add(new  .command.CommandRemoveVertex(this.owner, this.index))
       }
     }
     finally {

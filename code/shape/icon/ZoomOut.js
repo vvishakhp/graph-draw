@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.ZoomOut
+ * @class  .shape.icon.ZoomOut
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.ZoomOut();
+ *     let icon =  new  .shape.icon.ZoomOut();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.ZoomOut = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.ZoomOut",
+ .shape.icon.ZoomOut =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.ZoomOut",
 
   /**
    *

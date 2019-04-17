@@ -1,18 +1,18 @@
 /**
- * @class draw2d.util.spline.CubicSpline
+ * @class  .util.spline.CubicSpline
  *
  * A cubic spline object.
  *
  * @inheritable
  * @author Andreas Herz
  *
- * @extends draw2d.util.spline.Spline
+ * @extends  .util.spline.Spline
  */
-import draw2d from '../../packages';
+import   from '../../packages';
 
-draw2d.util.spline.CubicSpline = draw2d.util.spline.Spline.extend(
+ .util.spline.CubicSpline =  .util.spline.Spline.extend(
 {
-    NAME : "draw2d.util.spline.CubicSpline",
+    NAME : " .util.spline.CubicSpline",
 
     /**
      * @constructor
@@ -31,19 +31,19 @@ draw2d.util.spline.CubicSpline = draw2d.util.spline.Spline.extend(
     * @param {Array} controlPoints  Control points of spline (x0,y0,z0,x1,y1,z1,...).
     * @param {Number} parts Number of parts to divide each leg into.
     *
-    * @returns {Array} the new generated array with new draw2d.geo.Point
+    * @returns {Array} the new generated array with new  .geo.Point
     */
     generate: function(controlPoints, parts)
     {
         // Endpoints are added twice to get them include in the
         // generated array
-        var cp = new draw2d.util.ArrayList();
+        var cp = new  .util.ArrayList();
         cp.add(controlPoints.get(0));
         cp.addAll(controlPoints);
         cp.add(controlPoints.get(controlPoints.getSize()-1));
 
       var n = cp.getSize();
-      var spline = new draw2d.util.ArrayList();
+      var spline = new  .util.ArrayList();
       spline.add(controlPoints.get(0));
       spline.add( this.p(1, 0, cp) );
 
@@ -71,7 +71,7 @@ draw2d.util.spline.CubicSpline = draw2d.util.spline.Spline.extend(
           y += b * p.y;
         }
 
-       return new draw2d.geo.Point(x, y);
+       return new  .geo.Point(x, y);
       },
 
 

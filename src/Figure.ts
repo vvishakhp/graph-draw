@@ -1,4 +1,4 @@
-import { Type } from './TypeRegistry';
+import { Type, createInstenceFromType } from './TypeRegistry';
 import ArrayList from './util/ArrayList';
 import { Canvas } from './Canvas';
 import { Locator } from './layout/locator/Locator';
@@ -6,6 +6,8 @@ import extend from './util/extend';
 import UUID from './util/UUID';
 import { Point } from './geo/Point';
 import jsonUtil from './util/JSONUtil';
+import { DragDropEditPolicy } from './policy/figure/DragDropEditPolicy';
+import { Rectangle } from './geo/Rectangle';
 
 export interface AttributeCollection {
   [key: string]: any;
@@ -60,6 +62,11 @@ export class Figure {
   defaultSelectionAdapter: () => this;
   selectionAdapter: () => this;
   locator: Locator;
+  originalAlpha: number;
+  isMoving: boolean;
+
+  figure: Figure = this;
+  _inEvent: boolean = false;
 
   constructor(attr, setter, getter) {
     this.setterWhitelist = extend({
@@ -377,8 +384,6 @@ export class Figure {
   }
 
   setCanvas(canvas: Canvas) {
-    // remove the shape if we reset the canvas and the element
-    // was already drawn
     if (canvas === null && this.shape !== null) {
       if (this.isSelected()) {
         this.unselect()
@@ -393,8 +398,6 @@ export class Figure {
       this.getShapeElement()
     }
 
-    // reset the attribute cache. We must start by paint all attributes
-    //
     this.lastAppliedAttributes = {}
 
 
@@ -571,7 +574,7 @@ export class Figure {
 
     child.on("resize", this.relocateChildrenEventCallback)
 
-    if (!isNaN(parseInt(index))) {
+    if (!isNaN(parseInt(index + ''))) {
       this.children.insertElementAt({ figure: child, locator: locator }, index)
     }
     else {
@@ -589,7 +592,7 @@ export class Figure {
 
   remove(child: Figure) {
     if (typeof child === "undefined" || child === null) {
-      debug.warn("The parameter child is required for Figure.remove")
+      console.warn("The parameter child is required for Figure.remove")
       return null
     }
 
@@ -623,7 +626,7 @@ export class Figure {
     this.children.each(function (i, e) {
       e.figure.setCanvas(null)
     })
-    this.children = new draw2d.util.ArrayList()
+    this.children = new ArrayList()
     this.repaint()
 
     return this
@@ -657,7 +660,7 @@ export class Figure {
     throw new Error('Must override this method');
   }
 
-  repaint(attributes) {
+  repaint(attributes?) {
     if (this.repaintBlocked === true || this.shape === null) {
       return this
     }
@@ -722,18 +725,11 @@ export class Figure {
   onDragStart(x, y, shiftKey, ctrlKey) {
     this.isInDragDrop = false
 
-    // Check whenever the figures has a drag-handle. Allow drag&drop
-    // operation only if the x/y is inside this area.
-    //
-    // @since 5.6.0
     let bbox = this.getHandleBBox()
     if (bbox !== null && bbox.translate(this.getAbsolutePosition().scale(-1)).hitTest(x, y) === false) {
-      // design failure: we must catch the figure below the mouse to forward
-      // the panning event to this figure. Special handling to provide sliders
-      // and other UI elements which requires the panning event. Hack.
+
       this.panningDelegate = this.getBestChild(this.getX() + x, this.getY() + y)
       if (this.panningDelegate !== null) {
-        // transform x/y relative to the panning figure and request the dragStart event
         this.panningDelegate.onDragStart(x - this.panningDelegate.x, y - this.panningDelegate.y, shiftKey, ctrlKey)
       }
       return false
@@ -753,7 +749,7 @@ export class Figure {
       let canStartDrag = true
 
       this.editPolicy.each(function (i, e) {
-        if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+        if (e instanceof DragDropEditPolicy) {
           canStartDrag = canStartDrag && e.onDragStart(_this.canvas, _this, x, y, shiftKey, ctrlKey)
         }
       })
@@ -773,7 +769,7 @@ export class Figure {
     // apply all EditPolicy for DragDrop Operations
     //
     this.editPolicy.each((i, e) => {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof DragDropEditPolicy) {
         let newPos = e.adjustPosition(this, this.ox + dx, this.oy + dy)
         if (newPos) {
           dx = newPos.x - this.ox
@@ -782,11 +778,8 @@ export class Figure {
       }
     })
 
-    let newPos = new draw2d.geo.Point(this.ox + dx, this.oy + dy)
+    let newPos = new Point(this.ox + dx, this.oy + dy)
 
-    // Adjust the new location if the object can snap to a helper
-    // like grid, geometry, ruler,...
-    //
     if (this.getCanSnapToHelper()) {
       newPos = this.getCanvas().snapToHelper(this, newPos)
     }
@@ -797,7 +790,7 @@ export class Figure {
     // notify all installed policies
     //
     this.editPolicy.each((i, e) => {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof DragDropEditPolicy) {
         e.onDrag(this.canvas, this)
       }
     })
@@ -812,37 +805,11 @@ export class Figure {
 
   }
 
-  /**
-   * @method
-   * Called by the framework if the panning event of the figures ends. This happens
-   * after the mous up event if the panning is active.
-   *
-   *      // You can alternatively register an event handler with:
-   *      figure.on("panningEnd", function(emitter){
-   *          alert("panning of the figure called");
-   *      });
-   *
-   */
   onPanningEnd() {
   }
 
-  /**
-   * @method
-   * Will be called after a drag and drop action.<br>
-   * Sub classes can override this method to implement additional stuff. Don't forget to call
-   * the super implementation via <code>this._super();</code>
-   *
-   * @param {Number} x the x-coordinate of the mouse event
-   * @param {Number} y the y-coordinate of the mouse event
-   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
-   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-   *
-   * @template
-   **/
   onDragEnd(x, y, shiftKey, ctrlKey) {
-    // Element ist zwar schon an seine Position, das Command muss aber trotzdem
-    // in dem CommandStack gelegt werden damit das Undo funktioniert.
-    //
+
     if (this.command !== null) {
       this.command.setPosition(this.x, this.y)
       this.canvas.getCommandStack().execute(this.command)
@@ -851,10 +818,9 @@ export class Figure {
     this.isInDragDrop = false
     this.panningDelegate = null
 
-    // notify all installed policies
-    //
+
     this.editPolicy.each((i, e) => {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof DragDropEditPolicy) {
         e.onDragEnd(this.canvas, this, x, y, shiftKey, ctrlKey)
       }
     })
@@ -863,22 +829,12 @@ export class Figure {
     this.fireEvent("change:x", { figure: this, dx: 0 })
     this.fireEvent("change:y", { figure: this, dy: 0 })
 
-    // fire an event
-    // @since 5.3.3
+
     this.fireEvent("dragend", { x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey })
   }
 
-  /**
-   * @method
-   * Called by the framework during drag&drop operations if the user drag a figure over this figure
-   *
-   * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
-   *
-   * @return {draw2d.Figure} the figure which should receive the drop event or null if the element didn't want a drop event
-   * @since 6.1.0
-   * @private
-   **/
-  delegateTarget(draggedFigure) {
+
+  delegateTarget(draggedFigure: Figure) {
 
     let delegate = draggedFigure
     this.getCanvas().getDropInterceptorPolicies().each((i, policy) => {
@@ -891,149 +847,42 @@ export class Figure {
     return delegate
   }
 
-  /**
-   * @method
-   * Called by the framework during drag&drop operations if the user drag a figure over this figure
-   *
-   * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
-   *
-   * @template
-   **/
+
   onDragEnter(draggedFigure) {
   }
 
-  /**
-   * @method
-   * Called if the DragDrop object leaving the current hover figure.
-   *
-   * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
-   * @template
-   **/
+
   onDragLeave(draggedFigure) {
   }
 
 
-  /**
-   * @method
-   * Called if the user drop this element onto the dropTarget. This event is ONLY fired if the
-   * shape return "this" in the {@link draw2d.Figure#onDragEnter} method.
-   *
-   *
-   * @param {draw2d.Figure} dropTarget The drop target.
-   * @param {Number} x the x-coordinate of the mouse up event
-   * @param {Number} y the y-coordinate of the mouse up event
-   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
-   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-   * @template
-   **/
   onDrop(dropTarget, x, y, shiftKey, ctrlKey) {
   }
 
-  /**
-   * @method
-   * Called if the user dropped an figure onto this element. This event is ONLY fired if the
-   * in the canvas installed {@link draw2d.policy.canvas.DropInterceptorPolicy} allow this.
-   *
-   *
-   * @param {draw2d.Figure} droppedFigure The dropped figure.
-   * @param {Number} x the x-coordinate of the mouse up event
-   * @param {Number} y the y-coordinate of the mouse up event
-   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
-   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-   * @template
-   * @since 4.8.0
-   **/
   onCatch(droppedFigure, x, y, shiftKey, ctrlKey) {
   }
 
 
-  /**
-   * @method
-   * Callback method for the mouse enter event. Usefull for mouse hover-effects.
-   * Override this method for your own effects. Don't call them manually.
-   *
-   * @template
-   **/
   onMouseEnter() {
   }
 
 
-  /**
-   * @method
-   * Callback method for the mouse leave event. Useful for mouse hover-effects.
-   *
-   * @template
-   **/
   onMouseLeave() {
   }
 
-  /**
-   * @method
-   * Called when a user dbl clicks on the element
-   *
-   *      // Alternatively you can register an event with:
-   *      //
-   *      figure.on("dblclick", function(emitter, event){
-   *          alert("user dbl click on the figure");
-   *      });
-   *
-   * @template
-   */
+
   onDoubleClick() {
   }
 
 
-  /**
-   * @method
-   * Called when a user clicks on the element.
-   *
-   *      // You can alternatively register an event handler with:
-   *      figure.on("click", function(emitter, event){
-   *          alert("user click on the figure");
-   *      });
-   *
-   * @template
-   * @deprecated
-   */
   onClick() {
   }
 
-  /**
-   * @method
-   * called by the framework if the figure should show the context menu.<br>
-   * The strategy to show the context menu depends on the platform. Either looong press or
-   * right click with the mouse.
-   *
-   *      // Alternatively you register for this event with:
-   *      figure.on("contextmenu", function(emitter, event){
-   *          alert("user press the right mouse button for a context menu");
-   *      });
-   *
-   * @param {Number} x the x-coordinate to show the menu
-   * @param {Number} y the y-coordinate to show the menu
-   * @since 1.1.0
-   * @template
-   */
+
   onContextMenu(x, y) {
   }
 
-  /**
-   * @method
-   * Set the alpha blending of this figure.
-   *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        "alpha": percent
-   *      });
-   *
-   *      // ...or:
-   *      figure.attr({
-   *        "opacity": percent
-   *      });
-   *
-   * @param {Number} percent value between [0..1].
-   * @template
-   **/
+
   setAlpha(percent) {
     percent = Math.min(1, Math.max(0, parseFloat(percent)))
     if (percent === this.alpha) {
@@ -1048,36 +897,17 @@ export class Figure {
   }
 
 
-  /**
-   * @method
-   * Return the alpha blending of the figure
-   *
-   * @return {Number} the current alpha blending
-   */
   getAlpha() {
     return this.alpha
   }
 
-
-  /**
-   * @method
-   * Set the rotation angle in degree [0..356]<br>
-   * <b>Only steps of 90 degree is working well</b>
-   * <br>
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        angle: angle
-   *      });
-   *
-   * @param {Number} angle the rotation angle in degree
-   */
   setRotationAngle(angle) {
     this.rotationAngle = angle
 
     // Update the resize handles if the user change the position of the element via an API call.
     //
     this.editPolicy.each((i, e) => {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof DragDropEditPolicy) {
         e.moved(this.canvas, this)
       }
     })
@@ -1088,34 +918,11 @@ export class Figure {
     return this
   }
 
-  /**
-   * @method
-   * return the rotation angle of the figure in degree of [0..356].
-   *
-   * <br>
-   * <b>NOTE: this method is pre alpha and not for production. Only steps of 90 degree is working well</b>
-   * <br>
-   * @returns {Number}
-   */
   getRotationAngle() {
     return this.rotationAngle
   }
 
 
-  /**
-   * @method
-   * Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the
-   * figure.
-   *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        visible: flag
-   *      });
-   *
-   * @param {Boolean} flag
-   * @param {Number} [duration] the optional number for the fadeIn /fadeOut of the figure
-   * @since 1.1.0
-   */
   setVisible(flag, duration) {
     flag = !!flag
     if (flag === this.visible) {
@@ -1135,48 +942,21 @@ export class Figure {
     return this
   }
 
-  /**
-   * @method
-   * Return true if the figure visible.
-   *
-   * @return {Boolean}
-   * @since 1.1.0
-   */
+
   isVisible() {
     return this.visible && this.shape !== null
   }
 
-  /**
-   * @method
-   * Guarantee, that the figure width/height will not be distorted. Applicable before calling setDimension().
-   * It is false by default.
-   *
-   * @since 4.1.0
-   * @param {Boolean} flag boolean flag if the figure should respect the aspect ratio
-   */
   setKeepAspectRatio(flag) {
     this.keepAspectRatio = flag
 
     return this
   }
 
-  /**
-   * @method
-   * Return the flag if the shape keep the aspect ratio.
-   *
-   * @since 4.1.0
-   */
   getKeepAspectRatio() {
     return this.keepAspectRatio
   }
 
-  /**
-   * @method
-   * Return the current z-index of the element. Currently this is an expensive method. The index will be calculated
-   * all the time. Caching is not implemented at the moment.
-   *
-   * @return {Number}
-   */
   getZOrder() {
     if (this.shape === null) {
       return -1
@@ -1190,58 +970,26 @@ export class Figure {
     return i
   }
 
-  /**
-   * @method
-   * Set the flag if this object can snap to grid or geometry.
-   * A window of dialog should set this flag to false.
-   *
-   * @param {Boolean} flag The snap to grid/geometry enable flag.
-   *
-   **/
   setCanSnapToHelper(flag) {
     this.canSnapToHelper = !!flag
 
     return this
   }
 
-  /**
-   * @method
-   * Returns true if the figure can snap to any helper like a grid, guide, geometrie
-   * or something else.
-   *
-   * @return {Boolean}
-   **/
   getCanSnapToHelper() {
     return this.canSnapToHelper
   }
 
-  /**
-   *
-   * @return {draw2d.geo.Point}
-   **/
   getSnapToGridAnchor() {
     return this.snapToGridAnchor
   }
 
-  /**
-   * @method
-   * Set the hot spot for all snapTo### operations.
-   *
-   * @param {draw2d.geo.Point} point
-   **/
   setSnapToGridAnchor(point) {
     this.snapToGridAnchor = point
 
     return this
   }
 
-  /**
-   * @method
-   * Set the width of the figure and consider the minWidth attribute
-   *
-   * @param {Number} width the new width of the figure
-   * @since 5.1.0
-   */
   setWidth(width) {
     this.setDimension(parseFloat(width), this.getHeight())
     this.fireEvent("change:width", { value: this.width })
@@ -1249,23 +997,10 @@ export class Figure {
     return this
   }
 
-  /**
-   * @method
-   * The current width of the figure.
-   *
-   * @type {Number}
-   **/
   getWidth() {
     return this.width
   }
 
-  /**
-   * @method
-   * Set the heigth of the figure and consider the minWidth attribute
-   *
-   * @param {Number} height the new height of the figure
-   * @since 5.1.0
-   */
   setHeight(height) {
     this.setDimension(this.getWidth(), parseFloat(height))
     this.fireEvent("change:height", { value: this.height })
@@ -1273,33 +1008,15 @@ export class Figure {
     return this
   }
 
-  /**
-   * @method
-   * The current height of the figure.
-   *
-   * @return {Number}
-   **/
   getHeight() {
     return this.height
   }
 
 
-  /**
-   * @method
-   * This value is relevant for the interactive resize of the figure.
-   *
-   * @return {Number} Returns the min. width of this object.
-   */
   getMinWidth() {
     return this.minWidth
   }
 
-  /**
-   * @method
-   * Set the minimum width of this figure
-   *
-   * @param {Number} w
-   */
   setMinWidth(w) {
     this.minWidth = parseFloat(w)
     this.fireEvent("change:minWidth", { value: this.minWidth })
@@ -1420,20 +1137,20 @@ export class Figure {
    * @method
    * Returns the absolute y-position of the port.
    *
-   * @type {draw2d.geo.Point}
+   * @type { .geo.Point}
    **/
   getAbsolutePosition() {
-    return new draw2d.geo.Point(this.getAbsoluteX(), this.getAbsoluteY())
+    return new Point(this.getAbsoluteX(), this.getAbsoluteY())
   }
 
   /**
    * @method
    * Returns the absolute y-position of the port.
    *
-   * @return {draw2d.geo.Rectangle}
+   * @return { .geo.Rectangle}
    **/
   getAbsoluteBounds() {
-    return new draw2d.geo.Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight())
+    return new Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight())
   }
 
 
@@ -1447,19 +1164,19 @@ export class Figure {
    *        y: y
    *      });
    *
-   * @param {Number|draw2d.geo.Point} x The new x coordinate of the figure or the x/y coordinate if it is an draw2d.geo.Point
+   * @param {Number| .geo.Point} x The new x coordinate of the figure or the x/y coordinate if it is an  .geo.Point
    * @param {Number} [y] The new y coordinate of the figure
    **/
-  setPosition(x, y) {
+  setPosition(x, y?) {
     if (typeof x === "undefined") {
       debugger
     }
 
     let oldPos = { x: this.x, y: this.y }
 
-    if (x instanceof draw2d.geo.Point) {
-      this.x = x.x
-      this.y = x.y
+    if (x instanceof Point) {
+      this.x = x.getX();
+      this.y = x.getY();
     }
     else {
       this.x = x
@@ -1467,7 +1184,7 @@ export class Figure {
     }
 
     this.editPolicy.each((i, e) => {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof DragDropEditPolicy) {
         let newPos = e.adjustPosition(this, this.x, this.y)
         this.x = newPos.x
         this.y = newPos.y
@@ -1481,7 +1198,7 @@ export class Figure {
     // element via an API call.
     //
     this.editPolicy.each((i, e) => {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof DragDropEditPolicy) {
         e.moved(this.canvas, this)
       }
     })
@@ -1500,11 +1217,11 @@ export class Figure {
    * @method
    * Get the current position of the figure
    *
-   * @return {draw2d.geo.Point}
+   * @return { .geo.Point}
    * @since 2.0.0
    */
   getPosition() {
-    return new draw2d.geo.Point(this.getX(), this.getY())
+    return new Point(this.getX(), this.getY())
   }
 
   /**
@@ -1545,7 +1262,7 @@ export class Figure {
       // In this case the Resize handles must be informed that the shape didn't resized.
       // because the minWidth/minHeight did have a higher prio.
       this.editPolicy.each((i, e) => {
-        if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+        if (e instanceof DragDropEditPolicy) {
           e.moved(this.canvas, this)
         }
       })
@@ -1556,7 +1273,7 @@ export class Figure {
     // apply all EditPolicy to adjust/modify the new dimension
     //
     this.editPolicy.each((i, e) => {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof DragDropEditPolicy) {
         let newDim = e.adjustDimension(this, w, h)
         w = newDim.w
         h = newDim.h
@@ -1590,7 +1307,7 @@ export class Figure {
     // Update the resize handles if the user change the position of the element via an API call.
     //
     this.editPolicy.each((i, e) => {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof DragDropEditPolicy) {
         e.moved(this.canvas, this)
       }
     })
@@ -1616,17 +1333,17 @@ export class Figure {
    *        boundingBox: {x:1, y:100, width:30, height:30}
    *      });
    *
-   * @param {draw2d.geo.Rectangle} rect
+   * @param { .geo.Rectangle} rect
    * @since 4.8.0
    */
-  setBoundingBox(rect) {
-    rect = new draw2d.geo.Rectangle(rect)
+  setBoundingBox(rect: Rectangle) {
+    rect = rect.clone();
 
     let orig = this.repaintBlocked
     this.repaintBlocked = true
-    this.setPosition(rect.x, rect.y)
+    this.setPosition(rect.getX(), rect.getY())
     this.repaintBlocked = orig
-    this.setDimension(rect.w, rect.h)
+    this.setDimension(rect.getWidth(), rect.getHeight())
 
     return this
   }
@@ -1635,10 +1352,10 @@ export class Figure {
    * @method
    * Returns the bounding box of the figure in absolute position to the canvas.
    *
-   * @return {draw2d.geo.Rectangle}
+   * @return { .geo.Rectangle}
    **/
   getBoundingBox() {
-    return new draw2d.geo.Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight())
+    return new Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight())
   }
 
   /**
@@ -1789,7 +1506,7 @@ export class Figure {
    * Set the parent of this figure.
    * Don't call them manually.
    *
-   * @param {draw2d.Figure} parent The new parent of this figure
+   * @param { .Figure} parent The new parent of this figure
    * @private
    **/
   setParent(parent) {
@@ -1811,7 +1528,7 @@ export class Figure {
    * @method
    * Get the parent of this figure.
    *
-   * @return {draw2d.Figure}
+   * @return { .Figure}
    **/
   getParent() {
     return this.parent
@@ -1824,7 +1541,7 @@ export class Figure {
    * The contains() method returns true if the figure provided by the argument is a descendant of this figure,
    * whether it is a direct child or nested more deeply. Otherwise, it returns false.
    *
-   * @param {draw2d.Figure} containedFigure The figure that may be contained by (a descendant of) this figure.
+   * @param { .Figure} containedFigure The figure that may be contained by (a descendant of) this figure.
    * @since 5.5.4
    */
   contains(containedFigure) {
@@ -1845,7 +1562,7 @@ export class Figure {
    * @method
    * Get the top most parent of this figure. This can be an layout figure or parent container
    *
-   * @return {draw2d.Figure}
+   * @return { .Figure}
    * @since 5.0.6
    **/
   getRoot() {
@@ -1860,12 +1577,12 @@ export class Figure {
    * @method
    * Set the assigned composite of this figure.
    *
-   * @param {draw2d.shape.composite.StrongComposite} composite The assigned composite of this figure
+   * @param { .shape.composite.StrongComposite} composite The assigned composite of this figure
    * @since 4.8.0
    **/
   setComposite(composite) {
-    if (composite !== null && !(composite instanceof draw2d.shape.composite.StrongComposite)) {
-      throw "'composite must inherit from 'draw2d.shape.composite.StrongComposite'"
+    if (composite !== null && !(composite instanceof StrongComposite)) {
+      throw "'composite must inherit from ' .shape.composite.StrongComposite'"
     }
 
     this.composite = composite
@@ -1877,7 +1594,7 @@ export class Figure {
    * @method
    * Get the assigned composite of this figure.
    *
-   * @return {draw2d.shape.composite.StrongComposite}
+   * @return { .shape.composite.StrongComposite}
    * @since 4.8.0
    **/
   getComposite() {
@@ -1927,34 +1644,7 @@ export class Figure {
     }
   }
 
-  /**
-   * @method
-   * Attach an event handler function for one or more events to the figure.
-   * To remove events bound with .on(), see {@link #off}.
-   *
-   * possible events are:<br>
-   * <ul>
-   *   <li>click</li>
-   *   <li>dblclick</li>
-   *   <li>move</li>
-   *   <li>resize</li>
-   *   <li>timer</li>
-   *   <li>contextmenu</li>
-   *   <li>show</li>
-   *   <li>hide</li>
-   *   <li>added</li>
-   *   <li>removed</li>
-   *   <li>change:[attr]</li>
-   * </ul>
-   *
-   * @param {String}   event One or more space-separated event types
-   * @param {Function} callback A function to execute when the event is triggered.
-   * @param {draw2d.Figure} callback.emitter the emitter of the event
-   * @param {Object} [callback.obj] optional event related data
-   * @param {Object} [context] optional context of the function callback.
-   * @since 5.0.0
-   */
-  on(event, callback, context) {
+  on(event, callback, context?) {
     let events = event.split(" ")
     if (typeof callback === "undefined") {
       debugger
@@ -2022,11 +1712,11 @@ export class Figure {
    *
    * @param {Number} x The x position.
    * @param {Number} y The y position.
-   * @param {draw2d.Figure|Array} [figureToIgnore] The figures which should be ignored.
+   * @param { .Figure|Array} [figureToIgnore] The figures which should be ignored.
    **/
-  getBestChild(x, y, figureToIgnore) {
+  getBestChild(x, y, figureToIgnore?) {
     if (!Array.isArray(figureToIgnore)) {
-      if (figureToIgnore instanceof draw2d.Figure) {
+      if (figureToIgnore instanceof Figure) {
         figureToIgnore = [figureToIgnore]
       }
       else {
@@ -2058,8 +1748,8 @@ export class Figure {
    * @method
    * Returns the Command to perform the specified Request or null.
    *
-   * @param {draw2d.command.CommandType} request describes the Command being requested
-   * @return {draw2d.command.Command} null or a Command
+   * @param { .command.CommandType} request describes the Command being requested
+   * @return { .command.Command} null or a Command
    * @private
    **/
   createCommand(request) {
@@ -2067,25 +1757,25 @@ export class Figure {
       return null
     }
 
-    if (request.getPolicy() === draw2d.command.CommandType.MOVE) {
+    if (request.getPolicy() === CommandType.MOVE) {
       if (!this.isDraggable()) {
         return null
       }
-      return new draw2d.command.CommandMove(this)
+      return new CommandMove(this)
     }
 
-    if (request.getPolicy() === draw2d.command.CommandType.DELETE) {
+    if (request.getPolicy() === CommandType.DELETE) {
       if (!this.isDeleteable()) {
         return null
       }
-      return new draw2d.command.CommandDelete(this)
+      return new CommandDelete(this)
     }
 
-    if (request.getPolicy() === draw2d.command.CommandType.RESIZE) {
+    if (request.getPolicy() === CommandType.RESIZE) {
       if (!this.isResizeable()) {
         return null
       }
-      return new draw2d.command.CommandResize(this)
+      return new CommandResize(this)
     }
 
     return null
@@ -2107,7 +1797,7 @@ export class Figure {
    * @since 4.1.0
    * @experimental
    */
-  clone(cloneMetaData) {
+  clone(cloneMetaData?) {
     cloneMetaData = extend({ exludeChildren: false }, cloneMetaData)
 
     let clone = eval("new " + this.NAME + "();")
@@ -2127,7 +1817,7 @@ export class Figure {
         // Layout shapes like VerticalLayout or Horziontal Layout. This figures injects it own kind
         // of layouter...so didn'T care about this.
 
-        let locator = entry.locator.NAME ? eval("new " + entry.locator.NAME + "();") : null
+        let locator = createInstenceFromType((entry.locator as any).NAME);
         clone.add(child, locator)
       })
     }
@@ -2139,7 +1829,7 @@ export class Figure {
   getPersistentAttributes() {
     // force deep copy of userData to avoid side effects in the clone method.
     //
-    let memento = {
+    let memento: any = {
       type: this.NAME,
       id: this.id,
       x: this.getX(),

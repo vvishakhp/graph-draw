@@ -1,25 +1,25 @@
 /**
- * @class draw2d.shape.analog.ResistorVertical
+ * @class  .shape.analog.ResistorVertical
  *
  * See the example:
  *
  *     @example preview small frame
  *
- *     let figure =  new draw2d.shape.analog.ResistorVertical({x:10, y:10});
+ *     let figure =  new  .shape.analog.ResistorVertical({x:10, y:10});
  *
  *     canvas.add(figure);
  *
  *
- * @extends draw2d.SVGFigure
+ * @extends  .SVGFigure
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.analog.ResistorVertical = draw2d.SetFigure.extend({
+ .shape.analog.ResistorVertical =  .SetFigure.extend({
 
-  NAME: "draw2d.shape.analog.ResistorVertical",
+  NAME: " .shape.analog.ResistorVertical",
 
   // custom locator for the special design of the Input area
-  MyInputPortLocator: draw2d.layout.locator.PortLocator.extend({
+  MyInputPortLocator:  .layout.locator.PortLocator.extend({
     init: function () {
       this._super()
     },
@@ -31,7 +31,7 @@ draw2d.shape.analog.ResistorVertical = draw2d.SetFigure.extend({
   }),
 
   // custom locator for the special design of the Output area
-  MyOutputPortLocator: draw2d.layout.locator.PortLocator.extend({
+  MyOutputPortLocator:  .layout.locator.PortLocator.extend({
     init: function () {
       this._super()
     },

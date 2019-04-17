@@ -1,18 +1,18 @@
 /**
- * @class draw2d.layout.connection.ManhattanBridgedConnectionRouter
- * Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source
+ * @class  .layout.connection.ManhattanBridgedConnectionRouter
+ * Provides a {@link  .Connection} with an orthogonal route between the Connection's source
  * and target anchors.
  *
  * @inheritable
  * @author Andreas Herz
  *
- * @extends  draw2d.layout.connection.ManhattanConnectionRouter
+ * @extends   .layout.connection.ManhattanConnectionRouter
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
 
-draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend({
-  NAME: "draw2d.layout.connection.ManhattanBridgedConnectionRouter",
+ .layout.connection.ManhattanBridgedConnectionRouter =  .layout.connection.ManhattanConnectionRouter.extend({
+  NAME: " .layout.connection.ManhattanBridgedConnectionRouter",
 
   BRIDGE_HORIZONTAL_LR: " r 0 0 3 -4 7 -4 10 0 13 0 ", // Left to right
   BRIDGE_HORIZONTAL_RL: " r 0 0 -3 -4 -7 -4 -10 0 -13 0 ", // right to left
@@ -31,12 +31,12 @@ draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connec
    * @method
    * Callback method if the router has been assigned to a connection.
    *
-   * @param {draw2d.Connection} connection The assigned connection
+   * @param { .Connection} connection The assigned connection
    * @template
    * @since 2.7.2
    */
   onInstall: function (connection) {
-    connection.installEditPolicy(new draw2d.policy.line.LineSelectionFeedbackPolicy())
+    connection.installEditPolicy(new  .policy.line.LineSelectionFeedbackPolicy())
   },
 
   /**
@@ -86,7 +86,7 @@ draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connec
       }
 
       intersectionForCalc.each(function (ii, interP) {
-        if (interP.justTouching === false && draw2d.shape.basic.Line.hit(1, oldP.x, oldP.y, p.x, p.y, interP.x, interP.y) === true) {
+        if (interP.justTouching === false &&  .shape.basic.Line.hit(1, oldP.x, oldP.y, p.x, p.y, interP.x, interP.y) === true) {
           // we draw only horizontal bridges. Just a design decision
           //
           if (p.y === interP.y) {

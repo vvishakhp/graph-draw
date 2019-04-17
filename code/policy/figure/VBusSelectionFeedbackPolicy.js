@@ -1,17 +1,17 @@
 
 /**
- * @class draw2d.policy.figure.VBusSelectionFeedbackPolicy
+ * @class  .policy.figure.VBusSelectionFeedbackPolicy
  *
  * Selection feedback policy for vertical bus figures.
  *
  * @author Andreas Herz
- * @extends draw2d.policy.figure.BusSelectionFeedbackPolicy
+ * @extends  .policy.figure.BusSelectionFeedbackPolicy
  */
-import draw2d from '../../packages';
+import   from '../../packages';
 
-draw2d.policy.figure.VBusSelectionFeedbackPolicy = draw2d.policy.figure.BusSelectionFeedbackPolicy.extend({
+ .policy.figure.VBusSelectionFeedbackPolicy =  .policy.figure.BusSelectionFeedbackPolicy.extend({
 
-    NAME : "draw2d.policy.figure.VBusSelectionFeedbackPolicy",
+    NAME : " .policy.figure.VBusSelectionFeedbackPolicy",
     /**
      * @constructor
      * Creates a new Router object
@@ -26,8 +26,8 @@ draw2d.policy.figure.VBusSelectionFeedbackPolicy = draw2d.policy.figure.BusSelec
      * @method
      * Callback if the figure has been moved
      *
-     * @param {draw2d.Canvas} canvas The host canvas
-     * @param {draw2d.Figure} figure The related figure
+     * @param { .Canvas} canvas The host canvas
+     * @param { .Figure} figure The related figure
      *
      **/
     moved: function(canvas,figure)

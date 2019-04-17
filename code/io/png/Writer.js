@@ -1,24 +1,24 @@
 /**
- * @class draw2d.io.png.Writer
+ * @class  .io.png.Writer
  * Convert the canvas document into a PNG Image.
  *
  *     // example how to create a PNG image and set an
  *     // image src attribute.
  *     //
- *     var writer = new draw2d.io.png.Writer();
+ *     var writer = new  .io.png.Writer();
  *     writer.marshal(canvas, function(png){
  *         $("#preview").attr("src",png);
  *     });
  *
  * @author Andreas Herz
- * @extends draw2d.io.Writer
+ * @extends  .io.Writer
  */
-import draw2d from '../../packages';
+import   from '../../packages';
 
 
 var canvg = require('canvg-browser');
 
-draw2d.io.png.Writer = draw2d.io.Writer.extend({
+ .io.png.Writer =  .io.Writer.extend({
 
     init: function(){
         this._super();
@@ -35,11 +35,11 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend({
      * The parameter <b>resultCallback</b> is required and new. The method calls
      * the callback instead of return the result.
      *
-     * @param {draw2d.Canvas} canvas
+     * @param { .Canvas} canvas
      * @param {Function} resultCallback the method to call on success. The first argument is the dataUrl, the second is the base64 formated png image
      * @param {String} resultCallback.img  The image as data source url <b>data:image/png;base64....</b>
      * @param {String} resultCallback.base64  the image encoded in base64
-     * @param {draw2d.geo.Rectangle} cropBoundingBox optional cropping/clipping bounding box
+     * @param { .geo.Rectangle} cropBoundingBox optional cropping/clipping bounding box
      */
     marshal: function(canvas, resultCallback, cropBoundingBox){
         // I change the API signature from version 2.10.1 to 3.0.0. Throw an exception
@@ -55,7 +55,7 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend({
         // Didn't work in IE <10
         // @status beta
         // @since 5.5.0
-        if(canvas instanceof draw2d.Figure){
+        if(canvas instanceof  .Figure){
             var origPos = canvas.getPosition();
             canvas.setPosition(1,1);
             svg =   "<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" >"
@@ -93,18 +93,18 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend({
             svg = svg.replace(/xmlns=\"http:\/\/www\.w3\.org\/2000\/svg\"/, '');
         }
 
-        let canvasDomNode= $('<canvas id="canvas_png_export_for_draw2d" style="display:none"></canvas>');
+        let canvasDomNode= $('<canvas id="canvas_png_export_for_ " style="display:none"></canvas>');
         $('body').append(canvasDomNode);
-        let fullSizeCanvas = $("#canvas_png_export_for_draw2d")[0];
+        let fullSizeCanvas = $("#canvas_png_export_for_ ")[0];
         fullSizeCanvas.width = canvas.initialWidth;
         fullSizeCanvas.height = canvas.initialHeight;
 
-        canvg("canvas_png_export_for_draw2d", svg, {
+        canvg("canvas_png_export_for_ ", svg, {
             ignoreMouse: true,
             ignoreAnimation: true,
             renderCallback: function(){
                 try{
-                    if(canvas instanceof draw2d.Canvas)
+                    if(canvas instanceof  .Canvas)
                         canvas.showDecoration();
 
                     if(typeof cropBoundingBox!=="undefined"){

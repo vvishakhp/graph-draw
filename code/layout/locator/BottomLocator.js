@@ -1,5 +1,5 @@
 /**
- * @class draw2d.layout.locator.BottomLocator
+ * @class  .layout.locator.BottomLocator
  *
  * A bottomLocator is used to place figures at the bottom of a parent shape.
  *
@@ -11,7 +11,7 @@
  *
  *     // create a basic figure and add a Label/child via API call
  *     //
- *     var circle = new draw2d.shape.basic.Circle({
+ *     var circle = new  .shape.basic.Circle({
  *         x:100,
  *         y:50,
  *         diameter:100,
@@ -20,17 +20,17 @@
  *         bgColor:"#E65159"
  *     });
  *
- *     circle.add(new draw2d.shape.basic.Label({text:"Bottom Label"}), new draw2d.layout.locator.BottomLocator());
+ *     circle.add(new  .shape.basic.Label({text:"Bottom Label"}), new  .layout.locator.BottomLocator());
  *     canvas.add( circle);
  *
  *
  * @author Andreas Herz
- * @extend draw2d.layout.locator.Locator
+ * @extend  .layout.locator.Locator
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.layout.locator.BottomLocator = draw2d.layout.locator.Locator.extend({
-  NAME: "draw2d.layout.locator.BottomLocator",
+ .layout.locator.BottomLocator =  .layout.locator.Locator.extend({
+  NAME: " .layout.locator.BottomLocator",
 
   /**
    * @constructor
@@ -47,7 +47,7 @@ draw2d.layout.locator.BottomLocator = draw2d.layout.locator.Locator.extend({
    * Relocates the given Figure.
    *
    * @param {Number} index child index of the target
-   * @param {draw2d.Figure} target The figure to relocate
+   * @param { .Figure} target The figure to relocate
    **/
   relocate: function (index, target) {
     var parent = target.getParent()
@@ -55,11 +55,11 @@ draw2d.layout.locator.BottomLocator = draw2d.layout.locator.Locator.extend({
     // I made a wrong decision in the port handling: anchor point
     // is in the center and not topLeft. Now I must correct this flaw here, and there, and...
     // shit happens.
-    var offset = (parent instanceof draw2d.Port) ? boundingBox.w / 2 : 0
+    var offset = (parent instanceof  .Port) ? boundingBox.w / 2 : 0
 
 
     var targetBoundingBox = target.getBoundingBox()
-    if (target instanceof draw2d.Port) {
+    if (target instanceof  .Port) {
       target.setPosition(boundingBox.w / 2 - offset, boundingBox.h)
     }
     else {

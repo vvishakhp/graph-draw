@@ -1,23 +1,23 @@
 /**
- * @class draw2d.shape.arrow.CalligrapherArrowDownLeft
+ * @class  .shape.arrow.CalligrapherArrowDownLeft
  * Hand drawn arrow which points down left
  *
  * See the example:
  *
  *     @example preview small frame
  *
- *     let figure =  new draw2d.shape.arrow.CalligrapherArrowDownLeft({x:10,y:10, color:"#3d3d3d"});
+ *     let figure =  new  .shape.arrow.CalligrapherArrowDownLeft({x:10,y:10, color:"#3d3d3d"});
  *
  *     canvas.add(figure);
  *
  *
- * @extends draw2d.SVGFigure
+ * @extends  .SVGFigure
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.arrow.CalligrapherArrowDownLeft = draw2d.SVGFigure.extend({
+ .shape.arrow.CalligrapherArrowDownLeft =  .SVGFigure.extend({
 
-  NAME: "draw2d.shape.arrow.CalligrapherArrowDownLeft",
+  NAME: " .shape.arrow.CalligrapherArrowDownLeft",
 
   /**
    * @constructor

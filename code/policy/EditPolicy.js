@@ -1,5 +1,5 @@
 /**
- * @class draw2d.policy.EditPolicy
+ * @class  .policy.EditPolicy
  *
  * A plugable contribution implementing a portion of an behavior.
  *
@@ -10,17 +10,17 @@
  * behavior for an figure/canvas without being bound to its class hierarchy. Code management is easier.
  *
  *
- * This interface is not intended to be implemented by clients. Clients should inherit from {@link draw2d.policy.figure.SelectionFeedbackPolicy}
- * or {@link draw2d.policy.canvas.SelectionPolicy}.
+ * This interface is not intended to be implemented by clients. Clients should inherit from {@link  .policy.figure.SelectionFeedbackPolicy}
+ * or {@link  .policy.canvas.SelectionPolicy}.
  *
  * @author Andreas Herz
  */
-import draw2d from '../packages'
+import   from '../packages'
 import extend from '../util/extend'
 
-draw2d.policy.EditPolicy = Class.extend({
+ .policy.EditPolicy = Class.extend({
 
-  NAME: "draw2d.policy.EditPolicy",
+  NAME: " .policy.EditPolicy",
 
   /**
    * @constructor
@@ -107,7 +107,7 @@ draw2d.policy.EditPolicy = Class.extend({
    * @method
    * Called by the host if the policy has been installed.
    *
-   * @param {draw2d.Canvas|draw2d.Figure} host
+   * @param { .Canvas| .Figure} host
    */
   onInstall: function (host) {
   },
@@ -116,7 +116,7 @@ draw2d.policy.EditPolicy = Class.extend({
    * @method
    * Called by the host if the policy has been uninstalled.
    *
-   * @param {draw2d.Canvas|draw2d.Figure} host
+   * @param { .Canvas| .Figure} host
    */
   onUninstall: function (host) {
   }

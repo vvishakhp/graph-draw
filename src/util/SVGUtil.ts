@@ -1,4 +1,4 @@
-import * as Raphael from 'raphael';
+import Raphael = require('raphael');
 
 // extending raphael with a polygon function
 Raphael.fn.polygon = function (pointString) {

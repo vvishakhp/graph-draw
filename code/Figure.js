@@ -1,19 +1,19 @@
 /**
- * @class draw2d.Figure
- * A lightweight graphical object. Figures are rendered to a {@link draw2d.Canvas} object.
+ * @class  .Figure
+ * A lightweight graphical object. Figures are rendered to a {@link  .Canvas} object.
  *
  * @inheritable
  * @author Andreas Herz
  */
 
-import draw2d from 'packages'
+import   from 'packages'
 import jsonUtil from 'util/JSONUtil'
 import UUID from 'util/UUID'
 import extend from 'util/extend'
 
-draw2d.Figure = Class.extend({
+ .Figure = Class.extend({
 
-  NAME: "draw2d.Figure",
+  NAME: " .Figure",
 
   MIN_TIMER_INTERVAL: 50, // minimum timer interval in milliseconds
 
@@ -39,7 +39,7 @@ draw2d.Figure = Class.extend({
       width: this.setWidth,
       /** @attr {Number} height the new height of the figure. Considering the minHeight of the shape */
       height: this.setHeight,
-      /** @attr {draw2d.geo.Rectangle} boundingBox set the new bounding box of the shape */
+      /** @attr { .geo.Rectangle} boundingBox set the new bounding box of the shape */
       boundingBox: this.setBoundingBox,
       /** @attr {Number} minWidth the new min width of the figure. */
       minWidth: this.setMinWidth,
@@ -104,7 +104,7 @@ draw2d.Figure = Class.extend({
     // possible decorations ( e.g. a Label) of the Connection
     // children are fixed bounded the figure. Most of the events of the child will bee
     // routed to the parent
-    this.children = new draw2d.util.ArrayList()
+    this.children = new  .util.ArrayList()
 
     // behavior flags
     //
@@ -118,8 +118,8 @@ draw2d.Figure = Class.extend({
 
 
     this.canSnapToHelper = true
-    this.snapToGridAnchor = new draw2d.geo.Point(0, 0)    // hot spot for snap to grid
-    this.editPolicy = new draw2d.util.ArrayList()
+    this.snapToGridAnchor = new  .geo.Point(0, 0)    // hot spot for snap to grid
+    this.editPolicy = new  .util.ArrayList()
 
 
     // timer for animation or automatic update
@@ -161,7 +161,7 @@ draw2d.Figure = Class.extend({
     this.oy = 0
     this.repaintBlocked = false
     this.lastAppliedAttributes = {}
-    this.selectionHandles = new draw2d.util.ArrayList()
+    this.selectionHandles = new  .util.ArrayList()
     this.panningDelegate = null
 
     // even handling since version 5.0.0
@@ -178,7 +178,7 @@ draw2d.Figure = Class.extend({
     this.defaultSelectionAdapter = this.selectionAdapter =  () => this
 
     // install default selection handler. Can be overridden or replaced
-    this.installEditPolicy(new draw2d.policy.figure.RectangleSelectionFeedbackPolicy())
+    this.installEditPolicy(new  .policy.figure.RectangleSelectionFeedbackPolicy())
 
 
     // the new style attr call with object attributes
@@ -192,7 +192,7 @@ draw2d.Figure = Class.extend({
    * When value is given, sets the attribute to that value.
    * Multiple attributes can be set by passing an object with name-value pairs.
    *
-   *     let figure = new draw2d.shape.basic.Rectangle();
+   *     let figure = new  .shape.basic.Rectangle();
    *     figure.attr('x');      //=> read value
    *     figure.attr('x', 30);  //=> set value
    *
@@ -217,7 +217,7 @@ draw2d.Figure = Class.extend({
    *
    *     // or you can pass the attr values in the constructor
    *     //
-   *     let clickFigure = new draw2d.shape.basic.Rectangle({
+   *     let clickFigure = new  .shape.basic.Rectangle({
    *        onClick : function(){
    *            alert("click");
    *        }
@@ -396,7 +396,7 @@ draw2d.Figure = Class.extend({
     //
     let _this = this
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.SelectionPolicy) {
+      if (e instanceof  .policy.figure.SelectionPolicy) {
         e.onSelect(_this.canvas, _this, asPrimarySelection)
       }
     })
@@ -419,7 +419,7 @@ draw2d.Figure = Class.extend({
     // apply all EditPolicy for select Operations
     //
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.SelectionPolicy) {
+      if (e instanceof  .policy.figure.SelectionPolicy) {
         e.onUnselect(_this.canvas, _this)
       }
     })
@@ -661,7 +661,7 @@ draw2d.Figure = Class.extend({
    * Set the canvas element of this figures. This can be used to determine whenever an element
    * is added or removed to the canvas.
    *
-   * @param {draw2d.Canvas} canvas the new parent of the figure or null
+   * @param { .Canvas} canvas the new parent of the figure or null
    */
   setCanvas: function (canvas) {
     // remove the shape if we reset the canvas and the element
@@ -705,7 +705,7 @@ draw2d.Figure = Class.extend({
    * @method
    * Return the current assigned canvas container.
    *
-   * @return {draw2d.Canvas}
+   * @return { .Canvas}
    */
   getCanvas: function () {
     return this.canvas
@@ -768,14 +768,14 @@ draw2d.Figure = Class.extend({
    *
    * Optional: Inserts current object in front of the given one.
    *
-   * @param {draw2d.Figure} [figure] move current object in front of the given one.
+   * @param { .Figure} [figure] move current object in front of the given one.
    * @since 3.0.0
    */
   toFront: function (figure) {
     // ensure that the z-oder is still correct if the figure is assigned
     // to a StrongComposite
     //
-    if (this.composite instanceof draw2d.shape.composite.StrongComposite && (typeof figure !== "undefined")) {
+    if (this.composite instanceof  .shape.composite.StrongComposite && (typeof figure !== "undefined")) {
       let indexFigure = figure.getZOrder()
       let indexComposite = this.composite.getZOrder()
       if (indexFigure < indexComposite) {
@@ -836,7 +836,7 @@ draw2d.Figure = Class.extend({
   toBack: function (figure) {
     // it is not allowed that a figure is behind an assigned composite
     //
-    if (this.composite instanceof draw2d.shape.composite.StrongComposite) {
+    if (this.composite instanceof  .shape.composite.StrongComposite) {
       this.toFront(this.composite)
       return
     }
@@ -875,16 +875,16 @@ draw2d.Figure = Class.extend({
    * different figure implementations. Also, behavior can change dynamically, such as when the layouts
    * or routing methods change.
    *
-   * Example for limited DragDrop behavior can be a draw2d.layout.constraint.RegionConstriantPolicy.
+   * Example for limited DragDrop behavior can be a  .layout.constraint.RegionConstriantPolicy.
    *
-   * @param {draw2d.policy.EditPolicy} policy
+   * @param { .policy.EditPolicy} policy
    */
   installEditPolicy: function (policy) {
     // it is only possible to install one SelectionFeedbackPolicy at once
     //
-    if (policy instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
+    if (policy instanceof  .policy.figure.SelectionFeedbackPolicy) {
       this.editPolicy.grep( (p) => {
-        let stay = !(p instanceof draw2d.policy.figure.SelectionFeedbackPolicy)
+        let stay = !(p instanceof  .policy.figure.SelectionFeedbackPolicy)
         if (!stay) {
 
            p.onUninstall(this)
@@ -905,7 +905,7 @@ draw2d.Figure = Class.extend({
    * or all kind of the given edit policies.
    *
    *
-   * @param {draw2d.policy.EditPolicy} policy
+   * @param { .policy.EditPolicy} policy
    * @since 4.81
    */
   uninstallEditPolicy: function (policy) {
@@ -939,13 +939,13 @@ draw2d.Figure = Class.extend({
    * Mainly for labels or other decorations
    *
    *
-   *     let start = new draw2d.shape.node.Start({x:80, y:150});
-   *     start.add(new draw2d.shape.basic.Label({text:"Test Label"}), new draw2d.layout.locator.TopLocator());
+   *     let start = new  .shape.node.Start({x:80, y:150});
+   *     start.add(new  .shape.basic.Label({text:"Test Label"}), new  .layout.locator.TopLocator());
    *
    *     canvas.add( start);
    *
-   * @param {draw2d.Figure} child the figure to add as decoration to the connection.
-   * @param {draw2d.layout.locator.Locator} locator the locator for the child.
+   * @param { .Figure} child the figure to add as decoration to the connection.
+   * @param { .layout.locator.Locator} locator the locator for the child.
    * @param {Number} [index] optional index where to insert the figure
    **/
   add: function (child, locator, index) {
@@ -985,11 +985,11 @@ draw2d.Figure = Class.extend({
    * @method
    * Remove the child figure from this figure and the canvas
    *
-   * @param {draw2d.Figure} child the figure to remove.
+   * @param { .Figure} child the figure to remove.
    *
    * @return {Object} the removed tupple of figure/locator or null if the child isn't found
-   * @return {draw2d.Figure} return.figure The removed figure
-   * @return {draw2d.shape.layout.Layout} return.locator The used locator of the figure
+   * @return { .Figure} return.figure The removed figure
+   * @return { .shape.layout.Layout} return.locator The used locator of the figure
    *
    * @since 5.0.0
    **/
@@ -1024,9 +1024,9 @@ draw2d.Figure = Class.extend({
   /**
    * @method
    * Return all children/decorations of this shape which has been added with
-   * draw2d.Figure.add
+   *  .Figure.add
    *
-   * @returns {draw2d.util.ArrayList}
+   * @returns { .util.ArrayList}
    */
   getChildren: function () {
     return this.children.clone().map(function (e) {
@@ -1044,7 +1044,7 @@ draw2d.Figure = Class.extend({
     this.children.each(function (i, e) {
       e.figure.setCanvas(null)
     })
-    this.children = new draw2d.util.ArrayList()
+    this.children = new  .util.ArrayList()
     this.repaint()
 
     return this
@@ -1207,8 +1207,8 @@ draw2d.Figure = Class.extend({
    * @method
    * Allow dragging only when the cursor is over a specific part of the figure.
    * <br>
-   * Override this method to specify the bounding box of an element or a draw2d.util.ArrayList
-   * of draw2d.geo.Rectangle of bounding boxes used to drag the figure. The returned coordinates
+   * Override this method to specify the bounding box of an element or a  .util.ArrayList
+   * of  .geo.Rectangle of bounding boxes used to drag the figure. The returned coordinates
    * are absolute coordinates to the canvas.
    * <br>
    * <br>
@@ -1216,7 +1216,7 @@ draw2d.Figure = Class.extend({
    * drag handle.
    *
    * @since 5.6.0
-   * @returns {draw2d.geo.Rectangle|draw2d.util.ArrayList}
+   * @returns { .geo.Rectangle| .util.ArrayList}
    */
   getHandleBBox: function () {
     return null
@@ -1255,7 +1255,7 @@ draw2d.Figure = Class.extend({
     }
 
 
-    this.command = this.createCommand(new draw2d.command.CommandType(draw2d.command.CommandType.MOVE))
+    this.command = this.createCommand(new  .command.CommandType( .command.CommandType.MOVE))
 
     if (this.command !== null) {
       this.ox = this.getX()
@@ -1268,7 +1268,7 @@ draw2d.Figure = Class.extend({
       let canStartDrag = true
 
       this.editPolicy.each(function (i, e) {
-        if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+        if (e instanceof  .policy.figure.DragDropEditPolicy) {
           canStartDrag = canStartDrag && e.onDragStart(_this.canvas, _this, x, y, shiftKey, ctrlKey)
         }
       })
@@ -1303,7 +1303,7 @@ draw2d.Figure = Class.extend({
     // apply all EditPolicy for DragDrop Operations
     //
     this.editPolicy.each( (i, e) => {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         let newPos = e.adjustPosition(this, this.ox + dx, this.oy + dy)
         if (newPos) {
           dx = newPos.x - this.ox
@@ -1312,7 +1312,7 @@ draw2d.Figure = Class.extend({
       }
     })
 
-    let newPos = new draw2d.geo.Point(this.ox + dx, this.oy + dy)
+    let newPos = new  .geo.Point(this.ox + dx, this.oy + dy)
 
     // Adjust the new location if the object can snap to a helper
     // like grid, geometry, ruler,...
@@ -1327,7 +1327,7 @@ draw2d.Figure = Class.extend({
     // notify all installed policies
     //
     this.editPolicy.each( (i, e) =>{
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.onDrag(this.canvas, this)
       }
     })
@@ -1402,7 +1402,7 @@ draw2d.Figure = Class.extend({
     // notify all installed policies
     //
     this.editPolicy.each((i, e) => {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.onDragEnd(this.canvas, this, x, y, shiftKey, ctrlKey)
       }
     })
@@ -1420,9 +1420,9 @@ draw2d.Figure = Class.extend({
    * @method
    * Called by the framework during drag&drop operations if the user drag a figure over this figure
    *
-   * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
+   * @param { .Figure} draggedFigure The figure which is currently dragging
    *
-   * @return {draw2d.Figure} the figure which should receive the drop event or null if the element didn't want a drop event
+   * @return { .Figure} the figure which should receive the drop event or null if the element didn't want a drop event
    * @since 6.1.0
    * @private
    **/
@@ -1443,7 +1443,7 @@ draw2d.Figure = Class.extend({
    * @method
    * Called by the framework during drag&drop operations if the user drag a figure over this figure
    *
-   * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
+   * @param { .Figure} draggedFigure The figure which is currently dragging
    *
    * @template
    **/
@@ -1454,7 +1454,7 @@ draw2d.Figure = Class.extend({
    * @method
    * Called if the DragDrop object leaving the current hover figure.
    *
-   * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
+   * @param { .Figure} draggedFigure The figure which is currently dragging
    * @template
    **/
   onDragLeave: function (draggedFigure) {
@@ -1464,10 +1464,10 @@ draw2d.Figure = Class.extend({
   /**
    * @method
    * Called if the user drop this element onto the dropTarget. This event is ONLY fired if the
-   * shape return "this" in the {@link draw2d.Figure#onDragEnter} method.
+   * shape return "this" in the {@link  .Figure#onDragEnter} method.
    *
    *
-   * @param {draw2d.Figure} dropTarget The drop target.
+   * @param { .Figure} dropTarget The drop target.
    * @param {Number} x the x-coordinate of the mouse up event
    * @param {Number} y the y-coordinate of the mouse up event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -1480,10 +1480,10 @@ draw2d.Figure = Class.extend({
   /**
    * @method
    * Called if the user dropped an figure onto this element. This event is ONLY fired if the
-   * in the canvas installed {@link draw2d.policy.canvas.DropInterceptorPolicy} allow this.
+   * in the canvas installed {@link  .policy.canvas.DropInterceptorPolicy} allow this.
    *
    *
-   * @param {draw2d.Figure} droppedFigure The dropped figure.
+   * @param { .Figure} droppedFigure The dropped figure.
    * @param {Number} x the x-coordinate of the mouse up event
    * @param {Number} y the y-coordinate of the mouse up event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -1625,7 +1625,7 @@ draw2d.Figure = Class.extend({
     // Update the resize handles if the user change the position of the element via an API call.
     //
     this.editPolicy.each((i, e) => {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(this.canvas, this)
       }
     })
@@ -1765,7 +1765,7 @@ draw2d.Figure = Class.extend({
 
   /**
    *
-   * @return {draw2d.geo.Point}
+   * @return { .geo.Point}
    **/
   getSnapToGridAnchor: function () {
     return this.snapToGridAnchor
@@ -1775,7 +1775,7 @@ draw2d.Figure = Class.extend({
    * @method
    * Set the hot spot for all snapTo### operations.
    *
-   * @param {draw2d.geo.Point} point
+   * @param { .geo.Point} point
    **/
   setSnapToGridAnchor: function (point) {
     this.snapToGridAnchor = point
@@ -1968,20 +1968,20 @@ draw2d.Figure = Class.extend({
    * @method
    * Returns the absolute y-position of the port.
    *
-   * @type {draw2d.geo.Point}
+   * @type { .geo.Point}
    **/
   getAbsolutePosition: function () {
-    return new draw2d.geo.Point(this.getAbsoluteX(), this.getAbsoluteY())
+    return new  .geo.Point(this.getAbsoluteX(), this.getAbsoluteY())
   },
 
   /**
    * @method
    * Returns the absolute y-position of the port.
    *
-   * @return {draw2d.geo.Rectangle}
+   * @return { .geo.Rectangle}
    **/
   getAbsoluteBounds: function () {
-    return new draw2d.geo.Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight())
+    return new  .geo.Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight())
   },
 
 
@@ -1995,7 +1995,7 @@ draw2d.Figure = Class.extend({
    *        y: y
    *      });
    *
-   * @param {Number|draw2d.geo.Point} x The new x coordinate of the figure or the x/y coordinate if it is an draw2d.geo.Point
+   * @param {Number| .geo.Point} x The new x coordinate of the figure or the x/y coordinate if it is an  .geo.Point
    * @param {Number} [y] The new y coordinate of the figure
    **/
   setPosition: function (x, y) {
@@ -2005,7 +2005,7 @@ draw2d.Figure = Class.extend({
 
     let oldPos = {x: this.x, y: this.y}
 
-    if (x instanceof draw2d.geo.Point) {
+    if (x instanceof  .geo.Point) {
       this.x = x.x
       this.y = x.y
     }
@@ -2015,7 +2015,7 @@ draw2d.Figure = Class.extend({
     }
 
     this.editPolicy.each((i, e) => {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         let newPos = e.adjustPosition(this, this.x, this.y)
         this.x = newPos.x
         this.y = newPos.y
@@ -2029,7 +2029,7 @@ draw2d.Figure = Class.extend({
     // element via an API call.
     //
     this.editPolicy.each((i, e) => {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(this.canvas, this)
       }
     })
@@ -2048,11 +2048,11 @@ draw2d.Figure = Class.extend({
    * @method
    * Get the current position of the figure
    *
-   * @return {draw2d.geo.Point}
+   * @return { .geo.Point}
    * @since 2.0.0
    */
   getPosition: function () {
-    return new draw2d.geo.Point(this.getX(), this.getY())
+    return new  .geo.Point(this.getX(), this.getY())
   },
 
   /**
@@ -2093,7 +2093,7 @@ draw2d.Figure = Class.extend({
       // In this case the Resize handles must be informed that the shape didn't resized.
       // because the minWidth/minHeight did have a higher prio.
       this.editPolicy.each((i, e) => {
-        if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+        if (e instanceof  .policy.figure.DragDropEditPolicy) {
           e.moved(this.canvas, this)
         }
       })
@@ -2104,7 +2104,7 @@ draw2d.Figure = Class.extend({
     // apply all EditPolicy to adjust/modify the new dimension
     //
     this.editPolicy.each((i, e) => {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         let newDim = e.adjustDimension(this, w, h)
         w = newDim.w
         h = newDim.h
@@ -2138,7 +2138,7 @@ draw2d.Figure = Class.extend({
     // Update the resize handles if the user change the position of the element via an API call.
     //
     this.editPolicy.each((i, e) => {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(this.canvas, this)
       }
     })
@@ -2164,11 +2164,11 @@ draw2d.Figure = Class.extend({
    *        boundingBox: {x:1, y:100, width:30, height:30}
    *      });
    *
-   * @param {draw2d.geo.Rectangle} rect
+   * @param { .geo.Rectangle} rect
    * @since 4.8.0
    */
   setBoundingBox: function (rect) {
-    rect = new draw2d.geo.Rectangle(rect)
+    rect = new  .geo.Rectangle(rect)
 
     let orig = this.repaintBlocked
     this.repaintBlocked = true
@@ -2183,10 +2183,10 @@ draw2d.Figure = Class.extend({
    * @method
    * Returns the bounding box of the figure in absolute position to the canvas.
    *
-   * @return {draw2d.geo.Rectangle}
+   * @return { .geo.Rectangle}
    **/
   getBoundingBox: function () {
-    return new draw2d.geo.Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight())
+    return new  .geo.Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight())
   },
 
   /**
@@ -2337,7 +2337,7 @@ draw2d.Figure = Class.extend({
    * Set the parent of this figure.
    * Don't call them manually.
    *
-   * @param {draw2d.Figure} parent The new parent of this figure
+   * @param { .Figure} parent The new parent of this figure
    * @private
    **/
   setParent: function (parent) {
@@ -2359,7 +2359,7 @@ draw2d.Figure = Class.extend({
    * @method
    * Get the parent of this figure.
    *
-   * @return {draw2d.Figure}
+   * @return { .Figure}
    **/
   getParent: function () {
     return this.parent
@@ -2372,7 +2372,7 @@ draw2d.Figure = Class.extend({
    * The contains() method returns true if the figure provided by the argument is a descendant of this figure,
    * whether it is a direct child or nested more deeply. Otherwise, it returns false.
    *
-   * @param {draw2d.Figure} containedFigure The figure that may be contained by (a descendant of) this figure.
+   * @param { .Figure} containedFigure The figure that may be contained by (a descendant of) this figure.
    * @since 5.5.4
    */
   contains: function (containedFigure) {
@@ -2393,7 +2393,7 @@ draw2d.Figure = Class.extend({
    * @method
    * Get the top most parent of this figure. This can be an layout figure or parent container
    *
-   * @return {draw2d.Figure}
+   * @return { .Figure}
    * @since 5.0.6
    **/
   getRoot: function () {
@@ -2408,12 +2408,12 @@ draw2d.Figure = Class.extend({
    * @method
    * Set the assigned composite of this figure.
    *
-   * @param {draw2d.shape.composite.StrongComposite} composite The assigned composite of this figure
+   * @param { .shape.composite.StrongComposite} composite The assigned composite of this figure
    * @since 4.8.0
    **/
   setComposite: function (composite) {
-    if (composite !== null && !(composite instanceof draw2d.shape.composite.StrongComposite)) {
-      throw "'composite must inherit from 'draw2d.shape.composite.StrongComposite'"
+    if (composite !== null && !(composite instanceof  .shape.composite.StrongComposite)) {
+      throw "'composite must inherit from ' .shape.composite.StrongComposite'"
     }
 
     this.composite = composite
@@ -2425,7 +2425,7 @@ draw2d.Figure = Class.extend({
    * @method
    * Get the assigned composite of this figure.
    *
-   * @return {draw2d.shape.composite.StrongComposite}
+   * @return { .shape.composite.StrongComposite}
    * @since 4.8.0
    **/
   getComposite: function () {
@@ -2497,7 +2497,7 @@ draw2d.Figure = Class.extend({
    *
    * @param {String}   event One or more space-separated event types
    * @param {Function} callback A function to execute when the event is triggered.
-   * @param {draw2d.Figure} callback.emitter the emitter of the event
+   * @param { .Figure} callback.emitter the emitter of the event
    * @param {Object} [callback.obj] optional event related data
    * @param {Object} [context] optional context of the function callback.
    * @since 5.0.0
@@ -2570,11 +2570,11 @@ draw2d.Figure = Class.extend({
    *
    * @param {Number} x The x position.
    * @param {Number} y The y position.
-   * @param {draw2d.Figure|Array} [figureToIgnore] The figures which should be ignored.
+   * @param { .Figure|Array} [figureToIgnore] The figures which should be ignored.
    **/
   getBestChild: function (x, y, figureToIgnore) {
     if (!Array.isArray(figureToIgnore)) {
-      if (figureToIgnore instanceof draw2d.Figure) {
+      if (figureToIgnore instanceof  .Figure) {
         figureToIgnore = [figureToIgnore]
       }
       else {
@@ -2606,8 +2606,8 @@ draw2d.Figure = Class.extend({
    * @method
    * Returns the Command to perform the specified Request or null.
    *
-   * @param {draw2d.command.CommandType} request describes the Command being requested
-   * @return {draw2d.command.Command} null or a Command
+   * @param { .command.CommandType} request describes the Command being requested
+   * @return { .command.Command} null or a Command
    * @private
    **/
   createCommand: function (request) {
@@ -2615,25 +2615,25 @@ draw2d.Figure = Class.extend({
       return null
     }
 
-    if (request.getPolicy() === draw2d.command.CommandType.MOVE) {
+    if (request.getPolicy() ===  .command.CommandType.MOVE) {
       if (!this.isDraggable()) {
         return null
       }
-      return new draw2d.command.CommandMove(this)
+      return new  .command.CommandMove(this)
     }
 
-    if (request.getPolicy() === draw2d.command.CommandType.DELETE) {
+    if (request.getPolicy() ===  .command.CommandType.DELETE) {
       if (!this.isDeleteable()) {
         return null
       }
-      return new draw2d.command.CommandDelete(this)
+      return new  .command.CommandDelete(this)
     }
 
-    if (request.getPolicy() === draw2d.command.CommandType.RESIZE) {
+    if (request.getPolicy() ===  .command.CommandType.RESIZE) {
       if (!this.isResizeable()) {
         return null
       }
-      return new draw2d.command.CommandResize(this)
+      return new  .command.CommandResize(this)
     }
 
     return null

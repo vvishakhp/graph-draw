@@ -606,7 +606,7 @@
             "stroke-miterlimit": 0,
             "stroke-opacity": 1,
             "stroke-width": 1,
-            "stroke-scale": false, // FreeGroup: draw2d enhancement
+            "stroke-scale": false, // FreeGroup:   enhancement
             target: "_blank",
             "text-anchor": "middle",
             title: "Raphael",
@@ -6326,10 +6326,10 @@
                             break;
                         case "stroke-width":
                             /* FREEGROUP fix
-                             * draw2d version 3.0.3
+                             *   version 3.0.3
                              *
                              * don't scale the line width if the user resize an shape/element.
-                             * Obscure stroke-width in case of "Draw2D touch" usage
+                             * Obscure stroke-width in case of "  touch" usage
                              */
                             if(!attrs["stroke-scale"]){
                                 if (o._.sx != 1 || o._.sy != 1) {

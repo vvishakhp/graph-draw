@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Cube
+ * @class  .shape.icon.Cube
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Cube();
+ *     let icon =  new  .shape.icon.Cube();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Cube = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Cube",
+ .shape.icon.Cube =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Cube",
 
   /**
    *

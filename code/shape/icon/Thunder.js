@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Thunder
+ * @class  .shape.icon.Thunder
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Thunder();
+ *     let icon =  new  .shape.icon.Thunder();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Thunder = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Thunder",
+ .shape.icon.Thunder =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Thunder",
 
   /**
    *

@@ -1,15 +1,15 @@
 /**
- * @class draw2d.policy.canvas.PanningSelectionPolicy
+ * @class  .policy.canvas.PanningSelectionPolicy
  *
  *
  * @author Andreas Herz
- * @extends draw2d.policy.canvas.SingleSelectionPolicy
+ * @extends  .policy.canvas.SingleSelectionPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.canvas.PanningSelectionPolicy = draw2d.policy.canvas.SingleSelectionPolicy.extend({
+ .policy.canvas.PanningSelectionPolicy =  .policy.canvas.SingleSelectionPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.PanningSelectionPolicy",
+  NAME: " .policy.canvas.PanningSelectionPolicy",
 
   /**
    * @constructor
@@ -23,7 +23,7 @@ draw2d.policy.canvas.PanningSelectionPolicy = draw2d.policy.canvas.SingleSelecti
   /**
    * @method
    *
-   * @param {draw2d.Canvas} canvas
+   * @param { .Canvas} canvas
    * @param {Number} dx The x diff between start of dragging and this event
    * @param {Number} dy The y diff between start of dragging and this event
    * @param {Number} dx2 The x diff since the last call of this dragging operation

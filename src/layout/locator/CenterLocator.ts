@@ -23,7 +23,7 @@ export class CenterLocator extends Locator {
 }
 
 /**
- * @class draw2d.layout.locator.CenterLocator
+ * @class  .layout.locator.CenterLocator
  *
  * A CenterLocator is used to place figures in the center of a parent shape.
  *
@@ -35,21 +35,21 @@ export class CenterLocator extends Locator {
  *
  *     // create a basic figure and add a Label/child via API call
  *     //
- *     let circle = new draw2d.shape.basic.Circle({diameter:120});
+ *     let circle = new  .shape.basic.Circle({diameter:120});
  *     circle.setStroke(3);
  *     circle.setColor("#A63343");
  *     circle.setBackgroundColor("#E65159");
- *     circle.add(new draw2d.shape.basic.Label({text:"Center Label"}), new draw2d.layout.locator.CenterLocator());
+ *     circle.add(new  .shape.basic.Label({text:"Center Label"}), new  .layout.locator.CenterLocator());
  *     canvas.add( circle, 100,50);
  *
  *
  * @author Andreas Herz
- * @extend draw2d.layout.locator.Locator
+ * @extend  .layout.locator.Locator
  */
 
 
-draw2d.layout.locator.CenterLocator = draw2d.layout.locator.Locator.extend({
-  NAME: "draw2d.layout.locator.CenterLocator",
+ .layout.locator.CenterLocator =  .layout.locator.Locator.extend({
+  NAME: " .layout.locator.CenterLocator",
 
   /**
    * @constructor
@@ -66,7 +66,7 @@ draw2d.layout.locator.CenterLocator = draw2d.layout.locator.Locator.extend({
    * Relocates the given Figure.
    *
    * @param {Number} index child index of the target
-   * @param {draw2d.Figure} target The figure to relocate
+   * @param { .Figure} target The figure to relocate
    **/
   relocate: function (index, target) {
     let parent = target.getParent()
@@ -75,7 +75,7 @@ draw2d.layout.locator.CenterLocator = draw2d.layout.locator.Locator.extend({
     // TODO: instanceof is always a HACK. ugly. Redirect the call to the figure instead of 
     // determine the position with a miracle.
     //
-    if (target instanceof draw2d.Port) {
+    if (target instanceof  .Port) {
       target.setPosition(boundingBox.w / 2, boundingBox.h / 2)
     }
     else {

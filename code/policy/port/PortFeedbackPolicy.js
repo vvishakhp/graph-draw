@@ -1,18 +1,18 @@
 /**
- * @class draw2d.policy.port.PortFeedbackPolicy
+ * @class  .policy.port.PortFeedbackPolicy
  *
  * Base class for all port feedback policies. Used for grow, highlight or
  * other decorations during drag&drop and connecting of ports.
  *
  * @author Andreas Herz
- * @extends draw2d.policy.figure.DragDropEditPolicy
+ * @extends  .policy.figure.DragDropEditPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.port.PortFeedbackPolicy = draw2d.policy.figure.DragDropEditPolicy.extend({
+ .policy.port.PortFeedbackPolicy =  .policy.figure.DragDropEditPolicy.extend({
 
 
-  NAME: "draw2d.policy.port.PortFeedbackPolicy",
+  NAME: " .policy.port.PortFeedbackPolicy",
 
   /**
    * @constructor
@@ -25,9 +25,9 @@ draw2d.policy.port.PortFeedbackPolicy = draw2d.policy.figure.DragDropEditPolicy.
    * @method
    * Called if the dragged port hove another port
    *
-   * @param {draw2d.Canvas} canvas
-   * @param {draw2d.Port}   draggedFigure
-   * @param {draw2d.Figure} hoverFigure
+   * @param { .Canvas} canvas
+   * @param { .Port}   draggedFigure
+   * @param { .Figure} hoverFigure
    */
   onHoverEnter: function (canvas, draggedFigure, hoverFigure) {
   },
@@ -36,9 +36,9 @@ draw2d.policy.port.PortFeedbackPolicy = draw2d.policy.figure.DragDropEditPolicy.
    * @method
    * Fired if the dragged figures leaves the hover figure
    *
-   * @param {draw2d.Canvas} canvas
-   * @param {draw2d.Port}   draggedFigure
-   * @param {draw2d.Figure} hoverFigure
+   * @param { .Canvas} canvas
+   * @param { .Port}   draggedFigure
+   * @param { .Figure} hoverFigure
    */
   onHoverLeave: function (canvas, draggedFigure, hoverFigure) {
   }

@@ -1,27 +1,27 @@
 /**
- * @class draw2d.command.CommandRotate
+ * @class  .command.CommandRotate
  *
  * Set the rotation angle of the given figure
  *
  * @since 4.4.1
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandRotate = draw2d.command.Command.extend({
-  NAME: "draw2d.command.CommandRotate",
+ .command.CommandRotate =  .command.Command.extend({
+  NAME: " .command.CommandRotate",
 
   /**
    * @constructor
    * Create a new resize Command objects which can be execute via the CommandStack.
    *
-   * @param {draw2d.Figure} figure the figure to resize
+   * @param { .Figure} figure the figure to resize
    * @param {Number} angle the angle to rotate
    */
   init: function (figure, angle) {
-    this._super(draw2d.Configuration.i18n.command.rotateShape)
+    this._super( .Configuration.i18n.command.rotateShape)
     this.figure = figure
 
     this.oldAngle = figure.getRotationAngle()

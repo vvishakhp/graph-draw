@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Jigsaw
+ * @class  .shape.icon.Jigsaw
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Jigsaw();
+ *     let icon =  new  .shape.icon.Jigsaw();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Jigsaw = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Jigsaw",
+ .shape.icon.Jigsaw =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Jigsaw",
 
   /**
    *

@@ -1,7 +1,7 @@
-import draw2d from '../packages';
+import   from '../packages';
 
 
-draw2d.util.Base64 = {
+ .util.Base64 = {
 
     /**
      * Maps bytes to characters.
@@ -56,9 +56,9 @@ draw2d.util.Base64 = {
 
 
     encodeByteArray: function(input, opt_webSafe) {
-        draw2d.util.Base64.init();
+         .util.Base64.init();
 
-        var byteToCharMap = opt_webSafe ?  draw2d.util.Base64.byteToCharMapWebSafe_ : draw2d.util.Base64.byteToCharMap_;
+        var byteToCharMap = opt_webSafe ?   .util.Base64.byteToCharMapWebSafe_ :  .util.Base64.byteToCharMap_;
 
         var output = [];
 
@@ -101,7 +101,7 @@ draw2d.util.Base64 = {
        * @return {string} The base64 encoded string.
        */
      encode: function(input, opt_webSafe) {
-        return draw2d.util.Base64.encodeByteArray( draw2d.util.Base64.stringToByteArray(input), opt_webSafe);
+        return  .util.Base64.encodeByteArray(  .util.Base64.stringToByteArray(input), opt_webSafe);
       },
 
 
@@ -115,9 +115,9 @@ draw2d.util.Base64 = {
        * @return {Array} bytes representing the decoded value.
        */
       decode: function(input, opt_webSafe) {
-        draw2d.util.Base64.init();
+         .util.Base64.init();
 
-        var charToByteMap = opt_webSafe ?draw2d.util.Base64.charToByteMapWebSafe_ : draw2d.util.Base64.charToByteMap_;
+        var charToByteMap = opt_webSafe ? .util.Base64.charToByteMapWebSafe_ :  .util.Base64.charToByteMap_;
 
         var output = [];
 
@@ -179,18 +179,18 @@ draw2d.util.Base64 = {
     },
 
     init: function() {
-        if (!draw2d.util.Base64.byteToCharMap_) {
-            draw2d.util.Base64.byteToCharMap_ = {};
-            draw2d.util.Base64.charToByteMap_ = {};
-            draw2d.util.Base64.byteToCharMapWebSafe_ = {};
-            draw2d.util.Base64.charToByteMapWebSafe_ = {};
+        if (! .util.Base64.byteToCharMap_) {
+             .util.Base64.byteToCharMap_ = {};
+             .util.Base64.charToByteMap_ = {};
+             .util.Base64.byteToCharMapWebSafe_ = {};
+             .util.Base64.charToByteMapWebSafe_ = {};
 
           // We want quick mappings back and forth, so we precompute two maps.
-          for (var i = 0; i < draw2d.util.Base64.ENCODED_VALS.length; i++) {
-              draw2d.util.Base64.byteToCharMap_[i] = draw2d.util.Base64.ENCODED_VALS.charAt(i);
-              draw2d.util.Base64.charToByteMap_[draw2d.util.Base64.byteToCharMap_[i]] = i;
-              draw2d.util.Base64.byteToCharMapWebSafe_[i] = draw2d.util.Base64.ENCODED_VALS_WEBSAFE.charAt(i);
-              draw2d.util.Base64.charToByteMapWebSafe_[draw2d.util.Base64.byteToCharMapWebSafe_[i]] = i;
+          for (var i = 0; i <  .util.Base64.ENCODED_VALS.length; i++) {
+               .util.Base64.byteToCharMap_[i] =  .util.Base64.ENCODED_VALS.charAt(i);
+               .util.Base64.charToByteMap_[ .util.Base64.byteToCharMap_[i]] = i;
+               .util.Base64.byteToCharMapWebSafe_[i] =  .util.Base64.ENCODED_VALS_WEBSAFE.charAt(i);
+               .util.Base64.charToByteMapWebSafe_[ .util.Base64.byteToCharMapWebSafe_[i]] = i;
           }
         }
     }

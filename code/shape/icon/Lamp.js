@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Lamp
+ * @class  .shape.icon.Lamp
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Lamp();
+ *     let icon =  new  .shape.icon.Lamp();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Lamp = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Lamp",
+ .shape.icon.Lamp =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Lamp",
 
   /**
    *

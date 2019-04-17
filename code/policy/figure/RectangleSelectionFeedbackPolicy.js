@@ -1,25 +1,25 @@
 /**
- * @class draw2d.policy.figure.RectangleSelectionFeedbackPolicy
+ * @class  .policy.figure.RectangleSelectionFeedbackPolicy
  *
  * A SelectionFeedbackPolicy with resize handles (rectangles) on each side and corner of the shape
  *
  * See the example:
  *
  *     @example preview small frame
- *       circle =new draw2d.shape.basic.Circle({diameter:50});
- *       circle.installEditPolicy(new draw2d.policy.RectangleSelectionFeedbackPolicy());
+ *       circle =new  .shape.basic.Circle({diameter:50});
+ *       circle.installEditPolicy(new  .policy.RectangleSelectionFeedbackPolicy());
  *       canvas.add(circle,90,50);
  *
- *       canvas.add(new draw2d.shape.basic.Label({text:"Click on the circle to see the selection feedback"}),20,10);
+ *       canvas.add(new  .shape.basic.Label({text:"Click on the circle to see the selection feedback"}),20,10);
  *
  * @author Andreas Herz
- * @extends draw2d.policy.figure.SelectionFeedbackPolicy
+ * @extends  .policy.figure.SelectionFeedbackPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.figure.RectangleSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend({
+ .policy.figure.RectangleSelectionFeedbackPolicy =  .policy.figure.SelectionFeedbackPolicy.extend({
 
-  NAME: "draw2d.policy.figure.RectangleSelectionFeedbackPolicy",
+  NAME: " .policy.figure.RectangleSelectionFeedbackPolicy",
   /**
    * @constructor
    * Creates a selection feedback for a shape.
@@ -38,7 +38,7 @@ draw2d.policy.figure.RectangleSelectionFeedbackPolicy = draw2d.policy.figure.Sel
       // figure to avoid adding these element to the hit test of the canvas. In this case the element
       // is just visible but not part of the model or responsible for any drag/drop operation
       // #2C70FF #2096fc
-      let box = new draw2d.shape.basic.Rectangle({bgColor: null, dashArray: "- ", color: "#2C70FF", stroke: 0.5})
+      let box = new  .shape.basic.Rectangle({bgColor: null, dashArray: "- ", color: "#2C70FF", stroke: 0.5})
       box.hide = function () {
         // IMPORTANT
         // don't add/remove this rectangle to the canvas resizeHandles. This rect isn't responsible for any hitTest or
@@ -164,6 +164,6 @@ draw2d.policy.figure.RectangleSelectionFeedbackPolicy = draw2d.policy.figure.Sel
   },
 
   createResizeHandle: function (owner, type){
-    return new draw2d.ResizeHandle({ owner:owner, type:type, width:10, height:10 });
+    return new  .ResizeHandle({ owner:owner, type:type, width:10, height:10 });
   }
 })

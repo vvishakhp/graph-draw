@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.basic.Line
+ * @class  .shape.basic.Line
  * The base class for all visible elements inside a canvas.
  *
  * See the example:
@@ -8,13 +8,13 @@
  *
  *     // Create the line and modify the start/end after inserting them into
  *     // the canvas
- *     let line1 =  new draw2d.shape.basic.Line({startX:30, startY:30, endX:100, endY:80});
+ *     let line1 =  new  .shape.basic.Line({startX:30, startY:30, endX:100, endY:80});
  *
  *     canvas.add(line1);
  *
  *     // Create the line with a given start/end coordinate in the constructor
  *     //
- *     let line2 = new draw2d.shape.basic.Line({
+ *     let line2 = new  .shape.basic.Line({
  *           startX:20,
  *           startY:80,
  *           endX:200,
@@ -26,16 +26,16 @@
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.Figure
+ * @extends  .Figure
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import jsonUtil from '../../util/JSONUtil'
 import extend from '../../util/extend'
 
-draw2d.shape.basic.Line = draw2d.Figure.extend({
-  NAME: "draw2d.shape.basic.Line",
+ .shape.basic.Line =  .Figure.extend({
+  NAME: " .shape.basic.Line",
 
-  DEFAULT_COLOR: new draw2d.util.Color(0, 0, 0),
+  DEFAULT_COLOR: new  .util.Color(0, 0, 0),
 
   /**
    * @constructor
@@ -51,17 +51,17 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
     this.lineColor = this.DEFAULT_COLOR
     this.stroke = 1
     this.outlineStroke = 0
-    this.outlineColor = new draw2d.util.Color(null)
+    this.outlineColor = new  .util.Color(null)
     this.outlineVisible = false
 
     this.draggedSegment = null
 
     this.dasharray = null
 
-    this.start = new draw2d.geo.Point(30, 30)
-    this.end = new draw2d.geo.Point(100, 100)
+    this.start = new  .geo.Point(30, 30)
+    this.end = new  .geo.Point(100, 100)
 
-    this.vertices = new draw2d.util.ArrayList()
+    this.vertices = new  .util.ArrayList()
     this.vertices.add(this.start.clone())
     this.vertices.add(this.end.clone())
 
@@ -85,15 +85,15 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
         endY: this.setEndY,
         /** @attr {Number} vertices the x coordinate of the start point */
         vertices: this.setVertices,
-        /** @attr {String | draw2d.util.Color} outlineColor the outline color of the line */
+        /** @attr {String |  .util.Color} outlineColor the outline color of the line */
         outlineColor: this.setOutlineColor,
         /** @attr {Number} outlineStroke the line width of the outline */
         outlineStroke: this.setOutlineStroke,
-        /** @attr {String|draw2d.util.Color} color the color of the line */
+        /** @attr {String| .util.Color} color the color of the line */
         color: this.setColor,
         /** @attr {Number} stroke the line width of the color */
         stroke: this.setStroke,
-        /** @attr {String} dasharray the line pattern see {@link draw2d.shape.basic.Line#setDashArray} for more information*/
+        /** @attr {String} dasharray the line pattern see {@link  .shape.basic.Line#setDashArray} for more information*/
         dasharray: this.setDashArray,
         /** @attr {Boolean} glow the glow flag for the shape. The representation of the "glow" depends on the shape */
         glow: this.setGlow
@@ -113,7 +113,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
     // some router installs a edit policy. In this case we want delete them
     //
     if (this.editPolicy.getSize() === 0) {
-      this.installEditPolicy(new draw2d.policy.line.LineSelectionFeedbackPolicy())
+      this.installEditPolicy(new  .policy.line.LineSelectionFeedbackPolicy())
     }
   },
 
@@ -126,11 +126,11 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
    *        outlineColor: color
    *      });
    *
-   * @param {draw2d.util.Color/String} color The new color of the line.
+   * @param { .util.Color/String} color The new color of the line.
    * @since 4.2.1
    **/
   setOutlineColor: function (color) {
-    this.outlineColor = new draw2d.util.Color(color)
+    this.outlineColor = new  .util.Color(color)
     this.repaint()
     this.fireEvent("change:outlineColor", {value: this.outlineColor})
 
@@ -141,7 +141,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
    * @method
    * The outline color of the text
    *
-   * @returns {draw2d.util.Color}
+   * @returns { .util.Color}
    * @since 4.2.1
    */
   getOutlineColor: function () {
@@ -259,7 +259,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
     // notify all installed policies
     //
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.onDragEnd(_this.canvas, _this, x, y, shiftKey, ctrlKey)
       }
     })
@@ -445,7 +445,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
       this._lineColor = this.lineColor
       this._stroke = this.stroke
 
-      this.setColor(new draw2d.util.Color("#3f72bf"))
+      this.setColor(new  .util.Color("#3f72bf"))
       this.setStroke((this.stroke * 4) | 0)
     }
     else {
@@ -510,10 +510,10 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
    *        color: color
    *      });
    *
-   * @param {draw2d.util.Color|String} color The new color of the line.
+   * @param { .util.Color|String} color The new color of the line.
    **/
   setColor: function (color) {
-    this.lineColor = new draw2d.util.Color(color)
+    this.lineColor = new  .util.Color(color)
     this.repaint()
     this.fireEvent("change:color", {value: this.lineColor})
 
@@ -524,7 +524,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
    * @method
    * Return the current paint color.
    *
-   * @return {draw2d.util.Color} The paint color of the line.
+   * @return { .util.Color} The paint color of the line.
    **/
   getColor: function () {
     return this.lineColor
@@ -550,7 +550,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
     let _this = this
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
     })
@@ -567,7 +567,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
    *
    * TODO: precalculate or cache this values
    *
-   * @returns {draw2d.geo.Rectangle}
+   * @returns { .geo.Rectangle}
    * @since 4.8.2
    */
   getBoundingBox: function () {
@@ -578,7 +578,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
     let width = maxX - minX
     let height = maxY - minY
 
-    return new draw2d.geo.Rectangle(minX, minY, width, height)
+    return new  .geo.Rectangle(minX, minY, width, height)
   },
 
 
@@ -593,11 +593,11 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
    *        startY: y
    *      });
    *
-   * @param {Number|draw2d.geo.Point} x the x coordinate of the start point
+   * @param {Number| .geo.Point} x the x coordinate of the start point
    * @param {Number} [y] the y coordinate of the start point
    **/
   setStartPosition: function (x, y) {
-    let pos = new draw2d.geo.Point(x, y)
+    let pos = new  .geo.Point(x, y)
     if (this.start.equals(pos)) {
       return this
     }
@@ -608,7 +608,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
     let _this = this
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
     })
@@ -651,11 +651,11 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
    *      figure.attr({
    *        end: {x:3, y:10}
    *      });
-   * @param {Number|draw2d.geo.Point} x the x coordinate or a draw2d.geo.Point of the end point
+   * @param {Number| .geo.Point} x the x coordinate or a  .geo.Point of the end point
    * @param {Number} [y] the y coordinate of the end point
    **/
   setEndPosition: function (x, y) {
-    let pos = new draw2d.geo.Point(x, y)
+    let pos = new  .geo.Point(x, y)
     if (this.end.equals(pos)) {
       return this
     }
@@ -666,7 +666,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
     let _this = this
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
     })
@@ -703,7 +703,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
    * @method
    * Return the start point.
    *
-   * @return {draw2d.geo.Point}
+   * @return { .geo.Point}
    **/
   getStartPosition: function () {
     return this.start.clone()
@@ -738,7 +738,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
    * @method
    * Return the end point.
    *
-   * @return {draw2d.geo.Point}
+   * @return { .geo.Point}
    **/
   getEndPosition: function () {
     return this.end.clone()
@@ -786,13 +786,13 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
    * Update the vertex at the give position with the new coordinate
    *
    * @param {Number} index the index of the vertex to update
-   * @param {Number|draw2d.geo.Point} x the x coordinate or the draw2d.geo.Point object
+   * @param {Number| .geo.Point} x the x coordinate or the  .geo.Point object
    * @param {Number} [y] the y coordinate or undefined of the second argument is a point
    *
    * @since 4.0.0
    */
   setVertex: function (index, x, y) {
-    if (x instanceof draw2d.geo.Point) {
+    if (x instanceof  .geo.Point) {
       y = x.y
       x = x.x
     }
@@ -819,7 +819,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
     let _this = this
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
     })
@@ -832,7 +832,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
    * @method
    * Returns the vertices of the connection
    *
-   * @return {draw2d.util.ArrayList} an draw2d.util.ArrayList of type draw2d.Point
+   * @return { .util.ArrayList} an  .util.ArrayList of type  .Point
    **/
   getVertices: function () {
     return this.vertices
@@ -842,23 +842,23 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
    * @method
    * Update the vertices of the object. The given array is copied and assigned.
    *
-   * @param {draw2d.util.ArrayList|Array} vertices the new vertices of the polyline.
+   * @param { .util.ArrayList|Array} vertices the new vertices of the polyline.
    *
    * @since 4.0.1
    */
   setVertices: function (vertices) {
     let _this = this
-    // convert json document/array to draw2d ArrayList
+    // convert json document/array to   ArrayList
     //
     if (Array.isArray(vertices)) {
-      this.vertices = new draw2d.util.ArrayList()
+      this.vertices = new  .util.ArrayList()
       vertices.forEach(element => {
-        this.vertices.add(new draw2d.geo.Point(element))
+        this.vertices.add(new  .geo.Point(element))
       })
     }
     // use the given ArrayList
     //
-    else if (vertices instanceof draw2d.util.ArrayList) {
+    else if (vertices instanceof  .util.ArrayList) {
       this.vertices = vertices.clone(true)
     }
     else {
@@ -881,7 +881,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
     // something about this issue....this is complete a "EditPolicy" domain to handle this.
     if (!this.selectionHandles.isEmpty()) {
       this.editPolicy.each(function (i, e) {
-        if (e instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
+        if (e instanceof  .policy.figure.SelectionFeedbackPolicy) {
           e.onUnselect(_this.canvas, _this)
           e.onSelect(_this.canvas, _this)
         }
@@ -890,7 +890,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
     // notify the listener about the changes
     this.editPolicy.each(function (i, e) {
-      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+      if (e instanceof  .policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
     })
@@ -904,10 +904,10 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
    * @method
    * Return the segments of the line with {start:s, end: e} JSON array list
    *
-   * @returns {draw2d.util.ArrayList}
+   * @returns { .util.ArrayList}
    */
   getSegments: function () {
-    let result = new draw2d.util.ArrayList()
+    let result = new  .util.ArrayList()
     result.add({start: this.getStartPosition(), end: this.getEndPosition()})
 
     return result
@@ -968,26 +968,26 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
    * Returns the Command to perform the specified Request or null if the shape want cancel the
    * operation or it can't operate the command.
    *
-   * @param {draw2d.command.CommandType} request describes the Command being requested
-   * @return {draw2d.command.Command} null or a Command
+   * @param { .command.CommandType} request describes the Command being requested
+   * @return { .command.Command} null or a Command
    * @private
    **/
   createCommand: function (request) {
-    if (request.getPolicy() === draw2d.command.CommandType.MOVE) {
+    if (request.getPolicy() ===  .command.CommandType.MOVE) {
       if (this.isDraggable()) {
-        return new draw2d.command.CommandMoveVertices(this)
+        return new  .command.CommandMoveVertices(this)
       }
     }
 
-    if (request.getPolicy() === draw2d.command.CommandType.DELETE) {
+    if (request.getPolicy() ===  .command.CommandType.DELETE) {
       if (this.isDeleteable()) {
-        return new draw2d.command.CommandDelete(this)
+        return new  .command.CommandDelete(this)
       }
     }
 
-    if (request.getPolicy() === draw2d.command.CommandType.MOVE_BASEPOINT) {
+    if (request.getPolicy() ===  .command.CommandType.MOVE_BASEPOINT) {
       if (this.isDraggable()) {
-        return new draw2d.command.CommandMoveVertex(this)
+        return new  .command.CommandMoveVertex(this)
       }
     }
 
@@ -995,7 +995,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   installEditPolicy: function (policy) {
-    if (!(policy instanceof draw2d.policy.line.LineSelectionFeedbackPolicy) && policy instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
+    if (!(policy instanceof  .policy.line.LineSelectionFeedbackPolicy) && policy instanceof  .policy.figure.SelectionFeedbackPolicy) {
       return// silently
     }
 
@@ -1014,7 +1014,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
    * @return {Boolean}
    **/
   hitTest: function (px, py) {
-    return draw2d.shape.basic.Line.hit(this.corona + this.stroke, this.start.x, this.start.y, this.end.x, this.end.y, px, py)
+    return  .shape.basic.Line.hit(this.corona + this.stroke, this.start.x, this.start.y, this.end.x, this.end.y, px, py)
   },
 
   /**
@@ -1023,13 +1023,13 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
    *
    * @param {Number} px the x coordinate of the test point
    * @param {Number} py the y coordinate of the test point
-   * @return {draw2d.geo.Point}
+   * @return { .geo.Point}
    **/
   pointProjection: function (px, py) {
-    let pt = new draw2d.geo.Point(px, py)
+    let pt = new  .geo.Point(px, py)
     let p1 = this.getStartPosition()
     let p2 = this.getEndPosition()
-    return draw2d.geo.Line.pointProjection(p1.x, p1.y, p2.x, p2.y, pt.x, pt.y)
+    return  .geo.Line.pointProjection(p1.x, p1.y, p2.x, p2.y, pt.x, pt.y)
   },
 
 
@@ -1044,7 +1044,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
     let p1 = this.getStartPosition()
     let p2 = this.getEndPosition()
     percentage = Math.min(1, Math.max(0, percentage))
-    return new draw2d.geo.Point(p1.x + (p2.x - p1.x) * percentage, p1.y + (p2.y - p1.y) * percentage)
+    return new  .geo.Point(p1.x + (p2.x - p1.x) * percentage, p1.y + (p2.y - p1.y) * percentage)
   },
 
 
@@ -1052,11 +1052,11 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
    * @method
    * Return all intersection points between the given Line.
    *
-   * @param {draw2d.shape.basic.Line} other
-   * @returns {draw2d.util.ArrayList}
+   * @param { .shape.basic.Line} other
+   * @returns { .util.ArrayList}
    */
   intersection: function (other) {
-    let result = new draw2d.util.ArrayList()
+    let result = new  .util.ArrayList()
 
     // empty result. the lines are equal...infinit array
     if (other === this) {
@@ -1068,7 +1068,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
     segments1.each(function (i, s1) {
       segments2.each(function (j, s2) {
-        let p = draw2d.shape.basic.Line.intersection(s1.start, s1.end, s2.start, s2.end)
+        let p =  .shape.basic.Line.intersection(s1.start, s1.end, s2.start, s2.end)
         if (p !== null) {
           result.add(p)
         }
@@ -1164,16 +1164,16 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 /**
  * see: http://en.wikipedia.org/wiki/Line-line_intersection
  *
- * @param {draw2d.geo.Point} a1
- * @param {draw2d.geo.Point} a2
- * @param {draw2d.geo.Point} b1
- * @param {draw2d.geo.Point} b2
+ * @param { .geo.Point} a1
+ * @param { .geo.Point} a2
+ * @param { .geo.Point} b1
+ * @param { .geo.Point} b2
  *
  * @static
  * @private
- * @returns {draw2d.geo.Point}
+ * @returns { .geo.Point}
  */
-draw2d.shape.basic.Line.intersection = function (a1, a2, b1, b2) {
+ .shape.basic.Line.intersection = function (a1, a2, b1, b2) {
   let result = null
 
   let ua_t = (b2.x - b1.x) * (a1.y - b1.y) - (b2.y - b1.y) * (a1.x - b1.x)
@@ -1185,7 +1185,7 @@ draw2d.shape.basic.Line.intersection = function (a1, a2, b1, b2) {
     let ub = ub_t / u_b
 
     if (0 <= ua && ua <= 1 && 0 <= ub && ub <= 1) {
-      result = new draw2d.geo.Point((a1.x + ua * (a2.x - a1.x)) | 0, (a1.y + ua * (a2.y - a1.y)) | 0)
+      result = new  .geo.Point((a1.x + ua * (a2.x - a1.x)) | 0, (a1.y + ua * (a2.y - a1.y)) | 0)
 
       // determine if the lines are crossing or just touching
       //
@@ -1212,7 +1212,7 @@ draw2d.shape.basic.Line.intersection = function (a1, a2, b1, b2) {
  * @param {Number} px x coordinate of the point to test
  * @param {Number} py y coordinate of the point to test
  **/
-draw2d.shape.basic.Line.hit = function (coronaWidth, X1, Y1, X2, Y2, px, py) {
-  return draw2d.geo.Line.distance(X1, Y1, X2, Y2, px, py) < coronaWidth
+ .shape.basic.Line.hit = function (coronaWidth, X1, Y1, X2, Y2, px, py) {
+  return  .geo.Line.distance(X1, Y1, X2, Y2, px, py) < coronaWidth
 }
 

@@ -1,15 +1,15 @@
 /**
- * @class draw2d.policy.canvas.BoundingboxSelectionPolicy
+ * @class  .policy.canvas.BoundingboxSelectionPolicy
  *
  *
  * @author Andreas Herz
- * @extends draw2d.policy.canvas.SelectionPolicy
+ * @extends  .policy.canvas.SelectionPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSelectionPolicy.extend({
+ .policy.canvas.BoundingboxSelectionPolicy =  .policy.canvas.SingleSelectionPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.BoundingboxSelectionPolicy",
+  NAME: " .policy.canvas.BoundingboxSelectionPolicy",
 
   /**
    * @constructor
@@ -59,7 +59,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
     //
     let selection = canvas.getSelection()
     canvas.getLines().each((i, line) => {
-      if (line instanceof draw2d.Connection) {
+      if (line instanceof  .Connection) {
         if (selection.contains(line.getSource().getRoot()) && selection.contains(line.getTarget().getRoot())) {
           this.select(canvas, line, false)
         }
@@ -93,7 +93,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
   /**
    * @method
    *
-   * @param {draw2d.Canvas} canvas
+   * @param { .Canvas} canvas
    * @param {Number} x the x-coordinate of the mouse down event
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -133,7 +133,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
 
       // ignore ports since version 6.1.0. This is handled by the ConnectionCreatePolicy
       //
-      if (figure instanceof draw2d.Port) {
+      if (figure instanceof  .Port) {
         return// silently
       }
 
@@ -165,12 +165,12 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
         this.select(canvas, figure)
 
         // its a line
-        if (figure instanceof draw2d.shape.basic.Line) {
+        if (figure instanceof  .shape.basic.Line) {
           // you can move a line with Drag&Drop...but not a connection.
           // A Connection is fixed linked with the corresponding ports.
           //
-          if (!(figure instanceof draw2d.Connection)) {
-            canvas.draggingLineCommand = figure.createCommand(new draw2d.command.CommandType(draw2d.command.CommandType.MOVE))
+          if (!(figure instanceof  .Connection)) {
+            canvas.draggingLineCommand = figure.createCommand(new  .command.CommandType( .command.CommandType.MOVE))
             if (canvas.draggingLineCommand !== null) {
               canvas.draggingLine = figure
             }
@@ -200,7 +200,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
 
           let canDragStart = figure.onDragStart(fakeDragX, fakeDragY, shiftKey, ctrlKey, true /*fakeFlag*/)
           // its a line
-          if (figure instanceof draw2d.shape.basic.Line) {
+          if (figure instanceof  .shape.basic.Line) {
             // no special handling
           }
           else if (canDragStart === false) {
@@ -218,7 +218,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
   /**
    * @method
    *
-   * @param {draw2d.Canvas} canvas
+   * @param { .Canvas} canvas
    * @param {Number} dx The x diff between start of dragging and this event
    * @param {Number} dy The y diff between start of dragging and this event
    * @param {Number} dx2 The x diff since the last call of this dragging operation
@@ -238,7 +238,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
       this._super(canvas, dx, dy, dx2, dy2, shiftKey, ctrlKey)
 
       if (this.mouseDraggingElement === null && this.mouseDownElement === null && this.boundingBoxFigure1 === null) {
-        this.boundingBoxFigure1 = new draw2d.shape.basic.Rectangle({
+        this.boundingBoxFigure1 = new  .shape.basic.Rectangle({
           width: 1,
           height: 1,
           x: this.x,
@@ -248,7 +248,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
         })
         this.boundingBoxFigure1.setCanvas(canvas)
 
-        this.boundingBoxFigure2 = new draw2d.shape.basic.Rectangle({
+        this.boundingBoxFigure2 = new  .shape.basic.Rectangle({
           width: 1,
           height: 1,
           x: this.x,
@@ -276,7 +276,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
   /**
    * @method
    *
-   * @param {draw2d.Canvas} canvas
+   * @param { .Canvas} canvas
    * @param {Number} x the x-coordinate of the mouse down event
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -291,7 +291,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
           this.unselect(canvas, figure)
         })
       }
-      else if (this.mouseDownElement instanceof draw2d.ResizeHandle || (this.mouseDownElement instanceof draw2d.shape.basic.LineResizeHandle)) {
+      else if (this.mouseDownElement instanceof  .ResizeHandle || (this.mouseDownElement instanceof  .shape.basic.LineResizeHandle)) {
         // Do nothing
         // A click on a resize handle didn't change the selection of the canvas
         //

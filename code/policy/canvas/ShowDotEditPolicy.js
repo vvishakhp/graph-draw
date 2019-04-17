@@ -1,5 +1,5 @@
 /**
- * @class draw2d.policy.canvas.ShowDotEditPolicy
+ * @class  .policy.canvas.ShowDotEditPolicy
  *
  * Paint a dotted pattern in the background of the canvas.
  *
@@ -7,23 +7,23 @@
  *
  *     @example preview small frame
  *
- *     canvas.installEditPolicy(new draw2d.policy.canvas.ShowDotEditPolicy());
- *     var shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with dotted background."});
+ *     canvas.installEditPolicy(new  .policy.canvas.ShowDotEditPolicy());
+ *     var shape =  new  .shape.basic.Text({text:"This is a simple text in a canvas with dotted background."});
  *
  *     canvas.add(shape,40,10);
  *
  *
  * @author Andreas Herz
  *
- * @extends draw2d.policy.canvas.DecorationPolicy
+ * @extends  .policy.canvas.DecorationPolicy
  * @since 4.0.1
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
 
-draw2d.policy.canvas.ShowDotEditPolicy = draw2d.policy.canvas.DecorationPolicy.extend({
+ .policy.canvas.ShowDotEditPolicy =  .policy.canvas.DecorationPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.ShowDotEditPolicy",
+  NAME: " .policy.canvas.ShowDotEditPolicy",
 
   DOT_COLOR: "#999999",
   DOT_RADIUS: 1,
@@ -35,14 +35,14 @@ draw2d.policy.canvas.ShowDotEditPolicy = draw2d.policy.canvas.DecorationPolicy.e
    *
    * @param {Number} [dotDistance] the distance or grid width between the dots.
    * @param {Number} [dotRadius] the radius of the dots.
-   * @param {draw2d.util.Color|String} [dotColor] the color for the dots.
+   * @param { .util.Color|String} [dotColor] the color for the dots.
    */
   init: function (dotDistance, dotRadius, dotColor) {
     this._super()
 
     this.dotDistance = dotDistance ? dotDistance : this.DOT_DISTANCE
     this.dotRadius = dotRadius ? dotRadius : this.DOT_RADIUS
-    this.dotColor = new draw2d.util.Color(dotColor ? dotColor : this.DOT_COLOR)
+    this.dotColor = new  .util.Color(dotColor ? dotColor : this.DOT_COLOR)
 
     // generate the background pattern with an data URL GIF image. This is much faster than draw
     // the pattern via the canvas and the raphael.circle method

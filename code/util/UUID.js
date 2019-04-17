@@ -1,18 +1,18 @@
-import draw2d from '../packages';
+import   from '../packages';
 
 /**
- * @class draw2d.util.UUID
+ * @class  .util.UUID
  * Generates a (pseudo) UUID's
  *
  *      // a UUID in the format
  *      // xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (8-4-4-4-12)
- *      var id = draw2d.util.UUID.create();
+ *      var id =  .util.UUID.create();
  *
  * @author Andreas Herz
  * @constructor
  * @private
  */
-draw2d.util.UUID=function()
+ .util.UUID=function()
 {
 };
 
@@ -26,7 +26,7 @@ draw2d.util.UUID=function()
  *
  * @returns {String} the  UUID in the format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (8-4-4-4-12)
  **/
-draw2d.util.UUID.create=function()
+ .util.UUID.create=function()
 {
   var segment=function()
   {
@@ -35,4 +35,4 @@ draw2d.util.UUID.create=function()
   return (segment()+segment()+"-"+segment()+"-"+segment()+"-"+segment()+"-"+segment()+segment()+segment());
 };
 
-module.exports = draw2d.util.UUID;
+module.exports =  .util.UUID;

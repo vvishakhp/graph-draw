@@ -39,7 +39,7 @@ const Configuration = {
             // create a custom SelectionPolicy instead
             console.log("deprecated call factory.createResizeHandle");
 
-            return new draw2d.ResizeHandle({
+            return new  .ResizeHandle({
                 owner,
                 type,
                 width,
@@ -53,19 +53,19 @@ const Configuration = {
         createConnection: function (sourcePort, targetPort, callback, dropTarget) {
             console.log("deprecated call factory.createConnection");
             debugger;
-            return new draw2d.Connection();
+            return new  .Connection();
         },
         // @since 5.3.0
         createInputPort: function (relatedFigure) {
-            return new draw2d.InputPort();
+            return new  .InputPort();
         },
         // @since 5.3.0
         createOutputPort: function (relatedFigure) {
-            return new draw2d.OutputPort();
+            return new  .OutputPort();
         },
         // @since 5.3.0
         createHybridPort: function (relatedFigure) {
-            return new draw2d.HybridPort();
+            return new  .HybridPort();
         }
     }
 };

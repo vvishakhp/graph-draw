@@ -1,20 +1,20 @@
 /**
- * @class draw2d.policy.line.OrthogonalSelectionFeedbackPolicy
+ * @class  .policy.line.OrthogonalSelectionFeedbackPolicy
  *
  * Feedback and edit policy for the InteractiveManhattanRouter.
  *
  * @author  Andreas Herz
- * @extends draw2d.policy.line.LineSelectionFeedbackPolicy
+ * @extends  .policy.line.LineSelectionFeedbackPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
 // do not delete them
 import plugin from "lib/jquery.contextmenu"
 import css from 'css/contextmenu.css'
 
-draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSelectionFeedbackPolicy.extend({
+ .policy.line.OrthogonalSelectionFeedbackPolicy =  .policy.line.LineSelectionFeedbackPolicy.extend({
 
-  NAME: "draw2d.policy.line.OrthogonalSelectionFeedbackPolicy",
+  NAME: " .policy.line.OrthogonalSelectionFeedbackPolicy",
 
   /**
    * @constructor
@@ -26,8 +26,8 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
     // The ResizeHandle for the Policy. This is inline to avoid that a user want to use them without
     // the right installed policy.
     //
-    this.ResizeHandle = draw2d.ResizeHandle.extend({
-      NAME: "draw2d.policy.line.OrthogonalSelectionFeedbackPolicy.ResizeHandle",
+    this.ResizeHandle =  .ResizeHandle.extend({
+      NAME: " .policy.line.OrthogonalSelectionFeedbackPolicy.ResizeHandle",
 
       init: function (owner, index) {
         this._super({owner})
@@ -47,7 +47,7 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
        **/
       onDragStart: function (x, y, shiftKey, ctrlKey) {
         this._super(x, y, shiftKey, ctrlKey)
-        this.command = this.getCanvas().getPrimarySelection().createCommand(new draw2d.command.CommandType(draw2d.command.CommandType.MOVE_VERTICES))
+        this.command = this.getCanvas().getPrimarySelection().createCommand(new  .command.CommandType( .command.CommandType.MOVE_VERTICES))
 
         // Vertex is a reference and not a copy of the point
         this.vertex = this.owner.getVertex(this.index).clone()
@@ -102,7 +102,7 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
           //               + p2       p2 +
           if ((p1.x === p2.x) && (p0.y === p1.y)) {
             switch (fromDir) {
-              case draw2d.geo.Rectangle.DIRECTION_RIGHT:
+              case  .geo.Rectangle.DIRECTION_RIGHT:
                 // p0 is on the left of p1
                 //
                 this.owner.setVertex(1, max(p0.x + MINDIST, this.vertex.x), p1.y) // p1
@@ -110,7 +110,7 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
                 break
               // p0 is on the right of p2
               //
-              case draw2d.geo.Rectangle.DIRECTION_LEFT:
+              case  .geo.Rectangle.DIRECTION_LEFT:
                 this.owner.setVertex(1, min(p0.x - MINDIST, this.vertex.x), p1.y) // p1
                 this.owner.setVertex(2, min(p0.x - MINDIST, this.vertex.x), p2.y) // p2
                 break
@@ -125,7 +125,7 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
           //      p1 *-----+ p2     p0 +
           else {
             switch (fromDir) {
-              case draw2d.geo.Rectangle.DIRECTION_UP:
+              case  .geo.Rectangle.DIRECTION_UP:
                 // p0 is below of p1
                 //
                 this.owner.setVertex(1, p1.x, min(p0.y - MINDIST, this.vertex.y)) // p1
@@ -133,7 +133,7 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
                 break
               // p0 is above of p2
               //
-              case draw2d.geo.Rectangle.DIRECTION_DOWN:
+              case  .geo.Rectangle.DIRECTION_DOWN:
                 this.owner.setVertex(1, p1.x, max(p0.y + MINDIST, this.vertex.y)) // p1
                 this.owner.setVertex(2, p2.x, max(p0.y + MINDIST, this.vertex.y)) // p2
                 break
@@ -157,12 +157,12 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
           if ((p0.x === p1.x) && (p2.y === p1.y)) {
             switch (toDir) {
               // p0 is below of p1
-              case draw2d.geo.Rectangle.DIRECTION_UP:
+              case  .geo.Rectangle.DIRECTION_UP:
                 this.owner.setVertex(count - 2, p1.x, min(p0.y - MINDIST, this.vertex.y)) // p1
                 this.owner.setVertex(count - 3, p2.x, min(p0.y - MINDIST, this.vertex.y)) // p2
                 break
               // p0 is above p2
-              case draw2d.geo.Rectangle.DIRECTION_DOWN:
+              case  .geo.Rectangle.DIRECTION_DOWN:
                 this.owner.setVertex(count - 2, p1.x, max(p0.y + MINDIST, this.vertex.y)) // p1
                 this.owner.setVertex(count - 3, p2.x, max(p0.y + MINDIST, this.vertex.y)) // p2
                 break
@@ -177,7 +177,7 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
           //      p1 *-----+ p0              p2 +
           else {
             switch (toDir) {
-              case draw2d.geo.Rectangle.DIRECTION_RIGHT:
+              case  .geo.Rectangle.DIRECTION_RIGHT:
                 // p0 is on the left of p1
                 //
                 this.owner.setVertex(count - 2, max(p0.x + MINDIST, this.vertex.x), p1.y) // p1
@@ -185,7 +185,7 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
                 break
               // p0 is on the right of p2
               //
-              case draw2d.geo.Rectangle.DIRECTION_LEFT:
+              case  .geo.Rectangle.DIRECTION_LEFT:
                 this.owner.setVertex(count - 2, min(p0.x - MINDIST, this.vertex.x), p1.y) // p1
                 this.owner.setVertex(count - 3, min(p0.x - MINDIST, this.vertex.x), p2.y) // p2
                 break
@@ -219,22 +219,22 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
             //
             if (this.index - 2 === 0) {
               switch (fromDir) {
-                case draw2d.geo.Rectangle.DIRECTION_RIGHT:
+                case  .geo.Rectangle.DIRECTION_RIGHT:
                   this.owner.setVertex(this.index - 1, p0.x, max(this.vertex.y, p_m1.y - MINDIST))          // p0
                   this.owner.setVertex(this.index, this.vertex.x, max(this.vertex.y, p_m1.y - MINDIST)) // p1
                   this.owner.setVertex(this.index + 1, this.vertex.x, p2.y)                         // p2
                   break
-                case draw2d.geo.Rectangle.DIRECTION_LEFT:
+                case  .geo.Rectangle.DIRECTION_LEFT:
                   this.owner.setVertex(this.index - 1, p0.x, min(this.vertex.y, p_m1.y + MINDIST))          // p0
                   this.owner.setVertex(this.index, this.vertex.x, this.vertex.y) // p1
                   this.owner.setVertex(this.index + 1, this.vertex.x, p2.y)                         // p2
                   break
-                case draw2d.geo.Rectangle.DIRECTION_UP:
+                case  .geo.Rectangle.DIRECTION_UP:
                   this.owner.setVertex(this.index - 1, p0.x, min(this.vertex.y, p_m1.y - MINDIST))          // p0
                   this.owner.setVertex(this.index, this.vertex.x, min(this.vertex.y, p_m1.y - MINDIST)) // p1
                   this.owner.setVertex(this.index + 1, this.vertex.x, p2.y)                         // p2
                   break
-                case draw2d.geo.Rectangle.DIRECTION_DOWN:
+                case  .geo.Rectangle.DIRECTION_DOWN:
                   this.owner.setVertex(this.index - 1, p0.x, max(this.vertex.y, p_m1.y + MINDIST))          // p0
                   this.owner.setVertex(this.index, this.vertex.x, max(this.vertex.y, p_m1.y + MINDIST)) // p1
                   this.owner.setVertex(this.index + 1, this.vertex.x, p2.y)                        // p2
@@ -246,12 +246,12 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
             //
             else if ((this.index - count + 3) === 0) {
               switch (toDir) {
-                case draw2d.geo.Rectangle.DIRECTION_RIGHT:
+                case  .geo.Rectangle.DIRECTION_RIGHT:
                   this.owner.setVertex(this.index - 1, p0.x, this.vertex.y)                       // p0
                   this.owner.setVertex(this.index, max(this.vertex.x, p3.x + MINDIST), this.vertex.y) // p1
                   this.owner.setVertex(this.index + 1, max(this.vertex.x, p3.x + MINDIST), p2.y)          // p2
                   break
-                case draw2d.geo.Rectangle.DIRECTION_LEFT:
+                case  .geo.Rectangle.DIRECTION_LEFT:
                   this.owner.setVertex(this.index - 1, p0.x, this.vertex.y)                       // p0
                   this.owner.setVertex(this.index, min(this.vertex.x, p3.x - MINDIST), this.vertex.y) // p1
                   this.owner.setVertex(this.index + 1, min(this.vertex.x, p3.x - MINDIST), p2.y)          // p2
@@ -279,12 +279,12 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
             //
             if (this.index - 2 === 0) {
               switch (fromDir) {
-                case draw2d.geo.Rectangle.DIRECTION_RIGHT:
+                case  .geo.Rectangle.DIRECTION_RIGHT:
                   this.owner.setVertex(this.index - 1, max(this.vertex.x, p_m1.x + MINDIST), p0.y)          // p0
                   this.owner.setVertex(this.index, max(this.vertex.x, p_m1.x + MINDIST), this.vertex.y) // p1
                   this.owner.setVertex(this.index + 1, p2.x, this.vertex.y)                              // p2
                   break
-                case draw2d.geo.Rectangle.DIRECTION_LEFT:
+                case  .geo.Rectangle.DIRECTION_LEFT:
                   this.owner.setVertex(this.index - 1, min(this.vertex.x, p_m1.x - MINDIST), p0.y)          // p0
                   this.owner.setVertex(this.index, min(this.vertex.x, p_m1.x - MINDIST), this.vertex.y) // p1
                   this.owner.setVertex(this.index + 1, p2.x, this.vertex.y)                              // p2
@@ -295,12 +295,12 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
             //
             else if ((this.index - count + 3) === 0) {
               switch (toDir) {
-                case draw2d.geo.Rectangle.DIRECTION_UP:
+                case  .geo.Rectangle.DIRECTION_UP:
                   this.owner.setVertex(this.index - 1, this.vertex.x, max(this.vertex.y, p0.y))      // p0
                   this.owner.setVertex(this.index, this.vertex.x, min(this.vertex.y, p3.y - MINDIST))   // p1
                   this.owner.setVertex(this.index + 1, p2.x, min(this.vertex.y, p3.y - MINDIST))   // p2
                   break
-                case draw2d.geo.Rectangle.DIRECTION_DOWN:
+                case  .geo.Rectangle.DIRECTION_DOWN:
                   this.owner.setVertex(this.index - 1, this.vertex.x, p0.y)                // p0
                   this.owner.setVertex(this.index, this.vertex.x, max(this.vertex.y, p3.y + MINDIST))   // p1
                   this.owner.setVertex(this.index + 1, p2.x, max(this.vertex.y, p3.y + MINDIST))   // p2
@@ -375,7 +375,7 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
    * @method
    *
    * @template
-   * @param {draw2d.Connection} connection the selected figure
+   * @param { .Connection} connection the selected figure
    * @param {Boolean} isPrimarySelection
    */
   onSelect: function (canvas, connection, isPrimarySelection) {
@@ -432,16 +432,16 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
       //
       if (segmentIndex === 1) {
         switch (fromDir) {
-          case draw2d.geo.Rectangle.DIRECTION_RIGHT:
+          case  .geo.Rectangle.DIRECTION_RIGHT:
             newX = Math.max(newX, fromPt.x + PADDING)
             break
-          case draw2d.geo.Rectangle.DIRECTION_LEFT:
+          case  .geo.Rectangle.DIRECTION_LEFT:
             newX = Math.min(newX, fromPt.x - PADDING)
             break
-          case draw2d.geo.Rectangle.DIRECTION_UP:
+          case  .geo.Rectangle.DIRECTION_UP:
             newX = fromPt.x
             break
-          case draw2d.geo.Rectangle.DIRECTION_DOWN:
+          case  .geo.Rectangle.DIRECTION_DOWN:
             newX = fromPt.x
             break
         }
@@ -449,23 +449,23 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
 
       if (segmentIndex === segmentCount - 2) {
         switch (fromDir) {
-          case draw2d.geo.Rectangle.DIRECTION_RIGHT:
+          case  .geo.Rectangle.DIRECTION_RIGHT:
             newX = Math.max(newX, toPt.x + PADDING)
             break
-          case draw2d.geo.Rectangle.DIRECTION_LEFT:
+          case  .geo.Rectangle.DIRECTION_LEFT:
             newX = Math.min(newX, toPt.x - PADDING)
             break
-          case draw2d.geo.Rectangle.DIRECTION_UP:
+          case  .geo.Rectangle.DIRECTION_UP:
             newX = toPt.x
             break
-          case draw2d.geo.Rectangle.DIRECTION_DOWN:
+          case  .geo.Rectangle.DIRECTION_DOWN:
             newX = toPt.x
             break
         }
       }
 
-      conn.setVertex(segmentIndex - 1, new draw2d.geo.Point(newX, p0.y))
-      conn.setVertex(segmentIndex + 2, new draw2d.geo.Point(newX, p3.y))
+      conn.setVertex(segmentIndex - 1, new  .geo.Point(newX, p0.y))
+      conn.setVertex(segmentIndex + 2, new  .geo.Point(newX, p3.y))
 
       conn.removeVertexAt(segmentIndex)
       conn.removeVertexAt(segmentIndex)
@@ -486,12 +486,12 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
       //
       if (segmentIndex === 1) {
         switch (fromDir) {
-          case draw2d.geo.Rectangle.DIRECTION_RIGHT:
-          case draw2d.geo.Rectangle.DIRECTION_LEFT:
+          case  .geo.Rectangle.DIRECTION_RIGHT:
+          case  .geo.Rectangle.DIRECTION_LEFT:
             newY = fromPt.y
             break
-          case draw2d.geo.Rectangle.DIRECTION_UP:
-          case draw2d.geo.Rectangle.DIRECTION_DOWN:
+          case  .geo.Rectangle.DIRECTION_UP:
+          case  .geo.Rectangle.DIRECTION_DOWN:
             debugger // newX is newer read....why did I calculate them?!
             newX = fromPt.x
             break
@@ -499,20 +499,20 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
       }
       if (segmentIndex === segmentCount - 2) {
         switch (toDir) {
-          case draw2d.geo.Rectangle.DIRECTION_RIGHT:
-          case draw2d.geo.Rectangle.DIRECTION_LEFT:
+          case  .geo.Rectangle.DIRECTION_RIGHT:
+          case  .geo.Rectangle.DIRECTION_LEFT:
             newY = toPt.y
             break
-          case draw2d.geo.Rectangle.DIRECTION_UP:
-          case draw2d.geo.Rectangle.DIRECTION_DOWN:
+          case  .geo.Rectangle.DIRECTION_UP:
+          case  .geo.Rectangle.DIRECTION_DOWN:
             debugger // newX is newer read....why did I calculate them?!
             newX = toPt.x
             break
         }
       }
 
-      conn.setVertex(segmentIndex - 1, new draw2d.geo.Point(p0.x, newY))
-      conn.setVertex(segmentIndex + 2, new draw2d.geo.Point(p3.x, newY))
+      conn.setVertex(segmentIndex - 1, new  .geo.Point(p0.x, newY))
+      conn.setVertex(segmentIndex + 2, new  .geo.Point(p3.x, newY))
 
       conn.removeVertexAt(segmentIndex)
       conn.removeVertexAt(segmentIndex)
@@ -552,10 +552,10 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
         //     + p2
         //
         let newSegLength = (p1.getDistance(p2) / 4) / 2
-        let np1 = new draw2d.geo.Point(p1.x, y - newSegLength)
-        let np2 = new draw2d.geo.Point(p2.x + length, y - newSegLength)
-        let np3 = new draw2d.geo.Point(p2.x + length, y + newSegLength)
-        let np4 = new draw2d.geo.Point(p2.x, y + newSegLength)
+        let np1 = new  .geo.Point(p1.x, y - newSegLength)
+        let np2 = new  .geo.Point(p2.x + length, y - newSegLength)
+        let np3 = new  .geo.Point(p2.x + length, y + newSegLength)
+        let np4 = new  .geo.Point(p2.x, y + newSegLength)
 
         conn.insertVertexAt(segmentIndex + 1, np1)
         conn.insertVertexAt(segmentIndex + 2, np2)
@@ -563,8 +563,8 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
         conn.insertVertexAt(segmentIndex + 4, np4)
       }
       else {
-        let np1 = new draw2d.geo.Point(0, 0)
-        let np2 = new draw2d.geo.Point(0, 0)
+        let np1 = new  .geo.Point(0, 0)
+        let np2 = new  .geo.Point(0, 0)
         //       p2 +
         //          .
         // np1 +----+ np2
@@ -578,7 +578,7 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
           np1.x = p1.x
           np2.y = y
           np2.x = p2.x + length
-          conn.setVertex(segmentIndex + 1, new draw2d.geo.Point(np2.x, p2.y))
+          conn.setVertex(segmentIndex + 1, new  .geo.Point(np2.x, p2.y))
         }
         // p2 ist der Schlusspunkt und darf somit nicht veaendert werden
         //
@@ -587,15 +587,15 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
           np1.x = p1.x - length
           np2.y = y
           np2.x = p2.x
-          conn.setVertex(segmentIndex, new draw2d.geo.Point(np1.x, p1.y))
+          conn.setVertex(segmentIndex, new  .geo.Point(np1.x, p1.y))
         }
         else {
           np1.y = y
           np1.x = p1.x - (length / 2)
           np2.y = y
           np2.x = p2.x + (length / 2)
-          conn.setVertex(segmentIndex, new draw2d.geo.Point(np1.x, p1.y))
-          conn.setVertex(segmentIndex + 1, new draw2d.geo.Point(np2.x, p2.y))
+          conn.setVertex(segmentIndex, new  .geo.Point(np1.x, p1.y))
+          conn.setVertex(segmentIndex + 1, new  .geo.Point(np2.x, p2.y))
         }
 
         conn.insertVertexAt(segmentIndex + 1, np1)
@@ -614,10 +614,10 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
         // --------+np1   np4+--------
         //
         let newSegLength = (p1.getDistance(p2) / 4) / 2
-        let np1 = new draw2d.geo.Point(x - newSegLength, p1.y)
-        let np2 = new draw2d.geo.Point(x - newSegLength, p1.y - length)
-        let np3 = new draw2d.geo.Point(x + newSegLength, p1.y - length)
-        let np4 = new draw2d.geo.Point(x + newSegLength, p1.y)
+        let np1 = new  .geo.Point(x - newSegLength, p1.y)
+        let np2 = new  .geo.Point(x - newSegLength, p1.y - length)
+        let np3 = new  .geo.Point(x + newSegLength, p1.y - length)
+        let np4 = new  .geo.Point(x + newSegLength, p1.y)
 
         conn.insertVertexAt(segmentIndex + 1, np1)
         conn.insertVertexAt(segmentIndex + 2, np2)
@@ -631,8 +631,8 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
         //             |
         //             | np2       p2
         //             +.........+
-        let np1 = new draw2d.geo.Point(0, 0)
-        let np2 = new draw2d.geo.Point(0, 0)
+        let np1 = new  .geo.Point(0, 0)
+        let np2 = new  .geo.Point(0, 0)
 
         // p1 ist der Startpunkt und darf somit nicht verschoben werden
         //
@@ -641,7 +641,7 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
           np1.y = p1.y
           np2.x = x
           np2.y = p2.y + length
-          conn.setVertex(segmentIndex + 1, new draw2d.geo.Point(p2.x, np2.y))
+          conn.setVertex(segmentIndex + 1, new  .geo.Point(p2.x, np2.y))
         }
         // p2 ist der Schlusspunkt und darf somit nicht veaendert werden
         //
@@ -650,15 +650,15 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
           np1.y = p1.y - length
           np2.x = x
           np2.y = p2.y
-          conn.setVertex(segmentIndex, new draw2d.geo.Point(p1.x, np1.y))
+          conn.setVertex(segmentIndex, new  .geo.Point(p1.x, np1.y))
         }
         else {
           np1.x = x
           np1.y = p1.y - (length / 2)
           np2.x = x
           np2.y = p2.y + (length / 2)
-          conn.setVertex(segmentIndex, new draw2d.geo.Point(p1.x, np1.y))
-          conn.setVertex(segmentIndex + 1, new draw2d.geo.Point(p2.x, np2.y))
+          conn.setVertex(segmentIndex, new  .geo.Point(p1.x, np1.y))
+          conn.setVertex(segmentIndex + 1, new  .geo.Point(p2.x, np2.y))
         }
         conn.insertVertexAt(segmentIndex + 1, np1)
         conn.insertVertexAt(segmentIndex + 2, np2)
@@ -672,7 +672,7 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
    * You can either override the "onContextMenu" method of the figure or install an editor policy and override this method.
    * Booth is valid and possible.
    *
-   * @param {draw2d.shape.basic.Line} conn the polyline below the mouse
+   * @param { .shape.basic.Line} conn the polyline below the mouse
    * @param {Number} x the x-coordinate of the mouse down event
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -682,14 +682,14 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
    */
   onRightMouseDown: function (conn, x, y, shiftKey, ctrlKey) {
     let segment = conn.hitSegment(x, y)
-    let items = {"split": {name: draw2d.Configuration.i18n.menu.addSegment}}
+    let items = {"split": {name:  .Configuration.i18n.menu.addSegment}}
 
     if (segment === null) {
       return
     }
 
     if (conn.getRouter().canRemoveSegmentAt(conn, segment.index)) {
-      items.remove = {name: draw2d.Configuration.i18n.menu.deleteSegment}
+      items.remove = {name:  .Configuration.i18n.menu.deleteSegment}
     }
 
     $.contextMenu({
@@ -707,7 +707,7 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
             let originalVertices = conn.getVertices().clone(true)
             this.removeSegment(conn, segment.index)
             let newVertices = conn.getVertices().clone(true)
-            conn.getCanvas().getCommandStack().execute(new draw2d.command.CommandReplaceVertices(conn, originalVertices, newVertices))
+            conn.getCanvas().getCommandStack().execute(new  .command.CommandReplaceVertices(conn, originalVertices, newVertices))
             }
             break
           case "split": {
@@ -715,7 +715,7 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
             let originalVertices = conn.getVertices().clone(true)
             this.splitSegment(conn, segment.index, x, y)
             let newVertices = conn.getVertices().clone(true)
-            conn.getCanvas().getCommandStack().execute(new draw2d.command.CommandReplaceVertices(conn, originalVertices, newVertices))
+            conn.getCanvas().getCommandStack().execute(new  .command.CommandReplaceVertices(conn, originalVertices, newVertices))
             }
             break
           default:

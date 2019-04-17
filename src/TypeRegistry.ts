@@ -1,9 +1,12 @@
-const typeReg: { [key: string]: any } = {};
+const typeReg: Map<string, any> = new Map();
 
 export function Type(typeName: string) {
     return (ctor: Function) => {
         ctor.prototype.NAME = typeName;
-        typeReg[typeName] = ctor;
+        if (typeReg.get(typeName)) {
+            throw new Error(`Type "${typeName}" is alredy registered. A type can only be registered once`)
+        }
+        typeReg.set(typeName, ctor);
     }
 }
 

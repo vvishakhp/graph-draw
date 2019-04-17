@@ -1,5 +1,5 @@
 /**
- * @class draw2d.layout.locator.DraggableLocator
+ * @class  .layout.locator.DraggableLocator
  *
  * A DraggableLocator is used to place figures relative to the parent nearest corner. It is
  * possible to move a child node via drag&drop.
@@ -13,12 +13,12 @@
  *
  *
  * @author Andreas Herz
- * @extend draw2d.layout.locator.Locator
+ * @extend  .layout.locator.Locator
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.layout.locator.SmartDraggableLocator = draw2d.layout.locator.Locator.extend({
-  NAME: "draw2d.layout.locator.SmartDraggableLocator",
+ .layout.locator.SmartDraggableLocator =  .layout.locator.Locator.extend({
+  NAME: " .layout.locator.SmartDraggableLocator",
 
   /**
    * @constructor
@@ -112,10 +112,10 @@ draw2d.layout.locator.SmartDraggableLocator = draw2d.layout.locator.Locator.exte
 
   /**
    * @method
-   * Controls the location of an I{@link draw2d.Figure}
+   * Controls the location of an I{@link  .Figure}
    *
    * @param {Number} index child index of the figure
-   * @param {draw2d.Figure} figure the figure to control
+   * @param { .Figure} figure the figure to control
    *
    * @template
    **/

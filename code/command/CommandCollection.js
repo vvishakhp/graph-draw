@@ -1,5 +1,5 @@
 /**
- * @class draw2d.command.CommandCollection
+ * @class  .command.CommandCollection
  *
  * A CommandCollection works as a single command. You can add more than one
  * Command to this CommandCollection and execute/undo them onto the CommandStack as a
@@ -8,12 +8,12 @@
  * @inheritable
  * @author Andreas Herz
  *
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandCollection = draw2d.command.Command.extend({
-  NAME: "draw2d.command.CommandCollection",
+ .command.CommandCollection =  .command.Command.extend({
+  NAME: " .command.CommandCollection",
 
   /**
    * @constructor
@@ -22,9 +22,9 @@ draw2d.command.CommandCollection = draw2d.command.Command.extend({
    * @param {String} [commandLabel] the label to show on the command stack for the undo/redo operation
    */
   init: function (commandLabel) {
-    this._super((typeof commandLabel === 'undefined') ? draw2d.Configuration.i18n.command.collection : commandLabel)
+    this._super((typeof commandLabel === 'undefined') ?  .Configuration.i18n.command.collection : commandLabel)
 
-    this.commands = new draw2d.util.ArrayList()
+    this.commands = new  .util.ArrayList()
   },
 
   /**
@@ -61,7 +61,7 @@ draw2d.command.CommandCollection = draw2d.command.Command.extend({
    * @method
    * Add a command to the collection.
    *
-   * @param {draw2d.command.Command} command
+   * @param { .command.Command} command
    */
   add: function (command) {
     this.commands.add(command)

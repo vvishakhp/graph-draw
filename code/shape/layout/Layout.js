@@ -1,19 +1,19 @@
 /**
- * @class draw2d.shape.layout.Layout
+ * @class  .shape.layout.Layout
  *
  * A base class for positioning child figures and determining the ideal size for
  * a figure with children.
  *
  *
  * @author Andreas Herz
- * @extends draw2d.shape.basic.Rectangle
+ * @extends  .shape.basic.Rectangle
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.shape.layout.Layout = draw2d.shape.basic.Rectangle.extend({
+ .shape.layout.Layout =  .shape.basic.Rectangle.extend({
 
-  NAME: "draw2d.shape.layout.Layout",
+  NAME: " .shape.layout.Layout",
 
   /**
    * @constructor
@@ -39,7 +39,7 @@ draw2d.shape.layout.Layout = draw2d.shape.basic.Rectangle.extend({
     this.resizeListener = function (figure) {
       // propagate the event to the parent or other listener if existing
       //
-      if (_this.getParent() instanceof draw2d.shape.layout.Layout) {
+      if (_this.getParent() instanceof  .shape.layout.Layout) {
         _this.fireEvent("resize")
       }
       // or we are the parent and must consume it self
@@ -49,7 +49,7 @@ draw2d.shape.layout.Layout = draw2d.shape.basic.Rectangle.extend({
       }
     }
 
-    this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy())
+    this.installEditPolicy(new  .policy.figure.AntSelectionFeedbackPolicy())
   },
 
   /**
@@ -152,14 +152,14 @@ draw2d.shape.layout.Layout = draw2d.shape.basic.Rectangle.extend({
    * @method
    * Returns the Command to perform the specified Request or null.
    *
-   * @param {draw2d.command.CommandType} request describes the Command being requested
-   * @return {draw2d.command.Command} null or a Command
+   * @param { .command.CommandType} request describes the Command being requested
+   * @return { .command.Command} null or a Command
    * @private
    **/
   createCommand: function (request) {
     // it is not possible to rate a layout object
     // ..at the moment
-    if (request.getPolicy() === draw2d.command.CommandType.ROTATE) {
+    if (request.getPolicy() ===  .command.CommandType.ROTATE) {
       return null
     }
 

@@ -1,13 +1,13 @@
 /**
- * @class draw2d.shape.icon.Icon
+ * @class  .shape.icon.Icon
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.SetFigure
+ * @extends  .SetFigure
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Icon = draw2d.SetFigure.extend({
-  NAME: "draw2d.shape.icon.Icon",
+ .shape.icon.Icon =  .SetFigure.extend({
+  NAME: " .shape.icon.Icon",
 
   /**
    *

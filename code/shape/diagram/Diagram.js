@@ -1,16 +1,16 @@
 /**
- * @class draw2d.shape.diagram.Diagram
+ * @class  .shape.diagram.Diagram
  *
  * Base class for all diagrams.
  *
- * @extends draw2d.SetFigure
+ * @extends  .SetFigure
  */
 
-import draw2d from '../../packages'
+import   from '../../packages'
 import extend from '../../util/extend'
 import jsonUtil from '../../util/JSONUtil'
 
-draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend({
+ .shape.diagram.Diagram =  .SetFigure.extend({
 
   /**
    * @constructor

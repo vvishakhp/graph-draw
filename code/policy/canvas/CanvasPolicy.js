@@ -1,16 +1,16 @@
 /**
- * @class draw2d.policy.canvas.CanvasPolicy
+ * @class  .policy.canvas.CanvasPolicy
  *
  *
  * @author Andreas Herz
- * @extends draw2d.policy.EditPolicy
+ * @extends  .policy.EditPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import Color from '../../util/Color'
 
-draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
+ .policy.canvas.CanvasPolicy =  .policy.EditPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.CanvasPolicy",
+  NAME: " .policy.canvas.CanvasPolicy",
 
   /**
    * @constructor
@@ -25,7 +25,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
    * @method
    * Called if the policy is installed into the canvas.
    *
-   * @param {draw2d.Canvas} canvas
+   * @param { .Canvas} canvas
    */
   onInstall: function (canvas) {
     this.canvas = canvas
@@ -35,7 +35,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
    * @method
    * Called if the policy is deinstalled from the canvas
    *
-   * @param {draw2d.Canvas} canvas
+   * @param { .Canvas} canvas
    */
   onUninstall: function (canvas) {
     this.canvas = null
@@ -45,7 +45,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
    * @method
    * Called by the canvas if the user click on a figure.
    *
-   * @param {draw2d.Figure} the figure under the click event. Can be null
+   * @param { .Figure} the figure under the click event. Can be null
    * @param {Number} mouseX the x coordinate of the mouse during the click event
    * @param {Number} mouseY the y coordinate of the mouse during the click event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -61,7 +61,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
   /**
    * @method
    *
-   * @param {draw2d.Canvas} canvas
+   * @param { .Canvas} canvas
    * @param {Number} x the x-coordinate of the mouse event
    * @param {Number} y the y-coordinate of the mouse event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -75,7 +75,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
    * @method
    * Called by the canvas if the user double click on a figure.
    *
-   * @param {draw2d.Figure} the figure under the double click event. Can be null
+   * @param { .Figure} the figure under the double click event. Can be null
    * @param {Number} mouseX the x coordinate of the mouse during the click event
    * @param {Number} mouseY the y coordinate of the mouse during the click event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -92,7 +92,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
   /**
    * @method
    *
-   * @param {draw2d.Canvas} canvas
+   * @param { .Canvas} canvas
    * @param {Number} x the x-coordinate of the mouse down event
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -104,7 +104,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
   /**
    * @method
    *
-   * @param {draw2d.Canvas} canvas
+   * @param { .Canvas} canvas
    * @param {Number} dx The x diff between start of dragging and this event
    * @param {Number} dy The y diff between start of dragging and this event
    * @param {Number} dx2 The x diff since the last call of this dragging operation
@@ -119,7 +119,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
   /**
    * @method
    *
-   * @param {draw2d.Figure} figure the shape below the mouse or null
+   * @param { .Figure} figure the shape below the mouse or null
    * @param {Number} x the x-coordinate of the mouse down event
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -134,7 +134,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
    * @method
    * Called if the user press the right mouse in the canvas.
    *
-   * @param {draw2d.Figure|draw2d.shape.basic.Line} figure the figure below the mouse
+   * @param { .Figure| .shape.basic.Line} figure the figure below the mouse
    * @param {Number} x the x-coordinate of the mouse down event
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -171,12 +171,12 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
    * @method
    * Adjust the coordinates to the given constraint.
    *
-   * @param {draw2d.Canvas} canvas the related canvas
-   * @param {draw2d.Figure} figure the figure to snap
-   * @param {draw2d.geo.Point} modifiedPos the already modified position of the figure (e.g. from an another Policy)
-   * @param {draw2d.geo.Point} originalPos the original requested position of the figure
+   * @param { .Canvas} canvas the related canvas
+   * @param { .Figure} figure the figure to snap
+   * @param { .geo.Point} modifiedPos the already modified position of the figure (e.g. from an another Policy)
+   * @param { .geo.Point} originalPos the original requested position of the figure
    *
-   * @returns {draw2d.geo.Point} the constraint position of the figure
+   * @returns { .geo.Point} the constraint position of the figure
    */
   snap: function (canvas, figure, modifiedPos, originalPos) {
     return modifiedPos
@@ -253,7 +253,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
     }
     gif += b.get() + ";"
 
-    return "data:image/gif;base64," + draw2d.util.Base64.encode(gif)
+    return "data:image/gif;base64," +  .util.Base64.encode(gif)
   }
 
 })

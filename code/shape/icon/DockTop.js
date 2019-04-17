@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.DockTop
+ * @class  .shape.icon.DockTop
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.DockTop();
+ *     let icon =  new  .shape.icon.DockTop();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.DockTop = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.DockTop",
+ .shape.icon.DockTop =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.DockTop",
 
   /**
    *

@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Employee
+ * @class  .shape.icon.Employee
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Employee();
+ *     let icon =  new  .shape.icon.Employee();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Employee = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Employee",
+ .shape.icon.Employee =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Employee",
 
   /**
    *

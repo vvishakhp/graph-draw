@@ -1,5 +1,5 @@
 /**
- * @class draw2d.policy.canvas.DefaultKeyboardPolicy
+ * @class  .policy.canvas.DefaultKeyboardPolicy
  * Standard keyboard policy. This is the standard installed keyboard policy.
  * <br>
  * <br>
@@ -9,13 +9,13 @@
  * </ul>
  *
  * @author Andreas Herz
- * @extends draw2d.policy.canvas.KeyboardPolicy
+ * @extends  .policy.canvas.KeyboardPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.canvas.DefaultKeyboardPolicy = draw2d.policy.canvas.KeyboardPolicy.extend({
+ .policy.canvas.DefaultKeyboardPolicy =  .policy.canvas.KeyboardPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.DefaultKeyboardPolicy",
+  NAME: " .policy.canvas.DefaultKeyboardPolicy",
 
   /**
    * @constructor
@@ -30,7 +30,7 @@ draw2d.policy.canvas.DefaultKeyboardPolicy = draw2d.policy.canvas.KeyboardPolicy
    * This implementation checks only if the <b>DEL</b> has been pressed and creates an
    * CommandDelete if this happens.
    *
-   * @param {draw2d.Canvas} canvas the related canvas
+   * @param { .Canvas} canvas the related canvas
    * @param {Number} keyCode the pressed key
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
@@ -42,14 +42,14 @@ draw2d.policy.canvas.DefaultKeyboardPolicy = draw2d.policy.canvas.KeyboardPolicy
       // create a single undo/redo transaction if the user delete more than one element. 
       // This happens with command stack transactions.
       //
-      canvas.getCommandStack().startTransaction(draw2d.Configuration.i18n.command.deleteShape)
+      canvas.getCommandStack().startTransaction( .Configuration.i18n.command.deleteShape)
       let selection = canvas.getSelection()
       selection.each(function (index, figure) {
         // don't delete a connection if the source or target figure is part of the selection.
         // In this case the connection is deleted by the DeleteCommand itself and it is not allowed to
         // delete a figure twice.
         //
-        if (figure instanceof draw2d.Connection) {
+        if (figure instanceof  .Connection) {
           if (selection.contains(figure.getSource(), true)) {
             return
           }
@@ -57,7 +57,7 @@ draw2d.policy.canvas.DefaultKeyboardPolicy = draw2d.policy.canvas.KeyboardPolicy
             return
           }
         }
-        let cmd = figure.createCommand(new draw2d.command.CommandType(draw2d.command.CommandType.DELETE))
+        let cmd = figure.createCommand(new  .command.CommandType( .command.CommandType.DELETE))
         if (cmd !== null) {
           canvas.getCommandStack().execute(cmd)
         }

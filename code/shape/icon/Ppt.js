@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Ppt
+ * @class  .shape.icon.Ppt
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Ppt();
+ *     let icon =  new  .shape.icon.Ppt();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Ppt = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Ppt",
+ .shape.icon.Ppt =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Ppt",
 
   /**
    *

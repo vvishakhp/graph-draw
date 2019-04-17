@@ -1,15 +1,15 @@
 /**
- * @class draw2d.policy.canvas.ReadOnlySelectionPolicy
+ * @class  .policy.canvas.ReadOnlySelectionPolicy
  *
  *
  * @author Andreas Herz
- * @extends draw2d.policy.canvas.SelectionPolicy
+ * @extends  .policy.canvas.SelectionPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.canvas.ReadOnlySelectionPolicy = draw2d.policy.canvas.SelectionPolicy.extend({
+ .policy.canvas.ReadOnlySelectionPolicy =  .policy.canvas.SelectionPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.ReadOnlySelectionPolicy",
+  NAME: " .policy.canvas.ReadOnlySelectionPolicy",
 
   /**
    * @constructor
@@ -23,7 +23,7 @@ draw2d.policy.canvas.ReadOnlySelectionPolicy = draw2d.policy.canvas.SelectionPol
    * @method
    * Called by the host if the policy has been installed.
    *
-   * @param {draw2d.Canvas/draw2d.Canvas} canvas
+   * @param { .Canvas/ .Canvas} canvas
    */
   onInstall: function (canvas) {
     this._super(canvas)
@@ -36,7 +36,7 @@ draw2d.policy.canvas.ReadOnlySelectionPolicy = draw2d.policy.canvas.SelectionPol
    * @method
    * Called by the host if the policy has been uninstalled.
    *
-   * @param {draw2d.Canvas} canvas
+   * @param { .Canvas} canvas
    */
   onUninstall: function (canvas) {
     canvas.getAllPorts().each(function (i, port) {
@@ -49,7 +49,7 @@ draw2d.policy.canvas.ReadOnlySelectionPolicy = draw2d.policy.canvas.SelectionPol
   /**
    * @method
    *
-   * @param {draw2d.Canvas} canvas
+   * @param { .Canvas} canvas
    * @param {Number} dx The x diff between start of dragging and this event
    * @param {Number} dy The y diff between start of dragging and this event
    * @param {Number} dx2 The x diff since the last call of this dragging operation

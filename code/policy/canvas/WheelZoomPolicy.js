@@ -1,28 +1,28 @@
 /**
- * @class draw2d.policy.canvas.WheelZoomPolicy
+ * @class  .policy.canvas.WheelZoomPolicy
  * Zoom support for a canvas. Use the mouse wheel and the shift key to zoom in/out.
  *
  * See the example:
  *
  *     @example preview small frame
  *
- *     canvas.installEditPolicy(new draw2d.policy.canvas.WheelZoomPolicy());
- *     let shape =  new draw2d.shape.basic.Text({text:"Use the mouse wheel + SHIFT to zoom"});
+ *     canvas.installEditPolicy(new  .policy.canvas.WheelZoomPolicy());
+ *     let shape =  new  .shape.basic.Text({text:"Use the mouse wheel + SHIFT to zoom"});
  *
  *     canvas.add(shape,40,10);
  *
  *
  *
  * @author Andreas Herz
- * @extends draw2d.policy.canvas.CanvasPolicy
+ * @extends  .policy.canvas.CanvasPolicy
  * @since 5.8.0
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import {Tweenable} from "shifty"
 
-draw2d.policy.canvas.WheelZoomPolicy = draw2d.policy.canvas.ZoomPolicy.extend({
+ .policy.canvas.WheelZoomPolicy =  .policy.canvas.ZoomPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.WheelZoomPolicy",
+  NAME: " .policy.canvas.WheelZoomPolicy",
 
   /**
    * @constructor
@@ -140,7 +140,7 @@ draw2d.policy.canvas.WheelZoomPolicy = draw2d.policy.canvas.ZoomPolicy.extend({
    * @method
    *
    * @param {Number} zoom
-   * @param {draw2d.geo.Point} center
+   * @param { .geo.Point} center
    * @private
    */
   _zoom: function (zoom, center) {

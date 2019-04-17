@@ -1,5 +1,5 @@
 /**
- * @class draw2d.layout.locator.XYRelPortLocator
+ * @class  .layout.locator.XYRelPortLocator
  *
  * Create a locator for a relative x/y coordinate position. The coordinates are named in percentage [0..100%]
  * relative to the top/left corner of the parent node.<br>
@@ -11,20 +11,20 @@
  *
  *     @example preview small frame
  *
- *     let figure =  new draw2d.shape.basic.Rectangle({x:130,y:30,width:100,height:60});
- *     figure.createPort("input", new draw2d.layout.locator.XYRelPortLocator(0,20));
+ *     let figure =  new  .shape.basic.Rectangle({x:130,y:30,width:100,height:60});
+ *     figure.createPort("input", new  .layout.locator.XYRelPortLocator(0,20));
  *
  *     canvas.add(figure);
  *
  *
  * @author Andreas Herz
- * @extend draw2d.layout.locator.PortLocator
+ * @extend  .layout.locator.PortLocator
  * @since 4.0.0
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.layout.locator.XYRelPortLocator = draw2d.layout.locator.PortLocator.extend({
-  NAME: "draw2d.layout.locator.XYRelPortLocator",
+ .layout.locator.XYRelPortLocator =  .layout.locator.PortLocator.extend({
+  NAME: " .layout.locator.XYRelPortLocator",
 
   /**
    * @constructor
@@ -42,10 +42,10 @@ draw2d.layout.locator.XYRelPortLocator = draw2d.layout.locator.PortLocator.exten
 
   /**
    * @method
-   * Controls the location of an I{@link draw2d.Figure}
+   * Controls the location of an I{@link  .Figure}
    *
    * @param {Number} index child index of the figure
-   * @param {draw2d.Figure} figure the figure to control
+   * @param { .Figure} figure the figure to control
    *
    * @template
    **/

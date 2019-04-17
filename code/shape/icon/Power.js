@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Power
+ * @class  .shape.icon.Power
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Power();
+ *     let icon =  new  .shape.icon.Power();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Power = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Power",
+ .shape.icon.Power =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Power",
 
   /**
    *

@@ -1,23 +1,23 @@
 /**
- * @class draw2d.policy.figure.GlowSelectionFeedbackPolicy
+ * @class  .policy.figure.GlowSelectionFeedbackPolicy
  *
  * See the example:
  *
  *     @example preview small frame
- *       circle =new draw2d.shape.basic.Circle();
- *       circle.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
+ *       circle =new  .shape.basic.Circle();
+ *       circle.installEditPolicy(new  .policy.figure.GlowSelectionFeedbackPolicy());
  *       canvas.add(circle,90,50);
  *
- *       canvas.add(new draw2d.shape.basic.Label("Click on the circle to see the selection feedback"),20,10);
+ *       canvas.add(new  .shape.basic.Label("Click on the circle to see the selection feedback"),20,10);
  *
  * @author Andreas Herz
- * @extends draw2d.policy.figure.SelectionFeedbackPolicy
+ * @extends  .policy.figure.SelectionFeedbackPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.figure.GlowSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend({
+ .policy.figure.GlowSelectionFeedbackPolicy =  .policy.figure.SelectionFeedbackPolicy.extend({
 
-  NAME: "draw2d.policy.figure.GlowSelectionFeedbackPolicy",
+  NAME: " .policy.figure.GlowSelectionFeedbackPolicy",
 
   /**
    * @constructor
@@ -43,7 +43,7 @@ draw2d.policy.figure.GlowSelectionFeedbackPolicy = draw2d.policy.figure.Selectio
   /**
    * @method
    *
-   * @param {draw2d.Figure} figure the unselected figure
+   * @param { .Figure} figure the unselected figure
    */
   onUnselect: function (canvas, figure) {
     this._super(canvas, figure)

@@ -1,10 +1,10 @@
 import { Type } from '../TypeRegistry';
 
 @Type('command.Command')
-export abstract class Command {
+export class Command {
   label: string;
 
-  constructor(label: string) {
+  constructor(label?: string) {
     this.label = label;
   }
 
@@ -12,13 +12,19 @@ export abstract class Command {
     return this.label;
   }
 
-  abstract canExecute(): boolean;
+  canExecute(): boolean {
+    return true;
+  }
 
-  abstract execute();
+  execute() {
 
-  abstract cancel();
+  }
 
-  abstract undo();
+  cancel() {
 
-  abstract redo();
+  }
+
+  undo() { }
+
+  redo() { }
 }

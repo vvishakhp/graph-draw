@@ -1,26 +1,26 @@
 /**
- * @class draw2d.command.CommandResize
+ * @class  .command.CommandResize
  * Resize command for figures. Can be execute/undo/redo via a CommandStack.
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandResize = draw2d.command.Command.extend({
-  NAME: "draw2d.command.CommandResize",
+ .command.CommandResize =  .command.Command.extend({
+  NAME: " .command.CommandResize",
 
   /**
    * @constructor
    * Create a new resize Command objects which can be execute via the CommandStack.
    *
-   * @param {draw2d.Figure} figure the figure to resize
+   * @param { .Figure} figure the figure to resize
    * @param {Number} [width] the current width
    * @param {Number} [height] the current height
    */
   init: function (figure, width, height) {
-    this._super(draw2d.Configuration.i18n.command.resizeShape)
+    this._super( .Configuration.i18n.command.resizeShape)
     this.figure = figure
 
     if (typeof width === "undefined") {

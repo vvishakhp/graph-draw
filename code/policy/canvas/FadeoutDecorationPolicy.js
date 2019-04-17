@@ -1,18 +1,18 @@
 /**
- * @class draw2d.policy.canvas.FadeoutDecorationPolicy
+ * @class  .policy.canvas.FadeoutDecorationPolicy
  *
  * Install this edit policy in a canvas if you want fadeout all decorations like ports, resize handles
  * if the user didn't move the mouse. This is good for a clean representation of your diagram.
  *
  *
  * @author Andreas Herz
- * @extends draw2d.policy.canvas.DecorationPolicy
+ * @extends  .policy.canvas.DecorationPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.canvas.FadeoutDecorationPolicy = draw2d.policy.canvas.DecorationPolicy.extend({
+ .policy.canvas.FadeoutDecorationPolicy =  .policy.canvas.DecorationPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.FadeoutDecorationPolicy",
+  NAME: " .policy.canvas.FadeoutDecorationPolicy",
 
   DEFAULT_FADEOUT_DURATION: 60,
   DEFAULT_ALPHA_DECREMENT: 0.05,
@@ -96,7 +96,7 @@ draw2d.policy.canvas.FadeoutDecorationPolicy = draw2d.policy.canvas.DecorationPo
   /**
    * @method
    *
-   * @param {draw2d.Canvas} canvas
+   * @param { .Canvas} canvas
    * @param {Number} x the x-coordinate of the mouse down event
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -104,13 +104,13 @@ draw2d.policy.canvas.FadeoutDecorationPolicy = draw2d.policy.canvas.DecorationPo
    */
   onMouseDown: function (canvas, x, y, shiftKey, ctrlKey) {
     this.hidePortsCounter = this.DEFAULT_FADEOUT_DURATION
-    this.portDragging = (canvas.getBestFigure(x, y) instanceof draw2d.Port)
+    this.portDragging = (canvas.getBestFigure(x, y) instanceof  .Port)
   },
 
   /**
    * @method
    *
-   * @param {draw2d.Canvas} canvas
+   * @param { .Canvas} canvas
    * @param {Number} x the x-coordinate of the mouse event
    * @param {Number} y the y-coordinate of the mouse event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -124,7 +124,7 @@ draw2d.policy.canvas.FadeoutDecorationPolicy = draw2d.policy.canvas.DecorationPo
   /**
    * @method
    *
-   * @param {draw2d.Canvas} canvas
+   * @param { .Canvas} canvas
    * @param {Number} dx The x diff between start of dragging and this event
    * @param {Number} dy The y diff between start of dragging and this event
    * @param {Number} dx2 The x diff since the last call of this dragging operation
@@ -143,7 +143,7 @@ draw2d.policy.canvas.FadeoutDecorationPolicy = draw2d.policy.canvas.DecorationPo
   /**
    * @method
    *
-   * @param {draw2d.Canvas} canvas
+   * @param { .Canvas} canvas
    * @param {Number} x the x-coordinate of the mouse down event
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event

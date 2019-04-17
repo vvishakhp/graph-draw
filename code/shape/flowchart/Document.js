@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.flowchart.Document
+ * @class  .shape.flowchart.Document
  *
  * Typical flowchart <b>Document</b> shape
  *
@@ -7,19 +7,19 @@
  *
  *     @example preview small frame
  *
- *     let figure = new draw2d.shape.flowchart.Document({
+ *     let figure = new  .shape.flowchart.Document({
  *        x:100,
  *        y:60
  *     });
  *
  *     canvas.add( figure);
  *
- * @extends draw2d.VectorFigure
+ * @extends  .VectorFigure
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.flowchart.Document = draw2d.VectorFigure.extend({
-  NAME: "draw2d.shape.flowchart.Document",
+ .shape.flowchart.Document =  .VectorFigure.extend({
+  NAME: " .shape.flowchart.Document",
 
   /**
    *

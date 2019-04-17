@@ -1,17 +1,17 @@
 /**
- * @class draw2d.policy.figure.DragDropEditPolicy
+ * @class  .policy.figure.DragDropEditPolicy
  *
  * Called by the framework if the user edit the position of a figure with a drag drop operation.
  * Sub class like SelectionEditPolicy or RegionEditPolicy can adjust the position of the figure or the selections handles.
  *
  * @author  Andreas Herz
- * @extends draw2d.policy.figure.FigureEditPolicy
+ * @extends  .policy.figure.FigureEditPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.extend({
+ .policy.figure.DragDropEditPolicy =  .policy.figure.FigureEditPolicy.extend({
 
-  NAME: "draw2d.policy.figure.DragDropEditPolicy",
+  NAME: " .policy.figure.DragDropEditPolicy",
 
   /**
    * @constructor
@@ -28,7 +28,7 @@ draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.
    * @method
    * Called by the host if the policy has been installed.
    *
-   * @param {draw2d.Canvas|draw2d.Figure} host
+   * @param { .Canvas| .Figure} host
    */
   onInstall: function (host) {
     this._super(host)
@@ -39,7 +39,7 @@ draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.
    * @method
    * Called by the host if the policy has been uninstalled.
    *
-   * @param {draw2d.Canvas|draw2d.Figure} host
+   * @param { .Canvas| .Figure} host
    */
   onUninstall: function (host) {
     this._super(host)
@@ -53,8 +53,8 @@ draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.
    *
    * The Policy can send a veto to prevent the DragDrop operation
    *
-   * @param {draw2d.Canvas} canvas The host canvas
-   * @param {draw2d.Figure} figure The related figure
+   * @param { .Canvas} canvas The host canvas
+   * @param { .Figure} figure The related figure
    * @param {Number} x the x-coordinate of the mouse up event
    * @param {Number} y the y-coordinate of the mouse up event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -83,8 +83,8 @@ draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.
    * @method
    * Called by the framework during drag a figure.
    *
-   * @param {draw2d.Canvas} canvas The host canvas
-   * @param {draw2d.Figure} figure The related figure
+   * @param { .Canvas} canvas The host canvas
+   * @param { .Figure} figure The related figure
    * @template
    */
   onDrag: function (canvas, figure) {
@@ -100,8 +100,8 @@ draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.
    * @method
    * Called by the framework if the drag drop operation ends.
    *
-   * @param {draw2d.Canvas} canvas The host canvas
-   * @param {draw2d.Figure} figure The related figure
+   * @param { .Canvas} canvas The host canvas
+   * @param { .Figure} figure The related figure
    * @param {Number} x the x-coordinate of the mouse up event
    * @param {Number} y the y-coordinate of the mouse up event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -118,41 +118,41 @@ draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.
    * @method
    * Adjust the coordinates to the rectangle/region of this constraint.
    *
-   * @param {draw2d.Figure} figure
-   * @param {Number|draw2d.geo.Point} x
+   * @param { .Figure} figure
+   * @param {Number| .geo.Point} x
    * @param {Number} [y]
-   * @returns {draw2d.geo.Point} the constraint position of the figure
+   * @returns { .geo.Point} the constraint position of the figure
    *
    * @template
    */
   adjustPosition: function (figure, x, y) {
     // do nothing per default implementation
-    if (x instanceof draw2d.geo.Point) {
+    if (x instanceof  .geo.Point) {
       return x
     }
 
-    return new draw2d.geo.Point(x, y)
+    return new  .geo.Point(x, y)
   },
 
   /**
    * @method
    * ensure that the dimension didn't goes outside the given restrictions
    *
-   * @param {draw2d.Figure} figure
+   * @param { .Figure} figure
    * @param {Number} w
    * @param {number} h
-   * @returns {draw2d.geo.Rectangle} the constraint position of the figure
+   * @returns { .geo.Rectangle} the constraint position of the figure
    */
   adjustDimension: function (figure, w, h) {
-    return new draw2d.geo.Rectangle(0, 0, w, h)
+    return new  .geo.Rectangle(0, 0, w, h)
   },
 
   /**
    * @method
    * Callback if the figure has moved
    *
-   * @param {draw2d.Canvas} canvas The host canvas
-   * @param {draw2d.Figure} figure The related figure
+   * @param { .Canvas} canvas The host canvas
+   * @param { .Figure} figure The related figure
    *
    * @template
    */

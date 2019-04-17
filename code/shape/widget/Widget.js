@@ -1,12 +1,12 @@
 /**
- * @class draw2d.shape.widget.Widget
+ * @class  .shape.widget.Widget
  * Base class for all diagrams.
  *
- * @extends draw2d.SetFigure
+ * @extends  .SetFigure
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.widget.Widget = draw2d.SetFigure.extend({
+ .shape.widget.Widget =  .SetFigure.extend({
 
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

@@ -1,5 +1,5 @@
 /**
- * @class draw2d.shape.basic.Text
+ * @class  .shape.basic.Text
  * Implements a simple text with word wrapping.<br>The height of the element is automatic calculated. The widht of
  * the element is changeable by the user and respect the minWidth constraint.
  * <br>
@@ -8,19 +8,19 @@
  *
  *     @example preview small frame
  *
- *     let shape =  new draw2d.shape.basic.Text({text:"This is a simple text with some loooooong word in."});
+ *     let shape =  new  .shape.basic.Text({text:"This is a simple text with some loooooong word in."});
  *
  *     canvas.add(shape,40,10);
  *
  * @author Andreas Herz
  * @since 4.2.3
- * @extends draw2d.shape.basic.Label
+ * @extends  .shape.basic.Label
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend({
+ .shape.basic.Text =  .shape.basic.Label.extend({
 
-  NAME: "draw2d.shape.basic.Text",
+  NAME: " .shape.basic.Text",
 
   /**
    * @constructor
@@ -33,7 +33,7 @@ draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend({
 
     this._super(extend({width: 100, height: 50, resizeable: true}, attr), setter, getter)
 
-    this.installEditPolicy(new draw2d.policy.figure.WidthSelectionFeedbackPolicy())
+    this.installEditPolicy(new  .policy.figure.WidthSelectionFeedbackPolicy())
   },
 
 
@@ -55,7 +55,7 @@ draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend({
 
     // this is an exception call. Don't call the super method (Label) to avoid
     // the calculation in this method.
-    draw2d.SetFigure.prototype.repaint.call(this, attributes)
+     .SetFigure.prototype.repaint.call(this, attributes)
   },
 
 
@@ -69,7 +69,7 @@ draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend({
     this.cachedMinWidth = Math.max(w, attr.width)
     this.cachedMinHeight = attr.height
 
-    draw2d.shape.node.Node.prototype.setDimension.call(this, this.cachedMinWidth, this.cachedMinHeight)
+     .shape.node.Node.prototype.setDimension.call(this, this.cachedMinWidth, this.cachedMinHeight)
     //  this._super(Math.min(w,attr.width),attr.height);
     this.fireEvent("change:dimension", {value: {width: this.cachedMinWidth, height: this.cachedMinHeight}})
 

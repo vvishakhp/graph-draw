@@ -1,2 +1,6 @@
-import _jsonUtil from './util/JSONUtil';
-export const jsonUtil = _jsonUtil;
+import $ = require('./util/jquery_extentions');
+
+
+$(function () {
+
+});

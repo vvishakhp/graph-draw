@@ -1,7 +1,7 @@
-import draw2d from '../packages';
+import   from '../packages';
 
 
-draw2d.util.JSON = {
+ .util.JSON = {
 
         /**
          * @method
@@ -128,4 +128,4 @@ draw2d.util.JSON = {
         }
 };
 
-module.exports = draw2d.util.JSON;
+module.exports =  .util.JSON;

@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Smile2
+ * @class  .shape.icon.Smile2
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Smile2();
+ *     let icon =  new  .shape.icon.Smile2();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Smile2 = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Smile2",
+ .shape.icon.Smile2 =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Smile2",
 
   /**
    *

@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Chrome
+ * @class  .shape.icon.Chrome
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Chrome();
+ *     let icon =  new  .shape.icon.Chrome();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Chrome = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Chrome",
+ .shape.icon.Chrome =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Chrome",
 
   /**
    *

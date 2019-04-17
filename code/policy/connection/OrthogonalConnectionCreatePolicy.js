@@ -1,6 +1,6 @@
 
 /**
- * @class draw2d.policy.connection.OrthogonalConnectionCreatePolicy
+ * @class  .policy.connection.OrthogonalConnectionCreatePolicy
  *
  * The OrthogonalConnectionCreatePolicy can be installed into the canvas to override the
  * default connection crate behaviour. Normaly you can create connections by drag&drop a port.
@@ -26,12 +26,12 @@
  *
  *     // Override the default connection creation.
  *     //
- *     canvas.installEditPolicy( new draw2d.policy.connection.OrthogonalConnectionCreatePolicy());
+ *     canvas.installEditPolicy( new  .policy.connection.OrthogonalConnectionCreatePolicy());
  *
  *     // create and add two Node which contains Ports (In and OUT)
  *     //
- *     var start = new draw2d.shape.node.Start({x:50, y:50});
- *     var endNode   = new draw2d.shape.node.End({x:200, y:70});
+ *     var start = new  .shape.node.Start({x:50, y:50});
+ *     var endNode   = new  .shape.node.End({x:200, y:70});
  *
  *     // add the two nodes to the canvas
  *     //
@@ -40,13 +40,13 @@
  *
  * @author Andreas Herz
  *
- * @extends draw2d.policy.connection.ConnectionCreatePolicy
+ * @extends  .policy.connection.ConnectionCreatePolicy
  */
-import draw2d from '../../packages';
+import   from '../../packages';
 
-draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connection.ConnectionCreatePolicy.extend({
+ .policy.connection.OrthogonalConnectionCreatePolicy =  .policy.connection.ConnectionCreatePolicy.extend({
 
-    NAME : "draw2d.policy.connection.ClickConnectionCreatePolicy",
+    NAME : " .policy.connection.ClickConnectionCreatePolicy",
 
     /**
      * @constructor
@@ -62,14 +62,14 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
         this.pulse= null;
         this.tempConnection = null;
 
-        this.vertices = new draw2d.util.ArrayList();
+        this.vertices = new  .util.ArrayList();
     },
 
     /**
      * @method
      * Called by the canvas if the user click on a figure.
      *
-     * @param {draw2d.Figure} the figure under the click event. Can be null
+     * @param { .Figure} the figure under the click event. Can be null
      * @param {Number} x the x coordinate of the mouse during the click event
      * @param {Number} y the y coordinate of the mouse during the click event
      * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -81,10 +81,10 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
      */
     onClick: function(figure, x, y, shiftKey, ctrlKey)
     {
-        var UP   = draw2d.geo.Rectangle.DIRECTION_UP;
-        var RIGHT= draw2d.geo.Rectangle.DIRECTION_RIGHT;
-        var DOWN = draw2d.geo.Rectangle.DIRECTION_DOWN;
-        var LEFT = draw2d.geo.Rectangle.DIRECTION_LEFT;
+        var UP   =  .geo.Rectangle.DIRECTION_UP;
+        var RIGHT=  .geo.Rectangle.DIRECTION_RIGHT;
+        var DOWN =  .geo.Rectangle.DIRECTION_DOWN;
+        var LEFT =  .geo.Rectangle.DIRECTION_LEFT;
 
         var _this = this;
         var port = figure;// .getCanvas().getBestFigure(x, y);
@@ -112,7 +112,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
 
         // we just considering ports
         //
-        if(!(port instanceof draw2d.Port)){
+        if(!(port instanceof  .Port)){
             return;
         }
 
@@ -122,7 +122,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
             var canvas = port.getCanvas();
             this.port1 = port;
             this.vertices.add(port.getAbsolutePosition());
-            this.beeline = new draw2d.shape.basic.Line({
+            this.beeline = new  .shape.basic.Line({
                 start: this.port1.getAbsolutePosition(),
                 end: this.port1.getAbsolutePosition(),
                 dasharray:"- ",
@@ -139,7 +139,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
             };
             this.beeline.show(canvas);
 
-            this.tempConnection = new draw2d.shape.basic.PolyLine({
+            this.tempConnection = new  .shape.basic.PolyLine({
                 start: this.port1.getAbsolutePosition(),
                 end: this.port1.getAbsolutePosition(),
                 stroke:2,
@@ -181,17 +181,17 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
         else {
             var possibleTarget = port.delegateTarget(this.port1);
 
-            if (!(possibleTarget instanceof draw2d.Port)) {
+            if (!(possibleTarget instanceof  .Port)) {
                 return; // silently
             }
 
             // check whenever the target port allows a connection
             //
-            var request = new draw2d.command.CommandType(draw2d.command.CommandType.CONNECT);
+            var request = new  .command.CommandType( .command.CommandType.CONNECT);
             request.source = this.port1;
             request.target = port;
             var command = null;
-            if (this.port1 instanceof draw2d.InputPort) {
+            if (this.port1 instanceof  .InputPort) {
                 command = this.port1.createCommand(request);
             }
             else {
@@ -253,7 +253,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //            +---------+
                                 //
                                 if(lastVertex.y<(portPos.y-MINDIST)) {
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x, lastVertex.y));
+                                    this.vertices.add(new  .geo.Point(portPos.x, lastVertex.y));
                                     this.vertices.add(portPos);
                                 }
                                 //        ...................
@@ -267,7 +267,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //
                                 else{
                                     lastVertex.y = portPos.y-MINDIST;
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x, lastVertex.y));
+                                    this.vertices.add(new  .geo.Point(portPos.x, lastVertex.y));
                                     this.vertices.add(portPos);
                                 }
                                 break;
@@ -323,7 +323,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //
                                 else{
                                     lastVertex.y = portPos.y-MINDIST;
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x,lastVertex.y ));
+                                    this.vertices.add(new  .geo.Point(portPos.x,lastVertex.y ));
                                     this.vertices.add(portPos);
                                 }
                                 break;
@@ -397,8 +397,8 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //
                                 //
                                 else{
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x+MINDIST, lastVertex.y));
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x+MINDIST, portPos.y));
+                                    this.vertices.add(new  .geo.Point(portPos.x+MINDIST, lastVertex.y));
+                                    this.vertices.add(new  .geo.Point(portPos.x+MINDIST, portPos.y));
                                     this.vertices.add(portPos);
                                 }
                                 break;
@@ -416,7 +416,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //    beforeVertex     lastVertex
                                 //
                                 if(lastVertex.x > (portPos.x+MINDIST)){
-                                    this.vertices.add(new draw2d.geo.Point(lastVertex.x, portPos.y));
+                                    this.vertices.add(new  .geo.Point(lastVertex.x, portPos.y));
                                     this.vertices.add(portPos);
                                 }
                                 // beforeVertex  lastVertex
@@ -433,7 +433,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //
                                 else{
                                     lastVertex.x =  portPos.x+MINDIST;
-                                    this.vertices.add(new draw2d.geo.Point(lastVertex.x, portPos.y));
+                                    this.vertices.add(new  .geo.Point(lastVertex.x, portPos.y));
                                     this.vertices.add(portPos);
                                 }
                                 break;
@@ -475,8 +475,8 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //     o...............
                                 //
                                 else{
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x+MINDIST, lastVertex.y));
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x+MINDIST, portPos.y));
+                                    this.vertices.add(new  .geo.Point(portPos.x+MINDIST, lastVertex.y));
+                                    this.vertices.add(new  .geo.Point(portPos.x+MINDIST, portPos.y));
                                     this.vertices.add(portPos);
                                 }
                                 break;
@@ -494,7 +494,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //                lastVertex      beforeVertex
                                 //
                                 if(lastVertex.x > (portPos.x+MINDIST)){
-                                    this.vertices.add(new draw2d.geo.Point(lastVertex.x, portPos.y));
+                                    this.vertices.add(new  .geo.Point(lastVertex.x, portPos.y));
                                     this.vertices.add(portPos);
                                 }
                                 // lastVertex                beforeVertex
@@ -511,7 +511,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //
                                 else{
                                     lastVertex.x =  portPos.x+MINDIST;
-                                    this.vertices.add(new draw2d.geo.Point(lastVertex.x, portPos.y));
+                                    this.vertices.add(new  .geo.Point(lastVertex.x, portPos.y));
                                     this.vertices.add(portPos);
                                 }
                                 break;
@@ -532,7 +532,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //
                                 if(lastVertex.y<(portPos.y+MINDIST)) {
                                     lastVertex.y = portPos.y+MINDIST;
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x, lastVertex.y));
+                                    this.vertices.add(new  .geo.Point(portPos.x, lastVertex.y));
                                     this.vertices.add(portPos);
                                 }
                                 //            +---------+
@@ -563,8 +563,8 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //
                                 //
                                 if(lastVertex.y<(portPos.y+MINDIST)){
-                                    this.vertices.add(new draw2d.geo.Point(lastVertex.x, portPos.y+MINDIST));
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x, portPos.y+MINDIST));
+                                    this.vertices.add(new  .geo.Point(lastVertex.x, portPos.y+MINDIST));
+                                    this.vertices.add(new  .geo.Point(portPos.x, portPos.y+MINDIST));
                                     this.vertices.add(portPos);
                                 }
                                 //                  +---------+
@@ -597,7 +597,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //
                                 if(lastVertex.y<(portPos.y+MINDIST)) {
                                     lastVertex.y = portPos.y+MINDIST;
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x,lastVertex.y ));
+                                    this.vertices.add(new  .geo.Point(portPos.x,lastVertex.y ));
                                     this.vertices.add(portPos);
                                 }
                                 //
@@ -609,7 +609,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //        ..................  lastVertex
                                 //
                                 else{
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x,lastVertex.y ));
+                                    this.vertices.add(new  .geo.Point(portPos.x,lastVertex.y ));
                                     this.vertices.add(portPos);
                                 }
                                 break;
@@ -663,8 +663,8 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //   -----------------o beforeVertex
                                 //
                                 if(lastVertex.x >= (portPos.x-MINDIST)){
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x-MINDIST, lastVertex.y));
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x-MINDIST, portPos.y));
+                                    this.vertices.add(new  .geo.Point(portPos.x-MINDIST, lastVertex.y));
+                                    this.vertices.add(new  .geo.Point(portPos.x-MINDIST, portPos.y));
                                     this.vertices.add(portPos);
                                 }
                                //
@@ -697,8 +697,8 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //            +----------+
                                 //
                                 else{
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x-MINDIST, lastVertex.y));
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x-MINDIST, portPos.y));
+                                    this.vertices.add(new  .geo.Point(portPos.x-MINDIST, lastVertex.y));
+                                    this.vertices.add(new  .geo.Point(portPos.x-MINDIST, portPos.y));
                                     this.vertices.add(portPos);
                                 }
                                 break;
@@ -716,9 +716,9 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //
                                 if(lastVertex.y<portPos.y && lastVertex.x > (portPos.x-MINDIST)){
                                     var center = portPos.y-(portPos.y-lastVertex.y)/2;
-                                    this.vertices.add(new draw2d.geo.Point(lastVertex.x, center));
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x-MINDIST, center));
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x-MINDIST, portPos.y));
+                                    this.vertices.add(new  .geo.Point(lastVertex.x, center));
+                                    this.vertices.add(new  .geo.Point(portPos.x-MINDIST, center));
+                                    this.vertices.add(new  .geo.Point(portPos.x-MINDIST, portPos.y));
                                     this.vertices.add(portPos);
                                 }
                                 //        +----------+
@@ -734,9 +734,9 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //
                                 else if(lastVertex.y>portPos.y && lastVertex.x > (portPos.x-MINDIST)){
                                     var center = portPos.y+(lastVertex.y-portPos.y)/2;
-                                    this.vertices.add(new draw2d.geo.Point(lastVertex.x, center));
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x-MINDIST, center));
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x-MINDIST, portPos.y));
+                                    this.vertices.add(new  .geo.Point(lastVertex.x, center));
+                                    this.vertices.add(new  .geo.Point(portPos.x-MINDIST, center));
+                                    this.vertices.add(new  .geo.Point(portPos.x-MINDIST, portPos.y));
                                     this.vertices.add(portPos);
                                 }
                                 // beforeVertex  lastVertex
@@ -752,7 +752,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 // beforeVertex  lastVertex
                                 //
                                 else{
-                                    this.vertices.add(new draw2d.geo.Point(lastVertex.x, portPos.y));
+                                    this.vertices.add(new  .geo.Point(lastVertex.x, portPos.y));
                                     this.vertices.add(portPos);
                                 }
                                 break;
@@ -776,8 +776,8 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //    .................o lastVertex
                                 //
                                 if(lastVertex.x >= (portPos.x-MINDIST)){
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x-MINDIST, lastVertex.y));
-                                    this.vertices.add(new draw2d.geo.Point(portPos.x-MINDIST, portPos.y));
+                                    this.vertices.add(new  .geo.Point(portPos.x-MINDIST, lastVertex.y));
+                                    this.vertices.add(new  .geo.Point(portPos.x-MINDIST, portPos.y));
                                     this.vertices.add(portPos);
                                 }
                                 //    -----o beforeVertex
@@ -815,7 +815,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //    lastVertex      beforeVertex
                                 //
                                 if(lastVertex.x < (portPos.x-MINDIST)){
-                                    this.vertices.add(new draw2d.geo.Point(lastVertex.x, portPos.y));
+                                    this.vertices.add(new  .geo.Point(lastVertex.x, portPos.y));
                                     this.vertices.add(portPos);
                                 }
                                 //         lastVertex                beforeVertex
@@ -832,7 +832,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //
                                 else{
                                     lastVertex.x =  portPos.x-MINDIST;
-                                    this.vertices.add(new draw2d.geo.Point(lastVertex.x, portPos.y));
+                                    this.vertices.add(new  .geo.Point(lastVertex.x, portPos.y));
                                     this.vertices.add(portPos);
                                 }
                             break;
@@ -854,7 +854,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
     /**
      * @method
      *
-     * @param {draw2d.Canvas} canvas
+     * @param { .Canvas} canvas
      * @param {Number} x the x-coordinate of the mouse event
      * @param {Number} y the y-coordinate of the mouse event
      * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -872,7 +872,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
      * @method
      * Callback if the user press a key down
      *
-     * @param {draw2d.Canvas} canvas the related canvas
+     * @param { .Canvas} canvas the related canvas
      * @param {Number} keyCode the pressed key
      * @param {Boolean} shiftKey true if the shift key has been pressed during this event
      * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
@@ -900,12 +900,12 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
         // calculate vertical line distance
         //
         var xDiff = Math.abs(anchor.x- p.x)+10;
-        var xDist = draw2d.geo.Line.distance(anchor.x-xDiff, anchor.y, anchor.x+xDiff, anchor.y, p.x, p.y);
+        var xDist =  .geo.Line.distance(anchor.x-xDiff, anchor.y, anchor.x+xDiff, anchor.y, p.x, p.y);
 
         // calculate horizontal line distance
         //
         var yDiff = Math.abs(anchor.y- p.y)+10;
-        var yDist = draw2d.geo.Line.distance(anchor.x, anchor.y-yDiff, anchor.x, anchor.y+yDiff, p.x, p.y);
+        var yDist =  .geo.Line.distance(anchor.x, anchor.y-yDiff, anchor.x, anchor.y+yDiff, p.x, p.y);
 
         return yDist>xDist? {x: p.x, y:anchor.y}:{x: anchor.x, y: p.y};
     },
@@ -914,7 +914,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
     {
         var connection = this._super();
         connection.attr({radius:7, stroke:3});
-        connection.setRouter(new draw2d.layout.connection.InteractiveManhattanConnectionRouter());
+        connection.setRouter(new  .layout.connection.InteractiveManhattanConnectionRouter());
         return connection;
     }
 

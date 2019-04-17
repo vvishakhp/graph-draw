@@ -1,27 +1,27 @@
 /**
- * @class draw2d.command.CommandAattr
+ * @class  .command.CommandAattr
  *
  *Command to change attributes of a shape with undo/redo support
  *
  * @inheritable
  * @author Andreas Herz
  *
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandAttr = draw2d.command.Command.extend({
-  NAME: "draw2d.command.CommandAttr",
+ .command.CommandAttr =  .command.Command.extend({
+  NAME: " .command.CommandAttr",
 
   /**
    * @constructor
    * Create a new Command objects which provides undo/redo for attributes.
    *
-   * @param {draw2d.Figure} figure the figure to handle
+   * @param { .Figure} figure the figure to handle
    * @param {Object} attributes new attributes to set
    */
   init: function (figure, newAttributes) {
-    this._super(draw2d.Configuration.i18n.command.changeAttributes)
+    this._super( .Configuration.i18n.command.changeAttributes)
 
     this.figure = figure
     this.newAttributes = newAttributes

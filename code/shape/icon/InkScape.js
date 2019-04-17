@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.InkScape
+ * @class  .shape.icon.InkScape
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.InkScape();
+ *     let icon =  new  .shape.icon.InkScape();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.InkScape = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.InkScape",
+ .shape.icon.InkScape =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.InkScape",
 
   /**
    *

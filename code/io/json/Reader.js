@@ -1,15 +1,15 @@
 
 /**
- * @class draw2d.io.json.Reader
+ * @class  .io.json.Reader
  * Read a JSON data and import them into the canvas. The JSON must be generated with the
- * {@link draw2d.io.json.Writer}.
+ * {@link  .io.json.Writer}.
  *
- *      // Load a standard draw2d JSON object into the canvas
+ *      // Load a standard   JSON object into the canvas
  *      //
  *      var jsonDocument =
  *          [
   *           {
- *              "type": "draw2d.shape.basic.Oval",
+ *              "type": " .shape.basic.Oval",
  *              "id": "5b4c74 b0-96d1-1aa3-7eca-bbeaed5fffd7",
  *              "x": 237,
  *              "y": 236,
@@ -17,7 +17,7 @@
  *              "height": 38
  *            },
  *            {
- *              "type": "draw2d.shape.basic.Rectangle",
+ *              "type": " .shape.basic.Rectangle",
  *              "id": "354fa3b9-a834-0221-2009-abc2d6bd852a",
  *              "x": 225,
  *              "y": 97,
@@ -28,18 +28,18 @@
  *          ];
  *      // unmarshal the JSON document into the canvas
  *      // (load)
- *      var reader = new draw2d.io.json.Reader();
+ *      var reader = new  .io.json.Reader();
  *      reader.unmarshal(canvas, jsonDocument);
  *
  *
- * @extends draw2d.io.Reader
+ * @extends  .io.Reader
  */
-import draw2d from '../../packages';
+import   from '../../packages';
 
 
-draw2d.io.json.Reader = draw2d.io.Reader.extend({
+ .io.json.Reader =  .io.Reader.extend({
 
-    NAME : "draw2d.io.json.Reader",
+    NAME : " .io.json.Reader",
 
     init: function(){
         this._super();
@@ -50,12 +50,12 @@ draw2d.io.json.Reader = draw2d.io.Reader.extend({
      *
      * Restore the canvas from a given JSON object.
      *
-     * @param {draw2d.Canvas} canvas the canvas to restore
+     * @param { .Canvas} canvas the canvas to restore
      * @param {Object} document the json object to load.
      */
     unmarshal: function(canvas, json){
         var _this = this;
-        var result = new draw2d.util.ArrayList();
+        var result = new  .util.ArrayList();
 
         if(typeof json ==="string"){
             json = JSON.parse(json);
@@ -140,7 +140,7 @@ draw2d.io.json.Reader = draw2d.io.Reader.extend({
      * Factory method to create an instance of the given element type.
      *
      * @param {String} type
-     * @return {draw2d.Figure}
+     * @return { .Figure}
      */
     createFigureFromType:function(type)
     {
@@ -152,7 +152,7 @@ draw2d.io.json.Reader = draw2d.io.Reader.extend({
      * Factory method to create an instance of the given element.
      *
      * @param {Object} element
-     * @return {draw2d.Figure}
+     * @return { .Figure}
      */
     createFigureFromElement: function createFigureFromElement(element)
     {

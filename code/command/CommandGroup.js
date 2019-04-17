@@ -1,23 +1,23 @@
 /**
- * @class draw2d.command.CommandGroup
+ * @class  .command.CommandGroup
  * Command to group a given set of figures
  *
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandGroup = draw2d.command.Command.extend({
-  NAME: "draw2d.command.CommandGroup",
+ .command.CommandGroup =  .command.Command.extend({
+  NAME: " .command.CommandGroup",
 
   /**
    * @constructor
    * Create a group command for the given figure.
    *
-   * @param {draw2d.util.ArrayList} figures the figures to group
+   * @param { .util.ArrayList} figures the figures to group
    */
   init: function (canvas, figures) {
-    this._super(draw2d.Configuration.i18n.command.groupShapes)
-    if (figures instanceof draw2d.Selection) {
+    this._super( .Configuration.i18n.command.groupShapes)
+    if (figures instanceof  .Selection) {
       this.figures = figures.getAll()
     }
     else {
@@ -32,7 +32,7 @@ draw2d.command.CommandGroup = draw2d.command.Command.extend({
     })
 
     this.canvas = canvas
-    this.group = new draw2d.shape.composite.Group()
+    this.group = new  .shape.composite.Group()
   },
 
 

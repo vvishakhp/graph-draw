@@ -1,17 +1,17 @@
 /**
- * @class draw2d.shape.basic.LineResizeHandle
+ * @class  .shape.basic.LineResizeHandle
  * Base class for selection handle for connections and normal lines.
  *
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.basic.Circle
+ * @extends  .shape.basic.Circle
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend({
-  NAME: "draw2d.shape.basic.LineResizeHandle",
+ .shape.basic.LineResizeHandle =  .shape.basic.Circle.extend({
+  NAME: " .shape.basic.LineResizeHandle",
 
   init: function (attr, setter, getter) {
 
@@ -102,7 +102,7 @@ draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend({
    * @inheritdoc
    **/
   setBackgroundColor: function (color) {
-    color = new draw2d.util.Color(color)
+    color = new  .util.Color(color)
 
     this.bgGradient = "r(.4,.3)" + color.hash() + "-" + color.darker(0.1).hash() + ":60-" + color.darker(0.2).hash()
     this._super(color)
@@ -117,7 +117,7 @@ draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend({
    * Return the port below the ResizeHandle.
    *
    * @template
-   * @return {draw2d.Port}
+   * @return { .Port}
    */
   getRelatedPort: function () {
     return null
@@ -129,7 +129,7 @@ draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend({
    * Return the port of the other side of the related connection.
    *
    * @template
-   * @return {draw2d.Port}
+   * @return { .Port}
    */
   getOppositePort: function () {
     return null
@@ -172,7 +172,7 @@ draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend({
    * @type {Boolean}
    **/
   onDragStart: function (x, y, shiftKey, ctrlKey) {
-    this.command = this.owner.createCommand(new draw2d.command.CommandType(draw2d.command.CommandType.MOVE_BASEPOINT))
+    this.command = this.owner.createCommand(new  .command.CommandType( .command.CommandType.MOVE_BASEPOINT))
     // no drag&drop allowed if we didn'T have a valid command.
     // This is one way to send a veto for Connection reconnect
     if (this.command !== null) {
@@ -265,7 +265,7 @@ draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend({
     // A Connection is stuck to the corresponding ports. So we must reset the position
     // to the origin port if we doesn't drop the ResizeHandle on a other port.
     //
-    if (this.owner instanceof draw2d.Connection) {
+    if (this.owner instanceof  .Connection) {
       if (this.command !== null) {
         this.command.cancel()
       }
@@ -310,7 +310,7 @@ draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend({
    * @return {Boolean} return false if the corresponding object didn't support snapTo
    **/
   supportsSnapToHelper: function () {
-    if (this.owner instanceof draw2d.Connection) {
+    if (this.owner instanceof  .Connection) {
       return false
     }
 
@@ -322,7 +322,7 @@ draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend({
    * Show the ResizeHandle and add it to the canvas.<br>
    * Additional bring it in to the front of other figures.
    *
-   * @param {draw2d.Canvas} canvas the canvas to use
+   * @param { .Canvas} canvas the canvas to use
    * @param {Number} x the x-position
    * @param {Number} y the y-position
    **/

@@ -1,17 +1,17 @@
 /**
- * @class draw2d.shape.basic.GhostVertexResizeHandle
+ * @class  .shape.basic.GhostVertexResizeHandle
  * ResizeHandle for a vertex edit policy. Click of this kind of resize handles
  * adds a new vertex to the polyline or polygon.
  *
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.basic.LineResizeHandle
+ * @extends  .shape.basic.LineResizeHandle
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.basic.GhostVertexResizeHandle = draw2d.shape.basic.LineResizeHandle.extend({
-  NAME: "draw2d.shape.basic.GhostVertexResizeHandle",
+ .shape.basic.GhostVertexResizeHandle =  .shape.basic.LineResizeHandle.extend({
+  NAME: " .shape.basic.GhostVertexResizeHandle",
 
   init: function (owner, precursorIndex) {
     this.maxOpacity = 0.35
@@ -48,7 +48,7 @@ draw2d.shape.basic.GhostVertexResizeHandle = draw2d.shape.basic.LineResizeHandle
    * @template
    */
   onClick: function () {
-    let cmd = new draw2d.command.CommandAddVertex(this.owner, this.precursorIndex + 1, this.getAbsoluteX() + this.getWidth() / 2, this.getAbsoluteY() + this.getHeight() / 2)
+    let cmd = new  .command.CommandAddVertex(this.owner, this.precursorIndex + 1, this.getAbsoluteX() + this.getWidth() / 2, this.getAbsoluteY() + this.getHeight() / 2)
     this.getCanvas().getCommandStack().execute(cmd)
   },
 

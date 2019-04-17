@@ -1,12 +1,12 @@
 /**
- * @class draw2d.layout.connection.RubberbandRouter
+ * @class  .layout.connection.RubberbandRouter
  * Router for direct connections between two ports with a rubber band effect
  *
  * See the example:
  *
  *     @example preview small frame
  *
- *     let RubberConnection= draw2d.Connection.extend({
+ *     let RubberConnection=  .Connection.extend({
  *         NAME: "RubberConnection",
  *
  *         init:function(attr, setter, getter)
@@ -21,7 +21,7 @@
  *           getter);
  *
  *
- *           this.setRouter(new draw2d.layout.connection.RubberbandRouter());
+ *           this.setRouter(new  .layout.connection.RubberbandRouter());
  *         },
  *
  *         repaint:function(attributes)
@@ -45,15 +45,15 @@
  *
  *     // install a custom connection create policy
  *     //
- *     canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
+ *     canvas.installEditPolicy(  new  .policy.connection.DragConnectionCreatePolicy({
  *            createConnection: createConnection
  *     }));
  *
  *
  *     // create and add two nodes which contains Ports (In and OUT)
  *     //
- *     let start = new draw2d.shape.node.Start();
- *     let end   = new draw2d.shape.node.End();
+ *     let start = new  .shape.node.Start();
+ *     let end   = new  .shape.node.End();
 
  *     // ...add it to the canvas
  *     canvas.add( start, 50,50);
@@ -70,13 +70,13 @@
  * @inheritable
  * @author Andreas Herz
  *
- * @extends  draw2d.layout.connection.ConnectionRouter
+ * @extends   .layout.connection.ConnectionRouter
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.layout.connection.RubberbandRouter = draw2d.layout.connection.ConnectionRouter.extend({
+ .layout.connection.RubberbandRouter =  .layout.connection.ConnectionRouter.extend({
 
-  NAME: "draw2d.layout.connection.RubberbandRouter",
+  NAME: " .layout.connection.RubberbandRouter",
 
   /**
    * @constructor
@@ -91,12 +91,12 @@ draw2d.layout.connection.RubberbandRouter = draw2d.layout.connection.ConnectionR
    * @method
    * Callback method if the router has been assigned to a connection.
    *
-   * @param {draw2d.Connection} connection The assigned connection
+   * @param { .Connection} connection The assigned connection
    * @template
    * @since 2.7.2
    */
   onInstall: function (connection) {
-    connection.installEditPolicy(new draw2d.policy.line.LineSelectionFeedbackPolicy())
+    connection.installEditPolicy(new  .policy.line.LineSelectionFeedbackPolicy())
 
   },
 
@@ -144,28 +144,28 @@ draw2d.layout.connection.RubberbandRouter = draw2d.layout.connection.ConnectionR
 
     // anchor points for the 180 arc at the start point of the connection
     //
-    let start90 = new draw2d.geo.Point(-uv.y + start.x, uv.x + start.y)
-    let start270 = new draw2d.geo.Point(uv.y + start.x, -uv.x + start.y)
+    let start90 = new  .geo.Point(-uv.y + start.x, uv.x + start.y)
+    let start270 = new  .geo.Point(uv.y + start.x, -uv.x + start.y)
 
     // anchor point in the first segment ( on the upside/downside) of the connection
     //
-    let first90 = new draw2d.geo.Point(-uv2.y + first.x, uv2.x + first.y)
-    let first270 = new draw2d.geo.Point(uv2.y + first.x, -uv2.x + first.y)
+    let first90 = new  .geo.Point(-uv2.y + first.x, uv2.x + first.y)
+    let first270 = new  .geo.Point(uv2.y + first.x, -uv2.x + first.y)
 
     // center upside/downside anchor point of the connection
     //
-    let second90 = new draw2d.geo.Point(-uv2.y + second.x, uv2.x + second.y)
-    let second270 = new draw2d.geo.Point(uv2.y + second.x, -uv2.x + second.y)
+    let second90 = new  .geo.Point(-uv2.y + second.x, uv2.x + second.y)
+    let second270 = new  .geo.Point(uv2.y + second.x, -uv2.x + second.y)
 
     // anchor point in the third segment of the connection
     //
-    let third90 = new draw2d.geo.Point(-uv2.y + third.x, uv2.x + third.y)
-    let third270 = new draw2d.geo.Point(uv2.y + third.x, -uv2.x + third.y)
+    let third90 = new  .geo.Point(-uv2.y + third.x, uv2.x + third.y)
+    let third270 = new  .geo.Point(uv2.y + third.x, -uv2.x + third.y)
 
     // anchor point for the 180 arc at the end
     //
-    let end90 = new draw2d.geo.Point(-uv.y + end.x, uv.x + end.y)
-    let end270 = new draw2d.geo.Point(uv.y + end.x, -uv.x + end.y)
+    let end90 = new  .geo.Point(-uv.y + end.x, uv.x + end.y)
+    let end270 = new  .geo.Point(uv.y + end.x, -uv.x + end.y)
 
     // required for hit tests
     //

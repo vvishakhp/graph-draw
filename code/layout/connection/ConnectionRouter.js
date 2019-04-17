@@ -1,14 +1,14 @@
 /**
- * @class draw2d.layout.connection.ConnectionRouter
- * Routes a {@link draw2d.Connection}, possibly using a constraint.
+ * @class  .layout.connection.ConnectionRouter
+ * Routes a {@link  .Connection}, possibly using a constraint.
  *
  * @author Andreas Herz
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
 
-draw2d.layout.connection.ConnectionRouter = Class.extend({
-  NAME: "draw2d.layout.connection.ConnectionRouter",
+ .layout.connection.ConnectionRouter = Class.extend({
+  NAME: " .layout.connection.ConnectionRouter",
 
   /**
    * @constructor
@@ -22,11 +22,11 @@ draw2d.layout.connection.ConnectionRouter = Class.extend({
    * @method
    * Routes the Connection.
    *
-   * @param {draw2d.Connection} connection The Connection to route
+   * @param { .Connection} connection The Connection to route
    * @param {Object} [routingHints] some helper attributes for the router
    * @param {Boolean} [routingHints.startMoved] is true if just the start location has moved
    * @param {Boolean} [routingHints.endMoved] is true if the destination location has changed
-   * @param {draw2d.util.ArrayList} [routingHints.oldVertices] the vertices before the reroute has been triggered
+   * @param { .util.ArrayList} [routingHints.oldVertices] the vertices before the reroute has been triggered
    *
    * @template
    */
@@ -53,11 +53,11 @@ draw2d.layout.connection.ConnectionRouter = Class.extend({
       length = (ps.getSize() - 1)
       for (; i < length; i++) {
         p = ps.get(i)
-        inset = draw2d.geo.Util.insetPoint(p, lastP, radius)
+        inset =  .geo.Util.insetPoint(p, lastP, radius)
         path.push("L", adjust(inset.x), ",", adjust(inset.y))
 
         p2 = ps.get(i + 1)
-        inset = draw2d.geo.Util.insetPoint(p, p2, radius)
+        inset =  .geo.Util.insetPoint(p, p2, radius)
 
         path.push("Q", p.x, ",", p.y, " ", adjust(inset.x), ", ", adjust(inset.y))
         lastP = p
@@ -80,7 +80,7 @@ draw2d.layout.connection.ConnectionRouter = Class.extend({
    * @method
    * Callback method if the router has been assigned to a connection.
    *
-   * @param {draw2d.shape.basic.PolyLine} connection The assigned connection
+   * @param { .shape.basic.PolyLine} connection The assigned connection
    * @template
    * @since 2.7.2
    */
@@ -91,7 +91,7 @@ draw2d.layout.connection.ConnectionRouter = Class.extend({
    * @method
    * Callback method if the router has been removed from the connection.
    *
-   * @param {draw2d.shape.basic.PolyLine} connection The related connection
+   * @param { .shape.basic.PolyLine} connection The related connection
    * @template
    * @since 2.7.2
    */
@@ -128,7 +128,7 @@ draw2d.layout.connection.ConnectionRouter = Class.extend({
    * Tweak or enrich the polyline persistence data with routing information
    *
    * @since 2.10.0
-   * @param {draw2d.shape.basic.PolyLine} line
+   * @param { .shape.basic.PolyLine} line
    * @param {Object} memento The memento data of the polyline
    * @returns {Object}
    */
@@ -141,7 +141,7 @@ draw2d.layout.connection.ConnectionRouter = Class.extend({
    * set the attributes for the polyline with routing information
    *
    * @since 2.10.0
-   * @param {draw2d.shape.basic.Line} line
+   * @param { .shape.basic.Line} line
    * @param {Object} memento the JSON data to read
    */
   setPersistentAttributes: function (line, memento) {
@@ -150,10 +150,10 @@ draw2d.layout.connection.ConnectionRouter = Class.extend({
   /**
    * @method
    *
-   * The draw2d.Connection delegates the drag operation to the router. The router can
+   * The  .Connection delegates the drag operation to the router. The router can
    * handle the different constraints of the connection.
    *
-   * @param {draw2d.shape.basic.Line} line
+   * @param { .shape.basic.Line} line
    * @param {Number} dx the x difference between the start of the drag drop operation and now
    * @param {Number} dy the y difference between the start of the drag drop operation and now
    * @param {Number} dx2 The x diff since the last call of this dragging operation
@@ -168,7 +168,7 @@ draw2d.layout.connection.ConnectionRouter = Class.extend({
    * This enforce the router to avoid full autoroute. E.g. InteractiveManhattanRouter
    *
    * @protected
-   * @param {draw2d.shape.basic.Line} line
+   * @param { .shape.basic.Line} line
    */
   verticesSet: function (line) {
   }

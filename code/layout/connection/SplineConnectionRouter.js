@@ -1,26 +1,26 @@
 /**
- * @class draw2d.layout.connection.SplineConnectionRouter
+ * @class  .layout.connection.SplineConnectionRouter
  *
  * A ManhattanConnectionRouter with an spline interpolation between the bend points.
  *
  *     @example preview small frame
  *
  *     let createConnection=function(){
- *        let con = new draw2d.Connection();
- *        con.setRouter(new draw2d.layout.connection.SplineConnectionRouter());
+ *        let con = new  .Connection();
+ *        con.setRouter(new  .layout.connection.SplineConnectionRouter());
  *        return con;
  *     };
  *
  *     // install a custom connection create policy
  *     //
- *     canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
+ *     canvas.installEditPolicy(  new  .policy.connection.DragConnectionCreatePolicy({
  *            createConnection: createConnection
  *     }));
  *
  *     // create and add two nodes which contains Ports (In and OUT)
  *     //
- *     let f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});
- *     let f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});
+ *     let f1 = new  .shape.analog.OpAmp({x:10, y:10});
+ *     let f2 = new  .shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});
  *
  *     // ...add it to the canvas
  *     //
@@ -36,13 +36,13 @@
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.layout.connection.ManhattanConnectionRouter
+ * @extends  .layout.connection.ManhattanConnectionRouter
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.layout.connection.SplineConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend({
+ .layout.connection.SplineConnectionRouter =  .layout.connection.ManhattanConnectionRouter.extend({
 
-  NAME: "draw2d.layout.connection.SplineConnectionRouter",
+  NAME: " .layout.connection.SplineConnectionRouter",
 
   /**
    * @constructor Creates a new Router object
@@ -50,9 +50,9 @@ draw2d.layout.connection.SplineConnectionRouter = draw2d.layout.connection.Manha
   init: function () {
     this._super()
 
-//        this.spline = new draw2d.util.spline.CatmullRomSpline();
-    this.spline = new draw2d.util.spline.CubicSpline()
-//        this.spline = new draw2d.util.spline.BezierSpline();
+//        this.spline = new  .util.spline.CatmullRomSpline();
+    this.spline = new  .util.spline.CubicSpline()
+//        this.spline = new  .util.spline.BezierSpline();
 
     this.MINDIST = 50
   },
@@ -62,12 +62,12 @@ draw2d.layout.connection.SplineConnectionRouter = draw2d.layout.connection.Manha
    * @method
    * Callback method if the router has been assigned to a connection.
    *
-   * @param {draw2d.Connection} connection The assigned connection
+   * @param { .Connection} connection The assigned connection
    * @template
    * @since 2.7.2
    */
   onInstall: function (connection) {
-    connection.installEditPolicy(new draw2d.policy.line.LineSelectionFeedbackPolicy())
+    connection.installEditPolicy(new  .policy.line.LineSelectionFeedbackPolicy())
   },
 
   /**
@@ -88,8 +88,8 @@ draw2d.layout.connection.SplineConnectionRouter = draw2d.layout.connection.Manha
     let ps = conn.getVertices()
 
     conn.oldPoint = null
-    conn.lineSegments = new draw2d.util.ArrayList()
-    conn.vertices = new draw2d.util.ArrayList()
+    conn.lineSegments = new  .util.ArrayList()
+    conn.vertices = new  .util.ArrayList()
 
     let splinePoints = this.spline.generate(ps, 8)
     splinePoints.each(function (i, e) {

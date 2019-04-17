@@ -1,20 +1,20 @@
 
 /**
- * @class draw2d.VectorFigure
- * The base class for all vector based figures like {@link draw2d.shape.basic.Rectangle}  or {@link draw2d.shape.basic.Oval}
+ * @class  .VectorFigure
+ * The base class for all vector based figures like {@link  .shape.basic.Rectangle}  or {@link  .shape.basic.Oval}
  * inside a canvas.
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.node.Node
+ * @extends  .shape.node.Node
  */
 
-import draw2d from 'packages';
+import   from 'packages';
 import jsonUtil from 'util/JSONUtil';
 import extend from 'util/extend';
 
-draw2d.VectorFigure = draw2d.shape.node.Node.extend({
-    NAME : "draw2d.VectorFigure",
+ .VectorFigure =  .shape.node.Node.extend({
+    NAME : " .VectorFigure",
 
     /**
      * @constructor
@@ -26,8 +26,8 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
     {
         this.stroke = 1;
         this.radius = 0;
-        this.bgColor= new draw2d.util.Color("#ffffff");
-        this.color  = new draw2d.util.Color("#303030");
+        this.bgColor= new  .util.Color("#ffffff");
+        this.color  = new  .util.Color("#303030");
         this.dasharray = null;
 
         // memento for the stroke if we reset the glow effect of this shape
@@ -37,13 +37,13 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
 
         this._super( attr,
             extend({
-                /** @attr {String} dasharray the line pattern see {@link draw2d.shape.basic.Line#setDashArray} for more information*/
+                /** @attr {String} dasharray the line pattern see {@link  .shape.basic.Line#setDashArray} for more information*/
                 dasharray : this.setDashArray,
                 /** @attr {Number} radius the radius to render the line edges */
                 radius : this.setRadius,
-                /** @attr {String|draw2d.util.Color} bgColor the background color of the shape */
+                /** @attr {String| .util.Color} bgColor the background color of the shape */
                 bgColor: this.setBackgroundColor,
-                /** @attr {String|draw2d.util.Color} color the main color of the shape */
+                /** @attr {String| .util.Color} color the main color of the shape */
                 color  : this.setColor,
                 /** @attr {Number} stroke the stroke width */
                 stroke : this.setStroke
@@ -191,11 +191,11 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
     *        "bgColor": "#f0f0f0"
     *      });
     *
-    * @param {String|draw2d.util.Color} color The new background color of the figure
+    * @param {String| .util.Color} color The new background color of the figure
     **/
     setBackgroundColor: function(color)
     {
-        this.bgColor = new draw2d.util.Color(color);
+        this.bgColor = new  .util.Color(color);
 
         this.repaint();
         this.fireEvent("change:bgColor",{value:this.bgColor});
@@ -210,7 +210,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
     *      // Alternatively you can use the attr method:
     *      var color =figure.attr("bgColor");
     *
-    * @return {draw2d.util.Color}
+    * @return { .util.Color}
     */
    getBackgroundColor: function()
    {
@@ -258,11 +258,11 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
     *        "color": "#f3f3f3"
     *      });
     *
-    * @param {String|draw2d.util.Color} color The new color of the line.
+    * @param {String| .util.Color} color The new color of the line.
     **/
    setColor: function( color)
    {
-     this.color = new draw2d.util.Color(color);
+     this.color = new  .util.Color(color);
      this.repaint();
      this.fireEvent("change:color",{value:this.color});
 
@@ -274,7 +274,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
     * Get the current used foreground color
     *
     *
-    * @returns {draw2d.util.Color}
+    * @returns { .util.Color}
     */
    getColor: function()
    {

@@ -1,5 +1,5 @@
 /**
- * @class draw2d.policy.figure.WidthSelectionFeedbackPolicy
+ * @class  .policy.figure.WidthSelectionFeedbackPolicy
  * This selection shows only selection handles for the width. It is only possible to change the width
  * of an shaped. The height stays always the same or is recalculated by the figure itself.
  *
@@ -8,21 +8,21 @@
  *
  *       // add some demo figure to the canvas
  *       //
- *       let shape =new draw2d.shape.basic.Rectangle({width:50, height:100, x:10, y:30});
+ *       let shape =new  .shape.basic.Rectangle({width:50, height:100, x:10, y:30});
  *       canvas.add(shape);
  *
  *       // At this point you can only change the width of the shape
  *       //
- *       shape.installEditPolicy(new draw2d.policy.figure.WidthSelectionFeedbackPolicy());
+ *       shape.installEditPolicy(new  .policy.figure.WidthSelectionFeedbackPolicy());
  *
  * @author Andreas Herz
- * @extends draw2d.policy.figure.SelectionFeedbackPolicy
+ * @extends  .policy.figure.SelectionFeedbackPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.figure.WidthSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend({
+ .policy.figure.WidthSelectionFeedbackPolicy =  .policy.figure.SelectionFeedbackPolicy.extend({
 
-  NAME: "draw2d.policy.figure.BusSelectionFeedbackPolicy",
+  NAME: " .policy.figure.BusSelectionFeedbackPolicy",
 
   /**
    * @constructor
@@ -37,17 +37,17 @@ draw2d.policy.figure.WidthSelectionFeedbackPolicy = draw2d.policy.figure.Selecti
    * @method
    * Called by the framework of the Policy should show a resize handle for the given shape
    *
-   * @param {draw2d.Canvas} canvas the host of the diagram
-   * @param {draw2d.Figure} figure the figure to select
+   * @param { .Canvas} canvas the host of the diagram
+   * @param { .Figure} figure the figure to select
    * @param {Boolean} isPrimarySelection
    */
   onSelect: function (canvas, figure, isPrimarySelection) {
     if (figure.selectionHandles.isEmpty()) {
-      let r4 = new draw2d.ResizeHandle({owner: figure, type: 4}) // 4 = RIGHT_MIDDLE
-      let r8 = new draw2d.ResizeHandle({owner: figure, type: 8}) // 8 = LEFT_MIDDLE
+      let r4 = new  .ResizeHandle({owner: figure, type: 4}) // 4 = RIGHT_MIDDLE
+      let r8 = new  .ResizeHandle({owner: figure, type: 8}) // 8 = LEFT_MIDDLE
 
-      r4.installEditPolicy(new draw2d.policy.figure.HorizontalEditPolicy())
-      r8.installEditPolicy(new draw2d.policy.figure.HorizontalEditPolicy())
+      r4.installEditPolicy(new  .policy.figure.HorizontalEditPolicy())
+      r8.installEditPolicy(new  .policy.figure.HorizontalEditPolicy())
       figure.selectionHandles.add(r4, r8)
 
       r4.setDraggable(figure.isResizeable())
@@ -64,8 +64,8 @@ draw2d.policy.figure.WidthSelectionFeedbackPolicy = draw2d.policy.figure.Selecti
    * @method
    * Callback if the figure has been moved
    *
-   * @param {draw2d.Canvas} canvas The host canvas
-   * @param {draw2d.Figure} figure The related figure
+   * @param { .Canvas} canvas The host canvas
+   * @param { .Figure} figure The related figure
    *
    * @template
    */

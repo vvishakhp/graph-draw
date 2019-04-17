@@ -1,17 +1,17 @@
 /**
- * @class draw2d.shape.basic.LineEndResizeHandle
+ * @class  .shape.basic.LineEndResizeHandle
  *
  * Selection handle for connections and normal lines.
  *
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.basic.LineResizeHandle
+ * @extends  .shape.basic.LineResizeHandle
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.basic.LineEndResizeHandle = draw2d.shape.basic.LineResizeHandle.extend({
-  NAME: "draw2d.shape.basic.LineEndResizeHandle",
+ .shape.basic.LineEndResizeHandle =  .shape.basic.LineResizeHandle.extend({
+  NAME: " .shape.basic.LineEndResizeHandle",
 
   init: function (figure) {
     this._super({owner: figure, index: figure.getVertices().getSize() - 1})
@@ -20,12 +20,12 @@ draw2d.shape.basic.LineEndResizeHandle = draw2d.shape.basic.LineResizeHandle.ext
 
   /**
    * @method
-   * Return the Port assigned to this ResizeHandle if the line is an instance of draw2d.Connection
+   * Return the Port assigned to this ResizeHandle if the line is an instance of  .Connection
    *
-   * @return {draw2d.Port}
+   * @return { .Port}
    */
   getRelatedPort: function () {
-    if (this.owner instanceof draw2d.Connection) {
+    if (this.owner instanceof  .Connection) {
       return this.owner.getTarget()
     }
 
@@ -34,12 +34,12 @@ draw2d.shape.basic.LineEndResizeHandle = draw2d.shape.basic.LineResizeHandle.ext
 
   /**
    * @method
-   * Return the peer Port assigned to this ResizeHandle if the line is an instance of draw2d.Connection
+   * Return the peer Port assigned to this ResizeHandle if the line is an instance of  .Connection
    *
-   * @returns {draw2d.Port}
+   * @returns { .Port}
    */
   getOppositePort: function () {
-    if (this.owner instanceof draw2d.Connection) {
+    if (this.owner instanceof  .Connection) {
       return this.owner.getSource()
     }
 
@@ -79,7 +79,7 @@ draw2d.shape.basic.LineEndResizeHandle = draw2d.shape.basic.LineResizeHandle.ext
    * @method
    * Resizehandle has been drop on a InputPort/OutputPort.
    *
-   * @param {draw2d.Figure} dropTarget
+   * @param { .Figure} dropTarget
    * @param {Number} x the x-coordinate of the mouse up event
    * @param {Number} y the y-coordinate of the mouse up event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -89,7 +89,7 @@ draw2d.shape.basic.LineEndResizeHandle = draw2d.shape.basic.LineResizeHandle.ext
   onDrop: function (dropTarget, x, y, shiftKey, ctrlKey) {
     this.owner.isMoving = false
 
-    if (this.owner instanceof draw2d.Connection && this.command !== null) {
+    if (this.owner instanceof  .Connection && this.command !== null) {
       this.command.setNewPorts(this.owner.getSource(), dropTarget)
       this.getCanvas().getCommandStack().execute(this.command)
     }

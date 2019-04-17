@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Disconnect
+ * @class  .shape.icon.Disconnect
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Disconnect();
+ *     let icon =  new  .shape.icon.Disconnect();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Disconnect = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Disconnect",
+ .shape.icon.Disconnect =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Disconnect",
 
   /**
    *

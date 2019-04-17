@@ -1,17 +1,17 @@
 /**
- * @class draw2d.HeadlessCanvas
+ * @class  .HeadlessCanvas
  *
- * Required for Node.js draw2d model read/write operations.
+ * Required for Node.js   model read/write operations.
  *
  * @inheritable
  * @author Andreas Herz
  */
 
-import draw2d from 'packages';
+import   from 'packages';
 
-draw2d.HeadlessCanvas = Class.extend(
+ .HeadlessCanvas = Class.extend(
 {
-    NAME : "draw2d.HeadlessCanvas",
+    NAME : " .HeadlessCanvas",
 
     /**
      * @constructor
@@ -23,21 +23,21 @@ draw2d.HeadlessCanvas = Class.extend(
     {
         // internal document with all figures, ports, ....
         //
-        this.figures     = new draw2d.util.ArrayList();
-        this.lines       = new draw2d.util.ArrayList(); // crap - why are connections not just figures. Design by accident
-        this.commonPorts = new draw2d.util.ArrayList();
+        this.figures     = new  .util.ArrayList();
+        this.lines       = new  .util.ArrayList(); // crap - why are connections not just figures. Design by accident
+        this.commonPorts = new  .util.ArrayList();
 
         this.eventSubscriptions = {};
 
         // The CommandStack for undo/redo operations
         //
-        this.commandStack = new draw2d.command.CommandStack();
+        this.commandStack = new  .command.CommandStack();
     },
 
     /**
      * @method
      * Reset the canvas and delete all model elements.<br>
-     * You can now reload another model to the canvas with a {@link draw2d.io.Reader}
+     * You can now reload another model to the canvas with a {@link  .io.Reader}
      *
      * @since 1.1.0
      */
@@ -45,9 +45,9 @@ draw2d.HeadlessCanvas = Class.extend(
     {
         // internal document with all figures, ports, ....
         //
-        this.figures     = new draw2d.util.ArrayList();
-        this.lines       = new draw2d.util.ArrayList();
-        this.commonPorts = new draw2d.util.ArrayList();
+        this.figures     = new  .util.ArrayList();
+        this.lines       = new  .util.ArrayList();
+        this.commonPorts = new  .util.ArrayList();
 
         this.commandStack.markSaveLocation();
 
@@ -62,7 +62,7 @@ draw2d.HeadlessCanvas = Class.extend(
     /**
      * @method
      * Callback for any kind of image export tools to trigger the canvas to hide all unwanted
-     * decorations. The method is called e.g. from the draw2d.io.png.Writer
+     * decorations. The method is called e.g. from the  .io.png.Writer
      *
      * @since 4.0.0
      * @template
@@ -104,8 +104,8 @@ draw2d.HeadlessCanvas = Class.extend(
      *         alert("figure added or removed:");
      *      });
      *
-     * @param {draw2d.Figure} figure The figure to add.
-     * @param {Number/draw2d.geo.Point} [x] The new x coordinate of the figure or the x/y coordinate if it is an draw2d.geo.Point
+     * @param { .Figure} figure The figure to add.
+     * @param {Number/ .geo.Point} [x] The new x coordinate of the figure or the x/y coordinate if it is an  .geo.Point
      * @param {Number} [y] The y position.
      **/
     add: function( figure , x,  y)
@@ -114,7 +114,7 @@ draw2d.HeadlessCanvas = Class.extend(
             return;
         }
 
-        if(figure instanceof draw2d.shape.basic.Line){
+        if(figure instanceof  .shape.basic.Line){
          this.lines.add(figure);
         }
         else{
@@ -131,7 +131,7 @@ draw2d.HeadlessCanvas = Class.extend(
      * Returns all lines/connections in this workflow/canvas.<br>
      *
      * @protected
-     * @return {draw2d.util.ArrayList}
+     * @return { .util.ArrayList}
      **/
     getLines: function()
     {
@@ -143,7 +143,7 @@ draw2d.HeadlessCanvas = Class.extend(
      * Returns the internal figures.<br>
      *
      * @protected
-     * @return {draw2d.util.ArrayList}
+     * @return { .util.ArrayList}
      **/
     getFigures: function()
     {
@@ -156,7 +156,7 @@ draw2d.HeadlessCanvas = Class.extend(
      *
      * @param {String} id The id of the line.
      *
-     * @return {draw2d.shape.basic.Line}
+     * @return { .shape.basic.Line}
      **/
     getLine: function( id)
     {
@@ -176,7 +176,7 @@ draw2d.HeadlessCanvas = Class.extend(
      * Returns the figure with the given id.
      *
      * @param {String} id The id of the figure.
-     * @return {draw2d.Figure}
+     * @return { .Figure}
      **/
     getFigure: function( id)
     {
@@ -194,7 +194,7 @@ draw2d.HeadlessCanvas = Class.extend(
      * @method
      * Register a port to the canvas. This is required for other ports to find a valid drop target.
      *
-     * @param {draw2d.Port} port The new port which has been added to the Canvas.
+     * @param { .Port} port The new port which has been added to the Canvas.
      **/
     registerPort: function(port )
     {
@@ -221,7 +221,7 @@ draw2d.HeadlessCanvas = Class.extend(
      * @method
      * Returns the command stack for the Canvas. Required for undo/redo support.
      *
-     * @return {draw2d.command.CommandStack}
+     * @return { .command.CommandStack}
      **/
     getCommandStack: function()
     {
@@ -287,7 +287,7 @@ draw2d.HeadlessCanvas = Class.extend(
      *
      * @param {String}   event One or more space-separated event types
      * @param {Function} callback A function to execute when the event is triggered.
-     * @param {draw2d.Canvas} callback.emitter the emitter of the event
+     * @param { .Canvas} callback.emitter the emitter of the event
      * @param {Object} [callback.obj] optional event related data
      *
      * @since 5.0.0

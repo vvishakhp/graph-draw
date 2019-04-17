@@ -1,23 +1,23 @@
 /// TODO
 
-import draw2d from 'packages'
+import   from 'packages'
 
 export class InputPort {
 
 }
 
 /**
- * @class draw2d.InputPort
- * A InputPort is the start anchor for a {@link draw2d.Connection}.
+ * @class  .InputPort
+ * A InputPort is the start anchor for a {@link  .Connection}.
  *
  * @author Andreas Herz
- * @extend draw2d.Port
+ * @extend  .Port
  */
 
 
-draw2d = draw2d.Port.extend({
+  =  .Port.extend({
 
-  NAME: "draw2d.InputPort",
+  NAME: " .InputPort",
 
   /**
    * @constructor
@@ -30,7 +30,7 @@ draw2d = draw2d.Port.extend({
 
     // responsive for the arrangement of the port
     // calculates the x/y coordinates in relation to the parent node
-    this.locator = new draw2d.layout.locator.InputPortLocator()
+    this.locator = new  .layout.locator.InputPortLocator()
   },
 
 
@@ -40,8 +40,8 @@ draw2d = draw2d.Port.extend({
   createCommand: function (request) {
     // Connect request between two ports
     //
-    if (request.getPolicy() === draw2d.command.CommandType.CONNECT) {
-      return new draw2d.command.CommandConnect(request.source, request.target, request.source)
+    if (request.getPolicy() ===  .command.CommandType.CONNECT) {
+      return new  .command.CommandConnect(request.source, request.target, request.source)
     }
 
     // ...else call the base class

@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.StarOff
+ * @class  .shape.icon.StarOff
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.StarOff();
+ *     let icon =  new  .shape.icon.StarOff();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.StarOff = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.StarOff",
+ .shape.icon.StarOff =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.StarOff",
 
   /**
    *

@@ -1,16 +1,16 @@
 /**
- * @class draw2d.OutputPort
- * A OutputPort is the start anchor for a {@link draw2d.Connection}.
+ * @class  .OutputPort
+ * A OutputPort is the start anchor for a {@link  .Connection}.
  *
  * @author Andreas Herz
- * @extends draw2d.Port
+ * @extends  .Port
  */
 
-import draw2d from 'packages';
+import   from 'packages';
 
-draw2d.OutputPort = draw2d.Port.extend({
+ .OutputPort =  .Port.extend({
 
-    NAME : "draw2d.OutputPort",
+    NAME : " .OutputPort",
 
     /**
      * @constructor
@@ -24,7 +24,7 @@ draw2d.OutputPort = draw2d.Port.extend({
 
         // responsive for the arrangement of the port
         // calculates the x/y coordinates in relation to the parent node
-        this.locator=new draw2d.layout.locator.OutputPortLocator();
+        this.locator=new  .layout.locator.OutputPortLocator();
     },
 
 
@@ -35,9 +35,9 @@ draw2d.OutputPort = draw2d.Port.extend({
     {
        // Connect request between two ports
        //
-       if(request.getPolicy() === draw2d.command.CommandType.CONNECT){
+       if(request.getPolicy() ===  .command.CommandType.CONNECT){
            // source and target are changed.
-           return new draw2d.command.CommandConnect(request.target, request.source, request.source);
+           return new  .command.CommandConnect(request.target, request.source, request.source);
        }
 
        // ...else call the base class

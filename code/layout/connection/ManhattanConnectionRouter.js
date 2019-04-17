@@ -1,6 +1,6 @@
 /**
- * @class draw2d.layout.connection.ManhattanConnectionRouter
- * Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source
+ * @class  .layout.connection.ManhattanConnectionRouter
+ * Provides a {@link  .Connection} with an orthogonal route between the Connection's source
  * and target anchors.
  *
  * See the example:
@@ -11,22 +11,22 @@
  *     //
  *     let createConnection=function(sourcePort, targetPort){
  *        // return my special kind of connection
- *        let con = new draw2d.Connection();
- *        con.setRouter(new draw2d.layout.connection.ManhattanConnectionRouter());
+ *        let con = new  .Connection();
+ *        con.setRouter(new  .layout.connection.ManhattanConnectionRouter());
  *        return con;
  *     };
  *
  *     // Install a special policy into the canvas to use my own implementation of connection
  *     // if we drag&drop a port
  *     //
- *     canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
+ *     canvas.installEditPolicy(  new  .policy.connection.DragConnectionCreatePolicy({
  *           createConnection: createConnection
  *     }));
  *
  *     // create and add two nodes which contains Ports (In and OUT)
  *     //
- *     let start = new draw2d.shape.node.Start();
- *     let end   = new draw2d.shape.node.End();
+ *     let start = new  .shape.node.Start();
+ *     let end   = new  .shape.node.End();
 
  *     // ...add it to the canvas
  *     canvas.add( start, 50,50);
@@ -42,13 +42,13 @@
  * @inheritable
  * @author Andreas Herz
  *
- * @extends  draw2d.layout.connection.ConnectionRouter
+ * @extends   .layout.connection.ConnectionRouter
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
 
-draw2d.layout.connection.ManhattanConnectionRouter = draw2d.layout.connection.ConnectionRouter.extend({
-  NAME: "draw2d.layout.connection.ManhattanConnectionRouter",
+ .layout.connection.ManhattanConnectionRouter =  .layout.connection.ConnectionRouter.extend({
+  NAME: " .layout.connection.ManhattanConnectionRouter",
 
   MINDIST: 20,
   TOL: 0.1,
@@ -69,11 +69,11 @@ draw2d.layout.connection.ManhattanConnectionRouter = draw2d.layout.connection.Co
    * @method
    * Callback method if the router has been assigned to a connection.
    *
-   * @param {draw2d.Connection} connection The assigned connection
+   * @param { .Connection} connection The assigned connection
    * @since 2.7.2
    */
   onInstall: function (connection) {
-    connection.installEditPolicy(new draw2d.policy.line.LineSelectionFeedbackPolicy())
+    connection.installEditPolicy(new  .policy.line.LineSelectionFeedbackPolicy())
   },
 
   /**
@@ -97,20 +97,20 @@ draw2d.layout.connection.ManhattanConnectionRouter = draw2d.layout.connection.Co
    * Internal routing algorithm.
    *
    * @private
-   * @param {draw2d.Connection} conn
-   * @param {draw2d.geo.Point} fromPt
+   * @param { .Connection} conn
+   * @param { .geo.Point} fromPt
    * @param {Number} fromDir
-   * @param {draw2d.geo.Point} toPt
+   * @param { .geo.Point} toPt
    * @param {Number} toDir
    */
   _route: function (conn, fromPt, fromDir, toPt, toDir) {
     // fromPt is an x,y to start from.
     // fromDir is an angle that the first link must
     //
-    let UP = draw2d.geo.Rectangle.DIRECTION_UP
-    let RIGHT = draw2d.geo.Rectangle.DIRECTION_RIGHT
-    let DOWN = draw2d.geo.Rectangle.DIRECTION_DOWN
-    let LEFT = draw2d.geo.Rectangle.DIRECTION_LEFT
+    let UP =  .geo.Rectangle.DIRECTION_UP
+    let RIGHT =  .geo.Rectangle.DIRECTION_RIGHT
+    let DOWN =  .geo.Rectangle.DIRECTION_DOWN
+    let LEFT =  .geo.Rectangle.DIRECTION_LEFT
 
     let xDiff = fromPt.x - toPt.x
     let yDiff = fromPt.y - toPt.y
@@ -119,7 +119,7 @@ draw2d.layout.connection.ManhattanConnectionRouter = draw2d.layout.connection.Co
     let pos
 
     if (((xDiff * xDiff) < (this.TOLxTOL)) && ((yDiff * yDiff) < (this.TOLxTOL))) {
-      conn.addPoint(new draw2d.geo.Point(toPt.x, toPt.y))
+      conn.addPoint(new  .geo.Point(toPt.x, toPt.y))
       return
     }
 
@@ -130,17 +130,17 @@ draw2d.layout.connection.ManhattanConnectionRouter = draw2d.layout.connection.Co
       }
       else {
         if (xDiff < 0) {
-          point = new draw2d.geo.Point(fromPt.x - this.MINDIST, fromPt.y)
+          point = new  .geo.Point(fromPt.x - this.MINDIST, fromPt.y)
         }
         else if (((yDiff > 0) && (toDir === DOWN)) || ((yDiff < 0) && (toDir === UP))) {
-          point = new draw2d.geo.Point(toPt.x, fromPt.y)
+          point = new  .geo.Point(toPt.x, fromPt.y)
         }
         else if (fromDir === toDir) {
           pos = Math.min(fromPt.x, toPt.x) - this.MINDIST
-          point = new draw2d.geo.Point(pos, fromPt.y)
+          point = new  .geo.Point(pos, fromPt.y)
         }
         else {
-          point = new draw2d.geo.Point(fromPt.x - (xDiff / 2), fromPt.y)
+          point = new  .geo.Point(fromPt.x - (xDiff / 2), fromPt.y)
         }
 
         if (yDiff > 0) {
@@ -158,17 +158,17 @@ draw2d.layout.connection.ManhattanConnectionRouter = draw2d.layout.connection.Co
       }
       else {
         if (xDiff > 0) {
-          point = new draw2d.geo.Point(fromPt.x + this.MINDIST, fromPt.y)
+          point = new  .geo.Point(fromPt.x + this.MINDIST, fromPt.y)
         }
         else if (((yDiff > 0) && (toDir === DOWN)) || ((yDiff < 0) && (toDir === UP))) {
-          point = new draw2d.geo.Point(toPt.x, fromPt.y)
+          point = new  .geo.Point(toPt.x, fromPt.y)
         }
         else if (fromDir === toDir) {
           pos = Math.max(fromPt.x, toPt.x) + this.MINDIST
-          point = new draw2d.geo.Point(pos, fromPt.y)
+          point = new  .geo.Point(pos, fromPt.y)
         }
         else {
-          point = new draw2d.geo.Point(fromPt.x - (xDiff / 2), fromPt.y)
+          point = new  .geo.Point(fromPt.x - (xDiff / 2), fromPt.y)
         }
 
         if (yDiff > 0) {
@@ -186,17 +186,17 @@ draw2d.layout.connection.ManhattanConnectionRouter = draw2d.layout.connection.Co
       }
       else {
         if (yDiff > 0) {
-          point = new draw2d.geo.Point(fromPt.x, fromPt.y + this.MINDIST)
+          point = new  .geo.Point(fromPt.x, fromPt.y + this.MINDIST)
         }
         else if (((xDiff > 0) && (toDir === RIGHT)) || ((xDiff < 0) && (toDir === LEFT))) {
-          point = new draw2d.geo.Point(fromPt.x, toPt.y)
+          point = new  .geo.Point(fromPt.x, toPt.y)
         }
         else if (fromDir === toDir) {
           pos = Math.max(fromPt.y, toPt.y) + this.MINDIST
-          point = new draw2d.geo.Point(fromPt.x, pos)
+          point = new  .geo.Point(fromPt.x, pos)
         }
         else {
-          point = new draw2d.geo.Point(fromPt.x, fromPt.y - (yDiff / 2))
+          point = new  .geo.Point(fromPt.x, fromPt.y - (yDiff / 2))
         }
 
         if (xDiff > 0) {
@@ -214,17 +214,17 @@ draw2d.layout.connection.ManhattanConnectionRouter = draw2d.layout.connection.Co
       }
       else {
         if (yDiff < 0) {
-          point = new draw2d.geo.Point(fromPt.x, fromPt.y - this.MINDIST)
+          point = new  .geo.Point(fromPt.x, fromPt.y - this.MINDIST)
         }
         else if (((xDiff > 0) && (toDir === RIGHT)) || ((xDiff < 0) && (toDir === LEFT))) {
-          point = new draw2d.geo.Point(fromPt.x, toPt.y)
+          point = new  .geo.Point(fromPt.x, toPt.y)
         }
         else if (fromDir === toDir) {
           pos = Math.min(fromPt.y, toPt.y) - this.MINDIST
-          point = new draw2d.geo.Point(fromPt.x, pos)
+          point = new  .geo.Point(fromPt.x, pos)
         }
         else {
-          point = new draw2d.geo.Point(fromPt.x, fromPt.y - (yDiff / 2))
+          point = new  .geo.Point(fromPt.x, fromPt.y - (yDiff / 2))
         }
 
         if (xDiff > 0) {

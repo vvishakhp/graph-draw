@@ -1,14 +1,14 @@
 /**
- * @class draw2d.command.CommandStackEventListener
+ * @class  .command.CommandStackEventListener
  *
  * Event class which will be fired for every CommandStack operation. Required for CommandStackListener.
  * @author Andreas Herz
  */
-import draw2d from '../packages'
+import   from '../packages'
 
 
-draw2d.command.CommandStackEventListener = Class.extend({
-  NAME: "draw2d.command.CommandStackEventListener",
+ .command.CommandStackEventListener = Class.extend({
+  NAME: " .command.CommandStackEventListener",
 
   /**
    * @constructor
@@ -20,12 +20,12 @@ draw2d.command.CommandStackEventListener = Class.extend({
 
   /**
    * @method
-   * Sent when an event occurs on the command stack. draw2d.command.CommandStackEvent.getDetail()
+   * Sent when an event occurs on the command stack.  .command.CommandStackEvent.getDetail()
    * can be used to identify the type of event which has occurred.
    *
    * @template
    *
-   * @param {draw2d.command.CommandStackEvent} event
+   * @param { .command.CommandStackEvent} event
    **/
   stackChanged: function (event) {
   }

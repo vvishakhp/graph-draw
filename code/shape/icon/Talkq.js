@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.icon.Talkq
+ * @class  .shape.icon.Talkq
 
  * See the example:
  *
  *     @example preview small frame
  *
- *     let icon =  new draw2d.shape.icon.Talkq();
+ *     let icon =  new  .shape.icon.Talkq();
  *
  *     canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
- * @extends draw2d.shape.icon.Icon
+ * @extends  .shape.icon.Icon
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.icon.Talkq = draw2d.shape.icon.Icon.extend({
-  NAME: "draw2d.shape.icon.Talkq",
+ .shape.icon.Talkq =  .shape.icon.Icon.extend({
+  NAME: " .shape.icon.Talkq",
 
   /**
    *

@@ -1,28 +1,28 @@
 /**
- * @class draw2d.command.CommandConnect
+ * @class  .command.CommandConnect
  *
  * Connects two ports with a connection.
  *
  * @inheritable
  * @author Andreas Herz
  *
- * @extends draw2d.command.Command
+ * @extends  .command.Command
  */
-import draw2d from '../packages'
+import   from '../packages'
 
-draw2d.command.CommandConnect = draw2d.command.Command.extend({
-  NAME: "draw2d.command.CommandConnect",
+ .command.CommandConnect =  .command.Command.extend({
+  NAME: " .command.CommandConnect",
 
   /**
    * @constructor
    * Create a new CommandConnect objects which can be execute via the CommandStack.
    *
-   * @param {draw2d.Port} source the source port for the connection to create
-   * @param {draw2d.Port} target the target port for the connection to create
-   * @param {draw2d.Port} [dropTarget] the port who has initiate the connection creation. mainly the drop target
+   * @param { .Port} source the source port for the connection to create
+   * @param { .Port} target the target port for the connection to create
+   * @param { .Port} [dropTarget] the port who has initiate the connection creation. mainly the drop target
    */
   init: function (source, target, dropTarget) {
-    this._super(draw2d.Configuration.i18n.command.connectPorts)
+    this._super( .Configuration.i18n.command.connectPorts)
     this.canvas = target.getCanvas()
     this.source = source
     this.target = target
@@ -44,7 +44,7 @@ draw2d.command.CommandConnect = draw2d.command.Command.extend({
    * Returns the fresh created connection if available. Used in the
    * ClickConnectionCreatePolicy to customize the router and vertices.
    *
-   * @returns {null|draw2d.Connection}
+   * @returns {null| .Connection}
    * @since 6.1.0
    */
   getConnection: function () {
@@ -70,7 +70,7 @@ draw2d.command.CommandConnect = draw2d.command.Command.extend({
     if (this.connection === null) {
       // deprecated call!!!!
       //
-      let result = draw2d.Configuration.factory.createConnection(this.source, this.target, optionalCallback, this.dropTarget)
+      let result =  .Configuration.factory.createConnection(this.source, this.target, optionalCallback, this.dropTarget)
       debugger
       // will be handled by the optional callback
       if (typeof result === "undefined") {

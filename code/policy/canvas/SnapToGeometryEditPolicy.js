@@ -1,5 +1,5 @@
 /**
- * @class draw2d.policy.canvas.SnapToGeometryEditPolicy
+ * @class  .policy.canvas.SnapToGeometryEditPolicy
  *
  * Snapping is based on the existing children of a container. When snapping a shape,
  * the edges of the bounding box will snap to edges of other rectangles generated
@@ -8,13 +8,13 @@
  *
  * @author Andreas Herz
  *
- * @extends draw2d.policy.canvas.SnapToEditPolicy
+ * @extends  .policy.canvas.SnapToEditPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditPolicy.extend({
+ .policy.canvas.SnapToGeometryEditPolicy =  .policy.canvas.SnapToEditPolicy.extend({
 
-  NAME: "draw2d.policy.canvas.SnapToGeometryEditPolicy",
+  NAME: " .policy.canvas.SnapToGeometryEditPolicy",
 
   SNAP_THRESHOLD: 3,
   FADEOUT_DURATION: 300,
@@ -37,7 +37,7 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
   /**
    * @method
    *
-   * @param {draw2d.Figure} figure the shape below the mouse or null
+   * @param { .Figure} figure the shape below the mouse or null
    * @param {Number} x the x-coordinate of the mouse down event
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -54,16 +54,16 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
    * @method
    * Adjust the coordinates to the canvas neighbours
    *
-   * @param {draw2d.Canvas} canvas the related canvas
-   * @param {draw2d.Figure} figure the figure to snap
-   * @param {draw2d.geo.Point} modifiedPos the already modified position of the figure (e.g. from an another Policy)
-   * @param {draw2d.geo.Point} originalPos the original requested position of the figure
+   * @param { .Canvas} canvas the related canvas
+   * @param { .Figure} figure the figure to snap
+   * @param { .geo.Point} modifiedPos the already modified position of the figure (e.g. from an another Policy)
+   * @param { .geo.Point} originalPos the original requested position of the figure
    *
-   * @returns {draw2d.geo.Point} the constraint position of the figure
+   * @returns { .geo.Point} the constraint position of the figure
    */
   snap: function (canvas, figure, modifiedPos, originalPos) {
     // do nothing for lines
-    if (figure instanceof draw2d.shape.basic.Line) {
+    if (figure instanceof  .shape.basic.Line) {
       return modifiedPos
     }
 
@@ -78,7 +78,7 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
       return modifiedPos
     }
 
-    if (figure instanceof draw2d.ResizeHandle) {
+    if (figure instanceof  .ResizeHandle) {
       let snapPoint = figure.getSnapToGridAnchor()
       modifiedPos.x += snapPoint.x
       modifiedPos.y += snapPoint.y
@@ -88,8 +88,8 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
 
       // Show a vertical line if the snapper has modified the inputPoint
       //
-      if (allowXChanges && (snapDirections & draw2d.SnapToHelper.EAST_WEST) && !(result.edge & draw2d.SnapToHelper.EAST_WEST)) {
-        this.showVerticalLine(figure, draw2d.SnapToHelper.WEST, result.point.x)
+      if (allowXChanges && (snapDirections &  .SnapToHelper.EAST_WEST) && !(result.edge &  .SnapToHelper.EAST_WEST)) {
+        this.showVerticalLine(figure,  .SnapToHelper.WEST, result.point.x)
       }
       else {
         this.hideVerticalLine()
@@ -97,8 +97,8 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
 
       // Show a horizontal line if the snapper has modified the inputPoint
       //
-      if (allowYChanges && (snapDirections & draw2d.SnapToHelper.NORTH_SOUTH) && !(result.edge & draw2d.SnapToHelper.NORTH_SOUTH)) {
-        this.showHorizontalLine(figure, draw2d.SnapToHelper.NORTH, result.point.y)
+      if (allowYChanges && (snapDirections &  .SnapToHelper.NORTH_SOUTH) && !(result.edge &  .SnapToHelper.NORTH_SOUTH)) {
+        this.showHorizontalLine(figure,  .SnapToHelper.NORTH, result.point.y)
       }
       else {
         this.hideHorizontalLine()
@@ -114,7 +114,7 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
     }
 
     // The user drag&drop a normal figure
-    let inputBounds = new draw2d.geo.Rectangle(modifiedPos.x, modifiedPos.y, figure.getWidth(), figure.getHeight())
+    let inputBounds = new  .geo.Rectangle(modifiedPos.x, modifiedPos.y, figure.getWidth(), figure.getHeight())
 
     result = this.snapRectangle(inputBounds)
 
@@ -128,11 +128,11 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
 
     // Show a vertical line if the snapper has modified the inputPoint
     //
-    if (allowXChanges && !(result.edge & draw2d.SnapToHelper.WEST)) {
-      this.showVerticalLine(figure, draw2d.SnapToHelper.WEST, result.bounds.x)
+    if (allowXChanges && !(result.edge &  .SnapToHelper.WEST)) {
+      this.showVerticalLine(figure,  .SnapToHelper.WEST, result.bounds.x)
     }
-    else if (allowXChanges && !(result.edge & draw2d.SnapToHelper.EAST)) {
-      this.showVerticalLine(figure, draw2d.SnapToHelper.EAST, result.bounds.x + result.bounds.getWidth())
+    else if (allowXChanges && !(result.edge &  .SnapToHelper.EAST)) {
+      this.showVerticalLine(figure,  .SnapToHelper.EAST, result.bounds.x + result.bounds.getWidth())
     }
     else {
       this.hideVerticalLine()
@@ -141,11 +141,11 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
 
     // Show a horizontal line if the snapper has modified the inputPoint
     //
-    if (allowYChanges && !(result.edge & draw2d.SnapToHelper.NORTH)) {
-      this.showHorizontalLine(figure, draw2d.SnapToHelper.NORTH, result.bounds.y)
+    if (allowYChanges && !(result.edge &  .SnapToHelper.NORTH)) {
+      this.showHorizontalLine(figure,  .SnapToHelper.NORTH, result.bounds.y)
     }
-    else if (allowYChanges && !(result.edge & draw2d.SnapToHelper.SOUTH)) {
-      this.showHorizontalLine(figure, draw2d.SnapToHelper.SOUTH, result.bounds.y + result.bounds.getHeight())
+    else if (allowYChanges && !(result.edge &  .SnapToHelper.SOUTH)) {
+      this.showHorizontalLine(figure,  .SnapToHelper.SOUTH, result.bounds.y + result.bounds.getHeight())
     }
     else {
       this.hideHorizontalLine()
@@ -158,68 +158,68 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
    * @method
    * calculates the snapped position of the rectangle.
    *
-   * @param {draw2d.geo.Rectangle} inputBounds
+   * @param { .geo.Rectangle} inputBounds
    *
    * @returns {Object}
    */
   snapRectangle: function (inputBounds) {
     let resultBounds = inputBounds.clone()
 
-    let topLeft = this.snapPoint(draw2d.SnapToHelper.NORTH_WEST, inputBounds.getTopLeft())
+    let topLeft = this.snapPoint( .SnapToHelper.NORTH_WEST, inputBounds.getTopLeft())
     resultBounds.x = topLeft.point.x
     resultBounds.y = topLeft.point.y
 
-    let bottomRight = this.snapPoint(draw2d.SnapToHelper.SOUTH_EAST, inputBounds.getBottomRight())
+    let bottomRight = this.snapPoint( .SnapToHelper.SOUTH_EAST, inputBounds.getBottomRight())
 
     // The first test (topLeft) has not modified the point. so we can modify them with the bottomRight adjustment
     //
-    if (topLeft.edge & draw2d.SnapToHelper.WEST) {
+    if (topLeft.edge &  .SnapToHelper.WEST) {
       resultBounds.x = bottomRight.point.x - inputBounds.getWidth()
     }
 
     // The first test (topLeft) has not modified the point. so we can modify them with the bottomRight adjustment
     //
-    if (topLeft.edge & draw2d.SnapToHelper.NORTH) {
+    if (topLeft.edge &  .SnapToHelper.NORTH) {
       resultBounds.y = bottomRight.point.y - inputBounds.getHeight()
     }
 
     return {edge: topLeft.edge | bottomRight.edge, bounds: resultBounds}
   },
 
-  snapPoint: function (/*:int*/ snapOrientation, /*:draw2d.Point*/ inputPoint) {
+  snapPoint: function (/*:int*/ snapOrientation, /*: .Point*/ inputPoint) {
     let resultPoint = inputPoint.clone()
 
     if (this.rows === null || this.cols === null)
       this.populateRowsAndCols()
 
-    if ((snapOrientation & draw2d.SnapToHelper.EAST) !== 0) {
+    if ((snapOrientation &  .SnapToHelper.EAST) !== 0) {
       let rightCorrection = this.getCorrectionFor(this.cols, inputPoint.x + 1, 1)
       if (rightCorrection !== this.SNAP_THRESHOLD) {
-        snapOrientation &= ~draw2d.SnapToHelper.EAST
+        snapOrientation &= ~ .SnapToHelper.EAST
         resultPoint.x += rightCorrection
       }
     }
 
-    if ((snapOrientation & draw2d.SnapToHelper.WEST) !== 0) {
+    if ((snapOrientation &  .SnapToHelper.WEST) !== 0) {
       let leftCorrection = this.getCorrectionFor(this.cols, inputPoint.x, -1)
       if (leftCorrection !== this.SNAP_THRESHOLD) {
-        snapOrientation &= ~draw2d.SnapToHelper.WEST
+        snapOrientation &= ~ .SnapToHelper.WEST
         resultPoint.x += leftCorrection
       }
     }
 
-    if ((snapOrientation & draw2d.SnapToHelper.SOUTH) !== 0) {
+    if ((snapOrientation &  .SnapToHelper.SOUTH) !== 0) {
       let bottomCorrection = this.getCorrectionFor(this.rows, inputPoint.y + 1, 1)
       if (bottomCorrection !== this.SNAP_THRESHOLD) {
-        snapOrientation &= ~draw2d.SnapToHelper.SOUTH
+        snapOrientation &= ~ .SnapToHelper.SOUTH
         resultPoint.y += bottomCorrection
       }
     }
 
-    if ((snapOrientation & draw2d.SnapToHelper.NORTH) !== 0) {
+    if ((snapOrientation &  .SnapToHelper.NORTH) !== 0) {
       let topCorrection = this.getCorrectionFor(this.rows, inputPoint.y, -1)
       if (topCorrection !== this.SNAP_THRESHOLD) {
-        snapOrientation &= ~draw2d.SnapToHelper.NORTH
+        snapOrientation &= ~ .SnapToHelper.NORTH
         resultPoint.y += topCorrection
       }
     }

@@ -1,5 +1,5 @@
 /**
- * @class draw2d.policy.figure.AntSelectionFeedbackPolicy
+ * @class  .policy.figure.AntSelectionFeedbackPolicy
  *
  * Provide support for selecting and positioning a non-resizable figure.
  * Selection is indicated via rectangular handle that outlines the figure with a 1-pixel black
@@ -8,20 +8,20 @@
  * See the example:
  *
  *     @example preview small frame
- *       circle =new draw2d.shape.basic.Circle({diameter:50, x:90, y:50});
- *       circle.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
+ *       circle =new  .shape.basic.Circle({diameter:50, x:90, y:50});
+ *       circle.installEditPolicy(new  .policy.figure.AntSelectionFeedbackPolicy());
  *       canvas.add(circle);
  *
- *       canvas.add(new draw2d.shape.basic.Label({text:"Click on the circle to see the selection feedback"}),20,10);
+ *       canvas.add(new  .shape.basic.Label({text:"Click on the circle to see the selection feedback"}),20,10);
  *
  * @author Andreas Herz
- * @extends draw2d.policy.figure.SelectionFeedbackPolicy
+ * @extends  .policy.figure.SelectionFeedbackPolicy
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.policy.figure.AntSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend({
+ .policy.figure.AntSelectionFeedbackPolicy =  .policy.figure.SelectionFeedbackPolicy.extend({
 
-  NAME: "draw2d.policy.figure.AntSelectionFeedbackPolicy",
+  NAME: " .policy.figure.AntSelectionFeedbackPolicy",
 
   /**
    * @constructor
@@ -36,13 +36,13 @@ draw2d.policy.figure.AntSelectionFeedbackPolicy = draw2d.policy.figure.Selection
    * @method
    * Called by the framework of the Policy should show a resize handle for the given shape
    *
-   * @param {draw2d.Canvas} canvas the responsible canvas
-   * @param {draw2d.Figure} figure the figure to decorate with a selection feedback
+   * @param { .Canvas} canvas the responsible canvas
+   * @param { .Figure} figure the figure to decorate with a selection feedback
    * @param {Boolean} [isPrimarySelection]
    */
   onSelect: function (canvas, figure, isPrimarySelection) {
     if (figure.selectionHandles.isEmpty()) {
-      let box = new draw2d.shape.basic.Rectangle({bgColor: null, dasharray: "- ", color: "#2C70FF"})
+      let box = new  .shape.basic.Rectangle({bgColor: null, dasharray: "- ", color: "#2C70FF"})
       box.hide = function () {
         // IMPORTANT
         // don't add/remove this rectangle to the canvas resizeHandles. This rect isn't responsible for any hitTest or
@@ -65,7 +65,7 @@ draw2d.policy.figure.AntSelectionFeedbackPolicy = draw2d.policy.figure.Selection
       // add a bee line to the parent if a parent is given and if the bounding box
       // of the parent and the figure didn't have intersections
       if (figure.getParent() !== null) {
-        let line = new draw2d.shape.basic.Line({opacity: 0.5, bgColor: null, dasharray: "- ", color: "#2C70FF"})
+        let line = new  .shape.basic.Line({opacity: 0.5, bgColor: null, dasharray: "- ", color: "#2C70FF"})
         //line.setStartPosition(figure.getBoundingBox().getCenter());
         //line.setEndPosition(figure.getParent().getBoundingBox().getCenter());
         line.show = (canvas) => line.setCanvas(canvas)
@@ -105,8 +105,8 @@ draw2d.policy.figure.AntSelectionFeedbackPolicy = draw2d.policy.figure.Selection
 
   /**
    *
-   * @param {draw2d.shape.basic.Line} line
-   * @param {draw2d.Figure} figure
+   * @param { .shape.basic.Line} line
+   * @param { .Figure} figure
    * @private
    */
   _updateBeeLine: function (line, figure) {
@@ -116,7 +116,7 @@ draw2d.policy.figure.AntSelectionFeedbackPolicy = draw2d.policy.figure.Selection
       return
     }
 
-    if (parent instanceof draw2d.shape.basic.Line) {
+    if (parent instanceof  .shape.basic.Line) {
       let center = figure.getBoundingBox().getCenter()
       let projection = parent.pointProjection(center)
       if (projection === null) {

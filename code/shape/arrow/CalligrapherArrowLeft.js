@@ -1,22 +1,22 @@
 /**
- * @class draw2d.shape.arrow.CalligrapherArrowLeft
+ * @class  .shape.arrow.CalligrapherArrowLeft
  * Hand drawn arrow to the left.
  *
  * See the example:
  *
  *     @example preview small frame
  *
- *     let figure =  new draw2d.shape.arrow.CalligrapherArrowLeft({x:10, y:10, color:"#3d3d3d"});
+ *     let figure =  new  .shape.arrow.CalligrapherArrowLeft({x:10, y:10, color:"#3d3d3d"});
  *
  *     canvas.add(figure);
  *
- * @extends draw2d.SVGFigure
+ * @extends  .SVGFigure
  */
-import draw2d from '../../packages'
+import   from '../../packages'
 
-draw2d.shape.arrow.CalligrapherArrowLeft = draw2d.SVGFigure.extend({
+ .shape.arrow.CalligrapherArrowLeft =  .SVGFigure.extend({
 
-  NAME: "draw2d.shape.arrow.CalligrapherArrowLeft",
+  NAME: " .shape.arrow.CalligrapherArrowLeft",
 
   /**
    * @constructor
