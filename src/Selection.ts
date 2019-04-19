@@ -41,7 +41,7 @@ export class Selection {
     return this;
   }
 
-  contains(figure, checkDescendant) {
+  contains(figure, checkDescendant = false) {
     if (checkDescendant) {
       for (let i = 0; i < this.all.getSize(); i++) {
         let figureToCheck = this.all.get(i);

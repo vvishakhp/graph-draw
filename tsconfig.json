@@ -69,6 +69,5 @@
   },
   "exclude": [
     "./code/**/*.*"
-  ],
-  "files": ["src/index.ts"]
+  ]
 }

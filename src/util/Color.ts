@@ -3,6 +3,9 @@ export class Color {
     private hashString = 'none';
 
     constructor(private red: number = -1, private green: number = -1, private blue: number = -1) {
+        if(red===null){
+            this.hashString = "none";
+        }
         if (red != -1) {
             this.hash();
             this.red = 0; this.green = 0; this.blue = 0;
