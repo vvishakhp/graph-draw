@@ -9,7 +9,7 @@ export class EditPolicy {
   private setterWhitelist;
   private getterWhitelist;
 
-  constructor(attr, setter, getter) {
+  constructor(attr?, setter?, getter?) {
     this.setterWhitelist = extend({}, setter);
     this.getterWhitelist = extend({}, getter);
     this.attr(attr);

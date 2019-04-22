@@ -6,7 +6,7 @@ import ArrayList from "../../util/ArrayList";
 export class SelectionFeedbackPolicy extends SelectionPolicy {
   onUnselect(canvas: Canvas, figure: Figure) {
 
-    super.onUselect(canvas, figure);
+    super.onUnselect(canvas, figure);
 
     figure.selectionHandles.each((i, e) => e.hide())
     figure.selectionHandles = new ArrayList()

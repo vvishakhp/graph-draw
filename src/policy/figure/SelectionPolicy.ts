@@ -5,11 +5,11 @@ import { Type } from '../../TypeRegistry';
 
 @Type('SelectionPolicy')
 export class SelectionPolicy extends DragDropEditPolicy {
-  onSelect(canvas: Canvas, figure: Figure, isPrimarySelection: boolean) {
+  public onSelect(canvas: Canvas, figure: Figure, isPrimarySelection: boolean) {
 
   }
 
-  onUselect(canvas: Canvas, figure: Figure) {
+  public onUnselect(canvas: Canvas, figure: Figure) {
 
   }
 }

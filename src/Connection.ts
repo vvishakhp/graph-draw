@@ -1,3 +1,8 @@
+export class Connection extends PolyLine {
+
+}
+
+
 /**
  * @class  .Connection
  * See the example:
@@ -89,7 +94,7 @@
  * @extends  .shape.basic.PolyLine
  */
 
-import   from 'packages'
+import from 'packages'
 import extend from 'util/extend'
 
 
@@ -167,9 +172,9 @@ import extend from 'util/extend'
       this.sourcePort.connections.remove(this)
 
       // fire the events to all listener
-      this.sourcePort.fireEvent("disconnect", {port: this.sourcePort, connection: this})
+      this.sourcePort.fireEvent("disconnect", { port: this.sourcePort, connection: this })
       if (this.canvas !== null) {
-        this.canvas.fireEvent("disconnect", {"port": this.sourcePort, "connection": this})
+        this.canvas.fireEvent("disconnect", { "port": this.sourcePort, "connection": this })
       }
       this.sourcePort.onDisconnect(this)
 
@@ -181,9 +186,9 @@ import extend from 'util/extend'
       this.targetPort.connections.remove(this)
 
       // fire the events to all listener
-      this.targetPort.fireEvent("disconnect", {port: this.targetPort, connection: this})
+      this.targetPort.fireEvent("disconnect", { port: this.targetPort, connection: this })
       if (this.canvas !== null) {
-        this.canvas.fireEvent("disconnect", {"port": this.targetPort, "connection": this})
+        this.canvas.fireEvent("disconnect", { "port": this.targetPort, "connection": this })
       }
       this.targetPort.onDisconnect(this)
 
@@ -201,9 +206,9 @@ import extend from 'util/extend'
       this.sourcePort.connections.add(this)
 
       // fire the events to all listener
-      this.sourcePort.fireEvent("connect", {port: this.sourcePort, connection: this})
+      this.sourcePort.fireEvent("connect", { port: this.sourcePort, connection: this })
       if (this.canvas !== null) {
-        this.canvas.fireEvent("connect", {"port": this.sourcePort, "connection": this})
+        this.canvas.fireEvent("connect", { "port": this.sourcePort, "connection": this })
       }
       this.sourcePort.onConnect(this)
 
@@ -215,9 +220,9 @@ import extend from 'util/extend'
       this.targetPort.connections.add(this)
 
       // fire the events to all listener
-      this.targetPort.fireEvent("connect", {port: this.targetPort, connection: this})
+      this.targetPort.fireEvent("connect", { port: this.targetPort, connection: this })
       if (this.canvas !== null) {
-        this.canvas.fireEvent("connect", {"port": this.targetPort, "connection": this})
+        this.canvas.fireEvent("connect", { "port": this.targetPort, "connection": this })
       }
       this.targetPort.onConnect(this)
 
@@ -371,7 +376,7 @@ import extend from 'util/extend'
       var start = this.getVertices().first()
       this.sourceDecoratorNode.transform("r" + this.getStartAngle() + "," + start.x + "," + start.y + " t" + start.x + "," + start.y)
       // propagate the color and the opacity to the decoration as well
-      this.sourceDecoratorNode.attr({"stroke": "#" + this.lineColor.hex(), opacity: this.alpha})
+      this.sourceDecoratorNode.attr({ "stroke": "#" + this.lineColor.hex(), opacity: this.alpha })
       this.sourceDecoratorNode.forEach(function (shape) {
         shape.node.setAttribute("class", _this.cssClass !== null ? _this.cssClass : "")
       })
@@ -380,7 +385,7 @@ import extend from 'util/extend'
     if (this.targetDecoratorNode !== null) {
       var end = this.getVertices().last()
       this.targetDecoratorNode.transform("r" + this.getEndAngle() + "," + end.x + "," + end.y + " t" + end.x + "," + end.y)
-      this.targetDecoratorNode.attr({"stroke": "#" + this.lineColor.hex(), opacity: this.alpha})
+      this.targetDecoratorNode.attr({ "stroke": "#" + this.lineColor.hex(), opacity: this.alpha })
       this.targetDecoratorNode.forEach(function (shape) {
         shape.node.setAttribute("class", _this.cssClass !== null ? _this.cssClass : "")
       })
@@ -465,7 +470,7 @@ import extend from 'util/extend'
       }
     })
 
-    this.fireEvent("move", {figure: this, dx: dx, dy: dx})
+    this.fireEvent("move", { figure: this, dx: dx, dy: dx })
   },
 
 
@@ -578,11 +583,11 @@ import extend from 'util/extend'
     if (this.sourcePort !== null) {
       this.sourcePort.off(this.moveListener)
       this.sourcePort.connections.remove(this)
-      this.sourcePort.fireEvent("disconnect", {port: this.sourcePort, connection: this})
+      this.sourcePort.fireEvent("disconnect", { port: this.sourcePort, connection: this })
       // it is possible that a connection has already a port but is not assigned to
       // a canvas. In this case we must check if the canvas set correct before we fire this event
       if (this.canvas !== null) {
-        this.canvas.fireEvent("disconnect", {"port": this.sourcePort, "connection": this})
+        this.canvas.fireEvent("disconnect", { "port": this.sourcePort, "connection": this })
       }
       this.sourcePort.onDisconnect(this)
     }
@@ -597,13 +602,13 @@ import extend from 'util/extend'
     this.sourcePort.connections.add(this)
     this.sourcePort.on("move", this.moveListener)
     if (this.canvas !== null) {
-      this.canvas.fireEvent("connect", {"port": this.sourcePort, "connection": this})
+      this.canvas.fireEvent("connect", { "port": this.sourcePort, "connection": this })
     }
-    this.sourcePort.fireEvent("connect", {port: this.sourcePort, connection: this})
+    this.sourcePort.fireEvent("connect", { port: this.sourcePort, connection: this })
     this.sourcePort.onConnect(this)
 
     this.setStartPoint(port.getAbsoluteX(), port.getAbsoluteY())
-    this.fireEvent("connect", {"port": this.sourcePort, "connection": this})
+    this.fireEvent("connect", { "port": this.sourcePort, "connection": this })
   },
 
   /**
@@ -626,11 +631,11 @@ import extend from 'util/extend'
     if (this.targetPort !== null) {
       this.targetPort.off(this.moveListener)
       this.targetPort.connections.remove(this)
-      this.targetPort.fireEvent("disconnect", {port: this.targetPort, connection: this})
+      this.targetPort.fireEvent("disconnect", { port: this.targetPort, connection: this })
       // it is possible that a connection has already a port but is not assigned to
       // a canvas. In this case we must check if the canvas set correct before we fire this event
       if (this.canvas !== null) {
-        this.canvas.fireEvent("disconnect", {"port": this.targetPort, "connection": this})
+        this.canvas.fireEvent("disconnect", { "port": this.targetPort, "connection": this })
       }
       this.targetPort.onDisconnect(this)
     }
@@ -645,13 +650,13 @@ import extend from 'util/extend'
     this.targetPort.connections.add(this)
     this.targetPort.on("move", this.moveListener)
     if (this.canvas !== null) {
-      this.canvas.fireEvent("connect", {"port": this.targetPort, "connection": this})
+      this.canvas.fireEvent("connect", { "port": this.targetPort, "connection": this })
     }
-    this.targetPort.fireEvent("connect", {port: this.targetPort, connection: this})
+    this.targetPort.fireEvent("connect", { port: this.targetPort, connection: this })
     this.targetPort.onConnect(this)
 
     this.setEndPoint(port.getAbsoluteX(), port.getAbsoluteY())
-    this.fireEvent("connect", {"port": this.targetPort, "connection": this})
+    this.fireEvent("connect", { "port": this.targetPort, "connection": this })
   },
 
   /**
@@ -697,228 +702,228 @@ import extend from 'util/extend'
 
     if (canvas !== null &&  .Connection.DROP_FILTER === null) {
        .Connection.DROP_FILTER = canvas.paper.createFilter()
-       .Connection.DROP_FILTER.element.setAttribute("width", "250%")
-       .Connection.DROP_FILTER.element.setAttribute("height", "250%")
-       .Connection.DROP_FILTER.createShadow(1, 1, 2, 0.3)
-    }
+      .Connection.DROP_FILTER.element.setAttribute("width", "250%")
+      .Connection.DROP_FILTER.element.setAttribute("height", "250%")
+      .Connection.DROP_FILTER.createShadow(1, 1, 2, 0.3)
+}
 
     if (this.sourceDecoratorNode !== null) {
-      this.sourceDecoratorNode.remove()
-      this.sourceDecoratorNode = null
-    }
+  this.sourceDecoratorNode.remove()
+  this.sourceDecoratorNode = null
+}
 
-    if (this.targetDecoratorNode !== null) {
-      this.targetDecoratorNode.remove()
-      this.targetDecoratorNode = null
-    }
+if (this.targetDecoratorNode !== null) {
+  this.targetDecoratorNode.remove()
+  this.targetDecoratorNode = null
+}
 
-    if (this.canvas === null) {
-      if (this.sourcePort !== null) {
-        this.sourcePort.off(this.moveListener)
-        notiCanvas.fireEvent("disconnect", {"port": this.sourcePort, "connection": this})
-        this.sourcePort.onDisconnect(this)
-      }
-      if (this.targetPort !== null) {
-        this.targetPort.off(this.moveListener)
-        notiCanvas.fireEvent("disconnect", {"port": this.targetPort, "connection": this})
-        this.targetPort.onDisconnect(this)
-      }
-    }
-    else {
-      this.shape.items[0].filter( .Connection.DROP_FILTER)
-
-      if (this.sourcePort !== null) {
-        this.sourcePort.on("move", this.moveListener)
-        this.canvas.fireEvent("connect", {"port": this.sourcePort, "connection": this})
-        this.sourcePort.onConnect(this)
-      }
-      if (this.targetPort !== null) {
-        this.targetPort.on("move", this.moveListener)
-        this.canvas.fireEvent("connect", {"port": this.targetPort, "connection": this})
-        this.targetPort.onConnect(this)
-      }
-    }
-
-  },
-
-
-  /**
-   * Returns the angle of the connection at the output port (source)
-   *
-   **/
-  getStartAngle: function () {
-    // return a good default value if the connection is not routed at the
-    //  moment
-    if (this.lineSegments.getSize() === 0) {
-      return 0
-    }
-
-    var p1 = this.lineSegments.get(0).start
-    var p2 = this.lineSegments.get(0).end
-    if (this.router instanceof  .layout.connection.SplineConnectionRouter) {
-      p2 = this.lineSegments.get(5).end
-    }
-    var length = Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y))
-    var angle = -(180 / Math.PI) * Math.asin((p1.y - p2.y) / length)
-
-    if (angle < 0) {
-      if (p2.x < p1.x) {
-        angle = Math.abs(angle) + 180
-      }
-      else {
-        angle = 360 - Math.abs(angle)
-      }
-    }
-    else {
-      if (p2.x < p1.x) {
-        angle = 180 - angle
-      }
-    }
-    return angle
-  },
-
-  getEndAngle: function () {
-    // return a good default value if the connection is not routed at the
-    //  moment
-    if (this.lineSegments.getSize() === 0) {
-      return 90
-    }
-
-    var p1 = this.lineSegments.get(this.lineSegments.getSize() - 1).end
-    var p2 = this.lineSegments.get(this.lineSegments.getSize() - 1).start
-    if (this.router instanceof  .layout.connection.SplineConnectionRouter) {
-      p2 = this.lineSegments.get(this.lineSegments.getSize() - 5).end
-    }
-    var length = Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y))
-    var angle = -(180 / Math.PI) * Math.asin((p1.y - p2.y) / length)
-
-    if (angle < 0) {
-      if (p2.x < p1.x) {
-        angle = Math.abs(angle) + 180
-      }
-      else {
-        angle = 360 - Math.abs(angle)
-      }
-    }
-    else {
-      if (p2.x < p1.x) {
-        angle = 180 - angle
-      }
-    }
-    return angle
-  },
-
-
-  /**
-   * @private
-   **/
-  fireSourcePortRouteEvent: function () {
-    this.sourcePort.getConnections().each(function (i, conn) {
-      conn.routingRequired = true
-      conn.repaint()
-    })
-  },
-
-  /**
-   * @private
-   **/
-  fireTargetPortRouteEvent: function () {
-    // enforce a repaint of all connections which are related to this port
-    // this is required for a "FanConnectionRouter" or "ShortesPathConnectionRouter"
-    //
-    this.targetPort.getConnections().each(function (i, conn) {
-      conn.routingRequired = true
-      conn.repaint()
-    })
-  },
-
-
-  /**
-   * @method
-   * Returns the Command to perform the specified Request or null.
-   *
-   * @param { .command.CommandType} request describes the Command being requested
-   *
-   * @return { .command.Command} null or a Command
-   **/
-  createCommand: function (request) {
-    if (request.getPolicy() ===  .command.CommandType.MOVE) {
-      if (this.isDraggable()) {
-        return new  .command.CommandMoveVertices(this)
-      }
-    }
-
-    if (request.getPolicy() ===  .command.CommandType.MOVE_BASEPOINT) {
-      // DragDrop of a connection doesn't create a undo command at this point. This will be done in
-      // the onDrop method
-      return new  .command.CommandReconnect(this)
-    }
-
-    return this._super(request)
-  },
-
-
-  /**
-   * @method
-   * Return an objects with all important attributes for XML or JSON serialization
-   *
-   * @returns {Object}
-   */
-  getPersistentAttributes: function () {
-    var memento = this._super()
-
-    var parentNode = this.getSource().getParent()
-    while (parentNode.getParent() !== null) {
-      parentNode = parentNode.getParent()
-    }
-    memento.source = {
-      node: parentNode.getId(),
-      port: this.getSource().getName()
-    }
-
-    parentNode = this.getTarget().getParent()
-    while (parentNode.getParent() !== null) {
-      parentNode = parentNode.getParent()
-    }
-    memento.target = {
-      node: parentNode.getId(),
-      port: this.getTarget().getName()
-    }
-
-    if (this.sourceDecorator !== null) {
-      memento.source.decoration = this.sourceDecorator.NAME
-    }
-
-    if (this.targetDecorator !== null) {
-      memento.target.decoration = this.targetDecorator.NAME
-    }
-
-    return memento
-  },
-
-  /**
-   * @method
-   * Read all attributes from the serialized properties and transfer them into the shape.
-   *
-   * @param {Object} memento
-   * @returns
-   */
-  setPersistentAttributes: function (memento) {
-    this._super(memento)
-
-    // nothing to to for the connection creation. This will be done in the  .io.Reader
-    // implementation
-    //
-    // restore your custom attributes here
-    if (typeof memento.target.decoration !== "undefined" && memento.target.decoration != null) {
-      this.setTargetDecorator(eval("new " + memento.target.decoration))
-    }
-
-    if (typeof memento.source.decoration !== "undefined" && memento.source.decoration != null) {
-      this.setSourceDecorator(eval("new " + memento.source.decoration))
-    }
-
+if (this.canvas === null) {
+  if (this.sourcePort !== null) {
+    this.sourcePort.off(this.moveListener)
+    notiCanvas.fireEvent("disconnect", { "port": this.sourcePort, "connection": this })
+    this.sourcePort.onDisconnect(this)
   }
+  if (this.targetPort !== null) {
+    this.targetPort.off(this.moveListener)
+    notiCanvas.fireEvent("disconnect", { "port": this.targetPort, "connection": this })
+    this.targetPort.onDisconnect(this)
+  }
+}
+else {
+  this.shape.items[0].filter( .Connection.DROP_FILTER)
+
+  if (this.sourcePort !== null) {
+    this.sourcePort.on("move", this.moveListener)
+    this.canvas.fireEvent("connect", { "port": this.sourcePort, "connection": this })
+    this.sourcePort.onConnect(this)
+  }
+  if (this.targetPort !== null) {
+    this.targetPort.on("move", this.moveListener)
+    this.canvas.fireEvent("connect", { "port": this.targetPort, "connection": this })
+    this.targetPort.onConnect(this)
+  }
+}
+
+  },
+
+
+/**
+ * Returns the angle of the connection at the output port (source)
+ *
+ **/
+getStartAngle: function () {
+  // return a good default value if the connection is not routed at the
+  //  moment
+  if (this.lineSegments.getSize() === 0) {
+    return 0
+  }
+
+  var p1 = this.lineSegments.get(0).start
+  var p2 = this.lineSegments.get(0).end
+  if (this.router instanceof  .layout.connection.SplineConnectionRouter) {
+    p2 = this.lineSegments.get(5).end
+  }
+  var length = Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y))
+  var angle = -(180 / Math.PI) * Math.asin((p1.y - p2.y) / length)
+
+  if (angle < 0) {
+    if (p2.x < p1.x) {
+      angle = Math.abs(angle) + 180
+    }
+    else {
+      angle = 360 - Math.abs(angle)
+    }
+  }
+  else {
+    if (p2.x < p1.x) {
+      angle = 180 - angle
+    }
+  }
+  return angle
+},
+
+getEndAngle: function () {
+  // return a good default value if the connection is not routed at the
+  //  moment
+  if (this.lineSegments.getSize() === 0) {
+    return 90
+  }
+
+  var p1 = this.lineSegments.get(this.lineSegments.getSize() - 1).end
+  var p2 = this.lineSegments.get(this.lineSegments.getSize() - 1).start
+  if (this.router instanceof  .layout.connection.SplineConnectionRouter) {
+    p2 = this.lineSegments.get(this.lineSegments.getSize() - 5).end
+  }
+  var length = Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y))
+  var angle = -(180 / Math.PI) * Math.asin((p1.y - p2.y) / length)
+
+  if (angle < 0) {
+    if (p2.x < p1.x) {
+      angle = Math.abs(angle) + 180
+    }
+    else {
+      angle = 360 - Math.abs(angle)
+    }
+  }
+  else {
+    if (p2.x < p1.x) {
+      angle = 180 - angle
+    }
+  }
+  return angle
+},
+
+
+/**
+ * @private
+ **/
+fireSourcePortRouteEvent: function () {
+  this.sourcePort.getConnections().each(function (i, conn) {
+    conn.routingRequired = true
+    conn.repaint()
+  })
+},
+
+/**
+ * @private
+ **/
+fireTargetPortRouteEvent: function () {
+  // enforce a repaint of all connections which are related to this port
+  // this is required for a "FanConnectionRouter" or "ShortesPathConnectionRouter"
+  //
+  this.targetPort.getConnections().each(function (i, conn) {
+    conn.routingRequired = true
+    conn.repaint()
+  })
+},
+
+
+/**
+ * @method
+ * Returns the Command to perform the specified Request or null.
+ *
+ * @param { .command.CommandType} request describes the Command being requested
+ *
+ * @return { .command.Command} null or a Command
+ **/
+createCommand: function (request) {
+  if (request.getPolicy() ===  .command.CommandType.MOVE) {
+    if (this.isDraggable()) {
+      return new.command.CommandMoveVertices(this)
+    }
+  }
+
+  if (request.getPolicy() ===  .command.CommandType.MOVE_BASEPOINT) {
+    // DragDrop of a connection doesn't create a undo command at this point. This will be done in
+    // the onDrop method
+    return new.command.CommandReconnect(this)
+  }
+
+  return this._super(request)
+},
+
+
+/**
+ * @method
+ * Return an objects with all important attributes for XML or JSON serialization
+ *
+ * @returns {Object}
+ */
+getPersistentAttributes: function () {
+  var memento = this._super()
+
+  var parentNode = this.getSource().getParent()
+  while (parentNode.getParent() !== null) {
+    parentNode = parentNode.getParent()
+  }
+  memento.source = {
+    node: parentNode.getId(),
+    port: this.getSource().getName()
+  }
+
+  parentNode = this.getTarget().getParent()
+  while (parentNode.getParent() !== null) {
+    parentNode = parentNode.getParent()
+  }
+  memento.target = {
+    node: parentNode.getId(),
+    port: this.getTarget().getName()
+  }
+
+  if (this.sourceDecorator !== null) {
+    memento.source.decoration = this.sourceDecorator.NAME
+  }
+
+  if (this.targetDecorator !== null) {
+    memento.target.decoration = this.targetDecorator.NAME
+  }
+
+  return memento
+},
+
+/**
+ * @method
+ * Read all attributes from the serialized properties and transfer them into the shape.
+ *
+ * @param {Object} memento
+ * @returns
+ */
+setPersistentAttributes: function (memento) {
+  this._super(memento)
+
+  // nothing to to for the connection creation. This will be done in the  .io.Reader
+  // implementation
+  //
+  // restore your custom attributes here
+  if (typeof memento.target.decoration !== "undefined" && memento.target.decoration != null) {
+    this.setTargetDecorator(eval("new " + memento.target.decoration))
+  }
+
+  if (typeof memento.source.decoration !== "undefined" && memento.source.decoration != null) {
+    this.setSourceDecorator(eval("new " + memento.source.decoration))
+  }
+
+}
 })
 
 

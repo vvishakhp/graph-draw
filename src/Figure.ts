@@ -8,6 +8,11 @@ import { Point } from './geo/Point';
 import jsonUtil from './util/JSONUtil';
 import { DragDropEditPolicy } from './policy/figure/DragDropEditPolicy';
 import { Rectangle } from './geo/Rectangle';
+import { RectangleSelectionFeedbackPolicy } from './policy/figure/RectangleSelectionFeedbackPolicy';
+import { SelectionPolicy } from './policy/figure/SelectionPolicy';
+import { SelectionFeedbackPolicy } from './policy/figure/SelectionFeedbackPolicy';
+import { CommandType } from './command/CommandType';
+import { CommandMove } from './command/CommandMove';
 
 export interface AttributeCollection {
   [key: string]: any;
@@ -772,8 +777,8 @@ export class Figure {
       if (e instanceof DragDropEditPolicy) {
         let newPos = e.adjustPosition(this, this.ox + dx, this.oy + dy)
         if (newPos) {
-          dx = newPos.x - this.ox
-          dy = newPos.y - this.oy
+          dx = newPos.getX() - this.ox
+          dy = newPos.getY() - this.oy
         }
       }
     })
@@ -1186,8 +1191,8 @@ export class Figure {
     this.editPolicy.each((i, e) => {
       if (e instanceof DragDropEditPolicy) {
         let newPos = e.adjustPosition(this, this.x, this.y)
-        this.x = newPos.x
-        this.y = newPos.y
+        this.x = newPos.getX()
+        this.y = newPos.getY();
       }
     })
 
@@ -1275,8 +1280,8 @@ export class Figure {
     this.editPolicy.each((i, e) => {
       if (e instanceof DragDropEditPolicy) {
         let newDim = e.adjustDimension(this, w, h)
-        w = newDim.w
-        h = newDim.h
+        w = newDim.getWidth();
+        h = newDim.getHeight();
       }
     })
 
@@ -1744,14 +1749,6 @@ export class Figure {
     return result
   }
 
-  /**
-   * @method
-   * Returns the Command to perform the specified Request or null.
-   *
-   * @param { .command.CommandType} request describes the Command being requested
-   * @return { .command.Command} null or a Command
-   * @private
-   **/
   createCommand(request) {
     if (request === null) {
       return null

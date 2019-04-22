@@ -668,7 +668,7 @@ export class Canvas {
         return this.html.height()
     }
 
-    add(figure, x, y) {
+    add(figure, x?, y?) {
         if (figure.getCanvas() === this) {
             return
         }

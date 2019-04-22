@@ -1,23 +1,19 @@
-/**
- * @class  .command.CommandDelete
- * Command to remove a figure with CommandStack support.
- *
- * @extends  .command.Command
- */
-import   from '../packages'
+import { Figure } from "../Figure";
+import { Command } from "./Command";
+import { Canvas } from "../Canvas";
+import ArrayList from "../util/ArrayList";
 
- .command.CommandDelete =  .command.Command.extend({
+export class CommandDelete extends Command {
 
-  NAME: " .command.CommandDelete",
+  private parent: Figure;
+  private figure: Figure;
+  private canvas: Canvas;
+  private connections: ArrayList<Connection>;
+  private removedParentEntry = null;
+  private indexOfChild = -1;
 
-  /**
-   * @constructor
-   * Create a delete command for the given figure.
-   *
-   * @param { .Figure} figure
-   */
-  init: function (figure) {
-    this._super( .Configuration.i18n.command.deleteShape)
+  constructor(figure: Figure) {
+    super('Delete item');
 
     this.parent = figure.getParent()
     this.figure = figure
@@ -25,37 +21,17 @@ import   from '../packages'
     this.connections = null
     this.removedParentEntry = null // can be null if the figure didn't have any parent shape assigned
     this.indexOfChild = -1
-  },
+  }
 
+  canExecute() {
+    return this.figure.getCanvas() !== null;
+  }
 
-  /**
-   * @method
-   * Returns [true] if the command can be execute and the execution of the
-   * command modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should
-   * return false. The execution of this Command doesn't modify the model.
-   *
-   * @return {Boolean} return try if the command modify the model or make any relevant changes
-   **/
-  canExecute: function () {
-    // we can only delete the figure if its part of the canvas.
-    return this.figure.getCanvas() !== null
-  },
+  execute() {
+    this.redo();
+  }
 
-  /**
-   * @method
-   * Execute the command the first time
-   *
-   **/
-  execute: function () {
-    this.redo()
-  },
-
-  /**
-   * @method
-   * Undo the command
-   *
-   **/
-  undo: function () {
+  undo() {
     if (this.parent !== null) {
       this.parent.add(this.removedParentEntry.figure, this.removedParentEntry.locator, this.indexOfChild)
       this.canvas.setCurrentSelection(this.parent)
@@ -65,7 +41,7 @@ import   from '../packages'
       this.canvas.setCurrentSelection(this.figure)
     }
 
-    if (this.figure instanceof  .Connection) {
+    if (this.figure instanceof Connection) {
       this.figure.reconnect()
     }
 
@@ -74,37 +50,21 @@ import   from '../packages'
       this.canvas.add(this.connections.get(i))
       this.connections.get(i).reconnect()
     }
-  },
+  }
 
-  /**
-   * @method
-   *
-   * Redo the command after the user has undo this command
-   *
-   **/
-  redo: function () {
+  redo() {
     this.canvas.setCurrentSelection(null)
 
-    // Collect all connections that are bounded to the figure to delete. This connections
-    // must be deleted too.
-    //
     if (this.connections === null) {
-      if (this.figure instanceof  .shape.node.Node) {
+      if (this.figure instanceof  Node) {
         this.connections = this.figure.getConnections()
       }
       else {
-        this.connections = new  .util.ArrayList()
+        this.connections = new.util.ArrayList()
       }
     }
 
-    // already done in the canvas.remove(..) method
-    //    if(this.figure instanceof  .Connection){
-    //        this.figure.disconnect();
-    //    }
 
-
-    // remove all connections
-    //
     for (let i = 0; i < this.connections.getSize(); ++i) {
       this.canvas.remove(this.connections.get(i))
     }
@@ -121,4 +81,5 @@ import   from '../packages'
       this.canvas.remove(this.figure)
     }
   }
-})
+
+}

@@ -1,27 +1,20 @@
-/**
- * @class  .command.CommandMove
- *
- * Command for the movement of figures.
- *
- * @author Andreas Herz
- *
- * @extends  .command.Command
- */
-import   from '../packages'
+import { Command } from "./Command";
+import { Type } from "../TypeRegistry";
+import { Figure } from "../Figure";
 
- .command.CommandMove =  .command.Command.extend({
-  NAME: " .command.CommandMove",
+@Type('CommandMove')
+export class CommandMove extends Command {
 
-  /**
-   * @constructor
-   * Create a new Command objects which can be execute via the CommandStack.
-   *
-   * @param { .Figure} figure the figure to move
-   * @param {Number} [x] the current x position
-   * @param {Number} [y] the current y position
-   */
-  init: function (figure, x, y) {
-    this._super( .Configuration.i18n.command.moveShape)
+
+  private figure: Figure;
+  private oldX: number;
+  private oldY: number;
+  private newX: number;
+  private newY: number;
+
+
+  constructor(figure: Figure, x: number = undefined, y: number = undefined) {
+    super('Move shape');
     this.figure = figure
     if (typeof x === "undefined") {
       this.oldX = figure.getX()
@@ -31,73 +24,29 @@ import   from '../packages'
       this.oldX = x
       this.oldY = y
     }
-  },
+  }
 
 
-  /**
-   * @method
-   * Set the initial position of the element
-   *
-   * @param {Number} x the new initial x position
-   * @param {Number} y the new initial y position
-   **/
-  setStartPosition: function (x, y) {
-    this.oldX = x
-    this.oldY = y
-  },
+  setPosition(x: number, y: number) {
+    this.newX = x;
+    this.newY = y;
+  }
 
-  /**
-   * @method
-   * Set the target/final position of the figure move command.
-   *
-   * @param {Number} x the new x position
-   * @param {Number} y the new y position
-   **/
-  setPosition: function (x, y) {
-    this.newX = x
-    this.newY = y
-  },
-
-  /**
-   * @method
-   * Returns [true] if the command can be execute and the execution of the
-   * command modify the model. A CommandMove with [startX,startX] == [endX,endY] should
-   * return false. <br>
-   * the execution of the Command doesn't modify the model.
-   *
-   * @return {Boolean}
-   **/
-  canExecute: function () {
-    // return false if we doesn't modify the model => NOP Command
+  canExecute() {
     return this.newX !== this.oldX || this.newY !== this.oldY
-  },
+  }
 
-  /**
-   * @method
-   * Execute the command the first time
-   *
-   **/
-  execute: function () {
+
+  execute() {
     this.redo()
-  },
+  }
 
-  /**
-   * @method
-   *
-   * Undo the move command
-   *
-   **/
-  undo: function () {
+  undo() {
     this.figure.setPosition(this.oldX, this.oldY)
-  },
+  }
 
-  /**
-   * @method
-   *
-   * Redo the move command after the user has undo this command
-   *
-   **/
-  redo: function () {
+  redo() {
     this.figure.setPosition(this.newX, this.newY)
   }
-})
+}
+

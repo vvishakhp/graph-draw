@@ -1,3 +1,8 @@
+export class SetFigure extends Rectangle {
+  
+}
+
+
 /**
  * @class  .SetFigure
  *
@@ -7,7 +12,7 @@
  * @extends  .shape.basic.Rectangle
  */
 
-import   from 'packages'
+import from 'packages'
 import extend from 'util/extend'
 
  .SetFigure =  .shape.basic.Rectangle.extend({
@@ -32,7 +37,7 @@ import extend from 'util/extend'
 
     this.strokeScale = true // scale the stroke width of the children nodes if the parent resize
 
-    this._super(extend({stroke: 0, bgColor: null}, attr), setter, getter)
+    this._super(extend({ stroke: 0, bgColor: null }, attr), setter, getter)
   },
 
   /**
@@ -118,12 +123,12 @@ import extend from 'util/extend'
     if (this.svgNodes !== null) {
       if (duration) {
         if (this.visible === true) {
-          this.svgNodes.forEach( (shape) =>{
-            $(shape.node).fadeIn(duration, ()=>shape.show())
+          this.svgNodes.forEach((shape) => {
+            $(shape.node).fadeIn(duration, () => shape.show())
           })
         }
         else {
-          this.svgNodes.forEach( (shape) =>{
+          this.svgNodes.forEach((shape) => {
             $(shape.node).fadeOut(duration, () => shape.hide())
           })
         }
@@ -146,7 +151,7 @@ import extend from 'util/extend'
    *
    */
   applyAlpha: function () {
-    this.svgNodes.attr({opacity: this.alpha})
+    this.svgNodes.attr({ opacity: this.alpha })
   },
 
   /**
@@ -366,7 +371,7 @@ import extend from 'util/extend'
       this.svgNodes = set
     }
 
-    this.svgNodes.attr({"stroke-scale": this.strokeScale})
+    this.svgNodes.attr({ "stroke-scale": this.strokeScale })
 
     // update the visibility of the children
     this.setVisible(this.visible)
