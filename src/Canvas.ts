@@ -11,6 +11,7 @@ import { ZoomPolicy } from './policy/canvas/ZoomPolicy';
 import { Rectangle } from './geo/Rectangle';
 import { Point } from './geo/Point';
 import { Figure } from './Figure';
+import { Line } from './shape/basic/Line';
 export interface AttributeCollection {
     [key: string]: any;
 }

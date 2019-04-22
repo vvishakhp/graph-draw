@@ -727,7 +727,7 @@ export class Figure {
     return null;
   }
 
-  onDragStart(x, y, shiftKey, ctrlKey) {
+  onDragStart(x: number, y: number, shiftKey?: boolean, ctrlKey?: boolean) {
     this.isInDragDrop = false
 
     let bbox = this.getHandleBBox()
@@ -770,7 +770,7 @@ export class Figure {
     return false
   }
 
-  onDrag(dx, dy, dx2, dy2, shiftKey, ctrlKey) {
+  onDrag(dx: number, dy: number, dx2: number, dy2, shiftKey?: boolean, ctrlKey?: boolean) {
     // apply all EditPolicy for DragDrop Operations
     //
     this.editPolicy.each((i, e) => {
