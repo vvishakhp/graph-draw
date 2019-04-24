@@ -4,6 +4,7 @@ import { Port } from "../../Port";
 import { OutputPort } from "../../OutputPort";
 import { InputPort } from "../../InputPort";
 import { StrongComposite } from "../../shape/composite/StrongComposite";
+import { Hub } from "../../shape/node/Hub";
 
 @Type('DropInterceptorPolicy')
 export class DropInterceptorPolicy extends CanvasPolicy {

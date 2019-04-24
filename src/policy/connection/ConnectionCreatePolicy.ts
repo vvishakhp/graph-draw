@@ -1,6 +1,7 @@
 import { KeyboardPolicy } from "../canvas/KeyboardPolicy";
 import { Type } from "../../TypeRegistry";
 import { Connection } from "../../Connection";
+import { DirectRouter } from "../../layout/connection/DirectRouter";
 
 @Type('ConnectionCreatePolicy')
 export class ConnectionCreatePolicy extends KeyboardPolicy {

@@ -1,10 +1,6 @@
-import { Rectangle } from "./shape/basic/Rectangle";
-import extend from "./util/extend";
-import { CommandType } from "./command/CommandType";
-import { Point } from "./geo/Point";
-import { Color } from "./util/Color";
+import { RectangleShape, extend, CommandType, Point, Color, SnapToHelper } from "./imports";
 
-export class ResizeHandle extends Rectangle {
+export class ResizeHandle extends RectangleShape {
   zoomCallback: () => void;
   origWidth: number;
   origHeight: number;

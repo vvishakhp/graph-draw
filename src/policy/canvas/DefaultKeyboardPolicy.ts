@@ -2,6 +2,8 @@ import { Type } from "../../TypeRegistry";
 import { KeyboardPolicy } from "./KeyboardPolicy";
 import { Canvas } from "../../Canvas";
 import { CommandDelete } from "../../command/CommandDelete";
+import { Connection } from "../../Connection";
+import { CommandType } from "../../command/CommandType";
 
 
 @Type('DefaultKeyboardPolicy')
@@ -12,11 +14,7 @@ export class DefaultKeyboardPolicy extends KeyboardPolicy {
       canvas.getCommandStack().startTransaction((figure) => new CommandDelete(figure))
       let selection = canvas.getSelection()
       selection.each((index, figure) => {
-        // don't delete a connection if the source or target figure is part of the selection.
-        // In this case the connection is deleted by the DeleteCommand itself and it is not allowed to
-        // delete a figure twice.
-        //
-        if (figure instanceof.Connection) {
+        if (figure instanceof Connection) {
           if (selection.contains(figure.getSource(), true)) {
             return
           }
@@ -24,7 +22,7 @@ export class DefaultKeyboardPolicy extends KeyboardPolicy {
             return
           }
         }
-        let cmd = figure.createCommand(new.command.CommandType(.command.CommandType.DELETE))
+        let cmd = figure.createCommand(new CommandType(CommandType.DELETE))
         if (cmd !== null) {
           canvas.getCommandStack().execute(cmd)
         }
@@ -32,12 +30,8 @@ export class DefaultKeyboardPolicy extends KeyboardPolicy {
       // execute all single commands at once.
       canvas.getCommandStack().commitTransaction()
     } else {
-      this._super(canvas, keyCode, shiftKey, ctrlKey)
+      super.onKeyDown(canvas, keyCode, shiftKey, ctrlKey)
     }
 
   }
 }
-
-
-onKeyDown: function () 
-})

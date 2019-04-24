@@ -2,7 +2,8 @@ import { Type } from "../../TypeRegistry";
 import { Canvas } from "../../Canvas";
 import { ZoomPolicy } from "./ZoomPolicy";
 import { Point } from "../../geo/Point";
-import * as shifty from 'shifty';
+const shifty = require('shifty');
+
 
 @Type('WheelZoomPolicy')
 export class WheelZoomPolicy extends ZoomPolicy {

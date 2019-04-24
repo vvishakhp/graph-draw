@@ -1,6 +1,4 @@
-import { SetFigure } from "../../SetFigure";
-import { Type } from "../../TypeRegistry";
-import extend from "../../util/extend";
+import { Type, SetFigure, extend } from '../../imports';
 
 @Type('Composite')
 export class Composite extends SetFigure {

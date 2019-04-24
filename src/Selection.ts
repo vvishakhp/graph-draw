@@ -1,6 +1,5 @@
-import { Type } from "./TypeRegistry";
-import ArrayList from "./util/ArrayList";
-import { Figure } from "./Figure";
+import { Type, Figure, ArrayList, StrongComposite } from "./imports";
+
 
 @Type('Selection')
 export class Selection {

@@ -1,10 +1,6 @@
-import { Point } from '../geo/Point';
-import { Command } from './Command';
-import { Figure } from '../Figure';
-import { Canvas } from '../Canvas';
+import { Type, Command, Point, Canvas, Figure } from '../imports';
 
-
-export class CommadAdd extends Command {
+export class CommandAdd extends Command {
   figure: any;
   canvas: any;
   pos: Point;

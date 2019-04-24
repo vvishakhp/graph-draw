@@ -1,19 +1,20 @@
 import { PortFeedbackPolicy } from "./PortFeedbackPolicy";
 import { Canvas } from "../../Canvas";
 import { Figure } from "../../Figure";
-import { Line } from "../../shape/basic/Line";
-import { Port } from "../../ Port";
+import { LineShape } from "../../shape/basic/Line";
+import { Port } from "../../Port";
 
 export class ElasticStrapFeedbackPolicy extends PortFeedbackPolicy {
 
   private connectionLine = null;
 
   onDragStart(canvas: Canvas, figure: Figure, x: number, y: number, shiftKey: boolean, ctrlKey: boolean) {
-    this.connectionLine = new Line()
+    this.connectionLine = new LineShape({}, {}, {})
     this.connectionLine.setCanvas(canvas)
     this.connectionLine.getShapeElement()
 
     this.onDrag(canvas, figure)
+    return true;
   }
 
   onDrag(canvas: Canvas, figure: Figure) {

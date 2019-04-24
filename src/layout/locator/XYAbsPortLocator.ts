@@ -2,7 +2,7 @@ import { PortLocator } from "./PortLocator";
 import { Figure } from "../../Figure";
 import { Type } from "../../TypeRegistry";
 
-@Type('XYAbsPortLocator');
+@Type('XYAbsPortLocator')
 export class XYAbsPortLocator extends PortLocator {
 
   private x: number;

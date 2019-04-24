@@ -1,5 +1,4 @@
-import { PositionConstant } from "./PositionConstants";
-import { Rectangle } from "./Rectangle";
+import { Rectangle, PositionConstant } from "../imports";
 
 export class Point {
 
@@ -28,10 +27,10 @@ export class Point {
 
   setBoundary(bx: number | Rectangle, by: number, bw: number, bh: number): Point {
     if (bx instanceof Rectangle) {
-      this.bx = bx.x
-      this.by = bx.y
-      this.bw = bx.w
-      this.bh = bx.h
+      this.bx = bx.getX()
+      this.by = bx.getY();
+      this.bw = bx.getWidth();
+      this.bh = bx.getHeight();
     } else {
       this.bx = bx
       this.by = by
@@ -42,7 +41,7 @@ export class Point {
     return this;
   }
 
-  adjustBoundary() : Point{
+  adjustBoundary(): Point {
     if (this.bx === null) {
       return
     }

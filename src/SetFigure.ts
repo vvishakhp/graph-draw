@@ -1,11 +1,8 @@
-import { Rectangle } from "./shape/basic/Rectangle";
-import { Type } from "./TypeRegistry";
-import extend from "./util/extend";
-import { Canvas } from "./Canvas";
-import $ = require('./util/jquery_extentions');
+import { Type, RectangleShape, extend, Canvas, StrongComposite } from "./imports";
+
 
 @Type('SetFigure')
-export class SetFigure extends Rectangle {
+export class SetFigure extends RectangleShape {
   svgNodes: any;
   originalWidth: any;
   originalHeight: any;

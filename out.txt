@@ -1,0 +1,17 @@
+src/layout/locator/PortLocator.ts(3,15): error TS1005: '=' expected.
+src/layout/locator/PortLocator.ts(43,2): error TS1128: Declaration or statement expected.
+src/layout/locator/PortLocator.ts(43,33): error TS1109: Expression expected.
+src/policy/canvas/DefaultKeyboardPolicy.ts(19,30): error TS1109: Expression expected.
+src/policy/canvas/DefaultKeyboardPolicy.ts(27,64): error TS1135: Argument expression expected.
+src/policy/canvas/DefaultKeyboardPolicy.ts(42,21): error TS1003: Identifier expected.
+src/policy/canvas/DefaultKeyboardPolicy.ts(43,1): error TS1128: Declaration or statement expected.
+src/policy/canvas/DefaultKeyboardPolicy.ts(43,2): error TS1128: Declaration or statement expected.
+src/policy/figure/RectangleSelectionFeedbackPolicy.ts(15,20): error TS1003: Identifier expected.
+src/policy/figure/RectangleSelectionFeedbackPolicy.ts(89,2): error TS1128: Declaration or statement expected.
+src/policy/figure/RectangleSelectionFeedbackPolicy.ts(101,17): error TS1003: Identifier expected.
+src/policy/figure/RectangleSelectionFeedbackPolicy.ts(144,2): error TS1128: Declaration or statement expected.
+src/policy/figure/RectangleSelectionFeedbackPolicy.ts(146,30): error TS1003: Identifier expected.
+src/policy/figure/RectangleSelectionFeedbackPolicy.ts(149,1): error TS1128: Declaration or statement expected.
+src/policy/figure/RectangleSelectionFeedbackPolicy.ts(149,2): error TS1128: Declaration or statement expected.
+src/policy/port/IntrusivePortsFeedbackPolicy.ts(25,86): error TS1109: Expression expected.
+src/policy/port/IntrusivePortsFeedbackPolicy.ts(25,122): error TS1109: Expression expected.

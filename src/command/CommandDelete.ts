@@ -1,9 +1,4 @@
-import { Figure } from "../Figure";
-import { Command } from "./Command";
-import { Canvas } from "../Canvas";
-import ArrayList from "../util/ArrayList";
-import { Connection } from "../Connection";
-import { Node } from '../shape/node/Node';
+import { Node, Command, Figure, Canvas, ArrayList, Connection } from '../imports';
 
 export class CommandDelete extends Command {
 

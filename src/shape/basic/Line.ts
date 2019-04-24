@@ -10,9 +10,13 @@ import { SelectionFeedbackPolicy } from '../../policy/figure/SelectionFeedbackPo
 import { CommandType } from '../../command/CommandType';
 import { CommandDelete } from '../../command/CommandDelete';
 import { Figure, AttributeCollection } from '../../Figure';
+import { CommandMoveVertex } from '../../command/CommandMoveVertex';
+import { LineSelectionFeedbackPolicy } from '../../policy/line/LineSelectionFeedbackPolicy';
+import { CommandMoveVertices } from '../../command/CommandMoveVertices';
+import { Command } from '../../command/Command';
 
-@Type('Line')
-export class Line extends Figure {
+@Type('LineShape')
+export class LineShape extends Figure {
 
 
   corona: number;
@@ -615,7 +619,7 @@ export class Line extends Figure {
     return angle
   }
 
-  createCommand(request) {
+  createCommand(request): Command {
     if (request.getPolicy() === CommandType.MOVE) {
       if (this.isDraggable()) {
         return new CommandMoveVertices(this)
@@ -624,7 +628,7 @@ export class Line extends Figure {
 
     if (request.getPolicy() === CommandType.DELETE) {
       if (this.isDeleteable()) {
-        return new CommandDelete(this)
+        return new CommandDelete(this as any)
       }
     }
 
@@ -647,7 +651,7 @@ export class Line extends Figure {
   }
 
   hitTest(px: number, py: number) {
-    return Line.hit(this.corona + this.stroke, this.start.getX(), this.start.getY(), this.end.getX(), this.end.getY(), px, py)
+    return LineShape.hit(this.corona + this.stroke, this.start.getX(), this.start.getY(), this.end.getX(), this.end.getY(), px, py)
   }
 
 
@@ -655,7 +659,7 @@ export class Line extends Figure {
     let pt = new Point(px, py)
     let p1 = this.getStartPosition()
     let p2 = this.getEndPosition()
-    return Line.pointProjection(p1.getX(), p1.getY(), p2.getX(), p2.getY(), pt.getX(), pt.getY())
+    return LineShape.pointProjection(p1.getX(), p1.getY(), p2.getX(), p2.getY(), pt.getX(), pt.getY())
   }
 
 
@@ -668,7 +672,7 @@ export class Line extends Figure {
 
 
 
-  intersection(other: Line) {
+  intersection(other: LineShape) {
     let result = new ArrayList()
 
     // empty result. the lines are equal...infinit array
@@ -681,7 +685,7 @@ export class Line extends Figure {
 
     segments1.each(function (i, s1) {
       segments2.each(function (j, s2) {
-        let p = Line.intersection(s1.start, s1.end, s2.start, s2.end)
+        let p = LineShape.intersection(s1.start, s1.end, s2.start, s2.end)
         if (p !== null) {
           result.add(p)
         }
@@ -785,7 +789,7 @@ export class Line extends Figure {
 
 
   public static hit(coronaWidth: number, X1: number, Y1: number, X2: number, Y2: number, px: number, py: number) {
-    return Line.distance(X1, Y1, X2, Y2, px, py) < coronaWidth
+    return LineShape.distance(X1, Y1, X2, Y2, px, py) < coronaWidth
   }
   static distance(X1: number, Y1: number, X2: number, Y2: number, px: number, py: number): number {
     throw new Error("Method not implemented.");

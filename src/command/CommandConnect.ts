@@ -1,7 +1,4 @@
-import { Command } from "./Command";
-import { Canvas } from "../Canvas";
-import { Port } from "../Port";
-import { Connection } from "../Connection";
+import { Command, Canvas, Port, Connection } from '../imports';
 export class CommandConnect extends Command {
 
   canvas: Canvas;

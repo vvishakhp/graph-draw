@@ -1,10 +1,7 @@
-import { InputPortLocator } from "./layout/locator/InputPortLocator";
-import { Port } from "./Port";
-import { Type } from "./TypeRegistry";
-import { CommandType } from "./command/CommandType";
-import { CommandConnect } from "./command/CommandConnect";
-import { InputPort } from "./InputPort";
-import { OutputPort } from "./OutputPort";
+import {
+   InputPortLocator, Type, Port, CommandType, InputPort,
+   CommandConnect, OutputPort
+} from "./imports";
 
 @Type('HybridPort')
 export class HybridPort extends Port {

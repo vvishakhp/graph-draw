@@ -1,4 +1,4 @@
-import { Line } from "./Line";
+import { LineShape } from "./Line";
 import { Type } from "../../TypeRegistry";
 import extend from "../../util/extend";
 import { Point } from "../../geo/Point";
@@ -8,9 +8,15 @@ import ArrayList from "../../util/ArrayList";
 import { SelectionFeedbackPolicy } from "../../policy/figure/SelectionFeedbackPolicy";
 import { DragDropEditPolicy } from "../../policy/figure/DragDropEditPolicy";
 import { Figure } from "../../Figure";
+import { CommandMoveVertices } from "../../command/CommandMoveVertices";
+import { CommandMoveVertex } from "../../command/CommandMoveVertex";
+import { CommandDelete } from "../../command/CommandDelete";
+import { DirectRouter } from "../../layout/connection/DirectRouter";
+import { VertexRouter } from "../../layout/connection/VertexRouter";
+import { Command } from "../../command/Command";
 
 @Type('PolyLine')
-export class PolyLine extends Line {
+export class PolyLine extends LineShape {
 
 
   oldPoint: Point;
@@ -317,7 +323,7 @@ export class PolyLine extends Line {
       segment = this.lineSegments.get(i)
       p1 = segment.start
       p2 = segment.end
-      projection = Line.pointProjection(p1.x, p1.y, p2.x, p2.y, pt.getX(), pt.getY())
+      projection = LineShape.pointProjection(p1.x, p1.y, p2.x, p2.y, pt.getX(), pt.getY())
       if (projection !== null) {
         let dist = projection.distance(pt)
         if (result == null || dist < lastDist) {
@@ -338,7 +344,7 @@ export class PolyLine extends Line {
       segment = this.lineSegments.get(result.index)
       p1 = segment.start
       p2 = segment.end
-      length += p1.distance(p2) * Line.inverseLerp(p2.x, p2.y, p1.x, p1.y, result.x, result.y)
+      length += p1.distance(p2) * LineShape.inverseLerp(p2.x, p2.y, p1.x, p1.y, result.x, result.y)
       result.percentage = (1.0 / this.getLength()) * length
     }
     return result
@@ -365,7 +371,7 @@ export class PolyLine extends Line {
   hitSegment(px, py) {
     for (let i = 0; i < this.lineSegments.getSize(); i++) {
       let segment = this.lineSegments.get(i)
-      if (Line.hit(this.corona + this.stroke, segment.start.x, segment.start.y, segment.end.x, segment.end.y, px, py)) {
+      if (LineShape.hit(this.corona + this.stroke, segment.start.x, segment.start.y, segment.end.x, segment.end.y, px, py)) {
         return { index: i, start: segment.start, end: segment.end }
       }
     }
@@ -378,11 +384,11 @@ export class PolyLine extends Line {
   }
 
 
-  createCommand(request) {
+  createCommand(request): Command {
 
     if (request.getPolicy() === CommandType.DELETE) {
       if (this.isDeleteable() === true) {
-        return new CommandDelete(this)
+        return new CommandDelete(this as any)
       }
     }
     else if (request.getPolicy() === CommandType.MOVE_VERTEX) {

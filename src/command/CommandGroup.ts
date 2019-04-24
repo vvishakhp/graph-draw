@@ -1,13 +1,11 @@
-import { Type } from "../TypeRegistry";
-import { Command } from "./Command";
-import { Selection } from '../Selection';
+import { Type, Command, Group, Selection } from '../imports';
 
 @Type('CommandGroup')
 export class CommandGroup extends Command {
   figures: any;
   canvas: any;
   group: any;
-  constructor(canvas, figures) {
+  constructor(canvas, figures: Selection) {
     super('Group items');
 
     if (figures instanceof Selection) {
@@ -22,7 +20,7 @@ export class CommandGroup extends Command {
     })
 
     this.canvas = canvas
-    this.group = new Group()
+    this.group = new Group({}, {}, {})
 
   }
 

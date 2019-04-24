@@ -1,8 +1,10 @@
 import { PortFeedbackPolicy } from "./PortFeedbackPolicy";
 import { Canvas } from "../../Canvas";
 import { Figure } from "../../Figure";
-import { Line } from "../../shape/basic/Line";
-import { Port } from "../../ Port";
+import { LineShape } from "../../shape/basic/Line";
+import { Port } from "../../Port";
+const shifty = require('shifty');
+import { HybridPort } from "../../HybridPort";
 
 export class IntrusivePortsFeedbackPolicy extends PortFeedbackPolicy {
   private tweenable = null;
@@ -22,9 +24,9 @@ export class IntrusivePortsFeedbackPolicy extends PortFeedbackPolicy {
     // animate the resize of the ports
     //
     allPorts.grep(function (p) {
-      return (p.NAME != figure.NAME && p.parent !== figure.parent) || (p instanceof  .HybridPort) || (figure instanceof  .HybridPort)
+      return (p.NAME != figure.NAME && p.parent !== figure.parent) || (p instanceof HybridPort) || (figure instanceof HybridPort)
     })
-    this.tweenable = new Tweenable()
+    this.tweenable = new shifty.Tweenable()
     this.tweenable.tween({
       from: { 'size': start / 2 },
       to: { 'size': start },
@@ -38,7 +40,7 @@ export class IntrusivePortsFeedbackPolicy extends PortFeedbackPolicy {
       }
     })
 
-    this.connectionLine = new Line()
+    this.connectionLine = new LineShape({}, {}, {})
     this.connectionLine.setCanvas(canvas)
     this.connectionLine.getShapeElement()
     this.connectionLine.setDashArray("- ")

@@ -1,7 +1,8 @@
 import { CanvasPolicy } from "./CanvasPolicy";
 import { Type } from "../../TypeRegistry";
 import { Canvas } from "../../Canvas";
-import shifty = require('shifty');
+const shifty = require('shifty');
+
 
 @Type('ZoomPolicy')
 export class ZoomPolicy extends CanvasPolicy {

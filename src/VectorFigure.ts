@@ -1,8 +1,6 @@
-import { Node } from './shape/node/Node';
-import { Type } from './TypeRegistry';
-import { Color } from './util/Color';
-import extend from './util/extend';
-import jsonUtil from './util/JSONUtil';
+import { Type, Node, Color, extend } from "./imports";
+import jsonUtil from "./util/JSONUtil";
+
 
 @Type('VectorFigure')
 export class VectorFigure extends Node {

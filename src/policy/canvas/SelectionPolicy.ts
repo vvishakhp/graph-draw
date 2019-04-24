@@ -1,10 +1,15 @@
-import { CanvasPolicy } from "./CanvasPolicy";
 import { Type } from "../../TypeRegistry";
 import { Canvas } from "../../Canvas";
 import { Figure } from "../../Figure";
+import { CanvasPolicy } from "./CanvasPolicy";
 
-@Type('SelectionPolicy')
-export class SelectionPolicy extends CanvasPolicy {
+@Type('CanvasSelectionPolicy')
+export class CanvasSelectionPolicy extends CanvasPolicy {
+
+  constructor(attr, setter, getter) {
+    super(attr, setter, getter);
+  }
+
   select(canvas: Canvas, figure: Figure) {
 
   }

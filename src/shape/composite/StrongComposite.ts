@@ -1,7 +1,4 @@
-import { Composite } from "./Composite";
-import { Type } from "../../TypeRegistry";
-import ArrayList from "../../util/ArrayList";
-import { Figure } from "../../Figure";
+import { Type, ArrayList, Figure, Composite } from '../../imports';
 
 @Type('StrongComposite')
 export class StrongComposite extends Composite {

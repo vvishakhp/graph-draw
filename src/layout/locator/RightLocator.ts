@@ -1,6 +1,6 @@
 import { Locator } from './Locator';
 import { AttributeCollection } from '../../Canvas';
-import { Port } from "../../ Port";
+import { Port } from "../../Port";
 import { Figure } from '../../Figure';
 import { Type } from '../../TypeRegistry';
 
@@ -26,7 +26,7 @@ export class RightLocator extends Locator {
     }
     else {
       var targetBoundingBox = target.getBoundingBox()
-      target.setPosition(boundingBox.w + this.margin, (boundingBox.h / 2) - (targetBoundingBox.h / 2) - offset)
+      target.setPosition(boundingBox.getWidth() + this.margin, (boundingBox.h / 2) - (targetBoundingBox.getHeight() / 2) - offset)
     }
   }
 }

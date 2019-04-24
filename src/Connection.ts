@@ -1,11 +1,9 @@
-import { Type } from "./TypeRegistry";
-import { PolyLine } from "./shape/basic/PolyLine";
-import extend from "./util/extend";
-import { CommandType } from "./command/CommandType";
-import { Point } from "./geo/Point";
-import { DragDropEditPolicy } from "./policy/figure/DragDropEditPolicy";
-import { ConnectionLocator } from "./layout/locator/ConnectionLocator";
-import { CommandReconnect } from "./command/CommandReconnect";
+import {
+  Type, PolyLine, ConnectionLocator, DragDropEditPolicy,
+  Point, SplineConnectionRouter, CommandType, CommandMoveVertices,
+  CommandReconnect, extend
+} from "./imports";
+
 
 @Type('Connection')
 export class Connection extends PolyLine {

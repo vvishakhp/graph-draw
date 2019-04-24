@@ -1,21 +1,5 @@
-import { Type, createInstenceFromType } from './TypeRegistry';
-import ArrayList from './util/ArrayList';
-import { Canvas } from './Canvas';
-import { Locator } from './layout/locator/Locator';
-import extend from './util/extend';
-import UUID from './util/UUID';
-import { Point } from './geo/Point';
-import jsonUtil from './util/JSONUtil';
-import { DragDropEditPolicy } from './policy/figure/DragDropEditPolicy';
-import { Rectangle } from './geo/Rectangle';
-import { RectangleSelectionFeedbackPolicy } from './policy/figure/RectangleSelectionFeedbackPolicy';
-import { SelectionPolicy } from './policy/figure/SelectionPolicy';
-import { SelectionFeedbackPolicy } from './policy/figure/SelectionFeedbackPolicy';
-import { CommandType } from './command/CommandType';
-import { CommandMove } from './command/CommandMove';
-import { CommandDelete } from './command/CommandDelete';
-import { StrongComposite } from './shape/composite/StrongComposite';
-import { CommandResize } from './command/CommandResize';
+import { Type, Canvas, ArrayList, Locator, extend, UUID, Point, RectangleSelectionFeedbackPolicy, FigureSelectionPolicy, StrongComposite, SelectionFeedbackPolicy, CommandType, DragDropEditPolicy, Rectangle, Command, CommandMove, CommandDelete, CommandResize, createInstenceFromType } from "./imports";
+import jsonUtil from "./util/JSONUtil";
 
 export interface AttributeCollection {
   [key: string]: any;
@@ -249,7 +233,7 @@ export class Figure {
       asPrimarySelection = true
     }
     this.editPolicy.each(function (i, e) {
-      if (e instanceof SelectionPolicy) {
+      if (e instanceof FigureSelectionPolicy) {
         e.onSelect(this.canvas, this, asPrimarySelection)
       }
     });
@@ -263,7 +247,7 @@ export class Figure {
 
   unselect() {
     this.editPolicy.each(function (i, e) {
-      if (e instanceof SelectionPolicy) {
+      if (e instanceof FigureSelectionPolicy) {
         e.onUnselect(this.canvas, this)
       }
     })
@@ -1025,13 +1009,13 @@ export class Figure {
     this.minWidth = parseFloat(w)
     this.fireEvent("change:minWidth", { value: this.minWidth })
 
-    
+
     this.setWidth(this.getWidth())
 
     return this
   }
 
-  
+
   getMinHeight() {
     return this.minHeight
   }
@@ -1055,12 +1039,12 @@ export class Figure {
     return this
   }
 
-  
+
   getX() {
     return this.x
   }
 
- 
+
   setY(y) {
     this.setPosition(this.x, parseFloat(y))
     this.fireEvent("change:y", { value: this.y })
@@ -1069,7 +1053,7 @@ export class Figure {
   }
 
 
-  
+
   getY() {
     return this.y
   }
@@ -1084,7 +1068,7 @@ export class Figure {
   }
 
 
-  
+
   getAbsoluteY() {
     if (!this.parent) {
       return this.getY()
@@ -1093,12 +1077,12 @@ export class Figure {
   }
 
 
- 
+
   getAbsolutePosition() {
     return new Point(this.getAbsoluteX(), this.getAbsoluteY())
   }
 
-  
+
   getAbsoluteBounds() {
     return new Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight())
   }
@@ -1151,7 +1135,7 @@ export class Figure {
     return new Point(this.getX(), this.getY())
   }
 
- 
+
   translate(dx, dy) {
     this.setPosition(this.getX() + dx, this.getY() + dy)
 
@@ -1159,7 +1143,7 @@ export class Figure {
   }
 
 
- 
+
   setDimension(w, h) {
     let old = { width: this.width, height: this.height }
 
@@ -1167,7 +1151,7 @@ export class Figure {
     h = Math.max(this.getMinHeight(), h)
 
     if (this.width === w && this.height === h) {
-     
+
       this.editPolicy.each((i, e) => {
         if (e instanceof DragDropEditPolicy) {
           e.moved(this.canvas, this)
@@ -1219,7 +1203,7 @@ export class Figure {
   }
 
 
-  
+
   setBoundingBox(rect: Rectangle) {
     rect = rect.clone();
 
@@ -1232,12 +1216,12 @@ export class Figure {
     return this
   }
 
-  
+
   getBoundingBox() {
     return new Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight())
   }
 
- 
+
   hitTest(iX, iY, corona) {
     if (typeof corona === "number") {
       return this.getBoundingBox().scale(corona, corona).hitTest(iX, iY)
@@ -1252,7 +1236,7 @@ export class Figure {
     return this
   }
 
- 
+
   isDraggable() {
     // delegate to the composite if given
     if (this.composite !== null) {
@@ -1263,12 +1247,12 @@ export class Figure {
   }
 
 
- 
+
   isResizeable() {
     return this.resizeable
   }
 
-  
+
   setResizeable(flag) {
     this.resizeable = !!flag
     this.fireEvent("change:resizeable", { value: this.resizeable })
@@ -1286,7 +1270,7 @@ export class Figure {
   }
 
 
-  
+
   setSelectable(flag) {
     this.selectable = !!flag
     this.fireEvent("change:selectable", { value: this.selectable })
@@ -1294,7 +1278,7 @@ export class Figure {
     return this
   }
 
-  
+
   isStrechable() {
     return !this.getKeepAspectRatio()
   }
@@ -1304,7 +1288,7 @@ export class Figure {
     return this.deleteable
   }
 
-  
+
   setDeleteable(flag) {
     this.deleteable = !!flag
     this.fireEvent("change:deleteable", { value: this.deleteable })
@@ -1312,7 +1296,7 @@ export class Figure {
     return this
   }
 
- 
+
   setParent(parent) {
     this.parent = parent
 
@@ -1328,12 +1312,12 @@ export class Figure {
     return this
   }
 
-  
+
   getParent() {
     return this.parent
   }
 
- 
+
   contains(containedFigure) {
     if (containedFigure.getParent() === this) {
       return true
@@ -1348,7 +1332,7 @@ export class Figure {
     return false
   }
 
- 
+
   getRoot() {
     let root = this.parent
     while (root !== null && root.parent !== null) {
@@ -1357,7 +1341,7 @@ export class Figure {
     return root
   }
 
-  
+
   setComposite(composite) {
     if (composite !== null && !(composite instanceof StrongComposite)) {
       throw "'composite must inherit from ' .shape.composite.StrongComposite'"
@@ -1368,13 +1352,13 @@ export class Figure {
     return this
   }
 
-  
+
   getComposite() {
     return this.composite
   }
 
 
-  
+
   fireEvent(event: string, args?: any) {
     try {
       if (typeof this.eventSubscriptions[event] === 'undefined') {
@@ -1398,7 +1382,7 @@ export class Figure {
     finally {
       this._inEvent = false
 
-     
+
       if (event.substring(0, 7) === "change:") {
         this.fireEvent("change", event.substring(7))
       }
@@ -1410,7 +1394,7 @@ export class Figure {
     if (typeof callback === "undefined") {
       debugger
     }
-   
+
     if (context) {
       callback = callback.bind(context)
       callback.___originalCallback = callback
@@ -1420,7 +1404,7 @@ export class Figure {
       if (typeof this.eventSubscriptions[events[i]] === 'undefined') {
         this.eventSubscriptions[events[i]] = []
       }
-      
+
       if (-1 !== $.inArray(callback, this.eventSubscriptions[events[i]])) {
         //   debugger
       }
@@ -1483,7 +1467,7 @@ export class Figure {
     return result
   }
 
-  createCommand(request) {
+  createCommand(request): Command {
     if (request === null) {
       return null
     }

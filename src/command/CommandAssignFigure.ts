@@ -1,9 +1,4 @@
-import { Command } from './Command';
-import { Figure } from '../Figure';
-import ArrayList from '../util/ArrayList';
-import { Node } from '../shape/node/Node';
-import { Composite } from '../shape/composite/Composite';
-import { SetFigure } from '../SetFigure';
+import { Type, Command, ArrayList, Node } from '../imports';
 
 export class CommandAssignFigure extends Command {
   figure: Node;
@@ -12,7 +7,7 @@ export class CommandAssignFigure extends Command {
   isNode: boolean;
   oldBoundingBox: any;
 
-  constructor(figure: Node, composite: Composite) {
+  constructor(figure: Node, composite) {
     super('Add Shapes to Composite');
     this.figure = figure
     this.composite = composite

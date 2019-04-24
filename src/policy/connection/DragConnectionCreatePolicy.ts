@@ -3,7 +3,9 @@ import { Type } from "../../TypeRegistry";
 import { PortFeedbackPolicy } from "../port/PortFeedbackPolicy";
 import { DragDropEditPolicy } from "../figure/DragDropEditPolicy";
 import { CommandType } from "../../command/CommandType";
-import { Port } from "../../ Port";
+import { Port } from "../../Port";
+import { Canvas } from "../../Canvas";
+import { DirectRouter } from "../../layout/connection/DirectRouter";
 
 @Type('DragConnectionCreatePolicy')
 export class DragConnectionCreatePolicy extends ConnectionCreatePolicy {
@@ -19,29 +21,22 @@ export class DragConnectionCreatePolicy extends ConnectionCreatePolicy {
         var port = canvas.getBestFigure(x, y);
 
 
-        // nothing found at all
-        //
+
         if (port === null) {
             return;
         }
 
-        // may there is a resize handle below the port or another figure
-        // in this case the ResizeHandle has prio. and handled by another
-        // Policy
+
         if (!(port instanceof Port)) {
             return;
         }
 
-        // this can happen if the user release the mouse button outside the window during a drag&drop
-        // operation. In this case we must fire the "onDragEnd" event postpond.
-        //
+
         if (port.isInDragDrop === true) {
             port.onDragEnd(x, y, shiftKey, ctrlKey);
             port.isInDragDrop = false;
         }
 
-        // introspect the port only if it is draggable at all
-        //
         if (port.isDraggable()) {
             var canDragStart = port.onDragStart(x - port.getAbsoluteX(), y - port.getAbsoluteY(), shiftKey, ctrlKey);
             if (canDragStart) {
@@ -54,7 +49,7 @@ export class DragConnectionCreatePolicy extends ConnectionCreatePolicy {
         }
     }
 
-    onMouseDrag(canvas, dx, dy, dx2, dy2, shiftKey, ctrlKey) {
+    onMouseDrag(canvas: Canvas, dx: number, dy: number, dx2?: any, dy2?: any, shiftKey?: any, ctrlKey?: any) {
         try {
             if (this.mouseDraggingElement !== null) {
                 var de = this.mouseDraggingElement;
@@ -85,7 +80,7 @@ export class DragConnectionCreatePolicy extends ConnectionCreatePolicy {
                             ct.onDragEnter(de); // legacy
                             ct.fireEvent("dragEnter", { draggingElement: de });
                             de.editPolicy.each(function (i, e) {
-                                if (e instanceof  .policy.port.PortFeedbackPolicy) {
+                                if (e instanceof PortFeedbackPolicy) {
                                     e.onHoverEnter(canvas, de, ct);
                                 }
                             });
@@ -98,7 +93,7 @@ export class DragConnectionCreatePolicy extends ConnectionCreatePolicy {
 
 
                 var p = canvas.fromDocumentToCanvasCoordinate(canvas.mouseDownX + (dx / canvas.zoomFactor), canvas.mouseDownY + (dy / canvas.zoomFactor));
-                var target = canvas.getBestFigure(p.x, p.y, this.mouseDraggingElement);
+                var target = canvas.getBestFigure(p.getX(), p.getY(), this.mouseDraggingElement);
 
                 if (target !== this.currentDropTarget) {
                     if (this.currentDropTarget !== null) {
@@ -122,6 +117,7 @@ export class DragConnectionCreatePolicy extends ConnectionCreatePolicy {
             console.log(exc);
             debugger;
         }
+        return null;
     }
 
 

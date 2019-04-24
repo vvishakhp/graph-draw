@@ -1,8 +1,8 @@
-import { Type } from "./TypeRegistry";
-import { Port } from "./Port";
-import { InputPortLocator } from "./layout/locator/InputPortLocator";
-import { CommandType } from "./command/CommandType";
-import { CommandConnect } from "./command/CommandConnect";
+import {
+  Port, Type, InputPortLocator,
+  CommandType, CommandConnect
+} from "./imports";
+
 
 
 @Type('InputPort')

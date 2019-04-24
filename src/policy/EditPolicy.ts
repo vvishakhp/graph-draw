@@ -2,7 +2,7 @@ import { Canvas } from "../Canvas";
 import { Figure } from "../Figure";
 import extend from "../util/extend";
 
-var $ = require('../util/jquery_extentions');
+const $ = require('../util/jquery_extentions');
 
 export class EditPolicy {
 

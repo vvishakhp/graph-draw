@@ -6,8 +6,10 @@ import { Point } from "../../geo/Point";
 import { CommandType } from "../../command/CommandType";
 import { InputPort } from "../../InputPort";
 import { Canvas } from "../../Canvas";
-import { Line } from "../../shape/basic/Line";
+import { LineShape } from "../../shape/basic/Line";
 import { PolyLine } from "../../shape/basic/PolyLine";
+import { DirectRouter } from "../../layout/connection/DirectRouter";
+import { VertexRouter } from "../../layout/connection/VertexRouter";
 
 @Type('ClickConnectionCreatePolicy')
 export class ClickConnectionCreatePolicy extends ConnectionCreatePolicy {
@@ -55,7 +57,7 @@ export class ClickConnectionCreatePolicy extends ConnectionCreatePolicy {
             var canvas = port.getCanvas();
             this.port1 = port;
             this.vertices.push(port.getAbsolutePosition());
-            this.beeline = new Line({
+            this.beeline = new LineShape({
                 start: this.port1.getAbsolutePosition(),
                 end: this.port1.getAbsolutePosition(),
                 dasharray: "- ",

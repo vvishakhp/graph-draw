@@ -8,7 +8,7 @@ const Util: {
             return start;
         }
         var vx = start.getX() - end.getX();
-        var vy = start.y - end.y;
+        var vy = start.getY() - end.getY();
         var length = Math.sqrt(vx * vx + vy * vy);
         var localDistance = Math.min(length / 2, distanceFromStart);
         return new Point(end.getX() + vx / length * (length - localDistance),

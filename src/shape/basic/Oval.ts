@@ -1,8 +1,6 @@
-import { Type } from "../../TypeRegistry";
-import extend from "../../util/extend";
-import { VectorFigure } from "../../VectorFigure";
-import { Point } from "../../geo/Point";
-import ArrayList from "../../util/ArrayList";
+
+import { Type, VectorFigure, Point, ArrayList, extend } from '../../imports';
+
 
 @Type('Oval')
 export class Oval extends VectorFigure {

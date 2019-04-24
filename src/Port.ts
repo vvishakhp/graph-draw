@@ -1,12 +1,9 @@
-import { Rectangle } from "./shape/basic/Rectangle";
-import { Circle } from "./shape/basic/Circle";
-import { Color } from "./util/Color";
-import extend from "./util/extend";
-import ArrayList from "./util/ArrayList";
-import { IntrusivePortsFeedbackPolicy } from "./policy/port/IntrusivePortsFeedbackPolicy";
-import { DragDropEditPolicy } from "./policy/figure/DragDropEditPolicy";
-import { CommandType } from "./command/CommandType";
-import { CommandMove } from "./command/CommandMove";
+import {
+  Circle, Color, extend, ArrayList, ConnectionAnchor,
+  IntrusivePortsFeedbackPolicy, DragDropEditPolicy, CommandType,
+  CommandMove
+} from "./imports";
+
 
 export class Port extends Circle {
   public static DEFAULT_BORDER_COLOR = new Color(27, 27, 27);
@@ -97,7 +94,7 @@ export class Port extends Circle {
   setConnectionAnchor(anchor) {
     // set some good defaults.
     if (typeof anchor === "undefined" || anchor === null) {
-      anchor = new ConnectionAnchor()
+      anchor = new ConnectionAnchor(undefined)
     }
 
     this.connectionAnchor = anchor

@@ -1,4 +1,4 @@
-import { Type } from '../TypeRegistry';
+import { Type } from '../imports';
 
 @Type('command.Command')
 export class Command {

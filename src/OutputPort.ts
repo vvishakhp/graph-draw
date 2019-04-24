@@ -1,8 +1,5 @@
-import { Type } from "./TypeRegistry";
-import { Port } from "./Port";
-import { OutputPortLocator } from "./layout/locator/OutputPortLocator";
-import { CommandConnect } from "./command/CommandConnect";
-import { CommandType } from "./command/CommandType";
+import { Port, Type, OutputPortLocator, CommandType, CommandConnect } from "./imports";
+
 
 @Type('OutputPort')
 export class OutputPort extends Port {

@@ -10,6 +10,7 @@ import { Canvas } from "../../Canvas";
 import { CommandType } from "../../command/CommandType";
 import { Port } from "../../Port";
 import { Connection } from "../../Connection";
+import { CommandRotate } from "../../command/CommandRotate";
 
 @Type('Node')
 export class Node extends Figure {
@@ -19,7 +20,7 @@ export class Node extends Figure {
   private hybridPorts = new ArrayList<Port>()
   private cachedPorts: any;
   private persistPorts: boolean;
-  private portRelayoutRequired: boolean;
+  public portRelayoutRequired: boolean;
 
   constructor(attr, setter, getter) {
 
@@ -128,7 +129,7 @@ export class Node extends Figure {
 
     cloneMetaData = extend({ excludePorts: false }, cloneMetaData)
 
-    let clone = super.clone(cloneMetaData)
+    let clone: Node = super.clone(cloneMetaData) as Node;
 
     if (cloneMetaData.excludePorts === false) {
       clone.resetPorts()
@@ -256,19 +257,19 @@ export class Node extends Figure {
   }
 
   createPort(type: string, locator: Locator) {
-    let newPort: port = null
+    let newPort: Port = null
     let count = 0
     switch (type) {
       case "input":
-        newPort = new InputPort();
+        newPort = new InputPort({}, {}, {});
         count = this.inputPorts.getSize()
         break
       case "output":
-        newPort = new OutputPort();
+        newPort = new OutputPort({}, {}, {});
         count = this.outputPorts.getSize()
         break
       case "hybrid":
-        newPort = new HybridPort();
+        newPort = new HybridPort({}, {}, {});
         count = this.hybridPorts.getSize()
         break
       default:
@@ -341,10 +342,11 @@ export class Node extends Figure {
 
   repaint(attributes) {
     if (this.repaintBlocked === true || this.shape === null) {
-      return
+      return this;
     }
     super.repaint(attributes);
     this.layoutPorts();
+    return this;
   }
 
   layoutPorts() {

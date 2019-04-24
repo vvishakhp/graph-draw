@@ -1,8 +1,7 @@
-import { StrongComposite } from "./StrongComposite";
-import { Type } from "../../TypeRegistry";
-import extend from "../../util/extend";
-import { CommandDeleteGroup } from "../../command/CommandDeleteGroup";
-import { CommandType } from "../../command/CommandType";
+import { Type } from "../../imports";
+import { StrongComposite, CommandType, CommandDeleteGroup } from "../../imports";
+import { extend } from "jquery";
+
 
 @Type('Group')
 export class Group extends StrongComposite {

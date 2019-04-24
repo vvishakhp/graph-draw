@@ -1,5 +1,5 @@
-import { Command } from "./Command";
-import { Figure } from "../Figure";
+import { Command, Figure } from "../imports";
+
 
 export class CommandAttr extends Command {
   figure: Figure;

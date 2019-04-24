@@ -1,15 +1,15 @@
 import { Type } from "../../TypeRegistry";
-import { SelectionPolicy } from "../figure/SelectionPolicy";
+import { FigureSelectionPolicy } from "../figure/SelectionPolicy";
 import { Canvas } from "../../Canvas";
 import { Figure } from "../../Figure";
 import { Port } from "../../Port";
-import { Line } from "../../shape/basic/Line";
+import { LineShape } from "../../shape/basic/Line";
 import { Connection } from "../../Connection";
 import { CommandType } from "../../command/CommandType";
 import ArrayList from "../../util/ArrayList";
 
 @Type('SingleSelectionPolicy')
-export class SingleSelectionPolicy extends SelectionPolicy {
+export class SingleSelectionPolicy extends FigureSelectionPolicy {
 
   mouseMovedDuringMouseDown = false
   mouseDraggingElement = null
@@ -74,7 +74,7 @@ export class SingleSelectionPolicy extends SelectionPolicy {
       this.select(canvas, figure)
 
       // it's a line
-      if (figure instanceof Line) {
+      if (figure instanceof LineShape) {
         // you can move a line with Drag&Drop...but not a connection.
         // A Connection is fixed linked with the corresponding ports.
         //
@@ -155,7 +155,7 @@ export class SingleSelectionPolicy extends SelectionPolicy {
 
   onMouseUp(canvas: Canvas, x: number, y: number, shiftKey: boolean, ctrlKey: boolean) {
     if (this.mouseDraggingElement !== null) {
-      let redrawConnection = new ArrayList<Line>()
+      let redrawConnection = new ArrayList<LineShape>()
       if (this.mouseDraggingElement instanceof Node) {
 
         canvas.lineIntersections.each(function (i, inter) {

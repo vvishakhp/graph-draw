@@ -1,6 +1,5 @@
-import { Type } from "../../TypeRegistry";
-import { Oval } from "./Oval";
-import extend from "../../util/extend";
+import { Type, Oval, extend } from '../../imports';
+
 
 @Type('Circle')
 export class Circle extends Oval {

@@ -1,27 +1,12 @@
-import $ = require('./util/jquery_extentions');
-import Raphael from './util/SVGUtil';
-import UUID from './util/UUID';
-import { RegionEditPolicy } from './policy/figure/RegionEditPolicy';
-import ArrayList from './util/ArrayList';
-import { KeyboardPolicy } from './policy/canvas/KeyboardPolicy';
-import { Selection } from './Selection';
-import { CommandStack } from './command/CommandStack';
-import { SelectionPolicy } from './policy/canvas/SelectionPolicy';
-import { ZoomPolicy } from './policy/canvas/ZoomPolicy';
-import { Rectangle } from './geo/Rectangle';
-import { Point } from './geo/Point';
-import { Figure } from './Figure';
-import { Line } from './shape/basic/Line';
-import { WheelZoomPolicy } from './policy/canvas/WheelZoomPolicy';
-import { DefaultKeyboardPolicy } from './policy/canvas/DefaultKeyboardPolicy';
-import { BoundingboxSelectionPolicy } from './policy/canvas/BoundingboxSelectionPolicy';
-import { DropInterceptorPolicy } from './policy/canvas/DropInterceptorPolicy';
-import { ComposedConnectionCreatePolicy } from './policy/connection/ComposedConnectionCreatePolicy';
-import { DragConnectionCreatePolicy } from './policy/connection/DragConnectionCreatePolicy';
-import { ClickConnectionCreatePolicy } from './policy/connection/ClickConnectionCreatePolicy';
-import { ConnectionCreatePolicy } from './policy/connection/ConnectionCreatePolicy';
-import { Connection } from './Connection';
-import { PolyLine } from './shape/basic/PolyLine';
+import {
+    $, Raphael, UUID, RegionEditPolicy, ArrayList, KeyboardPolicy,
+    LineShape, CommandStack, WheelZoomPolicy, DefaultKeyboardPolicy,
+    BoundingboxSelectionPolicy, DropInterceptorPolicy, ComposedConnectionCreatePolicy,
+    DragConnectionCreatePolicy, ClickConnectionCreatePolicy, CanvasSelectionPolicy,
+    ZoomPolicy, ConnectionCreatePolicy, Rectangle, Point, PolyLine, Connection, Figure,
+    Selection, Node
+} from './imports';
+
 export interface AttributeCollection {
     [key: string]: any;
 }
@@ -42,7 +27,7 @@ export class Canvas {
     eventSubscriptions: {};
     editPolicy: any;
     figures: any;
-    lines: ArrayList<Line>;
+    lines: ArrayList<LineShape>;
     commonPorts: any;
     resizeHandles: any;
     commandStack: any;
@@ -59,7 +44,7 @@ export class Canvas {
     keydownCallback: (event: any) => void;
     scrollArea: JQuery<any>;
     draggingLineCommand: any;
-    draggingLine: Line;
+    draggingLine: LineShape;
 
     constructor(canvasId: HTMLElement | string, width: number, height: number) {
 
@@ -473,7 +458,7 @@ export class Canvas {
 
         // a canvas can handle only one selection policy
         //
-        if (policy instanceof SelectionPolicy) {
+        if (policy instanceof CanvasSelectionPolicy) {
             // reset old selection before install new selection strategy
             this.getSelection().getAll().each((i, figure) => {
                 figure.unselect()
@@ -481,7 +466,7 @@ export class Canvas {
 
             // remove existing selection policy
             this.editPolicy.grep((p) => {
-                let stay = !(p instanceof SelectionPolicy)
+                let stay = !(p instanceof CanvasSelectionPolicy)
                 if (stay === false) {
                     p.onUninstall(this)
                 }
@@ -685,7 +670,7 @@ export class Canvas {
             return
         }
 
-        if (figure instanceof Line) {
+        if (figure instanceof LineShape) {
             this.lines.add(figure)
             this.linesToRepaintAfterDragDrop = this.lines
         }
@@ -746,7 +731,7 @@ export class Canvas {
             })
         }
 
-        if (figure instanceof Line) {
+        if (figure instanceof LineShape) {
             this.lines.remove(figure)
         }
         else {

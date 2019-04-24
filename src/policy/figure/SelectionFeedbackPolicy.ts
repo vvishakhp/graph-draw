@@ -1,9 +1,9 @@
-import { SelectionPolicy } from "./SelectionPolicy";
+import { FigureSelectionPolicy } from "./SelectionPolicy";
 import { Canvas } from "../../Canvas";
 import { Figure } from "../../Figure";
 import ArrayList from "../../util/ArrayList";
 
-export class SelectionFeedbackPolicy extends SelectionPolicy {
+export class SelectionFeedbackPolicy extends FigureSelectionPolicy {
   onUnselect(canvas: Canvas, figure: Figure) {
 
     super.onUnselect(canvas, figure);

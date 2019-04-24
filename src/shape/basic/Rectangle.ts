@@ -2,7 +2,7 @@
 import { VectorFigure } from "../../VectorFigure";
 import extend from "../../util/extend";
 
-export class Rectangle extends VectorFigure {
+export class RectangleShape extends VectorFigure {
 
   dasharray = null;
 

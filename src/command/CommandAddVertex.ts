@@ -1,13 +1,11 @@
-import { Command } from './Command';
-import { Line } from '../shape/basic/Line';
-import { Point } from '../geo/Point';
+import { Type, Command, Point, LineShape } from '../imports';
 
 export class CommandAddVertex extends Command {
 
   line: any;
   index: number;
   newPoint: Point;
-  constructor(line: Line, index: number, x: number, y: number) {
+  constructor(line: LineShape, index: number, x: number, y: number) {
     super('Add Vertex');
     this.line = line;
     this.index = index

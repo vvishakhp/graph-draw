@@ -2,7 +2,7 @@
 
 import { Figure } from '../../Figure';
 import { Locator } from './Locator';
-import { Port } from "../../ Port";
+import { Port } from "../../Port";
 import { Type } from '../../TypeRegistry';
 
 @Type('BottomLocator')
@@ -18,7 +18,7 @@ export class BottomLocator extends Locator {
     if (target instanceof Port) {
       target.setPosition(boundingBox.w / 2 - offset, boundingBox.h)
     } else {
-      target.setPosition(boundingBox.w / 2 - targetBoundingBox.w / 2 - offset, 2 + boundingBox.h)
+      target.setPosition(boundingBox.w / 2 - targetBoundingBox.getWidth() / 2 - offset, 2 + boundingBox.h)
     }
   }
 }

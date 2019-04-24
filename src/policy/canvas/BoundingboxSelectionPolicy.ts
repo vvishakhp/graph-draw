@@ -6,8 +6,10 @@ import { Connection } from "../../Connection";
 import { Type } from "../../TypeRegistry";
 import { Port } from "../../Port";
 import { CommandType } from "../../command/CommandType";
-import { Line } from "../../shape/basic/Line";
-import { Rectangle as RectangleShape } from '../../shape/basic/Rectangle';
+import { LineShape } from "../../shape/basic/Line";
+import { RectangleShape as RectangleShape } from '../../shape/basic/Rectangle';
+import { ResizeHandle } from "../../ResizeHandle";
+import { LineResizeHandle } from "../../shape/basic/LineResizeHandle";
 
 @Type('BoundingboxSelectionPolicy')
 export class BoundingboxSelectionPolicy extends SingleSelectionPolicy {
@@ -138,7 +140,7 @@ export class BoundingboxSelectionPolicy extends SingleSelectionPolicy {
         this.select(canvas, figure)
 
 
-        if (figure instanceof Line) {
+        if (figure instanceof LineShape) {
 
           if (!(figure instanceof Connection)) {
             canvas.draggingLineCommand = figure.createCommand(new CommandType(CommandType.MOVE))
@@ -166,7 +168,7 @@ export class BoundingboxSelectionPolicy extends SingleSelectionPolicy {
 
           let canDragStart = figure.onDragStart(fakeDragX, fakeDragY, shiftKey, ctrlKey, true /*fakeFlag*/)
 
-          if (figure instanceof Line) {
+          if (figure instanceof LineShape) {
             // no special handling
           } else if (canDragStart === false) {
             this.onUnselect(canvas, figure)

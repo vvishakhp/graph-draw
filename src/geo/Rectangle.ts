@@ -1,6 +1,5 @@
-import { Point } from './Point';
-import ArrayList from '../util/ArrayList';
-import { Line } from '../shape/basic/Line';
+import { Point, ArrayList, LineShape } from "../imports";
+
 
 
 export enum Direction {
@@ -132,7 +131,7 @@ export class Rectangle extends Point {
 	}
 
 	getVertices() {
-		var result = new ArrayList();
+		var result = new ArrayList<Point>();
 
 		result.add(this.getTopLeft());
 		result.add(this.getTopRight());
@@ -250,7 +249,7 @@ export class Rectangle extends Point {
 	}
 
 	determineOctant(other: Point) {
-		var HISTERESE = 3; // Toleranz um diese vermieden wird, dass der Octant "8" zurückgegeben wird
+		var HISTERESE = 3;
 
 		var ox = this.x + HISTERESE;
 		var oy = this.y + HISTERESE;
@@ -399,14 +398,14 @@ export class Rectangle extends Point {
 	}
 
 	intersectionWithLine(start: Point, end: Point) {
-		let result = new ArrayList();
+		let result = new ArrayList<Point>();
 		var v = this.getVertices();
 		v.add(v.first());
 		var p1 = v.first();
 		var p2 = null;
 		for (var i = 1; i < 5; i++) {
 			p2 = v.get(i);
-			p1 = Line.intersection(start, end, p1, p2);
+			p1 = LineShape.intersection(start, end, p1, p2);
 			if (p1 !== null) {
 				result.add(p1);
 			}
