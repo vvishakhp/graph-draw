@@ -1,25 +1,16 @@
-/**
- * @class  .command.CommandUngroup
- * Command to ungroup a given group figures
- *
- * @extends  .command.Command
- */
-import   from '../packages'
+import { Type } from "../TypeRegistry";
+import { Command } from "./Command";
+import { Canvas } from "../Canvas";
+import { Selection } from '../Selection';
 
-
- .command.CommandUngroup =  .command.Command.extend({
-  NAME: " .command.CommandUngroup",
-
-  /**
-   * @constructor
-   * Create a group command for the given figure.
-   *
-   * @param { .Canvas} canvas the responsible canvas
-   * @param { .util.ArrayList| .Selection} group the figures to group
-   */
-  init: function (canvas, group) {
-    this._super( .Configuration.i18n.command.ungroupShapes)
-    if (group instanceof  .Selection) {
+@Type('CommandUngroup')
+export class CommandUngroup extends Command {
+  group: any;
+  canvas: any;
+  figures: any;
+  constructor(canvas: Canvas, group) {
+    super('Ungroup')
+    if (group instanceof Selection) {
       this.group = group.getAll().first()
     }
     else {
@@ -28,51 +19,30 @@ import   from '../packages'
 
     this.canvas = canvas
     this.figures = this.group.getAssignedFigures().clone()
-  },
+  }
 
 
-  /**
-   * @method
-   * Returns [true] if the command can be execute and the execution of the
-   * command modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should
-   * return false. The execution of this Command doesn't modify the model.
-   *
-   * @return {Boolean} return try if the command modify the model or make any relevant changes
-   **/
-  canExecute: function () {
+
+  canExecute() {
     return !this.figures.isEmpty()
-  },
+  }
 
 
-  /**
-   * @method
-   * Execute the command the first time
-   *
-   **/
-  execute: function () {
+  execute() {
     this.redo()
-  },
+  }
 
-  /**
-   * @method
-   * Undo the command
-   *
-   **/
-  undo: function () {
+  undo() {
     let _this = this
     this.figures.each(function (i, figure) {
       _this.group.assignFigure(figure)
     })
     this.canvas.add(this.group)
     this.canvas.setCurrentSelection(this.group)
-  },
+  }
 
-  /**
-   * @method
-   * Redo the command after the user has undo this command
-   *
-   **/
-  redo: function () {
+
+  redo() {
     let _this = this
     this.figures.each(function (i, figure) {
       _this.group.unassignFigure(figure)
@@ -81,4 +51,4 @@ import   from '../packages'
     this.canvas.setCurrentSelection(this.figures)
     this.canvas.remove(this.group)
   }
-})
+}

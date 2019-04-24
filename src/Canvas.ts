@@ -12,6 +12,16 @@ import { Rectangle } from './geo/Rectangle';
 import { Point } from './geo/Point';
 import { Figure } from './Figure';
 import { Line } from './shape/basic/Line';
+import { WheelZoomPolicy } from './policy/canvas/WheelZoomPolicy';
+import { DefaultKeyboardPolicy } from './policy/canvas/DefaultKeyboardPolicy';
+import { BoundingboxSelectionPolicy } from './policy/canvas/BoundingboxSelectionPolicy';
+import { DropInterceptorPolicy } from './policy/canvas/DropInterceptorPolicy';
+import { ComposedConnectionCreatePolicy } from './policy/connection/ComposedConnectionCreatePolicy';
+import { DragConnectionCreatePolicy } from './policy/connection/DragConnectionCreatePolicy';
+import { ClickConnectionCreatePolicy } from './policy/connection/ClickConnectionCreatePolicy';
+import { ConnectionCreatePolicy } from './policy/connection/ConnectionCreatePolicy';
+import { Connection } from './Connection';
+import { PolyLine } from './shape/basic/PolyLine';
 export interface AttributeCollection {
     [key: string]: any;
 }
@@ -32,7 +42,7 @@ export class Canvas {
     eventSubscriptions: {};
     editPolicy: any;
     figures: any;
-    lines: any;
+    lines: ArrayList<Line>;
     commonPorts: any;
     resizeHandles: any;
     commandStack: any;
@@ -48,6 +58,8 @@ export class Canvas {
     keyupCallback: (event: any) => void;
     keydownCallback: (event: any) => void;
     scrollArea: JQuery<any>;
+    draggingLineCommand: any;
+    draggingLine: Line;
 
     constructor(canvasId: HTMLElement | string, width: number, height: number) {
 
@@ -82,7 +94,6 @@ export class Canvas {
                 this.onDrop(ui.draggable, pos.getX(), pos.getY(), event.shiftKey, event.ctrlKey)
             }
         });
-
 
 
         ($(".graph_droppable") as any).draggable({
@@ -1163,5 +1174,9 @@ export class Canvas {
         }
 
         return this
+    }
+
+    onKeyDown(keyCode: any, ctrl: any) {
+        throw new Error("Method not implemented.");
     }
 }

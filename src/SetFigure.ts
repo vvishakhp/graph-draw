@@ -1,31 +1,19 @@
+import { Rectangle } from "./shape/basic/Rectangle";
+import { Type } from "./TypeRegistry";
+import extend from "./util/extend";
+import { Canvas } from "./Canvas";
+import $ = require('./util/jquery_extentions');
+
+@Type('SetFigure')
 export class SetFigure extends Rectangle {
-  
-}
-
-
-/**
- * @class  .SetFigure
- *
- * A SetFigure is a composition of different SVG elements.
- *
- * @author Andreas Herz
- * @extends  .shape.basic.Rectangle
- */
-
-import from 'packages'
-import extend from 'util/extend'
-
- .SetFigure =  .shape.basic.Rectangle.extend({
-
-  NAME: " .SetFigure",
-
-  /**
-   * @constructor
-   * Creates a new figure element which are not assigned to any canvas.
-   *
-   * @param {Object} [attr] the configuration of the shape
-   */
-  init: function (attr, setter, getter) {
+  svgNodes: any;
+  originalWidth: any;
+  originalHeight: any;
+  scaleX: number;
+  scaleY: number;
+  strokeScale: boolean;
+  constructor(attr, setter, getter) {
+    super(extend({ stroke: 0, bgColor: null }, attr), setter, getter);
     // collection of SVG DOM nodes
     this.svgNodes = null
 
@@ -35,38 +23,23 @@ import extend from 'util/extend'
     this.scaleX = 1
     this.scaleY = 1
 
-    this.strokeScale = true // scale the stroke width of the children nodes if the parent resize
+    this.strokeScale = true
+  }
 
-    this._super(extend({ stroke: 0, bgColor: null }, attr), setter, getter)
-  },
+  setCanvas(canvas: Canvas) {
 
-  /**
-   * @method
-   * Set/Reset the canvas for the element.
-   *
-   * @param { .Canvas} canvas the canvas to use
-   */
-  setCanvas: function (canvas) {
-    // remove the shape if we reset the canvas and the element
-    // was already drawn
     if (canvas === null && this.svgNodes !== null) {
       this.svgNodes.remove()
       this.svgNodes = null
     }
 
-    this._super(canvas)
-  },
+    return super.setCanvas(canvas);
+  }
 
 
-  /**
-   * @method
-   * Set the css class if the node.
-   *
-   * @param {String} cssClass the new css class name of the node
-   * @since 2.9.0
-   */
-  setCssClass: function (cssClass) {
-    this._super(cssClass)
+
+  setCssClass(cssClass) {
+    super.setCssClass(cssClass)
 
     if (this.svgNodes === null) {
       return this
@@ -84,20 +57,12 @@ import extend from 'util/extend'
     }
 
     return this
-  },
+  }
 
 
-  /**
-   * @method
-   * propagate all attributes like color, stroke,... to the shape element and
-   * repaint them.
-   *
-   * @protected
-   **/
-  repaint: function (attributes) {
-    // repaint can be blocked during deserialization and if the shape
-    // not part of any canvas.
-    //
+
+  repaint(attributes) {
+
     if (this.repaintBlocked === true || this.shape === null) {
       return
     }
@@ -111,14 +76,12 @@ import extend from 'util/extend'
 
     this.applyAlpha()
 
-    this._super(attributes)
-  },
+    return super.repaint(attributes)
+  }
 
-  /**
-   * @inheritdoc
-   */
-  setVisible: function (flag, duration) {
-    this._super(flag, duration)
+
+  setVisible(flag, duration?) {
+    super.setVisible(flag, duration)
 
     if (this.svgNodes !== null) {
       if (duration) {
@@ -142,22 +105,16 @@ import extend from 'util/extend'
         }
       }
     }
-  },
+    return this;
+  }
 
-  /**
-   * @method
-   * Apply the opacity to all child set elements. Override this if you want to avoid opacity changes.
-   * @private
-   *
-   */
-  applyAlpha: function () {
+
+  applyAlpha() {
     this.svgNodes.attr({ opacity: this.alpha })
-  },
+  }
 
-  /**
-   * @private
-   */
-  applyTransformation: function () {
+
+  applyTransformation() {
     let s =
       "S" + this.scaleX + "," + this.scaleY + ",0,0 " +
       "R" + this.rotationAngle + "," + ((this.getWidth() / 2) | 0) + "," + ((this.getHeight() / 2) | 0) +
@@ -173,28 +130,12 @@ import extend from 'util/extend'
     }
 
     return this
-  },
+  }
 
-  /**
-   * @method
-   * Moves the element so it is the closest to the viewer’s eyes, on top of other elements. Additional
-   * the internal model changed as well.
-   *
-   * Optional: Inserts current object in front of the given one.
-   *
-   * @param { .Figure} [figure] move current object in front of the given one.
-   * @since 3.0.0
-   */
-  toFront: function (figure) {
-    ////////////////////////////////////////////////////////////////////
-    // NOTE: the code has a complete different order of  .Figure.
-    //       we must respect the svgNodes here
-    ////////////////////////////////////////////////////////////////////
 
-    // ensure that the z-oder is still correct if the figure is assigned
-    // to a StrongComposite
-    //
-    if (this.composite instanceof  .shape.composite.StrongComposite && (typeof figure !== "undefined")) {
+  toFront(figure) {
+
+    if (this.composite instanceof StrongComposite && (typeof figure !== "undefined")) {
       let indexFigure = figure.getZOrder()
       let indexComposite = this.composite.getZOrder()
       if (indexFigure < indexComposite) {
@@ -203,11 +144,10 @@ import extend from 'util/extend'
     }
 
     if (typeof figure === "undefined") {
-      // bring the outer frame in front...
+
       this.getShapeElement().toFront()
 
-      // and all inner children
-      //
+
       if (this.svgNodes !== null) {
         this.svgNodes.toFront()
       }
@@ -223,8 +163,7 @@ import extend from 'util/extend'
       }
     }
     else {
-      // Bring the SVG shapes between the "figure" and the container of this shape
-      //
+
       if (this.svgNodes !== null) {
         this.svgNodes.insertAfter(figure.getTopLevelShapeElement())
       }
@@ -243,54 +182,37 @@ import extend from 'util/extend'
     }
 
 
-    // bring all children in front of the parent
-    //
+
     this.children.each(function (i, child) {
       child.figure.toFront(figure)
     })
 
-    // the ports are always on top
-    //
+
     let _this = this
     this.getPorts().each(function (i, port) {
       port.getConnections().each(function (i, connection) {
         connection.toFront(figure)
       })
-      // a port should always be in front of the shape doesn't matter what the
-      // "figure" parameter says.
-      //
+
       port.toFront(_this)
     })
 
-    // and last but not lease the ResizeHandles if any present
-    //
+
     this.selectionHandles.each(function (i, handle) {
       handle.toFront()
     })
 
     return this
-  },
+  }
 
-  /**
-   * @method
-   * Moves the element to the background. Additional
-   * the internal model changed as well.
-   *
-   * Optional: Inserts current object in front of the given one.
-   *
-   * @param { .Figure} [figure] move current object in front of the given one.
-   * @since 4.7.2
-   */
-  toBack: function (figure) {
-    // it is not allowed that a figure is behind the assigned composite
-    //
-    if (this.composite instanceof  .shape.composite.StrongComposite) {
+
+  toBack(figure) {
+    if (this.composite instanceof StrongComposite) {
       this.toFront(this.composite)
       return
     }
 
-    // sort the JSON Doc
-    //
+
     if (this.canvas !== null) {
       let figures = this.canvas.getFigures()
       let lines = this.canvas.getLines()
@@ -302,8 +224,7 @@ import extend from 'util/extend'
       }
     }
 
-    // bring all children figures in front of the parent
-    // run reverse to the collection to care about the z-order of the children)
+
     this.children.each(function (i, child) {
       child.figure.toBack(figure)
     }, true)
@@ -327,44 +248,33 @@ import extend from 'util/extend'
       }
     }
 
-    // and last but not least - the ports are always on top
-    //
     let _this = this
     this.getPorts().each(function (i, port) {
       port.getConnections().each(function (i, connection) {
         connection.toFront(_this)
       })
-      // a port should always be in front of the shape doesn't matter what the
-      // "figure" parameter says.
-      //
+
       port.toFront(_this)
     })
 
     return this
-  },
+  }
 
 
-  /**
-   * @inheritdoc
-   */
-  getTopLevelShapeElement: function () {
+
+  getTopLevelShapeElement() {
     if (this.svgNodes.length === 0) {
       return this.shape
     }
     return this.svgNodes
-  },
+  }
 
-  /**
-   * @private
-   */
-  createShapeElement: function () {
-    // NOTE: don't change the order of the two calls. This defines the z-oder in the canvas.
-    // The "set" must always be on top.
+
+  createShapeElement() {
+
     let shape = this.canvas.paper.rect(this.getX(), this.getY(), this.getWidth(), this.getHeight())
     this.svgNodes = this.createSet()
 
-    // check if the element is a "set" or a simple raphael shape. otherwise we wrap them into a set
-    //
     if (typeof this.svgNodes.forEach === "undefined") {
       let set = this.canvas.paper.set()
       set.push(this.svgNodes)
@@ -373,10 +283,8 @@ import extend from 'util/extend'
 
     this.svgNodes.attr({ "stroke-scale": this.strokeScale })
 
-    // update the visibility of the children
     this.setVisible(this.visible)
 
-    // propagate the CSS style to all set elements
     this.setCssClass(this.cssClass)
 
     let bb = this.svgNodes.getBBox()
@@ -384,16 +292,10 @@ import extend from 'util/extend'
     this.originalHeight = bb.height
 
     return shape
-  },
-
-  /**
-   * @method
-   * Override this method to add your own SVG elements. See {@link  .shape.basic.Label} as example.
-   *
-   * @template
-   */
-  createSet: function () {
-    return this.canvas.paper.set() // return empty set as default;
   }
 
-})
+
+  createSet() {
+    return this.canvas.paper.set()
+  }
+}

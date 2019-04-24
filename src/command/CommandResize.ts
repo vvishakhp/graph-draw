@@ -1,26 +1,18 @@
-/**
- * @class  .command.CommandResize
- * Resize command for figures. Can be execute/undo/redo via a CommandStack.
- *
- * @inheritable
- * @author Andreas Herz
- * @extends  .command.Command
- */
-import   from '../packages'
+import { Command } from "./Command";
+import { Type } from "../TypeRegistry";
+import { Figure } from "../Figure";
 
- .command.CommandResize =  .command.Command.extend({
-  NAME: " .command.CommandResize",
+@Type('CommandResize')
+export class CommandResize extends Command {
 
-  /**
-   * @constructor
-   * Create a new resize Command objects which can be execute via the CommandStack.
-   *
-   * @param { .Figure} figure the figure to resize
-   * @param {Number} [width] the current width
-   * @param {Number} [height] the current height
-   */
-  init: function (figure, width, height) {
-    this._super( .Configuration.i18n.command.resizeShape)
+  figure: Figure;
+  oldWidth: number;
+  oldHeight: number;
+  newWidth: number;
+  newHeight: number;
+
+  constructor(figure, width?: number, height?: number) {
+    super("Resize Figure")
     this.figure = figure
 
     if (typeof width === "undefined") {
@@ -31,58 +23,31 @@ import   from '../packages'
       this.oldWidth = width
       this.oldHeight = height
     }
-  },
+  }
 
-  /**
-   * @method
-   * Set the new dimension of the element.
-   *
-   * @param {Number} width the new width.
-   * @param {Number} height the new height of the element.
-   **/
-  setDimension: function (width, height) {
+
+  setDimension(width, height) {
     this.newWidth = width | 0
     this.newHeight = height | 0
-  },
+  }
 
-  /**
-   * @method
-   * Returns [true] if the command can be execute and the execution of the
-   * command modify the model. A CommandMove with [startX,startX] == [endX,endY] should
-   * return false. <br>
-   * the execution of the Command doesn't modify the model.
-   *
-   * @return {Boolean}
-   **/
-  canExecute: function () {
-    // return false if we doesn't modify the model => NOP Command
+
+  canExecute() {
+
     return this.newWidth !== this.oldWidth || this.newHeight !== this.oldHeight
-  },
+  }
 
-  /**
-   * @method
-   * Execute the command the first time
-   *
-   **/
-  execute: function () {
+
+  execute() {
     this.redo()
-  },
+  }
 
-  /**
-   * @method
-   * Undo the command
-   *
-   **/
-  undo: function () {
+
+  undo() {
     this.figure.setDimension(this.oldWidth, this.oldHeight)
-  },
+  }
 
-  /**
-   * @method
-   * Redo the command after the user has undo this command
-   *
-   **/
-  redo: function () {
+  redo() {
     this.figure.setDimension(this.newWidth, this.newHeight)
   }
-})
+}

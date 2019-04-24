@@ -77,7 +77,7 @@ export class Selection {
     return this.all.clone();
   }
 
-  each(func, reverse) {
+  each(func, reverse?: boolean) {
     this.all.each(func, reverse);
 
     return this;

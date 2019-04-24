@@ -6,6 +6,8 @@ import { Point } from "../../geo/Point";
 import { CommandType } from "../../command/CommandType";
 import { InputPort } from "../../InputPort";
 import { Canvas } from "../../Canvas";
+import { Line } from "../../shape/basic/Line";
+import { PolyLine } from "../../shape/basic/PolyLine";
 
 @Type('ClickConnectionCreatePolicy')
 export class ClickConnectionCreatePolicy extends ConnectionCreatePolicy {
@@ -16,7 +18,7 @@ export class ClickConnectionCreatePolicy extends ConnectionCreatePolicy {
     private tempConnection;
     private vertices = [];
 
-    constructor(attr, setter, getter) {
+    constructor(attr?, setter?, getter?) {
         super(attr, setter, getter);
         this.port1 = null;
         this.beeline = null;
@@ -58,7 +60,7 @@ export class ClickConnectionCreatePolicy extends ConnectionCreatePolicy {
                 end: this.port1.getAbsolutePosition(),
                 dasharray: "- ",
                 color: "#2C70FF"
-            });
+            }, {}, {});
 
             this.beeline.hide = () => {
                 this.beeline.setCanvas(null);
@@ -75,7 +77,7 @@ export class ClickConnectionCreatePolicy extends ConnectionCreatePolicy {
                 end: this.port1.getAbsolutePosition(),
                 stroke: 2,
                 color: "#2C70FF"
-            });
+            }, {}, {});
 
             this.tempConnection.hide = () => {
                 this.tempConnection.setCanvas(null);

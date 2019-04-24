@@ -2,7 +2,7 @@ import { PortFeedbackPolicy } from "./PortFeedbackPolicy";
 import { Canvas } from "../../Canvas";
 import { Figure } from "../../Figure";
 import { Line } from "../../shape/basic/Line";
-import { Port } from "../../Port";
+import { Port } from "../../ Port";
 
 export class ElasticStrapFeedbackPolicy extends PortFeedbackPolicy {
 

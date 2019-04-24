@@ -153,7 +153,7 @@ export default class ArrayList<T> {
         return this.indexOf(obj) !== -1
     }
 
-    sort(f: () => number | number) {
+    sort(f: (a, b) => number) {
         if (typeof f === "function") {
             this.data.sort(f)
         }

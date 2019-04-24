@@ -1,74 +1,36 @@
-/**
- * @class  .command.CommandRemoveVertex
- *
- * Remove a vertex from a polyline or polygon
- *
- * @inheritable
- * @author Andreas Herz
- *
- * @extends  .command.Command
- */
-import   from '../packages'
+import { Type } from "../TypeRegistry";
+import { Command } from "./Command";
 
- .command.CommandRemoveVertex =  .command.Command.extend({
-  NAME: " .command.CommandRemoveVertex",
-
-  /**
-   * @constructor
-   * Create a new Command objects which add a vertex to a PloyLine.
-   *
-   * @param { .shape.basic.PolyLine} line the related line
-   * @param {Number} index the index where to add
-   */
-  init: function (line, index) {
-    this._super( .Configuration.i18n.command.deleteVertex)
+@Type('CommandRemoveVertex')
+export class CommandRemoveVertex extends Command {
+  line: any;
+  index: any;
+  oldPoint: any;
+  constructor(line, index) {
+    super('Remove Vertex')
 
     this.line = line
     this.index = index
     this.oldPoint = line.getVertices().get(index).clone()
-  },
+  }
 
+  canExecute() {
 
-  /**
-   * @method
-   * Returns [true] if the command can be execute and the execution of the
-   * command modify the model. A CommandMove with [startX,startX] == [endX,endY] should
-   * return false. <br>
-   * the execution of the Command doesn't modify the model.
-   *
-   * @return {Boolean}
-   **/
-  canExecute: function () {
-    // return false if we doesn't modify the model => NOP Command
     return true
-  },
+  }
 
-  /**
-   * @method
-   * Execute the command the first time
-   *
-   **/
-  execute: function () {
+
+  execute() {
     this.redo()
-  },
+  }
 
-  /**
-   * @method
-   *
-   * Undo the move command
-   *
-   **/
-  undo: function () {
+
+  undo() {
     this.line.insertVertexAt(this.index, this.oldPoint.x, this.oldPoint.y)
-  },
+  }
 
-  /**
-   * @method
-   *
-   * Redo the move command after the user has undo this command
-   *
-   **/
-  redo: function () {
+
+  redo() {
     this.line.removeVertexAt(this.index)
   }
-})
+}

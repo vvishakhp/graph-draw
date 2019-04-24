@@ -8,13 +8,15 @@ import { OutputPort } from "../../OutputPort";
 import { HybridPort } from "../../HybridPort";
 import { Canvas } from "../../Canvas";
 import { CommandType } from "../../command/CommandType";
+import { Port } from "../../Port";
+import { Connection } from "../../Connection";
 
 @Type('Node')
 export class Node extends Figure {
 
   private inputPorts = new ArrayList<Port>()
-  private outputPorts = new ArrayList()
-  private hybridPorts = new ArrayList()
+  private outputPorts = new ArrayList<Port>()
+  private hybridPorts = new ArrayList<Port>()
   private cachedPorts: any;
   private persistPorts: boolean;
   private portRelayoutRequired: boolean;
@@ -282,8 +284,8 @@ export class Node extends Figure {
 
   }
 
-  getConnections() {
-    let connections = new ArrayList();
+  getConnections(): ArrayList<Connection> {
+    let connections = new ArrayList<Connection>();
     let ports = this.getPorts()
     for (let i = 0; i < ports.getSize(); i++) {
       let port = ports.get(i)
@@ -294,7 +296,7 @@ export class Node extends Figure {
         }
       }
     }
-    return connections
+    return connections;
   }
 
   setCanvas(canvas: Canvas) {

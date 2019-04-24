@@ -1,121 +1,71 @@
+import ArrayList from "../../util/ArrayList";
+import { ConnectionCreatePolicy } from "./ConnectionCreatePolicy";
 
-/**
- * @class  .policy.connection.ComposedConnectionCreatePolicy
- * A composed connection create policy. Use this to install more than one
- * ConnectionCreatePolicy into the canvas. Normally it is not allowed to install
- * more than one policy from the same type.
- *
- *
- * @author Andreas Herz
- *
- * @extends  .policy.connection.ConnectionCreatePolicy
- */
-import   from '../../packages';
+export class ComposedConnectionCreatePolicy extends ConnectionCreatePolicy {
+    constructor(private policies: any[]) {
+        super();
+    }
 
- .policy.connection.ComposedConnectionCreatePolicy =  .policy.connection.ConnectionCreatePolicy.extend({
-
-    NAME : " .policy.connection.ComposedConnectionCreatePolicy",
-
-    /**
-     * @constructor
-     *
-     * Creates a new connection create policy instance
-     *
-     * @param {array} policies the policies to use
-     */
-    init: function( policies )
-    {
-        this.policies = policies;
-        this._super();
-    },
-
-    onMouseDown: function()
-    {
+    onMouseDown() {
         let _arg = arguments;
-        this.policies.forEach((p)=>{
-            p.onMouseDown.apply(p,_arg);
-        });
-    },
-    onMouseDrag: function()
-    {
-      let _arg = arguments;
-      this.policies.forEach((p)=>{
-            p.onMouseDrag.apply(p,_arg);
-        });
-    },
-
-    onMouseUp: function()
-    {
-      let _arg = arguments;
-      this.policies.forEach((p)=>{
-            p.onMouseUp.apply(p,_arg);
-        });
-    },
-
-    onClick: function()
-    {
-      let _arg = arguments;
-      this.policies.forEach((p)=>{
-            p.onClick.apply(p,_arg);
-        });
-    },
-    onMouseMove: function()
-    {
-      let _arg = arguments;
-      this.policies.forEach((p)=>{
-            p.onMouseMove.apply(p,_arg);
-        });
-    },
-
-    /**
-     * @inheritDoc
-     **/
-    onKeyUp: function(canvas, keyCode, shiftKey, ctrlKey)
-    {
-      let _arg = arguments;
-      this.policies.forEach((p)=>{
-            p.onKeyUp.apply(p,_arg);
-        });
-    },
-
-    /**
-     * @inheritDoc
-     **/
-    onKeyDown: function(canvas, keyCode, shiftKey, ctrlKey)
-    {
-      let _arg = arguments;
-      this.policies.forEach((p)=>{
-            p.onKeyDown.apply(p,_arg);
-        });
-    },
-
-    /**
-     * @method
-     * Called if the policy is installed into the canvas.
-     *
-     * @param { .Canvas} canvas
-     */
-    onInstall: function(canvas)
-    {
-      let _arg = arguments;
-      this.policies.forEach((p)=>{
-            p.onInstall.apply(p,_arg);
-        });
-    },
-
-    /**
-     * @method
-     * Called if the policy is deinstalled from the canvas
-     *
-     * @param { .Canvas} canvas
-     */
-    onUninstall: function(canvas)
-    {
-      let _arg = arguments;
-      this.policies.forEach((p)=>{
-            p.onUninstall.apply(p,_arg);
+        this.policies.forEach((p) => {
+            p.onMouseDown.apply(p, _arg);
         });
     }
 
-});
+    onMouseDrag() {
+        let _arg = arguments;
+        this.policies.forEach((p) => {
+            p.onMouseDrag.apply(p, _arg);
+        });
+    }
 
+    onMouseUp() {
+        let _arg = arguments;
+        this.policies.forEach((p) => {
+            p.onMouseUp.apply(p, _arg);
+        });
+    }
+
+    onClick() {
+        let _arg = arguments;
+        this.policies.forEach((p) => {
+            p.onClick.apply(p, _arg);
+        });
+    }
+
+    onMouseMove() {
+        let _arg = arguments;
+        this.policies.forEach((p) => {
+            p.onMouseMove.apply(p, _arg);
+        });
+    }
+
+    onKeyUp(canvas, keyCode, shiftKey, ctrlKey) {
+        let _arg = arguments;
+        this.policies.forEach((p) => {
+            p.onKeyUp.apply(p, _arg);
+        });
+    }
+
+    onKeyDown(canvas, keyCode, shiftKey, ctrlKey) {
+        let _arg = arguments;
+        this.policies.forEach((p) => {
+            p.onKeyDown.apply(p, _arg);
+        });
+    }
+
+    onInstall(canvas) {
+        let _arg = arguments;
+        this.policies.forEach((p) => {
+            p.onInstall.apply(p, _arg);
+        });
+    }
+
+    onUninstall(canvas) {
+        let _arg = arguments;
+        this.policies.forEach((p) => {
+            p.onUninstall.apply(p, _arg);
+        });
+    }
+}

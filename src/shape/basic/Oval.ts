@@ -1,78 +1,39 @@
-/**
- * @class  .shape.basic.Oval
- * Oval figure.
- *
- *
- * See the example:
- *
- *     @example preview small frame
- *
- *     let oval =  new  .shape.basic.Oval({width:150, height:100, x:50, y:10});
- *
- *     canvas.add(oval);
- *
- * @inheritable
- * @author Andreas Herz
- * @extends  .VectorFigure
- */
-import   from '../../packages'
-import extend from '../../util/extend'
+import { Type } from "../../TypeRegistry";
+import extend from "../../util/extend";
+import { VectorFigure } from "../../VectorFigure";
+import { Point } from "../../geo/Point";
+import ArrayList from "../../util/ArrayList";
 
- .shape.basic.Oval =  .VectorFigure.extend({
-  NAME: " .shape.basic.Oval",
+@Type('Oval')
+export class Oval extends VectorFigure {
+  constructor(attr, setter, getter) {
+    super(extend({
+      bgColor: "#C02B1D",
+      color: "#1B1B1B"
+    }, attr), setter, getter);
 
-  /**
-   *
-   * @constructor
-   * Creates a new figure element which are not assigned to any canvas.
-   *
-   * @param {Object} [attr] the configuration of the shape
-   */
-  init: function (attr, setter, getter) {
-    this._super(
-      extend({
-        bgColor: "#C02B1D",
-        color: "#1B1B1B"
-      }, attr),
-      extend({
-        center: this.setCenter
-      }, setter),
-      getter)
-  },
+    this.setterWhitelist['center'] = this.setCenter;
+  }
 
-
-  /**
-   * @template
-   **/
-  createShapeElement: function () {
+  createShapeElement() {
     let halfW = this.getWidth() / 2
     let halfH = this.getHeight() / 2
 
     return this.canvas.paper.ellipse(this.getAbsoluteX() + halfW, this.getAbsoluteY() + halfH, halfW, halfH)
-  },
+  }
 
 
-  /**
-   * @method
-   * Get the center of the figure
-   *
-   */
-  getCenter: function () {
+
+  getCenter() {
     let w2 = this.getWidth() / 2
     let h2 = this.getHeight() / 2
 
     return this.getPosition().translate(w2, h2)
-  },
+  }
 
-  /**
-   * @method
-   * Set the center of the figure.
-   *
-   * @param {Number| .geo.Point} x the new x coordinate of the center or a  .geo.Point object with the center
-   * @param {Number} [y] the y coordinate of the new center of the first argument isn't a  .geo.Point object
-   */
-  setCenter: function (x, y) {
-    let pos = new  .geo.Point(x, y)
+
+  setCenter(x, y) {
+    let pos = new Point(x, y)
     let w2 = this.getWidth() / 2
     let h2 = this.getHeight() / 2
 
@@ -82,15 +43,11 @@ import extend from '../../util/extend'
     this.fireEvent("change:center", { value: { x: x, y: y } })
 
     return this
-  },
+  }
 
 
-  /**
-   * @inheritdoc
-   *
-   * @template
-   **/
-  repaint: function (attributes) {
+
+  repaint(attributes) {
     if (this.repaintBlocked === true || this.shape === null) {
       return
     }
@@ -110,27 +67,22 @@ import extend from '../../util/extend'
       attributes.cy = this.getAbsoluteY() + attributes.ry
     }
 
-    this._super(attributes)
-  },
+    return super.repaint(attributes)
+  }
 
-  /**
-   * @method
-   *
-   *   NOTE: Rotation will need to be added to this function
-   *
-   **/
-  intersectionWithLine: function (a1, a2) {
+
+  intersectionWithLine(a1, a2) {
     let rx = this.getWidth() / 2
     let ry = this.getHeight() / 2
 
-    let result = new  .util.ArrayList()
+    let result = new ArrayList()
 
-    let origin = new  .geo.Point(a1.x, a1.y)
+    let origin = new Point(a1.x, a1.y)
     let dir = a2.subtract(a1)
-    let center = new  .geo.Point(this.getAbsoluteX() + rx, this.getAbsoluteY() + ry)
+    let center = new Point(this.getAbsoluteX() + rx, this.getAbsoluteY() + ry)
     let diff = origin.subtract(center)
-    let mDir = new  .geo.Point(dir.x / (rx * rx), dir.y / (ry * ry))
-    let mDiff = new  .geo.Point(diff.x / (rx * rx), diff.y / (ry * ry))
+    let mDir = new Point(dir.x / (rx * rx), dir.y / (ry * ry))
+    let mDiff = new Point(diff.getX() / (rx * rx), diff.getY() / (ry * ry))
 
     let a = dir.dot(mDir)
     let b = dir.dot(mDiff)
@@ -168,6 +120,4 @@ import extend from '../../util/extend'
 
     return result
   }
-
-})
-
+}

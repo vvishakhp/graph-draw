@@ -1,6 +1,6 @@
 import { Locator } from './Locator';
 import { Figure } from '../../Figure';
-import { Port } from '../../Port';
+import { Port } from "../../ Port";
 import { Type } from '../../TypeRegistry';
 
 @Type('CenterLocator')

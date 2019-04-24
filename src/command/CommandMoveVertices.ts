@@ -1,77 +1,40 @@
-/**
- * @class  .command.CommandMoveVertices
- *
- * Command for the vertices movement of a polyline/polygon.
- *
- * @inheritable
- * @author Andreas Herz
- *
- * @extends  .command.Command
- */
-import   from '../packages'
+import { Command } from "./Command";
+import { Type } from "../TypeRegistry";
 
- .command.CommandMoveVertices =  .command.Command.extend({
-  NAME: " .command.CommandMoveVertices",
-
-  /**
-   * @constructor
-   * Create a new Command objects which can be execute via the CommandStack.
-   *
-   * @param { .shape.basic.PolyLine} line the related line
-   */
-  init: function (line) {
-    this._super( .Configuration.i18n.command.moveVertices)
+@Type('CommandMoveVertices')
+export class CommandMoveVertices extends Command {
+  line: any;
+  oldVertices: any;
+  newVertices: any;
+  constructor(line) {
+    super('Move vertices')
 
     this.line = line
     this.oldVertices = line.getVertices().clone(true)
     this.newVertices = null
-  },
+  }
 
 
-  updateVertices: function (newVertices) {
+  updateVertices(newVertices) {
     this.newVertices = newVertices
-  },
+  }
 
-  /**
-   * @method
-   * Returns [true] if the command can be execute and the execution of the
-   * command modify the model. A CommandMove with [startX,startX] == [endX,endY] should
-   * return false. <br>
-   * the execution of the Command doesn't modify the model.
-   *
-   * @return {Boolean}
-   **/
-  canExecute: function () {
-    // return false if we doesn't modify the model => NOP Command
+
+  canExecute() {
     return this.newVertices !== null
-  },
+  }
 
-  /**
-   * @method
-   * Execute the command the first time
-   *
-   **/
-  execute: function () {
+  execute() {
     this.redo()
-  },
+  }
 
-  /**
-   * @method
-   *
-   * Undo the move command
-   *
-   **/
-  undo: function () {
+
+  undo() {
     this.line.setVertices(this.oldVertices)
-  },
+  }
 
-  /**
-   * @method
-   *
-   * Redo the move command after the user has undo this command
-   *
-   **/
-  redo: function () {
+
+  redo() {
     this.line.setVertices(this.newVertices)
   }
-})
+}

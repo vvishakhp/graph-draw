@@ -1,88 +1,44 @@
-/**
- * @class  .command.CommandMoveVertex
- *
- * Command for the vertex movement of a polyline/polygon.
- *
- * @inheritable
- * @author Andreas Herz
- *
- * @extends  .command.Command
- */
-import   from '../packages'
+import { Command } from "./Command";
+import { Type } from "../TypeRegistry";
+import { Point } from "../geo/Point";
 
- .command.CommandMoveVertex =  .command.Command.extend({
-  NAME: " .command.CommandMoveVertex",
-
-  /**
-   * @constructor
-   * Create a new Command objects which can be execute via the CommandStack.
-   *
-   * @param { .shape.basic.PolyLine} line the related line
-   */
-  init: function (line) {
-    this._super( .Configuration.i18n.command.moveVertex)
+@Type('CommandMoveVertex')
+export class CommandMoveVertex extends Command {
+  line: any;
+  index: number;
+  newPoint: any;
+  origPoint: any;
+  constructor(line) {
+    super('CommandMoveVertex')
 
     this.line = line
     this.index = -1
     this.newPoint = null
-  },
+  }
 
-
-  /**
-   * @method
-   * Set the index of the vertex of the polyline/polygon to modify.
-   *
-   * @param {Number} index the related index of the vertex
-   **/
-  setIndex: function (index) {
+  setIndex(index) {
     this.index = index
     this.origPoint = this.line.getVertices().get(this.index).clone()
-  },
+  }
 
-  updatePosition: function (x, y) {
-    this.newPoint = new  .geo.Point(x, y)
-  },
+  updatePosition(x, y) {
+    this.newPoint = new Point(x, y)
+  }
 
-  /**
-   * @method
-   * Returns [true] if the command can be execute and the execution of the
-   * command modify the model. A CommandMove with [startX,startX] == [endX,endY] should
-   * return false. <br>
-   * the execution of the Command doesn't modify the model.
-   *
-   * @return {Boolean}
-   **/
-  canExecute: function () {
-    // return false if we doesn't modify the model => NOP Command
+  canExecute() {
     return this.index !== -1 && this.newPoint !== null
-  },
+  }
 
-  /**
-   * @method
-   * Execute the command the first time
-   *
-   **/
-  execute: function () {
+  execute() {
     this.redo()
-  },
+  }
 
-  /**
-   * @method
-   *
-   * Undo the move command
-   *
-   **/
-  undo: function () {
+  undo() {
     this.line.setVertex(this.index, this.origPoint.x, this.origPoint.y)
-  },
+  }
 
-  /**
-   * @method
-   *
-   * Redo the move command after the user has undo this command
-   *
-   **/
-  redo: function () {
+
+  redo() {
     this.line.setVertex(this.index, this.newPoint.x, this.newPoint.y)
   }
-})
+}

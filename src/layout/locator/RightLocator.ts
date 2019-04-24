@@ -1,6 +1,6 @@
 import { Locator } from './Locator';
 import { AttributeCollection } from '../../Canvas';
-import { Port } from '../../Port';
+import { Port } from "../../ Port";
 import { Figure } from '../../Figure';
 import { Type } from '../../TypeRegistry';
 

@@ -1,8 +1,9 @@
 import { Command } from "./Command";
 import { Canvas } from "../Canvas";
-import { Port } from '../Port';
+import { Port } from "../Port";
+import { Connection } from "../Connection";
 export class CommandConnect extends Command {
-  
+
   canvas: Canvas;
   source: any;
   target: any;
@@ -41,7 +42,7 @@ export class CommandConnect extends Command {
     if (this.connection === null) {
       // deprecated call!!!!
       //
-      let result =  .Configuration.factory.createConnection(this.source, this.target, optionalCallback, this.dropTarget)
+      let result = new Connection()
       debugger
       // will be handled by the optional callback
       if (typeof result === "undefined") {

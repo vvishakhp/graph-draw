@@ -1,5 +1,5 @@
 import { Canvas } from "../../Canvas";
-import { Port } from "../../Port";
+import { Port } from "../../ Port";
 import { Figure } from "../../Figure";
 
 export class PortFeedbackPolicy extends DragDropEditPolicy {

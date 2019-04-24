@@ -1,4 +1,3 @@
-import { Figure, AttributeCollection } from '../../Figure';
 import { Type } from '../../TypeRegistry';
 import extend from '../../util/extend';
 import { Color } from '../../util/Color';
@@ -9,9 +8,12 @@ import jsonUtil from '../../util/JSONUtil';
 import { Rectangle } from '../../geo/Rectangle';
 import { SelectionFeedbackPolicy } from '../../policy/figure/SelectionFeedbackPolicy';
 import { CommandType } from '../../command/CommandType';
+import { CommandDelete } from '../../command/CommandDelete';
+import { Figure, AttributeCollection } from '../../Figure';
 
 @Type('Line')
 export class Line extends Figure {
+
 
   corona: number;
   isGlowing: boolean;
@@ -86,14 +88,14 @@ export class Line extends Figure {
     this.vertices.add(this.end.clone())
 
     if (this.editPolicy.getSize() === 0) {
-      this.installEditPolicy(new.policy.line.LineSelectionFeedbackPolicy())
+      this.installEditPolicy(new LineSelectionFeedbackPolicy())
     }
   }
 
 
   setOutlineColor(color: Color) {
     this.outlineColor = color.clone();
-    this.repaint();
+    this.repaint({});
     this.fireEvent("change:outlineColor", {
       value: this.outlineColor
     });
@@ -108,7 +110,7 @@ export class Line extends Figure {
 
   setOutlineStroke(w: number) {
     this.outlineStroke = w
-    this.repaint()
+    this.repaint({})
     this.fireEvent("change:outlineStroke", {
       value: this.outlineStroke
     })
@@ -196,7 +198,7 @@ export class Line extends Figure {
 
   setDashArray(dashPattern) {
     this.dasharray = dashPattern
-    this.repaint()
+    this.repaint({})
 
     this.fireEvent("change:dashArray", {
       value: this.dasharray
@@ -271,6 +273,7 @@ export class Line extends Figure {
       this.shape.items[0].hide()
       this.outlineVisible = false
     }
+    return this;
   }
 
   toBack(figure: Figure) {
@@ -292,7 +295,7 @@ export class Line extends Figure {
       this._lineColor = this.lineColor
       this._stroke = this.stroke
 
-      this.setColor(new.util.Color("#3f72bf"))
+      this.setColor(new Color(63, 114, 191))
       this.setStroke((this.stroke * 4) | 0)
     } else {
       this.setColor(this._lineColor)
@@ -358,10 +361,10 @@ export class Line extends Figure {
   }
 
   getBoundingBox() {
-    let minX = Math.min(...this.vertices.asArray().map(n => n.x))
-    let minY = Math.min(...this.vertices.asArray().map(n => n.y))
-    let maxX = Math.max(...this.vertices.asArray().map(n => n.x))
-    let maxY = Math.max(...this.vertices.asArray().map(n => n.y))
+    let minX = Math.min(...this.vertices.asArray().map(n => n.getX()))
+    let minY = Math.min(...this.vertices.asArray().map(n => n.getY()))
+    let maxX = Math.max(...this.vertices.asArray().map(n => n.getX()))
+    let maxY = Math.max(...this.vertices.asArray().map(n => n.getY()))
     let width = maxX - minX;
     let height = maxY - minY;
 
@@ -752,6 +755,8 @@ export class Line extends Figure {
       this.setVertices(memento.vertex)
     }
 
+    return this;
+
   }
 
   public static intersection(a1: Point, a2: Point, b1: Point, b2: Point) {
@@ -781,6 +786,17 @@ export class Line extends Figure {
 
   public static hit(coronaWidth: number, X1: number, Y1: number, X2: number, Y2: number, px: number, py: number) {
     return Line.distance(X1, Y1, X2, Y2, px, py) < coronaWidth
+  }
+  static distance(X1: number, Y1: number, X2: number, Y2: number, px: number, py: number): number {
+    throw new Error("Method not implemented.");
+  }
+
+  static pointProjection(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number) {
+    throw new Error("Method not implemented.");
+  }
+
+  static inverseLerp(x1: any, y1: any, x2: any, y2: any, x3: any, y3: any): number {
+    throw new Error("Method not implemented.");
   }
 }
 

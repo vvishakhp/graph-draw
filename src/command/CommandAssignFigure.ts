@@ -2,15 +2,17 @@ import { Command } from './Command';
 import { Figure } from '../Figure';
 import ArrayList from '../util/ArrayList';
 import { Node } from '../shape/node/Node';
+import { Composite } from '../shape/composite/Composite';
+import { SetFigure } from '../SetFigure';
 
 export class CommandAssignFigure extends Command {
-  figure: Figure;
-  composite: Figure;
+  figure: Node;
+  composite: any;
   assignedConnections: any;
   isNode: boolean;
   oldBoundingBox: any;
 
-  constructor(figure: Figure, composite: Figure) {
+  constructor(figure: Node, composite: Composite) {
     super('Add Shapes to Composite');
     this.figure = figure
     this.composite = composite
@@ -26,17 +28,13 @@ export class CommandAssignFigure extends Command {
   execute() {
     this.composite.assignFigure(this.figure)
 
-    // get all connections of the shape and check if source/target node
-    // part of the composite. In this case the connection will be part of
-    // the composite as well
     if (this.isNode === true) {
       let connections = this.figure.getConnections()
-      let _this = this
-      connections.each(function (i, connection) {
-        if (connection.getSource().getParent().getComposite() === _this.composite && connection.getTarget().getParent().getComposite() === _this.composite) {
-          if (connection.getComposite() !== _this.composite) {
-            _this.assignedConnections.add({ oldComposite: connection.getComposite(), connection: connection })
-            _this.composite.assignFigure(connection)
+      connections.each((i, connection) => {
+        if (connection.getSource().getParent().getComposite() === this.composite && connection.getTarget().getParent().getComposite() === this.composite) {
+          if (connection.getComposite() !== this.composite) {
+            this.assignedConnections.add({ oldComposite: connection.getComposite(), connection: connection })
+            this.composite.assignFigure(connection)
           }
         }
       })
@@ -46,7 +44,7 @@ export class CommandAssignFigure extends Command {
   cancel() {
     return null;
   }
-  
+
   undo() {
     this.composite.unassignFigure(this.figure)
     this.assignedConnections.each((i, entry) => {

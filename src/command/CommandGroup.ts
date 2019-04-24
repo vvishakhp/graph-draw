@@ -1,69 +1,40 @@
-/**
- * @class  .command.CommandGroup
- * Command to group a given set of figures
- *
- * @extends  .command.Command
- */
-import   from '../packages'
+import { Type } from "../TypeRegistry";
+import { Command } from "./Command";
+import { Selection } from '../Selection';
 
- .command.CommandGroup =  .command.Command.extend({
-  NAME: " .command.CommandGroup",
+@Type('CommandGroup')
+export class CommandGroup extends Command {
+  figures: any;
+  canvas: any;
+  group: any;
+  constructor(canvas, figures) {
+    super('Group items');
 
-  /**
-   * @constructor
-   * Create a group command for the given figure.
-   *
-   * @param { .util.ArrayList} figures the figures to group
-   */
-  init: function (canvas, figures) {
-    this._super( .Configuration.i18n.command.groupShapes)
-    if (figures instanceof  .Selection) {
+    if (figures instanceof Selection) {
       this.figures = figures.getAll()
     }
     else {
       this.figures = figures
     }
 
-    // figures which already part of an non "Group" composite will be removed from the set.
-    // It is not possible to assign a figure to two different composites.
-    //
     this.figures.grep(function (figure) {
       return figure.getComposite() === null
     })
 
     this.canvas = canvas
-    this.group = new  .shape.composite.Group()
-  },
+    this.group = new Group()
 
+  }
 
-  /**
-   * @method
-   * Returns [true] if the command can be execute and the execution of the
-   * command modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should
-   * return false. The execution of this Command doesn't modify the model.
-   *
-   * @return {Boolean} return try if the command modify the model or make any relevant changes
-   **/
-  canExecute: function () {
+  canExecute() {
     return !this.figures.isEmpty()
-  },
+  }
 
+  execute() {
+    this.redo();
+  }
 
-  /**
-   * @method
-   * Execute the command the first time
-   *
-   **/
-  execute: function () {
-    this.redo()
-  },
-
-  /**
-   * @method
-   * Undo the command
-   *
-   **/
-  undo: function () {
+  undo() {
     let _this = this
     this.figures.each(function (i, figure) {
       _this.group.unassignFigure(figure)
@@ -71,14 +42,9 @@ import   from '../packages'
 
     this.canvas.remove(this.group)
     this.canvas.setCurrentSelection(this.figures)
-  },
+  }
 
-  /**
-   * @method
-   * Redo the command after the user has undo this command
-   *
-   **/
-  redo: function () {
+  redo() {
     let _this = this
     this.figures.each(function (i, figure) {
       _this.group.assignFigure(figure)
@@ -87,4 +53,6 @@ import   from '../packages'
     this.canvas.add(this.group)
     this.canvas.setCurrentSelection(this.group)
   }
-})
+
+
+}

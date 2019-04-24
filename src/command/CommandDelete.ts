@@ -2,17 +2,19 @@ import { Figure } from "../Figure";
 import { Command } from "./Command";
 import { Canvas } from "../Canvas";
 import ArrayList from "../util/ArrayList";
+import { Connection } from "../Connection";
+import { Node } from '../shape/node/Node';
 
 export class CommandDelete extends Command {
 
   private parent: Figure;
-  private figure: Figure;
+  private figure: Node;
   private canvas: Canvas;
   private connections: ArrayList<Connection>;
   private removedParentEntry = null;
   private indexOfChild = -1;
 
-  constructor(figure: Figure) {
+  constructor(figure: Node) {
     super('Delete item');
 
     this.parent = figure.getParent()
@@ -56,11 +58,11 @@ export class CommandDelete extends Command {
     this.canvas.setCurrentSelection(null)
 
     if (this.connections === null) {
-      if (this.figure instanceof  Node) {
+      if (this.figure instanceof Node) {
         this.connections = this.figure.getConnections()
       }
       else {
-        this.connections = new.util.ArrayList()
+        this.connections = new ArrayList()
       }
     }
 
@@ -73,8 +75,8 @@ export class CommandDelete extends Command {
     //
     if (this.parent !== null) {
       // determine the index of the child before remove
-      this.indexOfChild = this.parent.getChildren().indexOf(this.figure)
-      this.removedParentEntry = this.parent.remove(this.figure)
+      this.indexOfChild = this.parent.getChildren().indexOf(this.figure as unknown as Figure)
+      this.removedParentEntry = this.parent.remove(this.figure as unknown as Figure)
     }
     // or from the canvas
     else {

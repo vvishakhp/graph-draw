@@ -3,5 +3,5 @@ import { Canvas } from './Canvas';
 
 
 $(function () {
-    new Canvas('holder', 3000, 3000);
+    var c = new Canvas('holder', 3000, 3000);
 });

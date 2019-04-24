@@ -3,7 +3,7 @@
 import   from '../../packages'
 import { Locator } from './Locator';
 import { Type } from '../../TypeRegistry';
-import { Port } from '../../Port';
+import { Port } from "../../ Port";
 import { matrix } from 'raphael';
 import { Figure } from '../../Figure';
 

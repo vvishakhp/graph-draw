@@ -13,6 +13,9 @@ import { SelectionPolicy } from './policy/figure/SelectionPolicy';
 import { SelectionFeedbackPolicy } from './policy/figure/SelectionFeedbackPolicy';
 import { CommandType } from './command/CommandType';
 import { CommandMove } from './command/CommandMove';
+import { CommandDelete } from './command/CommandDelete';
+import { StrongComposite } from './shape/composite/StrongComposite';
+import { CommandResize } from './command/CommandResize';
 
 export interface AttributeCollection {
   [key: string]: any;
@@ -567,7 +570,7 @@ export class Figure {
     })
   }
 
-  add(child: Figure, locator: Locator, index: number) {
+  add(child: Figure, locator: Locator, index?: number) {
     if (typeof locator === "undefined" || locator === null) {
       throw "Second parameter 'locator' is required for method 'Figure#add'"
     }
@@ -800,9 +803,6 @@ export class Figure {
       }
     })
 
-
-    // fire an event
-    // @since 5.3.3
     this.fireEvent("drag", { dx: dx, dy: dy, dx2: dx2, dy2: dy2, shiftKey: shiftKey, ctrlKey: ctrlKey })
   }
 
@@ -909,8 +909,7 @@ export class Figure {
   setRotationAngle(angle) {
     this.rotationAngle = angle
 
-    // Update the resize handles if the user change the position of the element via an API call.
-    //
+
     this.editPolicy.each((i, e) => {
       if (e instanceof DragDropEditPolicy) {
         e.moved(this.canvas, this)
@@ -1026,28 +1025,18 @@ export class Figure {
     this.minWidth = parseFloat(w)
     this.fireEvent("change:minWidth", { value: this.minWidth })
 
-    // fit the width with the new constraint
+    
     this.setWidth(this.getWidth())
 
     return this
   }
 
-  /**
-   * @method
-   * This value is relevant for the interactive resize of the figure.
-   *
-   * @return {Number} Returns the min. height of this object.
-   */
+  
   getMinHeight() {
     return this.minHeight
   }
 
-  /**
-   * @method
-   * Set the minimum height of the figure.
-   *
-   * @param {Number} h
-   */
+
   setMinHeight(h) {
     this.minHeight = parseFloat(h)
     this.fireEvent("change:minHeight", { value: this.minHeight })
@@ -1059,13 +1048,6 @@ export class Figure {
   }
 
 
-  /**
-   * @method
-   * the the x-offset related to the parent figure or canvas
-   *
-   * @param {Number} x the new x offset of the figure
-   * @since 5.0.8
-   */
   setX(x) {
     this.setPosition(parseFloat(x), this.y)
     this.fireEvent("change:x", { value: this.x })
@@ -1073,23 +1055,12 @@ export class Figure {
     return this
   }
 
-  /**
-   * @method
-   * The x-offset related to the parent figure or canvas.
-   *
-   * @return {Number} the x-offset to the parent figure
-   **/
+  
   getX() {
     return this.x
   }
 
-  /**
-   * @method
-   * the the y-offset related to the parent figure or canvas
-   *
-   * @param {Number} y the new x offset of the figure
-   * @since 5.0.8
-   */
+ 
   setY(y) {
     this.setPosition(this.x, parseFloat(y))
     this.fireEvent("change:y", { value: this.y })
@@ -1098,23 +1069,12 @@ export class Figure {
   }
 
 
-  /**
-   * @method
-   * The y-offset related to the parent figure or canvas.
-   *
-   * @return {Number} The y-offset to the parent figure.
-   **/
+  
   getY() {
     return this.y
   }
 
 
-  /**
-   * @method
-   * The x-offset related to the canvas.
-   *
-   * @return {Number} the x-offset to the canvas
-   **/
   getAbsoluteX() {
     if (!this.parent) {
       return this.getX()
@@ -1124,12 +1084,7 @@ export class Figure {
   }
 
 
-  /**
-   * @method
-   * The y-offset related to the canvas.
-   *
-   * @return {Number} The y-offset to the canvas.
-   **/
+  
   getAbsoluteY() {
     if (!this.parent) {
       return this.getY()
@@ -1138,40 +1093,18 @@ export class Figure {
   }
 
 
-  /**
-   * @method
-   * Returns the absolute y-position of the port.
-   *
-   * @type { .geo.Point}
-   **/
+ 
   getAbsolutePosition() {
     return new Point(this.getAbsoluteX(), this.getAbsoluteY())
   }
 
-  /**
-   * @method
-   * Returns the absolute y-position of the port.
-   *
-   * @return { .geo.Rectangle}
-   **/
+  
   getAbsoluteBounds() {
     return new Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight())
   }
 
 
-  /**
-   * @method
-   * Set the position of the object.
-   *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        x: x,
-   *        y: y
-   *      });
-   *
-   * @param {Number| .geo.Point} x The new x coordinate of the figure or the x/y coordinate if it is an  .geo.Point
-   * @param {Number} [y] The new y coordinate of the figure
-   **/
+
   setPosition(x, y?) {
     if (typeof x === "undefined") {
       debugger
@@ -1198,10 +1131,6 @@ export class Figure {
 
     this.repaint()
 
-
-    // Update the resize handles if the user change the position of the
-    // element via an API call.
-    //
     this.editPolicy.each((i, e) => {
       if (e instanceof DragDropEditPolicy) {
         e.moved(this.canvas, this)
@@ -1218,24 +1147,11 @@ export class Figure {
   }
 
 
-  /**
-   * @method
-   * Get the current position of the figure
-   *
-   * @return { .geo.Point}
-   * @since 2.0.0
-   */
   getPosition() {
     return new Point(this.getX(), this.getY())
   }
 
-  /**
-   * @method
-   * Translate the figure with the given x/y offset.
-   *
-   * @param {Number} dx The x offset to translate
-   * @param {Number} dy The y offset to translate
-   **/
+ 
   translate(dx, dy) {
     this.setPosition(this.getX() + dx, this.getY() + dy)
 
@@ -1243,19 +1159,7 @@ export class Figure {
   }
 
 
-  /**
-   * @method
-   * Set the new width and height of the figure.
-   *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *         width:  w,
-   *         height: h
-   *      });
-   *
-   * @param {Number} w The new width of the figure
-   * @param {Number} h The new height of the figure
-   **/
+ 
   setDimension(w, h) {
     let old = { width: this.width, height: this.height }
 
@@ -1263,9 +1167,7 @@ export class Figure {
     h = Math.max(this.getMinHeight(), h)
 
     if (this.width === w && this.height === h) {
-      // required if an inherit figure changed the w/h to a given constraint.
-      // In this case the Resize handles must be informed that the shape didn't resized.
-      // because the minWidth/minHeight did have a higher prio.
+     
       this.editPolicy.each((i, e) => {
         if (e instanceof DragDropEditPolicy) {
           e.moved(this.canvas, this)
@@ -1274,9 +1176,6 @@ export class Figure {
       return this
     }
 
-
-    // apply all EditPolicy to adjust/modify the new dimension
-    //
     this.editPolicy.each((i, e) => {
       if (e instanceof DragDropEditPolicy) {
         let newDim = e.adjustDimension(this, w, h)
@@ -1285,8 +1184,7 @@ export class Figure {
       }
     })
 
-    // respect the aspect ratio if required
-    //
+
     if (this.keepAspectRatio === true) {
       if (w >= this.getMinWidth()) {
         // scale the height to the given ratio
@@ -1321,26 +1219,7 @@ export class Figure {
   }
 
 
-  /**
-   * @method
-   * Set the bounding box of the figure
-   *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        width: w,
-   *        height: h,
-   *        x: x,
-   *        y: y
-   *      });
-   *
-   *      // or
-   *      figure.attr({
-   *        boundingBox: {x:1, y:100, width:30, height:30}
-   *      });
-   *
-   * @param { .geo.Rectangle} rect
-   * @since 4.8.0
-   */
+  
   setBoundingBox(rect: Rectangle) {
     rect = rect.clone();
 
@@ -1353,27 +1232,12 @@ export class Figure {
     return this
   }
 
-  /**
-   * @method
-   * Returns the bounding box of the figure in absolute position to the canvas.
-   *
-   * @return { .geo.Rectangle}
-   **/
+  
   getBoundingBox() {
     return new Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight())
   }
 
-  /**
-   * @method
-   * Detect whenever the hands over coordinate is inside the figure.
-   * The default implementation is a simple bounding box test.
-   *
-   * @param {Number} iX
-   * @param {Number} iY
-   * @param {Number} [corona]
-   *
-   * @returns {Boolean}
-   */
+ 
   hitTest(iX, iY, corona) {
     if (typeof corona === "number") {
       return this.getBoundingBox().scale(corona, corona).hitTest(iX, iY)
@@ -1382,24 +1246,13 @@ export class Figure {
   }
 
 
-  /**
-   * @method
-   * Switch on/off the drag drop behaviour of this object
-   *
-   * @param {Boolean} flag The new drag drop indicator
-   **/
   setDraggable(flag) {
     this.draggable = !!flag
 
     return this
   }
 
-  /**
-   * @method
-   * Get the Drag drop enable flag
-   *
-   * @return {Boolean} The new drag drop indicator
-   **/
+ 
   isDraggable() {
     // delegate to the composite if given
     if (this.composite !== null) {
@@ -1410,28 +1263,12 @@ export class Figure {
   }
 
 
-  /**
-   * @method
-   * Returns the true if the figure can be resized.
-   *
-   * @return {Boolean}
-   **/
+ 
   isResizeable() {
     return this.resizeable
   }
 
-  /**
-   * @method
-   * You can change the resizeable behaviour of this object. Hands over [false] and
-   * the figure has no resizehandles if you select them with the mouse.<br>
-   *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        resizeable: flag
-   *      });
-   *
-   * @param {Boolean} flag The resizeable flag.
-   **/
+  
   setResizeable(flag) {
     this.resizeable = !!flag
     this.fireEvent("change:resizeable", { value: this.resizeable })
@@ -1439,12 +1276,6 @@ export class Figure {
     return this
   }
 
-  /**
-   * @method
-   * Indicates whenever the element is selectable by user interaction or API.
-   *
-   * @return {Boolean}
-   **/
   isSelectable() {
     // delegate to the composite if given
     if (this.composite !== null) {
@@ -1455,13 +1286,7 @@ export class Figure {
   }
 
 
-  /**
-   * @method
-   * You can change the selectable behavior of this object. Hands over [false] and
-   * the figure has no selection handles if you try to select them with the mouse.<br>
-   *
-   * @param {Boolean} flag The selectable flag.
-   **/
+  
   setSelectable(flag) {
     this.selectable = !!flag
     this.fireEvent("change:selectable", { value: this.selectable })
@@ -1469,36 +1294,17 @@ export class Figure {
     return this
   }
 
-  /**
-   * @method
-   * Return true if the object doesn't care about the aspect ratio.
-   * You can change the height and width independent.<br>
-   *
-   * Replaced with "getKeepAspectRatio"
-   * @return {Boolean}
-   * @deprecated
-   */
+  
   isStrechable() {
     return !this.getKeepAspectRatio()
   }
 
-  /**
-   * @method
-   * Return false if you avoid that the user can delete your figure.
-   * Sub class can override this method.
-   *
-   * @return {Boolean}
-   **/
+
   isDeleteable() {
     return this.deleteable
   }
 
-  /**
-   * @method
-   * Set the flag if the shape is deleteable.
-   *
-   * @param {Boolean} flag enable or disable flag for the delete operation
-   **/
+  
   setDeleteable(flag) {
     this.deleteable = !!flag
     this.fireEvent("change:deleteable", { value: this.deleteable })
@@ -1506,14 +1312,7 @@ export class Figure {
     return this
   }
 
-  /**
-   * @method
-   * Set the parent of this figure.
-   * Don't call them manually.
-   *
-   * @param { .Figure} parent The new parent of this figure
-   * @private
-   **/
+ 
   setParent(parent) {
     this.parent = parent
 
@@ -1529,26 +1328,12 @@ export class Figure {
     return this
   }
 
-  /**
-   * @method
-   * Get the parent of this figure.
-   *
-   * @return { .Figure}
-   **/
+  
   getParent() {
     return this.parent
   }
 
-  /**
-   * @method
-   * Check to see if a figure is a descendant of another figure.
-   * <br>
-   * The contains() method returns true if the figure provided by the argument is a descendant of this figure,
-   * whether it is a direct child or nested more deeply. Otherwise, it returns false.
-   *
-   * @param { .Figure} containedFigure The figure that may be contained by (a descendant of) this figure.
-   * @since 5.5.4
-   */
+ 
   contains(containedFigure) {
     if (containedFigure.getParent() === this) {
       return true
@@ -1563,13 +1348,7 @@ export class Figure {
     return false
   }
 
-  /**
-   * @method
-   * Get the top most parent of this figure. This can be an layout figure or parent container
-   *
-   * @return { .Figure}
-   * @since 5.0.6
-   **/
+ 
   getRoot() {
     let root = this.parent
     while (root !== null && root.parent !== null) {
@@ -1578,13 +1357,7 @@ export class Figure {
     return root
   }
 
-  /**
-   * @method
-   * Set the assigned composite of this figure.
-   *
-   * @param { .shape.composite.StrongComposite} composite The assigned composite of this figure
-   * @since 4.8.0
-   **/
+  
   setComposite(composite) {
     if (composite !== null && !(composite instanceof StrongComposite)) {
       throw "'composite must inherit from ' .shape.composite.StrongComposite'"
@@ -1595,28 +1368,13 @@ export class Figure {
     return this
   }
 
-  /**
-   * @method
-   * Get the assigned composite of this figure.
-   *
-   * @return { .shape.composite.StrongComposite}
-   * @since 4.8.0
-   **/
+  
   getComposite() {
     return this.composite
   }
 
 
-  /**
-   * @method
-   * Execute all handlers and behaviors attached to the figure for the given event type.
-   *
-   *
-   * @param {String} event the event to trigger
-   * @param {Object} [args] optional parameters for the triggered event callback
-   *
-   * @since 5.0.0
-   */
+  
   fireEvent(event: string, args?: any) {
     try {
       if (typeof this.eventSubscriptions[event] === 'undefined') {
@@ -1640,9 +1398,7 @@ export class Figure {
     finally {
       this._inEvent = false
 
-      // fire a generic change event if an attribute has changed
-      // required for some DataBinding frameworks or for the Backbone.Model compatibility
-      // the event "change" with the corresponding attribute name as additional parameter
+     
       if (event.substring(0, 7) === "change:") {
         this.fireEvent("change", event.substring(7))
       }
@@ -1654,9 +1410,7 @@ export class Figure {
     if (typeof callback === "undefined") {
       debugger
     }
-    // the "context" param is add to be compatible with Backbone.Model.
-    // The project "backbone.ModelBinder" requires this signature and we want to be nice.
-    //
+   
     if (context) {
       callback = callback.bind(context)
       callback.___originalCallback = callback
@@ -1666,7 +1420,7 @@ export class Figure {
       if (typeof this.eventSubscriptions[events[i]] === 'undefined') {
         this.eventSubscriptions[events[i]] = []
       }
-      // avoid duplicate registration for the same event with the same callback method
+      
       if (-1 !== $.inArray(callback, this.eventSubscriptions[events[i]])) {
         //   debugger
       }
@@ -1677,17 +1431,7 @@ export class Figure {
     return this
   }
 
-  /**
-   * @method
-   * The .off() method removes event handlers that were attached with {@link #on}.<br>
-   * Calling .off() with no arguments removes all handlers attached to the elements.<br>
-   * <br>
-   * If a simple event name such as "move" is provided, all events of that type are removed from the figure.
-   *
-   *
-   * @param {String|Function} eventOrFunction the event name of the registerd function or the function itself
-   * @since 5.0.0
-   */
+
   off(eventOrFunction) {
     if (typeof eventOrFunction === "undefined") {
       this.eventSubscriptions = {}
@@ -1710,15 +1454,6 @@ export class Figure {
   }
 
 
-  /**
-   * @method
-   * Returns the best figure at the location [x,y]. It is a simple hit test. Keep in mind that only visible objects
-   * are returned.
-   *
-   * @param {Number} x The x position.
-   * @param {Number} y The y position.
-   * @param { .Figure|Array} [figureToIgnore] The figures which should be ignored.
-   **/
   getBestChild(x, y, figureToIgnore?) {
     if (!Array.isArray(figureToIgnore)) {
       if (figureToIgnore instanceof Figure) {
@@ -1731,8 +1466,7 @@ export class Figure {
 
     let result = null
 
-    // tool method to check recursive a figure for hitTest
-    //
+
     let checkRecursive = function (children) {
       children.each(function (i, e) {
         let c = e.figure
@@ -1765,7 +1499,7 @@ export class Figure {
       if (!this.isDeleteable()) {
         return null
       }
-      return new CommandDelete(this)
+      return new CommandDelete(this as any)
     }
 
     if (request.getPolicy() === CommandType.RESIZE) {
@@ -1778,44 +1512,22 @@ export class Figure {
     return null
   }
 
-  /**
-   * @method
-   * Clone the figure. <br>
-   * You must override and implement the methods <b>getPersistentAttributes</b> and <b>setPersistentAttributes</b> for your custom
-   * figures if the have special attributes.
-   *
-   * The clone() method performs a deep copy of the object, meaning that it copies the children, ports and decorations
-   * per default. You can control the clone procedure with the 'cloneMetaData'.
-   *
-   *
-   * @param {Object} [cloneMetaData] controls the clone procedure
-   * @param {Boolean} [cloneMetaData.excludeChildren] set it to true if you want exclude the children.
-   *
-   * @since 4.1.0
-   * @experimental
-   */
   clone(cloneMetaData?) {
     cloneMetaData = extend({ exludeChildren: false }, cloneMetaData)
 
-    let clone = eval("new " + this.NAME + "();")
+    let clone: Figure = createInstenceFromType((this as any).NAME);
     let initialId = clone.id
 
     clone.setPersistentAttributes(this.getPersistentAttributes())
 
     clone.id = initialId
 
-    // add all decorations to the memento
-    //
     if (cloneMetaData.exludeChildren === false) {
       clone.resetChildren()
       this.children.each((i, entry) => {
-        let child = entry.figure.clone()
-        // we can ignore the locator if this didn't provide a "correct" name, this can happen in some
-        // Layout shapes like VerticalLayout or Horziontal Layout. This figures injects it own kind
-        // of layouter...so didn'T care about this.
 
         let locator = createInstenceFromType((entry.locator as any).NAME);
-        clone.add(child, locator)
+        clone.add(entry, locator)
       })
     }
 
@@ -1824,8 +1536,7 @@ export class Figure {
 
 
   getPersistentAttributes() {
-    // force deep copy of userData to avoid side effects in the clone method.
-    //
+
     let memento: any = {
       type: this.NAME,
       id: this.id,
@@ -1854,8 +1565,6 @@ export class Figure {
     this.id = memento.id
     this.setPosition(parseFloat(memento.x), parseFloat(memento.y))
 
-    // width and height are optional parameter for the JSON stuff.
-    // We use the defaults if the attributes not present
     if (typeof memento.width !== "undefined") {
       this.width = parseFloat(memento.width)
     }

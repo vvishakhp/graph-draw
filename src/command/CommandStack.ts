@@ -2,6 +2,8 @@ import { Type } from "../TypeRegistry";
 import ArrayList from "../util/ArrayList";
 import { Command } from "./Command";
 import { CommandCollection } from "./CommandCollection";
+import { CommandStackEventListener } from "./CommandStackEventListener";
+import { CommandStackEvent } from "./CommandStackEvent";
 
 @Type('CommandStack')
 export class CommandStack {
