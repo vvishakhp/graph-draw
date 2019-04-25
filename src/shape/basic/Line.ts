@@ -1,19 +1,10 @@
-import { Type } from '../../TypeRegistry';
-import extend from '../../util/extend';
-import { Color } from '../../util/Color';
-import { Point } from '../../geo/Point';
-import ArrayList from '../../util/ArrayList';
-import { DragDropEditPolicy } from '../../policy/figure/DragDropEditPolicy';
+import {
+  Type, Figure, Point, ArrayList, AttributeCollection,
+  extend, Color, LineSelectionFeedbackPolicy, DragDropEditPolicy,
+  Rectangle, SelectionFeedbackPolicy, Command, CommandType, CommandMoveVertices,
+  CommandDelete, CommandMoveVertex
+} from '../../imports';
 import jsonUtil from '../../util/JSONUtil';
-import { Rectangle } from '../../geo/Rectangle';
-import { SelectionFeedbackPolicy } from '../../policy/figure/SelectionFeedbackPolicy';
-import { CommandType } from '../../command/CommandType';
-import { CommandDelete } from '../../command/CommandDelete';
-import { Figure, AttributeCollection } from '../../Figure';
-import { CommandMoveVertex } from '../../command/CommandMoveVertex';
-import { LineSelectionFeedbackPolicy } from '../../policy/line/LineSelectionFeedbackPolicy';
-import { CommandMoveVertices } from '../../command/CommandMoveVertices';
-import { Command } from '../../command/Command';
 
 @Type('LineShape')
 export class LineShape extends Figure {
@@ -144,7 +135,7 @@ export class LineShape extends Figure {
       return
     }
 
-    this.vertices.each(function (i, e) {
+    this.vertices.each((i, e) => {
       e.translate(dx2, dy2)
     })
     this.command.updateVertices(this.vertices.clone())
@@ -174,7 +165,7 @@ export class LineShape extends Figure {
     this.command = null
     this.isMoving = false
 
-    this.editPolicy.each(function (i, e) {
+    this.editPolicy.each((i, e) => {
       if (e instanceof DragDropEditPolicy) {
         e.onDragEnd(_this.canvas, _this, x, y, shiftKey, ctrlKey)
       }
@@ -345,7 +336,7 @@ export class LineShape extends Figure {
   }
 
   translate(dx: number, dy: number) {
-    this.vertices.each(function (i, e) {
+    this.vertices.each((i, e) => {
       e.translate(dx, dy)
     })
 
@@ -564,7 +555,7 @@ export class LineShape extends Figure {
 
 
     if (!this.selectionHandles.isEmpty()) {
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each((i, e) => {
         if (e instanceof SelectionFeedbackPolicy) {
           e.onUnselect(this.canvas, this)
           e.onSelect(this.canvas, this, undefined)
@@ -683,8 +674,8 @@ export class LineShape extends Figure {
     let segments1 = this.getSegments()
     let segments2 = other.getSegments()
 
-    segments1.each(function (i, s1) {
-      segments2.each(function (j, s2) {
+    segments1.each((i, s1) => {
+      segments2.each((j, s2) => {
         let p = LineShape.intersection(s1.start, s1.end, s2.start, s2.end)
         if (p !== null) {
           result.add(p)
@@ -717,7 +708,7 @@ export class LineShape extends Figure {
 
 
     memento.vertex = []
-    this.getVertices().each(function (i, e) {
+    this.getVertices().each((i, e) => {
       memento.vertex.push({
         x: e.getX(),
         y: e.getY()

@@ -1,5 +1,4 @@
-import { Type } from "../TypeRegistry";
-import { Command } from "./Command";
+import { Command, Type } from '../imports';
 
 @Type('CommandRemoveVertex')
 export class CommandRemoveVertex extends Command {

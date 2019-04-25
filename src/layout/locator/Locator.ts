@@ -1,5 +1,4 @@
-import { Figure } from '../../Figure';
-import { createInstenceFromType, Type } from '../../TypeRegistry';
+import { Type, Figure, createInstenceFromType } from '../../imports';
 
 @Type('Locator')
 export class Locator {

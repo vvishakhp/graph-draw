@@ -1,7 +1,4 @@
-import { Command } from "./Command";
-import { Figure } from "../Figure";
-import { Rectangle } from "../geo/Rectangle";
-
+import { Command, Figure, Rectangle } from '../imports';
 export class CommandBoundingBox extends Command {
 
   figure: Figure;

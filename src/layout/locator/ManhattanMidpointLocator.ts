@@ -1,6 +1,4 @@
-import { ConnectionLocator } from './ConnectionLocator';
-import { Figure } from '../../Figure';
-import { Type } from '../../TypeRegistry';
+import { Type, ConnectionLocator, Figure } from '../../imports';
 
 @Type('ManhattanMidpointLocator')
 export class ManhattanMidpointLocator extends ConnectionLocator {

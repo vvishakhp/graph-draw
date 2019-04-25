@@ -1,9 +1,8 @@
-import { Type } from "../../TypeRegistry";
-import { LineSelectionFeedbackPolicy } from "./LineSelectionFeedbackPolicy";
-import { LineEndResizeHandle } from "../../shape/basic/LineEndResizeHandle";
-import { VertexResizeHandle } from "../../shape/basic/VertexResizeHandle";
-import { LineStartResizeHandle } from "../../shape/basic/LineStartResizeHandle";
-import { GhostVertexResizeHandle } from "../../shape/basic/GhostVertexResizeHandle";
+import {
+  Type, LineSelectionFeedbackPolicy,
+  LineStartResizeHandle, LineEndResizeHandle,
+  VertexResizeHandle, GhostVertexResizeHandle
+} from '../../imports';
 
 
 @Type('VertexSelectionFeedbackPolicy')

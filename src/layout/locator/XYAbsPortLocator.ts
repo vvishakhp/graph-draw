@@ -1,6 +1,4 @@
-import { PortLocator } from "./PortLocator";
-import { Figure } from "../../Figure";
-import { Type } from "../../TypeRegistry";
+import { Type, PortLocator, Figure } from '../../imports';
 
 @Type('XYAbsPortLocator')
 export class XYAbsPortLocator extends PortLocator {

@@ -1,5 +1,4 @@
-import { Decorator } from "./Decorator";
-
+import { } from '../../imports';
 export class ArrowDecorator extends Decorator {
 	paint(paper: RaphaelPaper) {
 		var st = paper.set();

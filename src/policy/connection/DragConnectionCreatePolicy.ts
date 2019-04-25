@@ -1,11 +1,5 @@
-import { ConnectionCreatePolicy } from "./ConnectionCreatePolicy";
-import { Type } from "../../TypeRegistry";
-import { PortFeedbackPolicy } from "../port/PortFeedbackPolicy";
-import { DragDropEditPolicy } from "../figure/DragDropEditPolicy";
-import { CommandType } from "../../command/CommandType";
-import { Port } from "../../Port";
-import { Canvas } from "../../Canvas";
-import { DirectRouter } from "../../layout/connection/DirectRouter";
+import { Type, DirectRouter, ConnectionCreatePolicy, Port, Canvas, PortFeedbackPolicy, DragDropEditPolicy, CommandType } from '../../imports';
+
 
 @Type('DragConnectionCreatePolicy')
 export class DragConnectionCreatePolicy extends ConnectionCreatePolicy {
@@ -65,7 +59,7 @@ export class DragConnectionCreatePolicy extends ConnectionCreatePolicy {
                     if (ct !== null) {
                         ct.onDragLeave(de);
                         ct.fireEvent("dragLeave", { draggingElement: de });
-                        de.editPolicy.each(function (i, e) {
+                        de.editPolicy.each((i, e) => {
                             if (e instanceof PortFeedbackPolicy) {
                                 e.onHoverLeave(canvas, de, ct);
                             }
@@ -79,7 +73,7 @@ export class DragConnectionCreatePolicy extends ConnectionCreatePolicy {
                         if (ct !== null) {
                             ct.onDragEnter(de); // legacy
                             ct.fireEvent("dragEnter", { draggingElement: de });
-                            de.editPolicy.each(function (i, e) {
+                            de.editPolicy.each((i, e) => {
                                 if (e instanceof PortFeedbackPolicy) {
                                     e.onHoverEnter(canvas, de, ct);
                                 }
@@ -115,7 +109,6 @@ export class DragConnectionCreatePolicy extends ConnectionCreatePolicy {
         }
         catch (exc) {
             console.log(exc);
-            debugger;
         }
         return null;
     }
@@ -133,14 +126,14 @@ export class DragConnectionCreatePolicy extends ConnectionCreatePolicy {
             // notify all installed policies
             //
             if (ct) {
-                de.editPolicy.each(function (i, e) {
+                de.editPolicy.each((i, e) => {
                     if (e instanceof PortFeedbackPolicy) {
                         e.onHoverLeave(canvas, de, ct);
                     }
                 });
             }
 
-            de.editPolicy.each(function (i, e) {
+            de.editPolicy.each((i, e) => {
                 if (e instanceof DragDropEditPolicy) {
                     e.onDragEnd(canvas, de, x, y, shiftKey, ctrlKey);
                 }

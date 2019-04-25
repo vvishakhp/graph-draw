@@ -1,6 +1,4 @@
-import { ConnectionRouter } from "./ConnectionRouter";
-import { Type } from "../../TypeRegistry";
-import { LineSelectionFeedbackPolicy } from "../../policy/line/LineSelectionFeedbackPolicy";
+import { Type, ConnectionRouter, LineSelectionFeedbackPolicy } from '../../imports';
 
 @Type('DirectRouter')
 export class DirectRouter extends ConnectionRouter {

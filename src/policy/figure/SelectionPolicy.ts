@@ -1,7 +1,4 @@
-import { DragDropEditPolicy } from './DragDropEditPolicy';
-import { Canvas } from '../../Canvas';
-import { Figure } from '../../Figure';
-import { Type } from '../../TypeRegistry';
+import { Type, DragDropEditPolicy, Canvas, Figure } from '../../imports';
 
 @Type('FigureSelectionPolicy')
 export class FigureSelectionPolicy extends DragDropEditPolicy {

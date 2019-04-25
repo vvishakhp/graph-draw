@@ -1,5 +1,5 @@
-import { Type } from "../TypeRegistry";
-import { Command } from "./Command";
+import { Command, Type } from '../imports';
+
 
 @Type('CommandMoveLine')
 export class CommandMoveLine extends Command {
@@ -31,7 +31,7 @@ export class CommandMoveLine extends Command {
 
   undo() {
     let _this = this
-    this.line.getVertices().each(function (i, e) {
+    this.line.getVertices().each((i, e) => {
       e.translate(-_this.dx, -_this.dy)
     })
     this.line.svgPathString = null
@@ -41,7 +41,7 @@ export class CommandMoveLine extends Command {
 
   redo() {
     let _this = this
-    this.line.getVertices().each(function (i, e) {
+    this.line.getVertices().each((i, e) => {
       e.translate(_this.dx, _this.dy)
     })
     this.line.svgPathString = null

@@ -1,15 +1,5 @@
-import { Type } from "../../TypeRegistry";
-import { ConnectionCreatePolicy } from "./ConnectionCreatePolicy";
-import { Port } from "../../Port";
-import { Figure } from "../../Figure";
-import { Point } from "../../geo/Point";
-import { CommandType } from "../../command/CommandType";
-import { InputPort } from "../../InputPort";
-import { Canvas } from "../../Canvas";
-import { LineShape } from "../../shape/basic/Line";
-import { PolyLine } from "../../shape/basic/PolyLine";
-import { DirectRouter } from "../../layout/connection/DirectRouter";
-import { VertexRouter } from "../../layout/connection/VertexRouter";
+import { Type, DirectRouter, ConnectionCreatePolicy, Port, Figure, Point, LineShape, PolyLine, CommandType, InputPort, VertexRouter } from '../../imports';
+
 
 @Type('ClickConnectionCreatePolicy')
 export class ClickConnectionCreatePolicy extends ConnectionCreatePolicy {
@@ -93,11 +83,11 @@ export class ClickConnectionCreatePolicy extends ConnectionCreatePolicy {
             this.tempConnection.show(canvas);
             this.tempConnection.setVertices([this.port1.getAbsolutePosition(), this.port1.getAbsolutePosition()]);
 
-            var a = function () {
+            var a = () => {
                 this.tempConnection.shape.animate({ "stroke-width": 2 }, 800, b);
             };
 
-            var b = function () {
+            var b = () => {
                 this.tempConnection.shape.animate({ "stroke-width": 1 }, 800, a);
             };
 

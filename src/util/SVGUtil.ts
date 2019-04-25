@@ -1,7 +1,7 @@
 import Raphael = require('raphael');
 
 // extending raphael with a polygon function
-Raphael.fn.polygon = function (pointString) {
+Raphael.fn.polygon = (pointString) => {
   var poly = ['M'];
   var point = pointString.split(' ');
 
@@ -24,13 +24,13 @@ Raphael.fn.polygon = function (pointString) {
 
 // hacking RaphaelJS to support groups of elements
 //
-(function () {
-  Raphael.fn.group = function (f, g) {
+(() => {
+  Raphael.fn.group = (f, g) => {
     var enabled = document.getElementsByTagName("svg").length > 0;
     if (!enabled) {
       // return a stub for VML compatibility
       return {
-        add: function () {
+        add: () => {
           // intentionally left blank
         }
       };
@@ -44,19 +44,19 @@ Raphael.fn.polygon = function (pointString) {
       this.group.appendChild(g[i].node);
     }
     this.svgcanv.appendChild(this.group);
-    this.group.translate = function (c, a) {
+    this.group.translate = (c, a) => {
       this.setAttribute("transform", "translate(" + c + "," + a + ") scale(" + this.getAttr("scale").x + "," + this.getAttr("scale").y + ")");
     };
-    this.group.rotate = function (c, a, e) {
+    this.group.rotate = (c, a, e) => {
       this.setAttribute("transform", "translate(" + this.getAttr("translate").x + "," + this.getAttr("translate").y + ") scale(" + this.getAttr("scale").x + "," + this.getAttr("scale").y + ") rotate(" + c + "," + a + "," + e + ")");
     };
-    this.group.scale = function (c, a) {
+    this.group.scale = (c, a) => {
       this.setAttribute("transform", "scale(" + c + "," + a + ") translate(" + this.getAttr("translate").x + "," + this.getAttr("translate").y + ")");
     };
-    this.group.push = function (c) {
+    this.group.push = (c) => {
       this.appendChild(c.node);
     };
-    this.group.getAttr = function (c) {
+    this.group.getAttr = (c) => {
       this.previous = this.getAttribute("transform") ? this.getAttribute("transform") : "";
       var a = [], e, h, j;
       a = this.previous.split(" ");
@@ -109,7 +109,7 @@ Raphael.fn.polygon = function (pointString) {
       }
       return k;
     };
-    this.group.copy = function (el) {
+    this.group.copy = (el) => {
       this.copy = el.node.cloneNode(true);
       this.appendChild(this.copy);
     };
@@ -120,7 +120,7 @@ Raphael.fn.polygon = function (pointString) {
 /**
 * adding support method to check if the node is already visible
 **/
-(function () {
+(() => {
   Raphael.el.isVisible = function () {
     return (this.node.style.display !== "none");
   }

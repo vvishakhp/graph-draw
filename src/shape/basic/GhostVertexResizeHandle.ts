@@ -1,6 +1,6 @@
-import { LineResizeHandle } from "./LineResizeHandle";
-import { CommandAddVertex } from "../../command/CommandAddVertex";
+import { Type, LineResizeHandle, CommandAddVertex } from '../../imports';
 
+@Type('GhostVertexResizeHandle')
 export class GhostVertexResizeHandle extends LineResizeHandle {
   maxOpacity: number;
   precursorIndex: any;

@@ -1,17 +1,15 @@
-import { SelectionFeedbackPolicy } from "./SelectionFeedbackPolicy";
-import { RectangleShape } from "../../shape/basic/Rectangle";
-import { LineShape } from "../../shape/basic/Line";
-import { Figure } from "../../Figure";
-import { Point } from "../../geo/Point";
+import { SelectionFeedbackPolicy, RectangleShape, LineShape, Figure, Point, Type } from '../../imports';
 
+
+@Type('AntSelectionFeedbackPolicy')
 export class AntSelectionFeedbackPolicy extends SelectionFeedbackPolicy {
   onSelect(canvas, figure, isPrimarySelection) {
     if (figure.selectionHandles.isEmpty()) {
       let box: any = new RectangleShape({ bgColor: null, dasharray: "- ", color: "#2C70FF" }, {}, {})
-      box.hide = function () {
+      box.hide = () => {
         box.setCanvas(null)
       }
-      box.show = function (canvas) {
+      box.show = (canvas) => {
         box.setCanvas(canvas)
         box.shape.toFront()
       }

@@ -1,8 +1,6 @@
-import { FigureSelectionPolicy } from "./SelectionPolicy";
-import { Canvas } from "../../Canvas";
-import { Figure } from "../../Figure";
-import ArrayList from "../../util/ArrayList";
+import { FigureSelectionPolicy, Canvas, Figure, ArrayList, Type } from '../../imports';
 
+@Type('SelectionFeedbackPolicy')
 export class SelectionFeedbackPolicy extends FigureSelectionPolicy {
   onUnselect(canvas: Canvas, figure: Figure) {
 

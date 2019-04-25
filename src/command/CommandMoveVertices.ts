@@ -1,5 +1,5 @@
-import { Command } from "./Command";
-import { Type } from "../TypeRegistry";
+import { Command, Type } from '../imports';
+
 
 @Type('CommandMoveVertices')
 export class CommandMoveVertices extends Command {

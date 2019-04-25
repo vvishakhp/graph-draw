@@ -1,9 +1,4 @@
-import { Circle } from "./Circle";
-import extend from "../../util/extend";
-import { Color } from "../../util/Color";
-import { CommandType } from "../../command/CommandType";
-import { Connection } from "../../Connection";
-import { Type } from "../../TypeRegistry";
+import { Type, Circle, extend, Color, CommandType, Connection } from '../../imports'
 
 @Type('LineResizeHandle')
 export class LineResizeHandle extends Circle {
@@ -241,7 +236,6 @@ export class LineResizeHandle extends Circle {
 
   show(canvas, x, y) {
     if (x)
-      debugger
 
     this.setCanvas(canvas)
     try {

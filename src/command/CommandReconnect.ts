@@ -1,5 +1,5 @@
-import { Command } from "./Command";
-import { Type } from "../TypeRegistry";
+import { Command, Type } from '../imports';
+
 
 @Type('CommandReconnect')
 export class CommandReconnect extends Command {

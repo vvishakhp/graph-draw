@@ -1,7 +1,4 @@
-import { LineResizeHandle } from "./LineResizeHandle";
-import { Type } from "../../TypeRegistry";
-import { Connection } from "../../Connection";
-
+import { Type, LineResizeHandle, Connection } from '../../imports';
 @Type('LineEndResizeHandle')
 export class LineEndResizeHandle extends LineResizeHandle {
   constructor(figure) {

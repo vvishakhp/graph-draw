@@ -1,10 +1,5 @@
-import { SetFigure } from "../../SetFigure";
-import { Type } from "../../TypeRegistry";
-import { Color } from "../../util/Color";
-import extend from "../../util/extend";
-import jsonUtil from "../../util/JSONUtil";
-import { DragDropEditPolicy } from "../../policy/figure/DragDropEditPolicy";
-import { AntSelectionFeedbackPolicy } from "../../policy/figure/AntSelectionFeedbackPolicy";
+import { Type, SetFigure, extend, Color, AntSelectionFeedbackPolicy, DragDropEditPolicy } from '../../imports';
+import jsonUtil from '../../util/JSONUtil';
 
 @Type('Label')
 export class Label extends SetFigure {
@@ -183,7 +178,7 @@ export class Label extends SetFigure {
     // Update the resize handles if the user change the position of the element via an API call.
     //
     let _this = this
-    this.editPolicy.each(function (i, e) {
+    this.editPolicy.each((i, e) => {
       if (e instanceof DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
@@ -210,7 +205,7 @@ export class Label extends SetFigure {
     // Update the resize handles if the user change the position of the element via an API call.
     //
     let _this = this
-    this.editPolicy.each(function (i, e) {
+    this.editPolicy.each((i, e) => {
       if (e instanceof DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
@@ -422,7 +417,7 @@ export class Label extends SetFigure {
     // Update the resize handles if the user change the position of the element via an API call.
     //
     let _this = this
-    this.editPolicy.each(function (i, e) {
+    this.editPolicy.each((i, e) => {
       if (e instanceof DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
@@ -449,7 +444,7 @@ export class Label extends SetFigure {
 
     let matrix = this.shape.matrix
     let points = this.getBoundingBox().getVertices()
-    points.each(function (i, point) {
+    points.each((i, point) => {
       let x = matrix.x(point.getX(), point.getY())
       let y = matrix.y(point.getX(), point.getY())
       point.setX(x);

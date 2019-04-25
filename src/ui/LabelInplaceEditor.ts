@@ -1,4 +1,4 @@
-import { LabelEditor, Listener } from './LabelEditor';
+import { LabelEditor, Listener } from '../imports';
 
 export class LabelInplaceEditor extends LabelEditor {
 
@@ -28,7 +28,7 @@ export class LabelInplaceEditor extends LabelEditor {
 
         this.html.autoResize();
 
-        this.html.bind("keyup", function (e) {
+        this.html.bind("keyup", (e) => {
             switch (e.which) {
                 case 13:
                     this.commit();
@@ -43,7 +43,7 @@ export class LabelInplaceEditor extends LabelEditor {
 
         // avoid commit of the operation if we click inside the editor
         //
-        this.html.bind("click", function (e) {
+        this.html.bind("click", (e) => {
             e.stopPropagation();
             e.preventDefault();
         });
@@ -78,17 +78,17 @@ export class LabelInplaceEditor extends LabelEditor {
      *
      * @private
      */
-    commit: function () {
+    commit: () => {
     this.html.unbind("blur", this.commitCallback);
-    $("body").unbind("click", this.commitCallback);
-    var label = this.html.val();
-    var cmd = new  .command.CommandAttr(this.label, { text: label });
-    this.label.getCanvas().getCommandStack().execute(cmd);
-    this.html.fadeOut(() => {
-        this.html.remove();
-        this.html = null;
-        this.listener.onCommit(this.label.getText());
-    });
+$("body").unbind("click", this.commitCallback);
+var label = this.html.val();
+var cmd = new.command.CommandAttr(this.label, { text: label });
+this.label.getCanvas().getCommandStack().execute(cmd);
+this.html.fadeOut(() => {
+    this.html.remove();
+    this.html = null;
+    this.listener.onCommit(this.label.getText());
+});
 },
 
 /**
@@ -97,7 +97,7 @@ export class LabelInplaceEditor extends LabelEditor {
  * Remove the editor.<br>
  * @private
  */
-cancel: function () {
+cancel: () => {
     this.html.unbind("blur", this.commitCallback);
     $("body").unbind("click", this.commitCallback);
     this.html.fadeOut(() => {
@@ -133,7 +133,7 @@ cancel: function () {
  * @author Andreas Herz
  * @extends  .ui.LabelEditor
 */
-import   from '../packages';
+import from '../packages';
 import { Label } from '../shape/basic/Label';
 
 
@@ -145,14 +145,14 @@ import { Label } from '../shape/basic/Label';
      * @constructor
      * @private
      */
-    init: function (listener) {
+    init: (listener) => {
         this._super();
 
         // register some default listener and override this with the handover one
         this.listener = extend({
-            onCommit: function () { },
-            onCancel: function () { },
-            onStart: function () { }
+            onCommit: () => { },
+            onCancel: () => { },
+            onStart: () => { }
         }, listener);
     },
 
@@ -162,7 +162,7 @@ import { Label } from '../shape/basic/Label';
      *
      * @param { .shape.basic.Label} label the label to edit
      */
-    start: function (label) {
+    start: (label) => {
         this.label = label;
 
         this.commitCallback = this.commit.bind(this);
@@ -182,7 +182,7 @@ import { Label } from '../shape/basic/Label';
 
         this.html.autoResize();
 
-        this.html.bind("keyup", function (e) {
+        this.html.bind("keyup", (e) => {
             switch (e.which) {
                 case 13:
                     this.commit();
@@ -193,65 +193,65 @@ import { Label } from '../shape/basic/Label';
             }
         }.bind(this));
 
-        this.html.bind("blur", this.commitCallback);
+this.html.bind("blur", this.commitCallback);
 
-        // avoid commit of the operation if we click inside the editor
-        //
-        this.html.bind("click", function (e) {
-            e.stopPropagation();
-            e.preventDefault();
-        });
+// avoid commit of the operation if we click inside the editor
+//
+this.html.bind("click", (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+});
 
-        // Position the INPUT and init the autoresize of the element
-        //
-        var canvas = this.label.getCanvas();
-        var bb = this.label.getBoundingBox();
+// Position the INPUT and init the autoresize of the element
+//
+var canvas = this.label.getCanvas();
+var bb = this.label.getBoundingBox();
 
-        bb.setPosition(canvas.fromCanvasToDocumentCoordinate(bb.x, bb.y));
+bb.setPosition(canvas.fromCanvasToDocumentCoordinate(bb.x, bb.y));
 
-        // remove the scroll from the body if we add the canvas directly into the body
-        var scrollDiv = canvas.getScrollArea();
-        if (scrollDiv.is($("body"))) {
-            bb.translate(canvas.getScrollLeft(), canvas.getScrollTop());
-        }
+// remove the scroll from the body if we add the canvas directly into the body
+var scrollDiv = canvas.getScrollArea();
+if (scrollDiv.is($("body"))) {
+    bb.translate(canvas.getScrollLeft(), canvas.getScrollTop());
+}
 
-        bb.translate(-1, -1);
-        bb.resize(2, 2);
+bb.translate(-1, -1);
+bb.resize(2, 2);
 
-        this.html.css({ position: "absolute", "top": bb.y, "left": bb.x, "min-width": bb.w * (1 / canvas.getZoom()), "height": Math.max(25, bb.h * (1 / canvas.getZoom())) });
-        this.html.fadeIn(() => {
-            this.html.focus();
-            this.listener.onStart()
-        });
+this.html.css({ position: "absolute", "top": bb.y, "left": bb.x, "min-width": bb.w * (1 / canvas.getZoom()), "height": Math.max(25, bb.h * (1 / canvas.getZoom())) });
+this.html.fadeIn(() => {
+    this.html.focus();
+    this.listener.onStart()
+});
     },
+
+/**
+ * @method
+ * Transfer the data from the editor into the label.<br>
+ * Remove the editor.<br>
+ *
+ * @private
+ */
+commit: () => {
+    this.html.unbind("blur", this.commitCallback);
+    $("body").unbind("click", this.commitCallback);
+    var label = this.html.val();
+    var cmd = new.command.CommandAttr(this.label, { text: label });
+    this.label.getCanvas().getCommandStack().execute(cmd);
+    this.html.fadeOut(() => {
+        this.html.remove();
+        this.html = null;
+        this.listener.onCommit(this.label.getText());
+    });
+},
 
     /**
      * @method
      * Transfer the data from the editor into the label.<br>
      * Remove the editor.<br>
-     *
      * @private
      */
-    commit: function () {
-        this.html.unbind("blur", this.commitCallback);
-        $("body").unbind("click", this.commitCallback);
-        var label = this.html.val();
-        var cmd = new  .command.CommandAttr(this.label, { text: label });
-        this.label.getCanvas().getCommandStack().execute(cmd);
-        this.html.fadeOut(() => {
-            this.html.remove();
-            this.html = null;
-            this.listener.onCommit(this.label.getText());
-        });
-    },
-
-    /**
-     * @method
-     * Transfer the data from the editor into the label.<br>
-     * Remove the editor.<br>
-     * @private
-     */
-    cancel: function () {
+    cancel: () => {
         this.html.unbind("blur", this.commitCallback);
         $("body").unbind("click", this.commitCallback);
         this.html.fadeOut(() => {

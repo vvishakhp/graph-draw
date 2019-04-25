@@ -48,7 +48,7 @@ export class StrongComposite extends Composite {
       return a.getZOrder() > b.getZOrder() ? -1 : 1
     })
     let _this = this
-    figures.each(function (i, f) {
+    figures.each((i, f) => {
       f.toFront(_this)
     })
 
@@ -60,12 +60,12 @@ export class StrongComposite extends Composite {
     super.toBack(figure)
 
     let figures = this.getAssignedFigures().clone()
-    figures.sort(function (a, b) {
+    figures.sort( (a, b) =>{
       return a.getZOrder() > b.getZOrder() ? -1 : 1
     })
 
     let _this = this
-    figures.each(function (i, f) {
+    figures.each( (i, f) =>{
       f.toBack(_this)
     })
 

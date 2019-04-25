@@ -1,5 +1,4 @@
-import { Type } from "../../TypeRegistry";
-import Util from "../../geo/Util";
+import { Type, Util } from '../../imports';
 
 @Type('ConnectionRouter')
 export class ConnectionRouter {

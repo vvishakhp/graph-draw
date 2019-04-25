@@ -1,8 +1,4 @@
-import { Canvas } from "../Canvas";
-import { Figure } from "../Figure";
-import extend from "../util/extend";
-
-const $ = require('../util/jquery_extentions');
+import { extend, Canvas, Figure, $ } from '../imports';
 
 export class EditPolicy {
 
@@ -35,10 +31,7 @@ export class EditPolicy {
         }
         return // undefined
       }
-      // call attr as simple setter with (key , value)
-      //
 
-      // the value can be a function. In this case we must call the value().
       if (typeof value === "function") {
         value = value()
       }

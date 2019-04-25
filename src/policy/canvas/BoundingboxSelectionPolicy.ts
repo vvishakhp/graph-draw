@@ -1,15 +1,9 @@
-import { Rectangle } from "../../geo/Rectangle";
-import { Figure } from "../../Figure";
-import { SingleSelectionPolicy } from "./SingleSelectionPolicy";
-import { Canvas } from "../../Canvas";
-import { Connection } from "../../Connection";
-import { Type } from "../../TypeRegistry";
-import { Port } from "../../Port";
-import { CommandType } from "../../command/CommandType";
-import { LineShape } from "../../shape/basic/Line";
-import { RectangleShape as RectangleShape } from '../../shape/basic/Rectangle';
-import { ResizeHandle } from "../../ResizeHandle";
-import { LineResizeHandle } from "../../shape/basic/LineResizeHandle";
+import {
+  Type, SingleSelectionPolicy, Rectangle,
+  RectangleShape, Canvas, Figure, Connection, Port,
+  LineShape, CommandType, ResizeHandle, LineResizeHandle
+} from "../../imports";
+
 
 @Type('BoundingboxSelectionPolicy')
 export class BoundingboxSelectionPolicy extends SingleSelectionPolicy {
@@ -273,7 +267,6 @@ export class BoundingboxSelectionPolicy extends SingleSelectionPolicy {
       }
     } catch (exc) {
       console.log(exc)
-      debugger
     }
   }
 }

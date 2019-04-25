@@ -8,7 +8,7 @@ const Base64Util = {
     ENCODED_VALS_WEBSAFE: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789' + '-_.',
 
 
-    encodeByteArray: function (input, opt_webSafe?: string) {
+    encodeByteArray: (input, opt_webSafe?: string) => {
         Base64Util.init();
 
         var byteToCharMap = opt_webSafe ? Base64Util.byteToCharMapWebSafe_ : Base64Util.byteToCharMap_;
@@ -44,12 +44,12 @@ const Base64Util = {
         return output.join('');
     },
 
-    encode: function (input, opt_webSafe?: string) {
+    encode: (input, opt_webSafe?: string) => {
         return Base64Util.encodeByteArray(Base64Util.stringToByteArray(input), opt_webSafe);
     },
 
 
-    decode: function (input, opt_webSafe) {
+    decode: (input, opt_webSafe) => {
         Base64Util.init();
 
         var charToByteMap = opt_webSafe ? Base64Util.charToByteMapWebSafe_ : Base64Util.charToByteMap_;
@@ -93,7 +93,7 @@ const Base64Util = {
         return output;
     },
 
-    stringToByteArray: function (str) {
+    stringToByteArray: (str) => {
         var output = [], p = 0;
         for (var i = 0; i < str.length; i++) {
             var c = str.charCodeAt(i);
@@ -106,7 +106,7 @@ const Base64Util = {
         return output;
     },
 
-    init: function () {
+    init: () => {
         if (!Base64Util.byteToCharMap_) {
             Base64Util.byteToCharMap_ = {};
             Base64Util.charToByteMap_ = {};

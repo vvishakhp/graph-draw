@@ -11,11 +11,11 @@ export class RectangleSelectionFeedbackPolicy extends SelectionFeedbackPolicy {
 
       let box: any = new RectangleShape({ bgColor: null, dashArray: "- ", color: "#2C70FF", stroke: 0.5 }, {}, {})
 
-      box.hide = function () {
+      box.hide = () => {
         box.setCanvas(null)
       }
 
-      box.show = function (canvas) {
+      box.show = (canvas) => {
         box.setCanvas(canvas)
         box.toFront(figure)
       }

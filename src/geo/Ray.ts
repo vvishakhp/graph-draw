@@ -1,4 +1,4 @@
-import { Point } from "./Point";
+import { Point } from '../imports';
 
 export class Ray extends Point {
     constructor(x: number, y: number) {

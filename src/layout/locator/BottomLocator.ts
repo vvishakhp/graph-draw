@@ -1,9 +1,5 @@
-/// TODO
+import { Type, Locator, Figure, Port } from "../../imports";
 
-import { Figure } from '../../Figure';
-import { Locator } from './Locator';
-import { Port } from "../../Port";
-import { Type } from '../../TypeRegistry';
 
 @Type('BottomLocator')
 export class BottomLocator extends Locator {

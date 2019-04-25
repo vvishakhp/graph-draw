@@ -1,8 +1,4 @@
-import { Type } from "../../TypeRegistry";
-import { Canvas } from "../../Canvas";
-import { ZoomPolicy } from "./ZoomPolicy";
-import { Point } from "../../geo/Point";
-const shifty = require('shifty');
+import { Type, ZoomPolicy, Point, Canvas, shifty } from '../../imports'
 
 
 @Type('WheelZoomPolicy')

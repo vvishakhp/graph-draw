@@ -40,7 +40,6 @@ export class CommandConnect extends Command {
       // deprecated call!!!!
       //
       let result = new Connection()
-      debugger
       // will be handled by the optional callback
       if (typeof result === "undefined") {
         return

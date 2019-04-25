@@ -1,5 +1,5 @@
-import { Command } from "./Command";
-import { Type } from "../TypeRegistry";
+import { Command, Type } from '../imports';
+
 @Type('CommandRotate')
 export class CommandRotate extends Command {
   figure: any;

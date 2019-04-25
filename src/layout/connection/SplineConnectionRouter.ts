@@ -1,8 +1,4 @@
-import { ManhattanConnectionRouter } from "./ManhattanConnectionRouter";
-import { Type } from "../../TypeRegistry";
-import { CubicSpline } from "../../util/spline/CubicSpline";
-import { LineSelectionFeedbackPolicy } from "../../policy/line/LineSelectionFeedbackPolicy";
-import ArrayList from "../../util/ArrayList";
+import { Type, ManhattanConnectionRouter, CubicSpline, LineSelectionFeedbackPolicy, ArrayList } from '../../imports';
 
 @Type('SplineConnectionRouter')
 export class SplineConnectionRouter extends ManhattanConnectionRouter {
@@ -40,7 +36,7 @@ export class SplineConnectionRouter extends ManhattanConnectionRouter {
     conn.vertices = new ArrayList()
 
     let splinePoints = this.spline.generate(ps, 8)
-    splinePoints.each(function (i, e) {
+    splinePoints.each((i, e) => {
       conn.addPoint(e)
     })
 

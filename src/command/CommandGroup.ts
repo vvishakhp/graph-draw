@@ -15,7 +15,7 @@ export class CommandGroup extends Command {
       this.figures = figures
     }
 
-    this.figures.grep(function (figure) {
+    this.figures.grep((figure) => {
       return figure.getComposite() === null
     })
 
@@ -34,7 +34,7 @@ export class CommandGroup extends Command {
 
   undo() {
     let _this = this
-    this.figures.each(function (i, figure) {
+    this.figures.each((i, figure) => {
       _this.group.unassignFigure(figure)
     })
 
@@ -44,7 +44,7 @@ export class CommandGroup extends Command {
 
   redo() {
     let _this = this
-    this.figures.each(function (i, figure) {
+    this.figures.each((i, figure) => {
       _this.group.assignFigure(figure)
     })
 

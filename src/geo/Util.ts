@@ -1,9 +1,9 @@
-import { Point } from "./Point";
+import { Point } from '../imports';
 
 const Util: {
     insetPoint: (start: Point, end: Point, distanceFromStart: number) => Point
 } = {
-    insetPoint: function (start: Point, end: Point, distanceFromStart: number) {
+    insetPoint: (start: Point, end: Point, distanceFromStart: number) => {
         if (start.equals(end)) {
             return start;
         }

@@ -1,6 +1,4 @@
-import { Spline } from './Spline';
-import ArrayList from '../ArrayList';
-import { Point } from '../../geo/Point';
+import { Spline, ArrayList, Point } from '../../imports';
 
 export class BezierSpline extends Spline {
   generate(controlPoints: import("../ArrayList").default<any>, parts: number) {

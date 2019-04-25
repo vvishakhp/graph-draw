@@ -1,9 +1,5 @@
-import { EditPolicy } from "../EditPolicy";
-import { Type } from "../../TypeRegistry";
-import { Figure } from "../../Figure";
-import { Canvas } from "../../Canvas";
-import Base64Util from "../../util/Base64";
-import { Color } from "../../util/Color";
+import { EditPolicy, Type, Figure, Canvas, Color, Base64Util } from "../../imports";
+
 
 @Type('CanvasPolicy')
 export class CanvasPolicy extends EditPolicy {
@@ -17,15 +13,39 @@ export class CanvasPolicy extends EditPolicy {
     this.canvas = null;
   }
 
-  onClick(figure: Figure, mouseX: number, mouseY: number, shiftKey: boolean, ctrlKey: boolean) { }
-  onMouseMove(Canvas: Figure, mouseX: number, mouseY: number, shiftKey: boolean, ctrlKey: boolean) { }
-  onDoubleClick(figure: Figure, mouseX: number, mouseY: number, shiftKey: boolean, ctrlKey: boolean) { }
-  onMouseDown(figure: Canvas, mouseX: number, mouseY: number, shiftKey: boolean, ctrlKey: boolean) { }
-  onMouseDrag(figure: Canvas, mouseX: number, mouseY: number, shiftKey: boolean, ctrlKey: boolean) { }
-  onMouseUp(figure: Figure, mouseX: number, mouseY: number, shiftKey: boolean, ctrlKey: boolean) { }
-  onRightMouseDown(figure: Figure, mouseX: number, mouseY: number, shiftKey: boolean, ctrlKey: boolean) { }
-  onMouseWheel(wheelDelta: number, mouseX: number, mouseY: number, shiftKey: boolean, ctrlKey: boolean) { }
+  onClick(figure: Figure, mouseX: number, mouseY: number, shiftKey: boolean, ctrlKey: boolean) {
+
+  }
+
+  onMouseMove(Canvas: Figure, mouseX: number, mouseY: number, shiftKey: boolean, ctrlKey: boolean) {
+
+  }
+
+  onDoubleClick(figure: Figure, mouseX: number, mouseY: number, shiftKey: boolean, ctrlKey: boolean) {
+
+  }
+
+  onMouseDown(figure: Canvas, mouseX: number, mouseY: number, shiftKey: boolean, ctrlKey: boolean) {
+
+  }
+
+  onMouseDrag(figure: Canvas, mouseX: number, mouseY: number, shiftKey: boolean, ctrlKey: boolean) {
+
+  }
+
+  onMouseUp(figure: Figure, mouseX: number, mouseY: number, shiftKey: boolean, ctrlKey: boolean) {
+
+  }
+
+  onRightMouseDown(figure: Figure, mouseX: number, mouseY: number, shiftKey: boolean, ctrlKey: boolean) {
+
+  }
+
+  onMouseWheel(wheelDelta: number, mouseX: number, mouseY: number, shiftKey: boolean, ctrlKey: boolean) {
+
+  }
   snap(canvas, figure, modifiedPos, originalPos) {
+
   }
 
   createMonochromGif(w, h, d, color: Color) {
@@ -34,26 +54,26 @@ export class CanvasPolicy extends EditPolicy {
 
     var gif = "GIF89a" + r + "\xf0\0\0\xff\xff\xff" + String.fromCharCode(color.getRed()) + String.fromCharCode(color.getGreen()) + String.fromCharCode(color.getBlue()) + "\x21\xf9\u{4}\u{1}\0\0\0,\0\0\0\0" + r + "\0\u{2}"
 
-    var b = {
+    var b: any = {
       bit: 1,
       byte_: 0,
       data: "",
 
-      writeBit: function (b) {
-        if (b) this.byte_ |= this.bit
-        this.bit <<= 1
-        if (this.bit == 256) {
-          this.bit = 1
-          this.data += String.fromCharCode(this.byte_)
-          this.byte_ = 0
+      writeBit: (b) => {
+        if (b) b.byte_ |= b.bit
+        b.bit <<= 1
+        if (b.bit == 256) {
+          b.bit = 1
+          b.data += String.fromCharCode(b.byte_)
+          b.byte_ = 0
         }
       },
 
-      get: function () {
+      get: () => {
         let result = ""
-        let data = this.data
-        if (this.bit != 1) {
-          data += String.fromCharCode(this.byte_)
+        let data = b.data
+        if (b.bit != 1) {
+          data += String.fromCharCode(b.byte_)
         }
         for (var i = 0; i < data.length + 1; i += 255) {
           let chunklen = data.length - i

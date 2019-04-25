@@ -1,16 +1,4 @@
-import { Type } from "../../TypeRegistry";
-import { Figure } from "../../Figure";
-import ArrayList from "../../util/ArrayList";
-import extend from "../../util/extend";
-import { Locator } from "../../layout/locator/Locator";
-import { InputPort } from "../../InputPort";
-import { OutputPort } from "../../OutputPort";
-import { HybridPort } from "../../HybridPort";
-import { Canvas } from "../../Canvas";
-import { CommandType } from "../../command/CommandType";
-import { Port } from "../../Port";
-import { Connection } from "../../Connection";
-import { CommandRotate } from "../../command/CommandRotate";
+import { Type, Figure, ArrayList, Port, extend, Locator, InputPort, OutputPort, HybridPort, Connection, Canvas, CommandType, CommandRotate } from '../../imports';
 
 @Type('Node')
 export class Node extends Figure {
@@ -72,13 +60,13 @@ export class Node extends Figure {
 
   setVisible(flag: boolean, duration: number) {
     if (!flag) {
-      this.getPorts().each(function (i, port) {
+      this.getPorts().each((i, port) => {
         port.__initialVisibilityState = port.isVisible()
         port.setVisible(false, duration)
       })
     }
     else {
-      this.getPorts().each(function (i, port) {
+      this.getPorts().each((i, port) => {
         if (typeof port.__initialVisibilityState !== "undefined") {
           port.setVisible(port.__initialVisibilityState, duration)
         }
@@ -101,13 +89,13 @@ export class Node extends Figure {
     }
 
     if (this.cachedPorts === null) {
-      this.cachedPorts = new ArrayList()
-      this.cachedPorts.addAll(this.inputPorts)
-      this.cachedPorts.addAll(this.outputPorts)
-      this.cachedPorts.addAll(this.hybridPorts)
+      this.cachedPorts = new ArrayList();
+      this.cachedPorts.addAll(this.inputPorts);
+      this.cachedPorts.addAll(this.outputPorts);
+      this.cachedPorts.addAll(this.hybridPorts);
 
         (this.children as unknown as ArrayList<Node>).each((i, e) => {
-          this.cachedPorts.addAll(e.figure.getPorts())
+          this.cachedPorts.addAll(e.getPorts())
         })
     }
     return this.cachedPorts
@@ -135,7 +123,7 @@ export class Node extends Figure {
       clone.resetPorts()
       let ports = this.getPorts(false)
 
-      ports.each(function (i, port) {
+      ports.each((i, port) => {
         let clonePort = port.clone()
         let locator = port.getLocator().clone()
         clone.addPort(clonePort, locator)
@@ -378,7 +366,7 @@ export class Node extends Figure {
     let memento = super.getPersistentAttributes();
     if (this.persistPorts === true) {
       memento.ports = []
-      this.getPorts().each(function (i, port) {
+      this.getPorts().each((i, port) => {
         memento.ports.push(extend(port.getPersistentAttributes(), {
           name: port.getName(),
           port: port.NAME,

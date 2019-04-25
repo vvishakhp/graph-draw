@@ -1,3 +1,4 @@
+import shifty = require('shifty');
 import { Type, createInstenceFromType } from './TypeRegistry';
 import extend from './util/extend';
 import $ = require('./util/jquery_extentions');
@@ -11,7 +12,7 @@ import { CubicSpline } from './util/spline/CubicSpline';
 import { BezierSpline } from './util/spline/BezierSpline';
 import { PositionConstant } from './geo/PositionConstants';
 import { Point } from './geo/Point';
-import { Rectangle } from './geo/Rectangle';
+import { Rectangle, Direction } from './geo/Rectangle';
 import Util from './geo/Util';
 import { Ray } from './geo/Ray';
 import Line from './geo/Line';
@@ -69,9 +70,6 @@ import { ZoomPolicy } from './policy/canvas/ZoomPolicy';
 import { WheelZoomPolicy } from './policy/canvas/WheelZoomPolicy';
 import { KeyboardPolicy } from './policy/canvas/KeyboardPolicy';
 import { DefaultKeyboardPolicy } from './policy/canvas/DefaultKeyboardPolicy';
-import { FigureSelectionPolicy } from './policy/figure/SelectionPolicy';
-import { SingleSelectionPolicy } from './policy/canvas/SingleSelectionPolicy';
-import { BoundingboxSelectionPolicy } from './policy/canvas/BoundingboxSelectionPolicy';
 import { SnapToEditPolicy, SnapToHelper } from './policy/canvas/SnapToEditPolicy';
 import { DropInterceptorPolicy } from './policy/canvas/DropInterceptorPolicy';
 import { ConnectionCreatePolicy } from './policy/connection/ConnectionCreatePolicy';
@@ -81,18 +79,21 @@ import { DragConnectionCreatePolicy } from './policy/connection/DragConnectionCr
 import { FigureEditPolicy } from './policy/figure/FigureEditPolicy';
 import { DragDropEditPolicy } from './policy/figure/DragDropEditPolicy';
 import { RegionEditPolicy } from './policy/figure/RegionEditPolicy';
+import { FigureSelectionPolicy } from './policy/figure/SelectionPolicy';
+import { SingleSelectionPolicy } from './policy/canvas/SingleSelectionPolicy';
+import { BoundingboxSelectionPolicy } from './policy/canvas/BoundingboxSelectionPolicy';
 import { SelectionFeedbackPolicy } from './policy/figure/SelectionFeedbackPolicy';
 import { RectangleSelectionFeedbackPolicy } from './policy/figure/RectangleSelectionFeedbackPolicy';
 import { AntSelectionFeedbackPolicy } from './policy/figure/AntSelectionFeedbackPolicy';
-import { VertexSelectionFeedbackPolicy } from './policy/line/VertexSelectionFeedbackPolicy';
 import { CanvasSelectionPolicy } from './policy/canvas/SelectionPolicy';
 import { LineSelectionFeedbackPolicy } from './policy/line/LineSelectionFeedbackPolicy';
-import { ElasticStrapFeedbackPolicy } from './policy/port/ElasticStrapFeedbackPolicy';
+import { VertexSelectionFeedbackPolicy } from './policy/line/VertexSelectionFeedbackPolicy';
 import { PortFeedbackPolicy } from './policy/port/PortFeedbackPolicy';
 import { IntrusivePortsFeedbackPolicy } from './policy/port/IntrusivePortsFeedbackPolicy';
+import { ElasticStrapFeedbackPolicy } from './policy/port/ElasticStrapFeedbackPolicy';
 import { Selection } from './Selection';
 import { Canvas } from './Canvas';
-import { Figure } from './Figure';
+import { Figure, AttributeCollection } from './Figure';
 import { Node } from './shape/node/Node';
 import { VectorFigure } from './VectorFigure';
 import { RectangleShape } from './shape/basic/Rectangle';
@@ -121,6 +122,7 @@ import { ConnectionAnchor } from './layout/anchor/ConnectionAnchor';
 import { ShortesPathConnectionAnchor } from './layout/anchor/ShortesPathConnectionAnchor';
 
 export {
+    shifty,
     Type,
     createInstenceFromType,
     $,
@@ -136,6 +138,7 @@ export {
     PositionConstant,
     Point,
     Rectangle,
+    Direction,
     Util,
     Ray,
     Line,
@@ -217,6 +220,7 @@ export {
     Canvas,
     Selection,
     Figure,
+    AttributeCollection,
     Node,
     VectorFigure,
     RectangleShape,
@@ -243,7 +247,7 @@ export {
     HybridPort,
     ConnectionAnchor,
     ShortesPathConnectionAnchor,
-    SnapToHelper
+    SnapToHelper,
 }
 
 /*

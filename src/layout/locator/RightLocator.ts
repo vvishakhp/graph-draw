@@ -1,8 +1,5 @@
-import { Locator } from './Locator';
-import { AttributeCollection } from '../../Canvas';
-import { Port } from "../../Port";
-import { Figure } from '../../Figure';
-import { Type } from '../../TypeRegistry';
+import { Type, Locator, AttributeCollection, Figure, Port } from "../../imports";
+
 
 @Type('RightLocator')
 export class RightLocator extends Locator {

@@ -1,9 +1,4 @@
-
-import { Locator } from './Locator';
-import { Type } from '../../TypeRegistry';
-import { Port } from "../../Port";
-import Raphael from '../../util/SVGUtil';
-import { Figure } from '../../Figure';
+import { Type, Locator, Figure } from '../../imports';
 
 @Type('PortLocator')
 export class PortLocator extends Locator {

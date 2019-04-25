@@ -1,8 +1,4 @@
-import { ConnectionAnchor } from "./ConnectionAnchor";
-import { Type } from "../../TypeRegistry";
-import { Rectangle } from "../../geo/Rectangle";
-import { Point } from "../../geo/Point";
-import { Oval } from "../../shape/basic/Oval";
+import { Type, ConnectionAnchor, Oval, Rectangle, Point } from '../../imports'
 
 @Type('ShortesPathConnectionAnchor')
 export class ShortesPathConnectionAnchor extends ConnectionAnchor {

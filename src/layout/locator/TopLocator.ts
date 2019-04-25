@@ -1,7 +1,4 @@
-import { Locator } from "./Locator";
-import { Figure } from "../../Figure";
-import { Type } from "../../TypeRegistry";
-import { Port } from "../../Port";
+import { Type, Locator, Figure, Port } from '../../imports';
 
 @Type('TopLocator')
 export class TopLocator extends Locator {

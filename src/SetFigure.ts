@@ -43,12 +43,12 @@ export class SetFigure extends RectangleShape {
     }
 
     if (this.cssClass === null) {
-      this.svgNodes.forEach(function (e) {
+      this.svgNodes.forEach((e) => {
         e.node.removeAttribute("class")
       })
     }
     else {
-      this.svgNodes.forEach(function (e) {
+      this.svgNodes.forEach((e) => {
         e.node.setAttribute("class", cssClass)
       })
     }
@@ -180,14 +180,14 @@ export class SetFigure extends RectangleShape {
 
 
 
-    this.children.each(function (i, child) {
+    this.children.each((i, child) => {
       child.figure.toFront(figure)
     })
 
 
     let _this = this
-    this.getPorts().each(function (i, port) {
-      port.getConnections().each(function (i, connection) {
+    this.getPorts().each((i, port) => {
+      port.getConnections().each((i, connection) => {
         connection.toFront(figure)
       })
 
@@ -195,7 +195,7 @@ export class SetFigure extends RectangleShape {
     })
 
 
-    this.selectionHandles.each(function (i, handle) {
+    this.selectionHandles.each((i, handle) => {
       handle.toFront()
     })
 
@@ -222,7 +222,7 @@ export class SetFigure extends RectangleShape {
     }
 
 
-    this.children.each(function (i, child) {
+    this.children.each((i, child) => {
       child.figure.toBack(figure)
     }, true)
 
@@ -246,8 +246,8 @@ export class SetFigure extends RectangleShape {
     }
 
     let _this = this
-    this.getPorts().each(function (i, port) {
-      port.getConnections().each(function (i, connection) {
+    this.getPorts().each((i, port) => {
+      port.getConnections().each((i, connection) => {
         connection.toFront(_this)
       })
 

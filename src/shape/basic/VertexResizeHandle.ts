@@ -1,9 +1,7 @@
-import { ResizeHandle } from "../../ResizeHandle";
-import { Type } from "../../TypeRegistry";
-import { Color } from "../../util/Color";
-import { CommandRemoveVertex } from "../../command/CommandRemoveVertex";
-import { CommandType } from "../../command/CommandType";
-import { CommandCollection } from "../../command/CommandCollection";
+import {
+  Type, ResizeHandle, Color,
+  CommandRemoveVertex, CommandType, CommandCollection
+} from '../../imports';;
 
 @Type('VertexResizeHandle')
 export class VertexResizeHandle extends ResizeHandle {

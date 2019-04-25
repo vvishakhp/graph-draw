@@ -156,10 +156,10 @@ export class Canvas {
         )
 
 
-        this.commandStack.addEventListener(function (event) {
+        this.commandStack.addEventListener((event) => {
             if (event.isPostChangeEvent() === true) {
                 this.calculateConnectionIntersection()
-                this.linesToRepaintAfterDragDrop.each(function (i, line) {
+                this.linesToRepaintAfterDragDrop.each((i, line) => {
                     line.svgPathString = null
                     line.repaint()
                 })
@@ -185,7 +185,7 @@ export class Canvas {
 
             this.mouseDown = false
             let pos = this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY)
-            this.editPolicy.each(function (i, policy) {
+            this.editPolicy.each((i, policy) => {
                 policy.onMouseUp(this, pos.getX(), pos.getY(), event.shiftKey, event.ctrlKey)
             })
 
@@ -222,9 +222,10 @@ export class Canvas {
                     console.log(exc)
                 }
 
-                this.editPolicy.each(function (i, policy) {
+                this.editPolicy.each((i, policy) => {
                     policy.onMouseMove(this, pos.getX(), pos.getY(), event.shiftKey, event.ctrlKey)
                 })
+
                 this.fireEvent("mousemove", {
                     x: pos.getX(),
                     y: pos.getY(),
@@ -236,7 +237,7 @@ export class Canvas {
             else {
                 let diffXAbs = (event.clientX - this.mouseDownX) * this.zoomFactor
                 let diffYAbs = (event.clientY - this.mouseDownY) * this.zoomFactor
-                this.editPolicy.each(function (i, policy) {
+                this.editPolicy.each((i, policy) => {
                     policy.onMouseDrag(this, diffXAbs, diffYAbs, diffXAbs - this.mouseDragDiffX, diffYAbs - this.mouseDragDiffY, event.shiftKey, event.ctrlKey)
                 })
                 this.mouseDragDiffX = diffXAbs
@@ -266,7 +267,7 @@ export class Canvas {
                             this.mouseDragDiffY = 0
                             pos = this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY)
                             this.mouseDown = true
-                            this.editPolicy.each(function (i, policy) {
+                            this.editPolicy.each((i, policy) => {
                                 policy.onMouseDown(this, pos.x, pos.y, event.shiftKey, event.ctrlKey)
                             })
                         }
@@ -343,12 +344,12 @@ export class Canvas {
 
         // Catch the keyUp and CTRL-key and route them to the Canvas hook.
         //
-        this.keyupCallback = function (event) {
+        this.keyupCallback = (event) => {
             // don't initiate the delete command if the event comes from an INPUT field. In this case the user want delete
             // a character in the input field and not the related shape
             let target = $(event.target)
             if (!target.is("input") && !target.is("textarea")) {
-                this.editPolicy.each(function (i, policy) {
+                this.editPolicy.each((i, policy) => {
                     if (policy instanceof KeyboardPolicy) {
                         policy.onKeyUp(this, event.keyCode, event.shiftKey, event.ctrlKey)
                     }
@@ -359,12 +360,12 @@ export class Canvas {
 
         // Catch the keyDown and CTRL-key and route them to the Canvas hook.
         //
-        this.keydownCallback = function (event) {
+        this.keydownCallback = (event) => {
             // don't initiate the delete command if the event comes from an INPUT field. In this case the user want delete
             // a character in the input field and not the related shape
             let target = $(event.target)
             if (!target.is("input") && !target.is("textarea")) {
-                this.editPolicy.each(function (i, policy) {
+                this.editPolicy.each((i, policy) => {
                     if (policy instanceof KeyboardPolicy) {
                         policy.onKeyDown(this, event.keyCode, event.shiftKey, event.ctrlKey)
                     }
@@ -395,11 +396,11 @@ export class Canvas {
 
         let _this = this
 
-        this.lines.clone().each(function (i, e) {
+        this.lines.clone().each((i, e) => {
             _this.remove(e)
         })
 
-        this.figures.clone().each(function (i, e) {
+        this.figures.clone().each((i, e) => {
             _this.remove(e)
         })
 
@@ -520,7 +521,7 @@ export class Canvas {
         else {
             let _this = this
             let name = (typeof policy === "string") ? policy : policy.NAME
-            this.editPolicy.grep(function (p) {
+            this.editPolicy.grep((p) => {
                 if (p.NAME === name) {
                     p.onUninstall(_this)
                     if (p instanceof ZoomPolicy) {
@@ -535,7 +536,7 @@ export class Canvas {
     }
 
     getDropInterceptorPolicies() {
-        return this.editPolicy.clone().grep(function (p) {
+        return this.editPolicy.clone().grep((p) => {
             return (p instanceof DropInterceptorPolicy)
         })
     }
@@ -556,10 +557,10 @@ export class Canvas {
 
     setDimension(dim, height) {
         if (typeof dim === "undefined") {
-            let widths = this.getFigures().clone().map(function (f) {
+            let widths = this.getFigures().clone().map((f) => {
                 return f.getAbsoluteX() + f.getWidth()
             })
-            let heights = this.getFigures().clone().map(function (f) {
+            let heights = this.getFigures().clone().map((f) => {
                 return f.getAbsoluteY() + f.getHeight()
             })
             this.initialHeight = Math.max(...heights.asArray())
@@ -665,7 +666,7 @@ export class Canvas {
         return this.html.height()
     }
 
-    add(figure, x?, y?) {
+    add(figure: Figure, x?, y?) {
         if (figure.getCanvas() === this) {
             return
         }
@@ -705,7 +706,7 @@ export class Canvas {
 
         if (figure instanceof PolyLine) {
             this.calculateConnectionIntersection()
-            this.linesToRepaintAfterDragDrop.each(function (i, line) {
+            this.linesToRepaintAfterDragDrop.each((i, line) => {
                 line.svgPathString = null
                 line.repaint()
             })
@@ -724,7 +725,7 @@ export class Canvas {
 
         let _this = this
         if (this.getSelection().contains(figure, false)) {
-            this.editPolicy.each(function (i, policy) {
+            this.editPolicy.each((i, policy) => {
                 if (typeof policy.unselect === "function") {
                     policy.unselect(_this, figure)
                 }
@@ -772,7 +773,7 @@ export class Canvas {
 
     getFigure(id) {
         let figure = null
-        this.figures.each(function (i, e) {
+        this.figures.each((i, e) => {
             if (e.id === id) {
                 figure = e
                 return false
@@ -784,9 +785,9 @@ export class Canvas {
     getIntersection(line) {
         let result = new ArrayList()
 
-        this.lineIntersections.each(function (i, entry) {
+        this.lineIntersections.each((i, entry) => {
             if (entry.line === line) {
-                entry.intersection.each(function (i, p) {
+                entry.intersection.each((i, p) => {
                     result.add({ x: p.x, y: p.y, justTouching: p.justTouching, other: entry.other })
                 })
             }
@@ -805,7 +806,7 @@ export class Canvas {
 
         let _this = this
         let orig = pos.clone()
-        this.editPolicy.each(function (i, policy) {
+        this.editPolicy.each((i, policy) => {
             pos = policy.snap(_this, figure, pos, orig)
         })
 
@@ -862,8 +863,8 @@ export class Canvas {
     addSelection(object) {
         let _this = this
 
-        let add = function (i, figure) {
-            _this.editPolicy.each(function (i, policy) {
+        let add = (i, figure) => {
+            _this.editPolicy.each((i, policy) => {
                 if (typeof policy.select === "function") {
                     policy.select(_this, figure)
                 }
@@ -900,7 +901,7 @@ export class Canvas {
         let testFigure = null
 
 
-        let isInList = function (testFigure, list) {
+        let isInList = (testFigure, list) => {
             for (let i = 0, len = list.length; i < len; i++) {
                 let considering = list[i]
                 if (typeof considering === "function") {
@@ -914,21 +915,21 @@ export class Canvas {
             }
             return false
         }
-        let isInBlacklist = function (item) {
+        let isInBlacklist = (item) => {
             return isInList(item, blacklist)
         }
         // empty whitelist means that every kind of object is allowed
-        let isInWhitelist = whitelist.length === 0 ? function () {
+        let isInWhitelist = whitelist.length === 0 ? () => {
             return true
-        } : function (item) {
+        } : (item) => {
             return isInList(item, whitelist)
         }
 
 
         // tool method to check recursive a figure for hitTest
         //
-        let checkRecursive = function (children) {
-            children.each(function (i, e) {
+        let checkRecursive = (children) => {
+            children.each((i, e) => {
                 let c = e.figure
                 checkRecursive(c.children)
                 if (result === null && c.isVisible() && c.hitTest(x, y) && !isInBlacklist(c) && isInWhitelist(c)) {
@@ -1057,7 +1058,7 @@ export class Canvas {
 
         this.fireEvent("dblclick", { figure: figure, x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey })
 
-        this.editPolicy.each(function (i, policy) {
+        this.editPolicy.each((i, policy) => {
             policy.onDoubleClick(figure, x, y, shiftKey, ctrlKey)
         })
     }
@@ -1077,7 +1078,7 @@ export class Canvas {
         })
 
 
-        this.editPolicy.each(function (i, policy) {
+        this.editPolicy.each((i, policy) => {
             policy.onClick(figure, x, y, shiftKey, ctrlKey)
         })
     }
@@ -1091,13 +1092,13 @@ export class Canvas {
 
             figure.onContextMenu(x, y)
 
-            figure.editPolicy.each(function (i, policy) {
+            figure.editPolicy.each((i, policy) => {
                 policy.onRightMouseDown(figure, x, y, shiftKey, ctrlKey)
             })
         }
 
 
-        this.editPolicy.each(function (i, policy) {
+        this.editPolicy.each((i, policy) => {
             policy.onRightMouseDown(figure, x, y, shiftKey, ctrlKey)
         })
 
@@ -1107,7 +1108,7 @@ export class Canvas {
         let returnValue = true
         this.fireEvent("wheel", { wheelDelta: wheelDelta, x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey })
 
-        this.editPolicy.each(function (i, policy) {
+        this.editPolicy.each((i, policy) => {
             returnValue = policy.onMouseWheel(wheelDelta, x, y, shiftKey, ctrlKey) && returnValue
         })
 
@@ -1127,7 +1128,6 @@ export class Canvas {
             catch (exc) {
                 console.log(exc)
                 console.log(subscribers[i])
-                debugger
             }
         }
     }
@@ -1152,7 +1152,7 @@ export class Canvas {
         }
         else {
             for (let event in this.eventSubscriptions) {
-                this.eventSubscriptions[event] = this.eventSubscriptions[event].filter(function (callback) {
+                this.eventSubscriptions[event] = this.eventSubscriptions[event].filter((callback) => {
                     return callback !== eventOrFunction
                 })
             }

@@ -1,8 +1,5 @@
-import { Type } from "../TypeRegistry";
-import { Command } from "./Command";
-import { CommandCollection } from "./CommandCollection";
-import { CommandType } from "./CommandType";
-import { CommandUngroup } from "../imports";
+import { Command, Type, CommandCollection, CommandUngroup, CommandType } from '../imports';
+
 
 @Type('CommandDeleteGroup')
 export class CommandDeleteGroup extends Command {

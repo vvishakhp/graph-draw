@@ -1,7 +1,4 @@
-import { ConnectionRouter } from "./ConnectionRouter";
-import { Type } from "../../TypeRegistry";
-import ArrayList from "../../util/ArrayList";
-import { VertexSelectionFeedbackPolicy } from "../../policy/line/VertexSelectionFeedbackPolicy";
+import { Type, ConnectionRouter, VertexSelectionFeedbackPolicy, ArrayList } from '../../imports';
 
 
 @Type('VertexRouter')
@@ -53,7 +50,7 @@ export class VertexRouter extends ConnectionRouter {
   getPersistentAttributes(line, memento) {
     memento.vertex = []
 
-    line.getVertices().each(function (i, e) {
+    line.getVertices().each((i, e) => {
       memento.vertex.push({ x: e.x, y: e.y })
     })
 

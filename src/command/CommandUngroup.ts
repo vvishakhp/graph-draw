@@ -1,7 +1,5 @@
-import { Type } from "../TypeRegistry";
-import { Command } from "./Command";
-import { Canvas } from "../Canvas";
-import { Selection } from '../Selection';
+import { Command, Type, Canvas, Selection } from '../imports';
+
 
 @Type('CommandUngroup')
 export class CommandUngroup extends Command {
@@ -34,7 +32,7 @@ export class CommandUngroup extends Command {
 
   undo() {
     let _this = this
-    this.figures.each(function (i, figure) {
+    this.figures.each((i, figure) => {
       _this.group.assignFigure(figure)
     })
     this.canvas.add(this.group)
@@ -44,7 +42,7 @@ export class CommandUngroup extends Command {
 
   redo() {
     let _this = this
-    this.figures.each(function (i, figure) {
+    this.figures.each((i, figure) => {
       _this.group.unassignFigure(figure)
     })
 

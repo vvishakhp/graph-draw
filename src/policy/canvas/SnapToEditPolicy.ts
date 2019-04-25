@@ -1,7 +1,5 @@
-import extend from '../../util/extend'
-import { CanvasPolicy } from './CanvasPolicy';
-import { Type } from '../../TypeRegistry';
-import { Color } from '../../util/Color';
+import { extend, Type, CanvasPolicy, Color } from '../../imports'
+
 
 const _SnapToHelper = {
     NORTH: 1,

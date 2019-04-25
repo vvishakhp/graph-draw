@@ -1,11 +1,4 @@
-import { RectangleShape } from "../basic/Rectangle";
-import { Type } from "../../TypeRegistry";
-import { Color } from "../../util/Color";
-import extend from "../../util/extend";
-import { CenterLocator } from "../../layout/locator/CenterLocator";
-import { Direction } from "../../geo/Rectangle";
-import { Label } from "../basic/Label";
-import { ShortesPathConnectionAnchor } from "../../layout/anchor/ShortesPathConnectionAnchor";
+import { Type, RectangleShape, Color, extend, CenterLocator, ShortesPathConnectionAnchor, Label, Direction } from '../../imports';
 
 @Type('Hub')
 export class Hub extends RectangleShape {
@@ -36,13 +29,13 @@ export class Hub extends RectangleShape {
 
     let _port = this.port = this.createPort("hybrid", new CenterLocator())
 
-    this.CONNECTION_DIR_STRATEGY = [function (peerPort) {
+    this.CONNECTION_DIR_STRATEGY = [(peerPort) => {
       return _port.getParent().getBoundingBox().getDirection(peerPort.getAbsolutePosition())
     },
-    function (peerPort) {
+    (peerPort) => {
       return _port.getAbsoluteY() > peerPort.getAbsoluteY() ? Direction.DIRECTION_UP : Direction.DIRECTION_DOWN
     },
-    function (peerPort) {
+    (peerPort) => {
       return _port.getAbsoluteX() > peerPort.getAbsoluteX() ? Direction.DIRECTION_LEFT : Direction.DIRECTION_RIGHT
     }];
 
@@ -107,10 +100,10 @@ export class Hub extends RectangleShape {
       }, {}, {})
 
       this.add(this.label, new CenterLocator())
-      this.label.setSelectionAdapter(function () {
+      this.label.setSelectionAdapter(() => {
         return _this
       })
-      this.label.delegateTarget = function () {
+      this.label.delegateTarget = () => {
         return _this.port
       }
     } else {

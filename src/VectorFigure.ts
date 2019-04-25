@@ -7,10 +7,11 @@ export class VectorFigure extends Node {
     stroke: number;
     radius: number;
     bgColor: any;
-    color: any;
+    color: Color;
     dasharray: any;
     strokeBeforeGlow: number;
     glowIsActive: boolean;
+
     constructor(attr, setter, getter) {
         super(attr, setter, getter);
         this.stroke = 1;

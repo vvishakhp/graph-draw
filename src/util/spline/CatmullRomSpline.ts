@@ -1,6 +1,4 @@
-import ArrayList from '../ArrayList';
-import { Spline } from './Spline';
-
+import { Spline, ArrayList } from '../../imports';
 export class CubicSpline extends Spline {
     generate(controlPoints: ArrayList<any>, parts: number) {
         return null;

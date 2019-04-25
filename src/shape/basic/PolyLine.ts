@@ -1,19 +1,11 @@
-import { LineShape } from "./Line";
-import { Type } from "../../TypeRegistry";
-import extend from "../../util/extend";
-import { Point } from "../../geo/Point";
-import { CommandType } from "../../command/CommandType";
-import jsonUtil from "../../util/JSONUtil";
-import ArrayList from "../../util/ArrayList";
-import { SelectionFeedbackPolicy } from "../../policy/figure/SelectionFeedbackPolicy";
-import { DragDropEditPolicy } from "../../policy/figure/DragDropEditPolicy";
-import { Figure } from "../../Figure";
-import { CommandMoveVertices } from "../../command/CommandMoveVertices";
-import { CommandMoveVertex } from "../../command/CommandMoveVertex";
-import { CommandDelete } from "../../command/CommandDelete";
-import { DirectRouter } from "../../layout/connection/DirectRouter";
-import { VertexRouter } from "../../layout/connection/VertexRouter";
-import { Command } from "../../command/Command";
+import {
+  Type, LineShape, Point, extend,
+  VertexRouter, ArrayList, DragDropEditPolicy,
+  SelectionFeedbackPolicy, DirectRouter, Command,
+  CommandType, CommandDelete, CommandMoveVertex,
+  CommandMoveVertices
+} from '../../imports';
+import jsonUtil from '../../util/JSONUtil';
 
 @Type('PolyLine')
 export class PolyLine extends LineShape {
@@ -92,7 +84,7 @@ export class PolyLine extends LineShape {
     this.repaint({})
 
     let _this = this
-    this.editPolicy.each(function (i, e) {
+    this.editPolicy.each((i, e) => {
       if (e instanceof DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }

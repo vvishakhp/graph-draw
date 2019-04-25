@@ -1,4 +1,4 @@
-import { Figure } from "../../Figure";
+import { Figure } from '../../imports';
 
 export class ConnectionAnchor {
   constructor(private owner: Figure) {

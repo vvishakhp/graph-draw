@@ -1,5 +1,4 @@
-import ArrayList from "../../util/ArrayList";
-import { ConnectionCreatePolicy } from "./ConnectionCreatePolicy";
+import { ConnectionCreatePolicy } from '../../imports'
 
 export class ComposedConnectionCreatePolicy extends ConnectionCreatePolicy {
     constructor(private policies: any[]) {

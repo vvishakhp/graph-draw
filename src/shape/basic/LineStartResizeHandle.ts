@@ -1,6 +1,6 @@
-import { LineResizeHandle } from "./LineResizeHandle";
-import { Connection } from "../../Connection";
+import { LineResizeHandle, Connection, Type } from '../../imports';
 
+@Type('LineStartResizeHandle')
 export class LineStartResizeHandle extends LineResizeHandle {
   constructor(figure) {
     super({ owner: figure, index: 0 }, {}, {});

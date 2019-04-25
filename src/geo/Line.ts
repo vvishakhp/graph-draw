@@ -1,8 +1,8 @@
-import { Point } from "./Point";
+import { Point } from '../imports';
 
 const Line = {
 
-  inverseLerp: function (X1, Y1, X2, Y2, px, py) {
+  inverseLerp: (X1, Y1, X2, Y2, px, py) => {
     let nenner = Math.abs(X2 - X1)
     let zaehler = Math.abs(X2 - px)
     if (nenner === 0) {
@@ -17,7 +17,7 @@ const Line = {
   },
 
 
-  pointProjection: function (X1, Y1, X2, Y2, px, py) {
+  pointProjection: (X1, Y1, X2, Y2, px, py) => {
     let r = new Point(0, 0)
     if (X1 === X2 && Y1 === Y2) X1 -= 0.00001
 
@@ -43,7 +43,7 @@ const Line = {
     return isValid ? r : null
   },
 
-  distance: function (X1, Y1, X2, Y2, px, py) {
+  distance: (X1, Y1, X2, Y2, px, py) => {
     // Adjust vectors relative to X1,Y1
     // X2,Y2 becomes relative vector from X1,Y1 to end of segment
     X2 -= X1

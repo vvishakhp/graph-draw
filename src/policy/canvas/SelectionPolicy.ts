@@ -1,8 +1,4 @@
-import { Type } from "../../TypeRegistry";
-import { Canvas } from "../../Canvas";
-import { Figure } from "../../Figure";
-import { CanvasPolicy } from "./CanvasPolicy";
-
+import { Type, CanvasPolicy, Canvas, Figure } from '../../imports';
 @Type('CanvasSelectionPolicy')
 export class CanvasSelectionPolicy extends CanvasPolicy {
 
@@ -20,8 +16,3 @@ export class CanvasSelectionPolicy extends CanvasPolicy {
     canvas.fireEvent("unselect", { figure: figure })
   }
 }
-
-
-
-
-

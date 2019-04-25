@@ -1,7 +1,4 @@
-import { Type } from '../../TypeRegistry';
-import { Locator } from './Locator';
-import { Figure } from '../../Figure';
-
+import { Type, Locator, Figure } from '../../imports';
 @Type('DraggableLocator')
 export class DraggableLocator extends Locator {
   bind(parent: Figure, child: Figure) {

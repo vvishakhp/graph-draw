@@ -1,8 +1,4 @@
-import { ConnectionRouter } from "./ConnectionRouter";
-import { Type } from "../../TypeRegistry";
-import { LineSelectionFeedbackPolicy } from "../../policy/line/LineSelectionFeedbackPolicy";
-import { Rectangle, Direction } from "../../geo/Rectangle";
-import { Point } from "../../geo/Point";
+import { Type, ConnectionRouter, LineSelectionFeedbackPolicy, Direction, Point } from '../../imports';
 @Type('ManhattanConnectionRouter')
 export class ManhattanConnectionRouter extends ConnectionRouter {
   MINDIST = 20

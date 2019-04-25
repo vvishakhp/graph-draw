@@ -41,7 +41,7 @@ export class PngWriter extends Writer {
         canvg("canvas_png_export_for_ ", svg, {
             ignoreMouse: true,
             ignoreAnimation: true,
-            renderCallback: function () {
+            renderCallback:  () => {
                 try {
                     if (canvas instanceof Canvas)
                         canvas.showDecoration();

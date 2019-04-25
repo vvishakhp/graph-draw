@@ -1,5 +1,4 @@
-import { ManhattanMidpointLocator } from "./ManhattanMidpointLocator";
-import { Type } from "../../TypeRegistry";
+import { Type, ManhattanMidpointLocator } from '../../imports';
 
 @Type('PolylineMidpointLocator')
 export class PolylineMidpointLocator extends ManhattanMidpointLocator {

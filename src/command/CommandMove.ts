@@ -1,6 +1,5 @@
-import { Command } from "./Command";
-import { Type } from "../TypeRegistry";
-import { Figure } from "../Figure";
+import { Command, Type, Figure } from '../imports';
+
 
 @Type('CommandMove')
 export class CommandMove extends Command {

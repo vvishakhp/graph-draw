@@ -1,6 +1,4 @@
-import { Type } from "../TypeRegistry";
-import { Command } from "./Command";
-import { CommandStack } from "./CommandStack";
+import { Command, Type, CommandStack } from '../imports';
 
 @Type('CommandStackEvent')
 export class CommandStackEvent {

@@ -1,5 +1,4 @@
-import { Command } from "./Command";
-import { Type } from "../TypeRegistry";
+import { Command, Type } from '../imports';
 
 @Type('CommandReplaceVertices')
 export class CommandReplaceVertices extends Command {

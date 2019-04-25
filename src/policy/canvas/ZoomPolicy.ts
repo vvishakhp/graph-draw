@@ -1,11 +1,10 @@
-import { CanvasPolicy } from "./CanvasPolicy";
-import { Type } from "../../TypeRegistry";
-import { Canvas } from "../../Canvas";
-const shifty = require('shifty');
+import { Type, CanvasPolicy, Canvas, shifty } from '../../imports'
+
 
 
 @Type('ZoomPolicy')
 export class ZoomPolicy extends CanvasPolicy {
+
   onInstall(canvas: Canvas) {
     super.onInstall(canvas);
     canvas.setZoom(1, true);
@@ -18,7 +17,7 @@ export class ZoomPolicy extends CanvasPolicy {
   setZoom(zoomFactor, animated) {
     let canvas = this.canvas
 
-    let _zoom = function (z) {
+    let _zoom = (z) => {
       canvas.zoomFactor = Math.min(Math.max(0.01, z), 10)
 
       let viewBoxWidth = (canvas.initialWidth * (canvas.zoomFactor)) | 0

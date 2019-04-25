@@ -1,5 +1,4 @@
-import { Type } from "../TypeRegistry";
-import { Command } from "./Command";
+import { ArrayList, Command, Type } from '../imports';
 
 @Type('CommandMoveConnection')
 export class CommandMoveConnection extends Command {
@@ -31,7 +30,7 @@ export class CommandMoveConnection extends Command {
 
   undo() {
     let _this = this
-    this.line.getVertices().each(function (i, e) {
+    this.line.getVertices().each((i, e) => {
       e.translate(-_this.dx, -_this.dy)
     })
     this.line.svgPathString = null
@@ -42,7 +41,7 @@ export class CommandMoveConnection extends Command {
 
   redo() {
     let _this = this
-    this.line.getVertices().each(function (i, e) {
+    this.line.getVertices().each((i, e) => {
       e.translate(_this.dx, _this.dy)
     })
     this.line.svgPathString = null

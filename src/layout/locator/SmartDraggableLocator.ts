@@ -1,6 +1,4 @@
-import { Locator } from './Locator';
-import { Figure } from '../../Figure';
-import { Type } from '../../TypeRegistry';
+import { Type, Locator, Figure } from '../../imports';
 
 @Type('SmartDraggableLocator')
 export class SmartDraggableLocator extends Locator {

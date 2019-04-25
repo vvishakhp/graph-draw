@@ -1,13 +1,13 @@
-import { Color } from "../../util/Color";
-import * as raph from 'raphael';
+import { Color } from '../../imports';
 
 export abstract class Decorator {
+
 	width: number;
 	height: number;
 	color: any;
 	backgroundColor: any;
-	constructor(width?: number, height?: number) {
 
+	constructor(width?: number, height?: number) {
 
 		if (typeof width === "undefined" || width < 1) {
 			this.width = 20;
@@ -48,4 +48,3 @@ export abstract class Decorator {
 		return this;
 	}
 }
-

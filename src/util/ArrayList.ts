@@ -158,7 +158,7 @@ export default class ArrayList<T> {
             this.data.sort(f)
         }
         else {
-            this.data.sort(function (a, b) {
+            this.data.sort((a, b) => {
                 if (a[f] < b[f])
                     return -1
                 if (a[f] > b[f])

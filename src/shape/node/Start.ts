@@ -1,7 +1,4 @@
-import { Color } from "../../util/Color";
-import { Type } from "../../TypeRegistry";
-import { RectangleSelectionFeedbackPolicy } from "../../policy/figure/RectangleSelectionFeedbackPolicy";
-
+import { Type, Rectangle, Color, extend, RectangleSelectionFeedbackPolicy } from '../../imports';
 @Type('Start')
 export class start extends Rectangle {
   public static DEFAULT_COLOR = new Color(77, 144, 254);

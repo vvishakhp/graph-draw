@@ -1,15 +1,32 @@
 export class Color {
 
-    private hashString = 'none';
+    private hashString = null;
 
-    constructor(private red: number = -1, private green: number = -1, private blue: number = -1) {
-        if(red===null){
+    private red: number;
+    private green: number;
+    private blue: number;
+
+    constructor(red: number | Color | string = null, green: number = null, blue: number = null) {
+        if (red === null && green === null && blue === null) {
             this.hashString = "none";
+        } else {
+            this.red = (red || 0) as number;
+            this.green = green || 0;
+            this.blue = blue || 0;
         }
-        if (red != -1) {
-            this.hash();
-            this.red = 0; this.green = 0; this.blue = 0;
+
+        if (red instanceof Color) {
+            this.red = red.getRed();
+            this.green = red.getGreen();
+            this.blue = red.getBlue();
+        } else if (typeof red === 'string') {
+            let cl = this.hex2rgb(red);
+            this.red = cl[0];
+            this.green = cl[1];
+            this.blue = cl[2];
         }
+
+        this.hash();
     }
 
     getGreen() {

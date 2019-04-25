@@ -1,4 +1,4 @@
-import { Label } from '../shape/basic/Label';
+import { Label } from '../imports';
 
 export interface Listener {
     onStart?: Function,

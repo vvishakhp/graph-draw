@@ -1,4 +1,4 @@
-import ArrayList from "../ArrayList";
+import { ArrayList } from '../../imports';
 
 export abstract class Spline {
     constructor() {

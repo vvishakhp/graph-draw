@@ -1,7 +1,4 @@
-import { KeyboardPolicy } from "../canvas/KeyboardPolicy";
-import { Type } from "../../TypeRegistry";
-import { Connection } from "../../Connection";
-import { DirectRouter } from "../../layout/connection/DirectRouter";
+import { Type, KeyboardPolicy, Connection, DirectRouter } from '../../imports';
 
 @Type('ConnectionCreatePolicy')
 export class ConnectionCreatePolicy extends KeyboardPolicy {
@@ -20,7 +17,7 @@ export class ConnectionCreatePolicy extends KeyboardPolicy {
                     { transform: "s6", opacity: 0.0, "stroke-width": 3 },
                     500,
                     "linear",
-                    function () { circle.remove() }
+                    () => { circle.remove() }
                 );
                 circle.animate(anim);
 
@@ -39,7 +36,7 @@ export class ConnectionCreatePolicy extends KeyboardPolicy {
                     { transform: "s12", opacity: 0.0, "stroke-width": 4 },
                     500,
                     "linear",
-                    function () { circle2.remove() }
+                    () => { circle2.remove() }
                 );
                 circle2.animate(anim2);
 

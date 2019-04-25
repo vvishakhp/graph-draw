@@ -1,19 +1,19 @@
-var extend = function (...args: any[]): any {
+var extend = (...args: any[]): any => {
 
   // Variables
   var extended = {};
   var deep = false;
   var i = 0;
-  var length = arguments.length;
+  var length = args.length;
 
   // Check if a deep merge
-  if (Object.prototype.toString.call(arguments[0]) === '[object Boolean]') {
-    deep = arguments[0];
+  if (typeof args[0] ==='boolean') {
+    deep = args[0];
     i++;
   }
 
   // Merge the object into the extended object
-  var merge = function (obj) {
+  var merge = (obj) => {
     for (var prop in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, prop)) {
         // If deep merge and property is an object, merge properties
@@ -28,7 +28,7 @@ var extend = function (...args: any[]): any {
 
   // Loop through each object and conduct a merge
   for (; i < length; i++) {
-    var obj = arguments[i];
+    var obj = args[i];
     merge(obj);
   }
 

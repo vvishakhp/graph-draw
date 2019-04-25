@@ -232,7 +232,7 @@ export class Figure {
     if (typeof asPrimarySelection === "undefined") {
       asPrimarySelection = true
     }
-    this.editPolicy.each(function (i, e) {
+    this.editPolicy.each((i, e) => {
       if (e instanceof FigureSelectionPolicy) {
         e.onSelect(this.canvas, this, asPrimarySelection)
       }
@@ -246,7 +246,7 @@ export class Figure {
   }
 
   unselect() {
-    this.editPolicy.each(function (i, e) {
+    this.editPolicy.each((i, e) => {
       if (e instanceof FigureSelectionPolicy) {
         e.onUnselect(this.canvas, this)
       }
@@ -402,7 +402,7 @@ export class Figure {
       }
     }
 
-    this.children.each(function (i, e) {
+    this.children.each((i, e) => {
       e.figure.setCanvas(canvas)
     })
 
@@ -477,10 +477,10 @@ export class Figure {
       }
     }
     let _this = this
-    this.children.each(function (i, child) {
+    this.children.each((i, child) => {
       child.figure.toFront(_this)
     })
-    this.selectionHandles.each(function (i, handle) {
+    this.selectionHandles.each((i, handle) => {
       handle.toFront()
     })
 
@@ -512,7 +512,7 @@ export class Figure {
     // Bring all children in front of "this" figure
     //
     let _this = this
-    this.children.each(function (i, child) {
+    this.children.each((i, child) => {
       child.figure.toFront(_this)
     }, true)
 
@@ -589,7 +589,7 @@ export class Figure {
     }
 
     let removed = null
-    this.children.grep(function (e) {
+    this.children.grep((e) => {
       let stay = e.figure !== child
       if (!stay) {
         removed = e
@@ -615,7 +615,7 @@ export class Figure {
   }
 
   resetChildren() {
-    this.children.each(function (i, e) {
+    this.children.each((i, e) => {
       e.figure.setCanvas(null)
     })
     this.children = new ArrayList()
@@ -663,7 +663,7 @@ export class Figure {
     if (this.visible === true) {
       if (this.shape.isVisible() === false) {
         if (!isNaN(parseFloat(attributes.visibleDuration))) {
-          $(this.shape.node).fadeIn(attributes.visibleDuration, function () {
+          $(this.shape.node).fadeIn(attributes.visibleDuration, () => {
             _this.shape.show()
           })
         }
@@ -675,7 +675,7 @@ export class Figure {
     else {
       if (this.shape.isVisible() === true) {
         if (!isNaN(parseFloat(attributes.visibleDuration))) {
-          $(this.shape.node).fadeOut(attributes.visibleDuration, function () {
+          $(this.shape.node).fadeOut(attributes.visibleDuration, () => {
             _this.shape.hide()
           })
         }
@@ -695,7 +695,7 @@ export class Figure {
     }
 
     this.applyTransformation()
-    this.children.each(function (i, e) {
+    this.children.each((i, e) => {
       e.locator.relocate(i, e.figure)
     })
 
@@ -740,7 +740,7 @@ export class Figure {
       let _this = this
       let canStartDrag = true
 
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each((i, e) => {
         if (e instanceof DragDropEditPolicy) {
           canStartDrag = canStartDrag && e.onDragStart(_this.canvas, _this, x, y, shiftKey, ctrlKey)
         }
@@ -1091,7 +1091,6 @@ export class Figure {
 
   setPosition(x, y?) {
     if (typeof x === "undefined") {
-      debugger
     }
 
     let oldPos = { x: this.x, y: this.y }
@@ -1392,7 +1391,6 @@ export class Figure {
   on(event, callback, context?) {
     let events = event.split(" ")
     if (typeof callback === "undefined") {
-      debugger
     }
 
     if (context) {
@@ -1406,7 +1404,6 @@ export class Figure {
       }
 
       if (-1 !== $.inArray(callback, this.eventSubscriptions[events[i]])) {
-        //   debugger
       }
       else {
         this.eventSubscriptions[events[i]].push(callback)
@@ -1451,8 +1448,8 @@ export class Figure {
     let result = null
 
 
-    let checkRecursive = function (children) {
-      children.each(function (i, e) {
+    let checkRecursive = (children) => {
+      children.each((i, e) => {
         let c = e.figure
         checkRecursive(c.children)
         if (result === null && c.isVisible() === true && c.hitTest(x, y) === true && $.inArray(c, figureToIgnore) === -1) {

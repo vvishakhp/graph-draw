@@ -1,12 +1,9 @@
-import { Type } from "../../TypeRegistry";
-import { FigureSelectionPolicy } from "../figure/SelectionPolicy";
-import { Canvas } from "../../Canvas";
-import { Figure } from "../../Figure";
-import { Port } from "../../Port";
-import { LineShape } from "../../shape/basic/Line";
-import { Connection } from "../../Connection";
-import { CommandType } from "../../command/CommandType";
-import ArrayList from "../../util/ArrayList";
+import {
+  Type, FigureSelectionPolicy,
+  Canvas, Figure, Port, LineShape, Connection,
+  CommandType, ArrayList
+} from "../../imports";
+
 
 @Type('SingleSelectionPolicy')
 export class SingleSelectionPolicy extends FigureSelectionPolicy {
@@ -102,7 +99,7 @@ export class SingleSelectionPolicy extends FigureSelectionPolicy {
         this.mouseDraggingElement.onDrag(dx, dy, dx2, dy2, shiftKey, ctrlKey)
       }
       else {
-        sel.each(function (i, figure) {
+        sel.each((i, figure) => {
           figure.onDrag(dx, dy, dx2, dy2, shiftKey, ctrlKey)
         })
       }
@@ -158,7 +155,7 @@ export class SingleSelectionPolicy extends FigureSelectionPolicy {
       let redrawConnection = new ArrayList<LineShape>()
       if (this.mouseDraggingElement instanceof Node) {
 
-        canvas.lineIntersections.each(function (i, inter) {
+        canvas.lineIntersections.each((i, inter) => {
           if (!redrawConnection.contains(inter.line)) redrawConnection.add(inter.line)
           if (!redrawConnection.contains(inter.other)) redrawConnection.add(inter.other)
         })
@@ -172,7 +169,7 @@ export class SingleSelectionPolicy extends FigureSelectionPolicy {
         this.mouseDraggingElement.onDragEnd(x, y, shiftKey, ctrlKey)
       }
       else {
-        canvas.getSelection().getAll().each(function (i, figure) {
+        canvas.getSelection().getAll().each((i, figure) => {
           figure.onDragEnd(x, y, shiftKey, ctrlKey)
         })
       }
@@ -188,11 +185,11 @@ export class SingleSelectionPolicy extends FigureSelectionPolicy {
       canvas.getCommandStack().commitTransaction()
 
       if (this.mouseDraggingElement instanceof Node) {
-        canvas.lineIntersections.each(function (i, inter) {
+        canvas.lineIntersections.each((i, inter) => {
           if (!redrawConnection.contains(inter.line)) redrawConnection.add(inter.line)
           if (!redrawConnection.contains(inter.other)) redrawConnection.add(inter.other)
         })
-        redrawConnection.each(function (i, line) {
+        redrawConnection.each((i, line) => {
           line.svgPathString = null
           line.repaint({});
         })

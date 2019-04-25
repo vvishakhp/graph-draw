@@ -1,6 +1,4 @@
-import { CanvasPolicy } from "./CanvasPolicy";
-import { Type } from "../../TypeRegistry";
-import { Canvas } from "../../Canvas";
+import { Type, CanvasPolicy, Canvas } from '../../imports';
 
 @Type('KeyboardPolicy')
 export class KeyboardPolicy extends CanvasPolicy {

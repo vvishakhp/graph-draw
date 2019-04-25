@@ -9,7 +9,7 @@ const jsonUtil = {
    * @param {String} path   path indicating where value should be placed
    * @param {Object} value  the value desired to be set at the location determined by path
    */
-  set: function (data, path, value) {
+  set: (data, path, value) => {
     if (!path || path === '') {
       return;
     }
@@ -22,7 +22,7 @@ const jsonUtil = {
     var grandParent = null;
     var grandParentKey = null;
 
-    var addObj = function (obj, key, data) {
+    var addObj =  (obj, key, data)=> {
       if (key === '[]') {
         obj.push(data);
       } else {
@@ -63,7 +63,7 @@ const jsonUtil = {
    * @param  {Object} data the JSON data object
    * @param  {String} path string leading to a desired value
    */
-  get: function (data, path) {
+  get:  (data, path)=> {
     var regex = /[\w-]+|\[\]|([^\[[\w]\]]|["'](.*?)['"])/g;
     //check if path is truthy
     if (!path) {
@@ -88,7 +88,7 @@ const jsonUtil = {
    * calculates the diff between the given json objects
    *
    */
-  diff: function (obj1, obj2) {
+  diff:  (obj1, obj2) =>{
     var result = {};
     for (let key in obj1) {
       var v1 = obj1[key];
@@ -107,7 +107,7 @@ const jsonUtil = {
     return result;
   },
 
-  flatDiff: function (obj1, obj2) {
+  flatDiff:  (obj1, obj2) =>{
     var result = {};
     for (let key in obj1) {
       if (obj1[key] !== obj2[key]) {
@@ -117,7 +117,7 @@ const jsonUtil = {
     return result;
   },
 
-  ensureDefault: function (json, attribute, value) {
+  ensureDefault: (json, attribute, value) => {
     if (!json.hasOwnProperty(attribute)) {
       json[attribute] = value;
     }

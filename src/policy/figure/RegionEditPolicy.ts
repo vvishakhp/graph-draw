@@ -1,8 +1,4 @@
-import { DragDropEditPolicy } from "./DragDropEditPolicy";
-import { Type } from "../../TypeRegistry";
-import { Rectangle } from "../../geo/Rectangle";
-import { Figure } from "../../Figure";
-import { Point } from "../../geo/Point";
+import { Type, DragDropEditPolicy, Rectangle, Figure, Point } from '../../imports'
 
 @Type('RegionEditPolicy')
 export class RegionEditPolicy extends DragDropEditPolicy {

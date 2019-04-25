@@ -1,7 +1,4 @@
-import { SelectionFeedbackPolicy } from "../figure/SelectionFeedbackPolicy";
-import { Type } from "../../TypeRegistry";
-import { LineStartResizeHandle } from "../../shape/basic/LineStartResizeHandle";
-import { LineEndResizeHandle } from "../../shape/basic/LineEndResizeHandle";
+import { Type, SelectionFeedbackPolicy, LineStartResizeHandle, LineEndResizeHandle } from '../../imports';
 
 @Type('LineSelectionFeedbackPolicy')
 export class LineSelectionFeedbackPolicy extends SelectionFeedbackPolicy {

@@ -221,7 +221,7 @@ export class Connection extends PolyLine {
       this.sourceDecoratorNode.transform("r" + this.getStartAngle() + "," + start.getX() + "," + start.getY() + " t" + start.getX() + "," + start.getY())
       // propagate the color and the opacity to the decoration as well
       this.sourceDecoratorNode.attr({ "stroke": "#" + this.lineColor.hex(), opacity: this.alpha })
-      this.sourceDecoratorNode.forEach(function (shape) {
+      this.sourceDecoratorNode.forEach((shape) => {
         shape.node.setAttribute("class", _this.cssClass !== null ? _this.cssClass : "")
       })
     }
@@ -230,7 +230,7 @@ export class Connection extends PolyLine {
       var end = this.getVertices().last()
       this.targetDecoratorNode.transform("r" + this.getEndAngle() + "," + end.getX() + "," + end.getY() + " t" + end.getX() + "," + end.getY())
       this.targetDecoratorNode.attr({ "stroke": "#" + this.lineColor.hex(), opacity: this.alpha })
-      this.targetDecoratorNode.forEach(function (shape) {
+      this.targetDecoratorNode.forEach((shape) => {
         shape.node.setAttribute("class", _this.cssClass !== null ? _this.cssClass : "")
       })
     }
@@ -264,7 +264,7 @@ export class Connection extends PolyLine {
     var _this = this
 
 
-    this.editPolicy.each(function (i, e) {
+    this.editPolicy.each((i, e) => {
       if (e instanceof DragDropEditPolicy) {
         e.onDrag(_this.canvas, _this)
       }
@@ -274,7 +274,7 @@ export class Connection extends PolyLine {
     this.repaint({})
 
 
-    this.editPolicy.each(function (i, e) {
+    this.editPolicy.each((i, e) => {
       if (e instanceof DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
       }
@@ -537,7 +537,7 @@ export class Connection extends PolyLine {
   }
 
   fireSourcePortRouteEvent() {
-    this.sourcePort.getConnections().each(function (i, conn) {
+    this.sourcePort.getConnections().each((i, conn) => {
       conn.routingRequired = true
       conn.repaint()
     })
@@ -545,7 +545,7 @@ export class Connection extends PolyLine {
 
   fireTargetPortRouteEvent() {
 
-    this.targetPort.getConnections().each(function (i, conn: Connection) {
+    this.targetPort.getConnections().each((i, conn: Connection) => {
       conn.routingRequired = true
       conn.repaint({})
     })

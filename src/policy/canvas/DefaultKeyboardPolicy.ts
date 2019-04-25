@@ -1,9 +1,8 @@
-import { Type } from "../../TypeRegistry";
-import { KeyboardPolicy } from "./KeyboardPolicy";
-import { Canvas } from "../../Canvas";
-import { CommandDelete } from "../../command/CommandDelete";
-import { Connection } from "../../Connection";
-import { CommandType } from "../../command/CommandType";
+import {
+  Type, KeyboardPolicy, Canvas, CommandDelete,
+  Connection, CommandType
+} from "../../imports";
+
 
 
 @Type('DefaultKeyboardPolicy')

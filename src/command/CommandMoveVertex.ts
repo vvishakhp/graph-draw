@@ -1,6 +1,5 @@
-import { Command } from "./Command";
-import { Type } from "../TypeRegistry";
-import { Point } from "../geo/Point";
+import { Command, Type, Point } from '../imports';
+
 
 @Type('CommandMoveVertex')
 export class CommandMoveVertex extends Command {

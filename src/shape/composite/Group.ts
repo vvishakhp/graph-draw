@@ -1,6 +1,4 @@
-import { Type } from "../../imports";
-import { StrongComposite, CommandType, CommandDeleteGroup } from "../../imports";
-import { extend } from "jquery";
+import { Type, StrongComposite, extend, CommandType, CommandDeleteGroup } from '../../imports';
 
 
 @Type('Group')
@@ -37,7 +35,7 @@ export class Group extends StrongComposite {
     }
 
     if (this.stickFigures === false) {
-      this.assignedFigures.each(function (i, figure) {
+      this.assignedFigures.each((i, figure) => {
         figure.translate(dx, dy)
       })
     }
@@ -58,7 +56,7 @@ export class Group extends StrongComposite {
       }
       this.assignedFigures.add(figure)
       figure.setComposite(this)
-      figure.setSelectionAdapter(function () {
+      figure.setSelectionAdapter(() => {
         return _this
       })
       this.stickFigures = false
@@ -75,7 +73,7 @@ export class Group extends StrongComposite {
       this.assignedFigures.remove(figure)
       if (!this.assignedFigures.isEmpty()) {
         let box = this.assignedFigures.first().getBoundingBox()
-        this.assignedFigures.each(function (i, figure) {
+        this.assignedFigures.each((i, figure) => {
           box.merge(figure.getBoundingBox())
         })
         this.setBoundingBox(box)

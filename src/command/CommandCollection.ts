@@ -1,5 +1,4 @@
-import { Command } from "./Command";
-import ArrayList from "../util/ArrayList";
+import { ArrayList, Command } from '../imports';
 
 export class CommandCollection extends Command {
   commands: ArrayList<Command>;
@@ -16,7 +15,7 @@ export class CommandCollection extends Command {
     }
 
     if (this.commands.getSize() > 1) {
-      let labels: ArrayList<string> = (this.commands.clone().map(function (e) {
+      let labels: ArrayList<string> = (this.commands.clone().map((e) => {
         return e.getLabel();
       }) as unknown as ArrayList<string>);
 
@@ -35,20 +34,20 @@ export class CommandCollection extends Command {
 
   canExecute(): boolean {
     let canExec = false
-    this.commands.each(function (i, cmd) {
+    this.commands.each((i, cmd) => {
       canExec = canExec || cmd.canExecute()
     })
     return canExec
   }
 
   execute() {
-    this.commands.each(function (i, cmd) {
+    this.commands.each((i, cmd) => {
       cmd.execute()
     })
   }
 
   redo() {
-    this.commands.each(function (i, cmd) {
+    this.commands.each((i, cmd) => {
       cmd.redo()
     })
   }
@@ -57,7 +56,7 @@ export class CommandCollection extends Command {
   undo() {
 
     this.commands.reverse()
-    this.commands.each(function (i, cmd) {
+    this.commands.each((i, cmd) => {
       cmd.undo()
     })
 

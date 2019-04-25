@@ -1,6 +1,4 @@
-import { PortLocator } from './PortLocator';
-import { Type } from '../../TypeRegistry';
-import { Figure } from '../../Figure';
+import { Type, PortLocator, Figure } from '../../imports';
 
 @Type('OutputPortLocator')
 export class OutputPortLocator extends PortLocator {

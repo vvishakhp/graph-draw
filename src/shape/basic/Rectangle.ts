@@ -1,6 +1,4 @@
-
-import { VectorFigure } from "../../VectorFigure";
-import extend from "../../util/extend";
+import { VectorFigure, extend } from '../../imports';
 
 export class RectangleShape extends VectorFigure {
 

@@ -1,10 +1,4 @@
-import { Type } from "../../TypeRegistry";
-import { CanvasPolicy } from "./CanvasPolicy";
-import { Port } from "../../Port";
-import { OutputPort } from "../../OutputPort";
-import { InputPort } from "../../InputPort";
-import { StrongComposite } from "../../shape/composite/StrongComposite";
-import { Hub } from "../../shape/node/Hub";
+import { Type, CanvasPolicy, Port, StrongComposite, OutputPort, InputPort, Hub } from '../../imports';
 
 @Type('DropInterceptorPolicy')
 export class DropInterceptorPolicy extends CanvasPolicy {

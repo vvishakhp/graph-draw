@@ -12,7 +12,7 @@ export abstract class Writer {
         let reg = new RegExp("(>)(<)(\/*)", "g");
         xml = xml.replace(reg, '$1\r\n$2$3');
         let pad = 0;
-        xml.split('\r\n').forEach(function (node) {
+        xml.split('\r\n').forEach((node) => {
             let indent = 0;
             if (node.match(new RegExp(".+<\/\w[^>]*>$"))) {
                 indent = 0;

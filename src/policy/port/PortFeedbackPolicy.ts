@@ -1,7 +1,4 @@
-import { Canvas } from "../../Canvas";
-import { Port } from "../../Port";
-import { Figure } from "../../Figure";
-import { DragDropEditPolicy } from "../figure/DragDropEditPolicy";
+import { DragDropEditPolicy, Canvas, Port, Figure } from '../../imports';
 
 export class PortFeedbackPolicy extends DragDropEditPolicy {
   onHoverEnter(canvas: Canvas, draggedFigure: Port, hoverFigure: Figure) {

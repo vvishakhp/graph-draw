@@ -1,9 +1,6 @@
-import { FigureEditPolicy } from "./FigureEditPolicy";
-import { Figure } from "../../Figure";
-import { Canvas } from "../../Canvas";
-import { Rectangle } from "../../geo/Rectangle";
-import { Point } from "../../geo/Point";
+import { FigureEditPolicy, Figure, Canvas, Point, Rectangle, Type } from '../../imports';
 
+@Type('DragDropEditPolicy')
 export class DragDropEditPolicy extends FigureEditPolicy {
   moveCallback(emitter, event) {
     this.moved(emitter.getCanvas(), emitter)
@@ -11,7 +8,7 @@ export class DragDropEditPolicy extends FigureEditPolicy {
 
   onInstall(host: Figure | Canvas) {
     super.onInstall(host);
-    host.on("move", this.moveCallback)
+    host.on("move", this.moveCallback, this)
   }
 
   onUninstall(host: Canvas | Figure) {
@@ -66,5 +63,7 @@ export class DragDropEditPolicy extends FigureEditPolicy {
     return new Rectangle(0, 0, w, h)
   }
 
-  moved(canvas, figure) { }
+  moved(canvas, figure) {
+    
+  }
 }
